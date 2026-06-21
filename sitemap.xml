@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://toolspotr.com/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/ip.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/json-formatter.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/password-generator.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/base64.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/uuid-generator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/regex-tester.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/compound-interest.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/loan-calculator.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/retirement-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/dns-test.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/browser-fingerprint.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/port-scanner.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/qr-generator.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/color-picker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/image-optimizer.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/image-converter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/svg-optimizer.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/word-counter.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/markdown-editor.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/diff-checker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/case-converter.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/timezone-converter.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/unit-converter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+</urlset>

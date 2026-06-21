@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function(){
   applyLang(currentLang);
   initControls();
   initSearch();
+  initStats();
 });
 
 // ── Theme ──
@@ -300,5 +301,94 @@ function initSearch(){
     if(!e.target.closest('.hero-search')) panel.classList.remove('show');
   });
 }
+
+// ── Homepage Stats ──
+function initStats(){
+  const usage = getUsageStats();
+  const recent = getRecentTools();
+  
+  // Update Most Used Today with real data
+  const crossGrid = document.querySelector('.cross-grid');
+  if(crossGrid && Object.keys(usage).length > 0){
+    const cards = crossGrid.querySelectorAll('.cross-card');
+    cards.forEach(card => {
+      const name = card.querySelector('.cross-name')?.textContent?.toLowerCase().trim() || '';
+      // Match by finding the tool
+      for(const [id, data] of Object.entries(usage)){
+        if(data.name.toLowerCase().includes(name) || name.includes(id)){
+          const countEl = card.querySelector('.cross-count');
+          if(countEl) countEl.textContent = data.count + ' ' + (data.count === 1 ? 'use' : 'uses');
+          break;
+        }
+      }
+    });
+  }
+  
+  // Add Recently Used section
+  if(recent.length > 0 && !document.getElementById('recentTools')){
+    const toolsSection = document.querySelector('.cross-section');
+    if(toolsSection){
+      const section = document.createElement('section');
+      section.className = 'cross-section';
+      section.id = 'recentTools';
+      section.innerHTML = `
+        <div class="section-header">
+          <span class="section-icon">🕐</span>
+          <h2>Recently Used</h2>
+        </div>
+        <div class="cross-grid">
+          ${recent.slice(0,6).map(t => 
+            `<a href="tools/${t.id}.html" class="cross-card"><span class="cross-icon">📌</span><span class="cross-name">${t.name}</span></a>`
+          ).join('')}
+        </div>`;
+      toolsSection.after(section);
+    }
+  }
+}
+
+// ── Tool Usage Tracking ──
+function trackTool(toolId, toolName){
+  try{
+    const key = 'tf_usage';
+    let data = JSON.parse(localStorage.getItem(key) || '{}');
+    if(!data[toolId]) data[toolId] = {name: toolName, count: 0, lastUsed: ''};
+    data[toolId].count++;
+    data[toolId].lastUsed = new Date().toISOString();
+    localStorage.setItem(key, JSON.stringify(data));
+    
+    // Track recent tools (max 5)
+    const recentKey = 'tf_recent';
+    let recent = JSON.parse(localStorage.getItem(recentKey) || '[]');
+    recent = recent.filter(r => r.id !== toolId);
+    recent.unshift({id: toolId, name: toolName, time: Date.now()});
+    if(recent.length > 8) recent = recent.slice(0, 8);
+    localStorage.setItem(recentKey, JSON.stringify(recent));
+  } catch(e) {/* localStorage might be full */}
+}
+
+function getUsageStats(){
+  try{
+    return JSON.parse(localStorage.getItem('tf_usage') || '{}');
+  } catch(e) { return {}; }
+}
+
+function getRecentTools(){
+  try{
+    return JSON.parse(localStorage.getItem('tf_recent') || '[]');
+  } catch(e) { return []; }
+}
+
+// Auto-track on tool pages
+(function autoTrack(){
+  const path = window.location.pathname;
+  if(path.includes('/tools/')){
+    const match = path.match(/\/tools\/(.+)\.html/);
+    if(match){
+      const id = match[1];
+      const name = document.querySelector('h1')?.textContent?.trim() || id;
+      trackTool(id, name);
+    }
+  }
+})();
 
 })();
