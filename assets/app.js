@@ -1,0 +1,285 @@
+/* ═══ Toolflow — App Script ═══
+   Features: Language switcher, Theme switcher, Tool search
+   ====================================================== */
+
+(function(){
+'use strict';
+
+// ── Translations ──
+const LANG = {
+  en: {
+    siteName: 'Toolflow', siteDesc: 'Free Online Tools for Developers',
+    navTools: 'tools', searchPlaceholder: 'Search 23 tools...',
+    heroTitle: 'Your <span class="gradient">Daily Toolkit</span>',
+    heroDesc: '50+ free online tools for developers, designers, and everyone. IP lookup, JSON formatter, investment calculator, and more.',
+    heroTools: 'Tools', heroCategories: 'Categories', heroAlways: 'Always Free',
+    sectionAll: 'All Tools',
+    devTools: 'Developer Tools', finance: 'Finance & Investment',
+    security: 'Security & Privacy', utilities: 'Utilities',
+    imageMedia: 'Image & Media', textWriting: 'Text & Writing',
+    mostUsed: 'Most Used Today', uses: 'uses',
+    comingSoon: 'Coming soon',
+    footerText: 'Free Online Tools for Developers &middot; All tools run locally in your browser. Nothing is uploaded.',
+    footerPrivacy: 'Your privacy matters — zero data leaves your device.',
+    themeLabel: 'Theme', langLabel: 'Language',
+    themeCosmic: 'Cosmic', themeLight: 'Light', themeOcean: 'Ocean',
+    themeSunset: 'Sunset', themeForest: 'Forest',
+    langEn: 'English', langZh: '中文',
+    searchNoResults: 'No tools found', searchResults: 'results',
+    ipLookup: 'IP Address Lookup', ipDesc: 'Find your public IP, location & ISP',
+    jsonFmt: 'JSON Formatter', jsonDesc: 'Format, validate & compress JSON',
+    pwdGen: 'Password Generator', pwdDesc: 'Create strong random passwords',
+    invCalc: 'Investment Calculator', invDesc: 'Compound interest & growth chart',
+    dnsTest: 'DNS Leak Test', dnsDesc: 'Check if your VPN leaks DNS requests',
+    loanCalc: 'Loan Calculator', loanDesc: 'Monthly payment & amortization schedule',
+    base64: 'Base64 Encode/Decode', base64Desc: 'Encode text or files to Base64',
+    uuid: 'UUID Generator', uuidDesc: 'Generate v4/v7 UUIDs in bulk',
+    qrGen: 'QR Code Generator', qrDesc: 'Custom QR codes with colors & logo',
+    colorPick: 'Color Picker', colorDesc: 'HEX/RGB/HSL/CMYK color converter',
+    wordCount: 'Word Counter', wordDesc: 'Count words, chars, sentences & more',
+    // Coming soon
+    regex: 'Regex Tester', regexDesc: 'Test regular expressions in real-time',
+    retire: 'Retirement Calculator', retireDesc: 'Plan your retirement savings',
+    finger: 'Browser Fingerprint', fingerDesc: 'Check your browser fingerprint',
+    portScan: 'Port Scanner', portScanDesc: 'Scan common ports for security',
+    tzConv: 'Timezone Converter', tzConvDesc: 'Convert time across timezones',
+    unitConv: 'Unit Converter', unitConvDesc: 'Length, weight, temperature converter',
+    imgOpt: 'Image Optimizer', imgOptDesc: 'Compress PNG/JPG/WebP images',
+    imgFmt: 'Image Format Converter', imgFmtDesc: 'Convert between image formats',
+    svgOpt: 'SVG Optimizer', svgOptDesc: 'Clean and compress SVG files',
+    mdEditor: 'Markdown Editor', mdEditorDesc: 'Live preview Markdown editor',
+    diffCheck: 'Diff Checker', diffCheckDesc: 'Compare text & code differences',
+    caseConv: 'Case Converter', caseConvDesc: 'Convert text between cases',
+  },
+  zh: {
+    siteName: 'Toolflow', siteDesc: '免费在线开发者工具集',
+    navTools: '工具', searchPlaceholder: '搜索 23 个工具...',
+    heroTitle: '你的<span class="gradient">每日工具箱</span>',
+    heroDesc: '50+ 免费在线工具：IP查询、JSON格式化、投资计算器、密码生成器等等',
+    heroTools: '工具', heroCategories: '分类', heroAlways: '永久免费',
+    sectionAll: '全部工具',
+    devTools: '开发者工具', finance: '金融与投资',
+    security: '安全与隐私', utilities: '实用工具',
+    imageMedia: '图片与媒体', textWriting: '文本与写作',
+    mostUsed: '今日热门', uses: '次使用',
+    comingSoon: '即将上线',
+    footerText: '免费在线开发者工具 &middot; 所有工具在浏览器本地运行，不上传任何数据',
+    footerPrivacy: '你的隐私至关重要 — 零数据离开你的设备',
+    themeLabel: '主题', langLabel: '语言',
+    themeCosmic: '星河', themeLight: '明亮', themeOcean: '海洋',
+    themeSunset: '日落', themeForest: '森林',
+    langEn: 'English', langZh: '中文',
+    searchNoResults: '未找到工具', searchResults: '个结果',
+    ipLookup: 'IP 地址查询', ipDesc: '查看公网 IP、地理位置和 ISP',
+    jsonFmt: 'JSON 格式化', jsonDesc: '格式化、验证和压缩 JSON',
+    pwdGen: '密码生成器', pwdDesc: '创建高强度随机密码',
+    invCalc: '投资计算器', invDesc: '复利计算与增长图表',
+    dnsTest: 'DNS 泄露检测', dnsDesc: '检测 VPN 是否泄露 DNS 请求',
+    loanCalc: '贷款计算器', loanDesc: '月供计算与还款计划表',
+    base64: 'Base64 编解码', base64Desc: '文本或文件 Base64 编解码',
+    uuid: 'UUID 生成器', uuidDesc: '批量生成 v4/v7 UUID',
+    qrGen: '二维码生成器', qrDesc: '自定义二维码，支持颜色和 Logo',
+    colorPick: '颜色选择器', colorDesc: 'HEX/RGB/HSL/CMYK 颜色转换',
+    wordCount: '字数统计', wordDesc: '统计字数、字符数、句数和段落',
+    regex: '正则测试器', regexDesc: '实时测试正则表达式',
+    retire: '退休计算器', retireDesc: '规划退休储蓄目标',
+    finger: '浏览器指纹', fingerDesc: '查看浏览器唯一指纹信息',
+    portScan: '端口扫描', portScanDesc: '扫描常用端口检查安全',
+    tzConv: '时区转换', tzConvDesc: '不同时区时间转换',
+    unitConv: '单位转换', unitConvDesc: '长度、重量、温度转换',
+    imgOpt: '图片压缩', imgOptDesc: '压缩 PNG/JPG/WebP 图片',
+    imgFmt: '图片格式转换', imgFmtDesc: '图片格式互转',
+    svgOpt: 'SVG 优化', svgOptDesc: '清理和压缩 SVG 代码',
+    mdEditor: 'Markdown 编辑器', mdEditorDesc: '实时预览 Markdown',
+    diffCheck: '差异对比', diffCheckDesc: '对比文本和代码差异',
+    caseConv: '大小写转换', caseConvDesc: '多种大小写格式互转',
+  }
+};
+
+// ── Tool Data (for search) ──
+const TOOLS = [
+  {id:'ip', icon:'🌐', key:'ipLookup', cat:'dev', ready:true, url:'tools/ip.html', tags:'network,ip,location'},
+  {id:'json', icon:'📋', key:'jsonFmt', cat:'dev', ready:true, url:'tools/json-formatter.html', tags:'json,format,validate'},
+  {id:'pwd', icon:'🔑', key:'pwdGen', cat:'dev', ready:true, url:'tools/password-generator.html', tags:'password,security,random'},
+  {id:'inv', icon:'📈', key:'invCalc', cat:'finance', ready:true, url:'tools/compound-interest.html', tags:'investment,compound,finance'},
+  {id:'dns', icon:'🛡️', key:'dnsTest', cat:'security', ready:true, url:'tools/dns-test.html', tags:'dns,vpn,leak,security'},
+  {id:'loan', icon:'🏠', key:'loanCalc', cat:'finance', ready:true, url:'tools/loan-calculator.html', tags:'loan,mortgage,finance'},
+  {id:'base64', icon:'🔤', key:'base64', cat:'dev', ready:true, url:'tools/base64.html', tags:'base64,encode,decode'},
+  {id:'uuid', icon:'🔀', key:'uuid', cat:'dev', ready:true, url:'tools/uuid-generator.html', tags:'uuid,guid,generator'},
+  {id:'qr', icon:'📱', key:'qrGen', cat:'image', ready:true, url:'tools/qr-generator.html', tags:'qr,code,generator'},
+  {id:'color', icon:'🎨', key:'colorPick', cat:'image', ready:true, url:'tools/color-picker.html', tags:'color,picker,hex,rgb,hsl'},
+  {id:'word', icon:'📊', key:'wordCount', cat:'text', ready:true, url:'tools/word-counter.html', tags:'word,count,character,text'},
+  {id:'regex', icon:'🔍', key:'regex', cat:'dev', ready:false, url:'#', tags:'regex,regular expression'},
+  {id:'retire', icon:'🎯', key:'retire', cat:'finance', ready:false, url:'#', tags:'retirement,savings,finance'},
+  {id:'finger', icon:'👆', key:'finger', cat:'security', ready:false, url:'#', tags:'fingerprint,browser,privacy'},
+  {id:'port', icon:'🔌', key:'portScan', cat:'security', ready:false, url:'#', tags:'port,scanner,network'},
+  {id:'tz', icon:'⏰', key:'tzConv', cat:'utility', ready:false, url:'#', tags:'timezone,converter,time'},
+  {id:'unit', icon:'📏', key:'unitConv', cat:'utility', ready:false, url:'#', tags:'unit,converter,measurement'},
+  {id:'imgopt', icon:'📦', key:'imgOpt', cat:'image', ready:false, url:'#', tags:'image,optimizer,compress'},
+  {id:'imgfmt', icon:'🔄', key:'imgFmt', cat:'image', ready:false, url:'#', tags:'image,converter,format'},
+  {id:'svg', icon:'✂️', key:'svgOpt', cat:'image', ready:false, url:'#', tags:'svg,optimizer,compress'},
+  {id:'md', icon:'📝', key:'mdEditor', cat:'text', ready:false, url:'#', tags:'markdown,editor,preview'},
+  {id:'diff', icon:'🔁', key:'diffCheck', cat:'text', ready:false, url:'#', tags:'diff,comparison,text'},
+  {id:'case', icon:'🔤', key:'caseConv', cat:'text', ready:false, url:'#', tags:'case,converter,text'},
+];
+
+// ── State ──
+let currentLang = localStorage.getItem('tf_lang') || 'en';
+let currentTheme = localStorage.getItem('tf_theme') || 'cosmic';
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', function(){
+  applyTheme(currentTheme);
+  applyLang(currentLang);
+  initControls();
+  initSearch();
+});
+
+// ── Theme ──
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('tf_theme', t);
+  currentTheme = t;
+}
+
+function initControls(){
+  // Theme button
+  const themeBtn = document.getElementById('themeBtn');
+  const themePanel = document.getElementById('themePanel');
+  if(themeBtn && themePanel){
+    themeBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      themePanel.classList.toggle('show');
+      document.getElementById('langPanel')?.classList.remove('show');
+    });
+    document.querySelectorAll('.theme-opt').forEach(el => {
+      el.addEventListener('click', function(){
+        const t = this.dataset.theme;
+        applyTheme(t);
+        document.querySelectorAll('.theme-opt').forEach(o => o.classList.remove('active'));
+        this.classList.add('active');
+        themePanel.classList.remove('show');
+      });
+    });
+    // Highlight current theme
+    document.querySelector(`.theme-opt[data-theme="${currentTheme}"]`)?.classList.add('active');
+  }
+
+  // Language button
+  const langBtn = document.getElementById('langBtn');
+  const langPanel = document.getElementById('langPanel');
+  if(langBtn && langPanel){
+    langBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      langPanel.classList.toggle('show');
+      document.getElementById('themePanel')?.classList.remove('show');
+    });
+    document.querySelectorAll('.lang-opt').forEach(el => {
+      el.addEventListener('click', function(){
+        const l = this.dataset.lang;
+        applyLang(l);
+        document.querySelectorAll('.lang-opt').forEach(o => o.classList.remove('active'));
+        this.classList.add('active');
+        langPanel.classList.remove('show');
+        langBtn.innerHTML = l === 'en' ? 'EN' : '中';
+      });
+    });
+    document.querySelector(`.lang-opt[data-lang="${currentLang}"]`)?.classList.add('active');
+    langBtn.innerHTML = currentLang === 'en' ? 'EN' : '中';
+  }
+
+  // Close panels on outside click
+  document.addEventListener('click', function(){
+    document.getElementById('themePanel')?.classList.remove('show');
+    document.getElementById('langPanel')?.classList.remove('show');
+  });
+}
+
+// ── Language ──
+function applyLang(l){
+  currentLang = l;
+  localStorage.setItem('tf_lang', l);
+  const t = LANG[l] || LANG.en;
+  
+  // Translate all elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if(t[key] !== undefined){
+      el.innerHTML = t[key];
+    }
+  });
+  
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if(t[key] !== undefined){
+      el.placeholder = t[key];
+    }
+  });
+}
+
+// ── Search ──
+function initSearch(){
+  const input = document.getElementById('heroSearchInput');
+  const panel = document.getElementById('heroSearchResults');
+  if(!input || !panel) return;
+
+  // Create panel if not exists
+  input.addEventListener('input', function(){
+    const q = this.value.trim().toLowerCase();
+    if(q.length < 1){ panel.classList.remove('show'); return; }
+
+    const t = LANG[currentLang] || LANG.en;
+    
+    // Filter tools
+    const results = TOOLS.filter(tool => {
+      const name = (t[tool.key] || tool.key).toLowerCase();
+      const tags = tool.tags.toLowerCase();
+      const cat = tool.cat.toLowerCase();
+      return name.includes(q) || tags.includes(q) || cat.includes(q);
+    });
+
+    if(results.length === 0){
+      panel.innerHTML = `<div class="hsr-count" style="text-align:center;padding:16px;color:var(--text-muted)">🔍 ${t.searchNoResults}</div>`;
+      panel.classList.add('show');
+      return;
+    }
+
+    let html = `<div class="hsr-count">${results.length} ${t.searchResults}</div>`;
+    const max = 8;
+    results.slice(0, max).forEach(tool => {
+      const name = t[tool.key] || tool.key;
+      const desc = t[tool.key.replace(/[A-Z]/g, m => m.toLowerCase())+'Desc'] || '';
+      const status = tool.ready ? '' : '<span class="hsr-item-tag">'+t.comingSoon+'</span>';
+      html += `<a href="${tool.url}" class="hsr-item ${tool.ready?'':'tcard-soon'}">
+        <span class="hsr-item-icon">${tool.icon}</span>
+        <div class="hsr-item-info">
+          <div class="hsr-item-name">${name}</div>
+          <div class="hsr-item-desc">${desc}</div>
+        </div>
+        ${status}
+      </a>`;
+    });
+    if(results.length > max){
+      html += `<div class="hsr-count" style="text-align:center;color:var(--text-muted)">… ${results.length-max} more</div>`;
+    }
+    panel.innerHTML = html;
+    panel.classList.add('show');
+  });
+
+  input.addEventListener('focus', function(){
+    if(this.value.trim().length >= 1){
+      this.dispatchEvent(new Event('input'));
+    }
+  });
+
+  // Close on Escape / outside
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ panel.classList.remove('show'); input.blur(); }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.hero-search')) panel.classList.remove('show');
+  });
+}
+
+})();

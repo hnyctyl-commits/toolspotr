@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cosmic">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Toolflow — Developer's Daily Toolkit</title>
-<meta name="description" content="50+ 免费在线工具：IP查询、JSON格式化、投资计算、密码生成、DNS检测 — 一站式开发者工具站。">
+<title>Toolflow — Free Online Tools for Developers</title>
+<meta name="description" content="50+ free online tools: IP address lookup, JSON formatter, password generator, investment calculator, DNS leak test, QR code generator, color picker and more. All tools run in your browser.">
+<link rel="alternate" hreflang="en" href="https://toolspotr.com/">
+<link rel="alternate" hreflang="zh" href="https://toolspotr.com/?lang=zh">
 <link rel="stylesheet" href="assets/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 </head>
@@ -12,13 +14,33 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
-    <div class="nav-badge">Beta</div>
-    <div class="nav-search">
-      <input type="text" id="navSearch" placeholder="Search 50+ tools..." autocomplete="off">
+    <a href="/" class="logo"><span class="logo-icon">◇</span><span class="logo-text" data-i18n="siteName">Toolflow</span></a>
+
+    <div class="nav-controls">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
     </div>
+
     <div class="nav-links">
-      <span class="nav-stat">23 tools</span>
+      <span class="nav-stat" id="navStat"><span data-i18n="navTools">tools</span></span>
+
+      <!-- Theme Panel -->
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title" data-i18n="themeLabel">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+
+      <!-- Language Panel -->
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
     </div>
   </div>
 </nav>
@@ -28,12 +50,20 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <h1 class="hero-title">Your <span class="gradient">Daily Dev Toolkit</span></h1>
-      <p class="hero-desc">50+ 免费在线工具，一站式搞定开发、计算、安全检测。即开即用，无需注册。</p>
+      <h1 class="hero-title" data-i18n="heroTitle">Your <span class="gradient">Daily Toolkit</span></h1>
+      <p class="hero-desc" data-i18n="heroDesc">50+ free online tools — IP lookup, JSON formatter, password generator, investment calculator, and more. All run in your browser.</p>
+      
+      <!-- Search (prominent) -->
+      <div class="hero-search">
+        <input type="text" id="heroSearchInput" placeholder="Search 23 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+        <span class="hero-search-icon">🔍</span>
+        <div class="hero-search-results" id="heroSearchResults"></div>
+      </div>
+
       <div class="hero-stats">
-        <div class="hs"><span class="hs-num">23</span><span class="hs-lbl">Tools</span></div>
-        <div class="hs"><span class="hs-num">6</span><span class="hs-lbl">Categories</span></div>
-        <div class="hs"><span class="hs-num">Free</span><span class="hs-lbl">Always</span></div>
+        <div class="hs"><span class="hs-num">23</span><span class="hs-lbl" data-i18n="heroTools">Tools</span></div>
+        <div class="hs"><span class="hs-num">6</span><span class="hs-lbl" data-i18n="heroCategories">Categories</span></div>
+        <div class="hs"><span class="hs-num">∞</span><span class="hs-lbl" data-i18n="heroAlways">Always Free</span></div>
       </div>
     </div>
   </section>
@@ -42,254 +72,82 @@
   <section class="tools-section">
     <div class="section-header">
       <span class="section-icon">🛠️</span>
-      <h2>All Tools</h2>
-      <span class="section-count">23 tools</span>
+      <h2 data-i18n="sectionAll">All Tools</h2>
+      <span class="section-count">23</span>
     </div>
 
     <div class="tool-grid" id="toolGrid">
 
       <!-- Developer Tools -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">💻</span><span class="tcat-name">Developer Tools</span><span class="tcat-cnt">6</span></div>
-        <a href="tools/ip.html" class="tcard">
-          <div class="tcard-icon">🌐</div>
-          <div class="tcard-body">
-            <div class="tcard-title">IP Address Lookup</div>
-            <div class="tcard-desc">查看你的公网 IP、地理位置、ISP 信息</div>
-            <div class="tcard-tags"><span class="tag">Network</span><span class="tag">Privacy</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/json-formatter.html" class="tcard">
-          <div class="tcard-icon">📋</div>
-          <div class="tcard-body">
-            <div class="tcard-title">JSON Formatter</div>
-            <div class="tcard-desc">格式化、验证、压缩 JSON 数据，支持语法高亮</div>
-            <div class="tcard-tags"><span class="tag">Dev</span><span class="tag">Data</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/password-generator.html" class="tcard">
-          <div class="tcard-icon">🔑</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Password Generator</div>
-            <div class="tcard-desc">生成高强度随机密码，支持自定义长度和字符类型</div>
-            <div class="tcard-tags"><span class="tag">Security</span><span class="tag">Privacy</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/base64.html" class="tcard">
-          <div class="tcard-icon">🔤</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Base64 Encoder/Decoder</div>
-            <div class="tcard-desc">编码解码 Base64 字符串，支持文件转换</div>
-            <div class="tcard-tags"><span class="tag">Dev</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/uuid-generator.html" class="tcard">
-          <div class="tcard-icon">🔀</div>
-          <div class="tcard-body">
-            <div class="tcard-title">UUID Generator</div>
-            <div class="tcard-desc">生成 v4/v7 UUID，批量生成，复制即用</div>
-            <div class="tcard-tags"><span class="tag">Dev</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🔍</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Regex Tester</div>
-            <div class="tcard-desc">测试正则表达式，实时匹配高亮，支持常用 Pattern</div>
-            <div class="tcard-tags"><span class="tag">Dev</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">💻</span><span class="tcat-name" data-i18n="devTools">Developer Tools</span><span class="tcat-cnt">6</span></div>
+        <a href="tools/ip.html" class="tcard"><div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title" data-i18n="ipLookup">IP Address Lookup</div><div class="tcard-desc" data-i18n="ipDesc">Find your public IP, location & ISP</div><div class="tcard-tags"><span class="tag">Network</span><span class="tag">Privacy</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/json-formatter.html" class="tcard"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title" data-i18n="jsonFmt">JSON Formatter</div><div class="tcard-desc" data-i18n="jsonDesc">Format, validate & compress JSON</div><div class="tcard-tags"><span class="tag">Dev</span><span class="tag">Data</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/password-generator.html" class="tcard"><div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title" data-i18n="pwdGen">Password Generator</div><div class="tcard-desc" data-i18n="pwdDesc">Create strong random passwords</div><div class="tcard-tags"><span class="tag">Security</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/base64.html" class="tcard"><div class="tcard-icon">🔤</div><div class="tcard-body"><div class="tcard-title" data-i18n="base64">Base64 Encode/Decode</div><div class="tcard-desc" data-i18n="base64Desc">Encode text or files to Base64</div><div class="tcard-tags"><span class="tag">Dev</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/uuid-generator.html" class="tcard"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title" data-i18n="uuid">UUID Generator</div><div class="tcard-desc" data-i18n="uuidDesc">Generate v4/v7 UUIDs in bulk</div><div class="tcard-tags"><span class="tag">Dev</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔍</div><div class="tcard-body"><div class="tcard-title" data-i18n="regex">Regex Tester</div><div class="tcard-desc" data-i18n="regexDesc">Test regular expressions in real-time</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
-      <!-- Finance Tools -->
+      <!-- Finance -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">💰</span><span class="tcat-name">Finance & Investment</span><span class="tcat-cnt">3</span></div>
-        <a href="tools/compound-interest.html" class="tcard">
-          <div class="tcard-icon">📈</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Compound Interest Calculator</div>
-            <div class="tcard-desc">计算复利投资收益，直观图表展示你的钱如何增长</div>
-            <div class="tcard-tags"><span class="tag">Finance</span><span class="tag">Investment</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/loan-calculator.html" class="tcard">
-          <div class="tcard-icon">🏠</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Loan Calculator</div>
-            <div class="tcard-desc">计算贷款月供、总利息，比较不同利率方案</div>
-            <div class="tcard-tags"><span class="tag">Finance</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🎯</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Retirement Calculator</div>
-            <div class="tcard-desc">规划退休储蓄目标，看看每月存多少够退休</div>
-            <div class="tcard-tags"><span class="tag">Finance</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">💰</span><span class="tcat-name" data-i18n="finance">Finance &amp; Investment</span><span class="tcat-cnt">3</span></div>
+        <a href="tools/compound-interest.html" class="tcard"><div class="tcard-icon">📈</div><div class="tcard-body"><div class="tcard-title" data-i18n="invCalc">Investment Calculator</div><div class="tcard-desc" data-i18n="invDesc">Compound interest & growth chart</div><div class="tcard-tags"><span class="tag">Finance</span><span class="tag">Investment</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/loan-calculator.html" class="tcard"><div class="tcard-icon">🏠</div><div class="tcard-body"><div class="tcard-title" data-i18n="loanCalc">Loan Calculator</div><div class="tcard-desc" data-i18n="loanDesc">Monthly payment & amortization</div><div class="tcard-tags"><span class="tag">Finance</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🎯</div><div class="tcard-body"><div class="tcard-title" data-i18n="retire">Retirement Calculator</div><div class="tcard-desc" data-i18n="retireDesc">Plan your retirement savings</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
-      <!-- Security Tools -->
+      <!-- Security -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">🔒</span><span class="tcat-name">Security & Privacy</span><span class="tcat-cnt">3</span></div>
-        <a href="tools/dns-test.html" class="tcard">
-          <div class="tcard-icon">🛡️</div>
-          <div class="tcard-body">
-            <div class="tcard-title">DNS Leak Test</div>
-            <div class="tcard-desc">检测你的 VPN/DNS 是否泄露真实 IP 地址</div>
-            <div class="tcard-tags"><span class="tag">Security</span><span class="tag">VPN</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">👆</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Browser Fingerprint</div>
-            <div class="tcard-desc">查看你的浏览器唯一指纹信息，了解在线追踪</div>
-            <div class="tcard-tags"><span class="tag">Privacy</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🔌</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Port Scanner</div>
-            <div class="tcard-desc">扫描常用端口，检查你的网络设备安全状态</div>
-            <div class="tcard-tags"><span class="tag">Security</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">🔒</span><span class="tcat-name" data-i18n="security">Security &amp; Privacy</span><span class="tcat-cnt">3</span></div>
+        <a href="tools/dns-test.html" class="tcard"><div class="tcard-icon">🛡️</div><div class="tcard-body"><div class="tcard-title" data-i18n="dnsTest">DNS Leak Test</div><div class="tcard-desc" data-i18n="dnsDesc">Check if your VPN leaks DNS</div><div class="tcard-tags"><span class="tag">Security</span><span class="tag">VPN</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">👆</div><div class="tcard-body"><div class="tcard-title" data-i18n="finger">Browser Fingerprint</div><div class="tcard-desc" data-i18n="fingerDesc">Check your browser fingerprint</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔌</div><div class="tcard-body"><div class="tcard-title" data-i18n="portScan">Port Scanner</div><div class="tcard-desc" data-i18n="portScanDesc">Scan common ports for security</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
-      <!-- Utility Tools -->
+      <!-- Image & Media -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">📐</span><span class="tcat-name">Utilities</span><span class="tcat-cnt">2</span></div>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">⏰</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Timezone Converter</div>
-            <div class="tcard-desc">在不同时区间转换时间，支持世界主要城市</div>
-            <div class="tcard-tags"><span class="tag">Utility</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">📏</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Unit Converter</div>
-            <div class="tcard-desc">长度、重量、温度、面积、体积单位互转</div>
-            <div class="tcard-tags"><span class="tag">Utility</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">🖼️</span><span class="tcat-name" data-i18n="imageMedia">Image &amp; Media</span><span class="tcat-cnt">5</span></div>
+        <a href="tools/qr-generator.html" class="tcard"><div class="tcard-icon">📱</div><div class="tcard-body"><div class="tcard-title" data-i18n="qrGen">QR Code Generator</div><div class="tcard-desc" data-i18n="qrDesc">Custom QR codes with logo</div><div class="tcard-tags"><span class="tag">Media</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="tools/color-picker.html" class="tcard"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title" data-i18n="colorPick">Color Picker</div><div class="tcard-desc" data-i18n="colorDesc">HEX/RGB/HSL color converter</div><div class="tcard-tags"><span class="tag">Design</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title" data-i18n="imgOpt">Image Optimizer</div><div class="tcard-desc" data-i18n="imgOptDesc">Compress PNG/JPG/WebP</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔄</div><div class="tcard-body"><div class="tcard-title" data-i18n="imgFmt">Image Format Converter</div><div class="tcard-desc" data-i18n="imgFmtDesc">Convert between image formats</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">✂️</div><div class="tcard-body"><div class="tcard-title" data-i18n="svgOpt">SVG Optimizer</div><div class="tcard-desc" data-i18n="svgOptDesc">Clean and compress SVG files</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
-      <!-- Image & Media Tools -->
+      <!-- Text & Writing -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">🖼️</span><span class="tcat-name">Image & Media</span><span class="tcat-cnt">5</span></div>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">📦</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Image Optimizer</div>
-            <div class="tcard-desc">压缩 PNG/JPG/WebP 图片，在保持质量的同时减小文件大小</div>
-            <div class="tcard-tags"><span class="tag">Image</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🔄</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Image Format Converter</div>
-            <div class="tcard-desc">PNG ↔ JPG ↔ WebP ↔ AVIF 互转，批量处理</div>
-            <div class="tcard-tags"><span class="tag">Image</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="tools/qr-generator.html" class="tcard">
-          <div class="tcard-icon">📱</div>
-          <div class="tcard-body">
-            <div class="tcard-title">QR Code Generator</div>
-            <div class="tcard-desc">生成自定义二维码，支持颜色、Logo、大小调节</div>
-            <div class="tcard-tags"><span class="tag">Media</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="tools/color-picker.html" class="tcard">
-          <div class="tcard-icon">🎨</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Color Picker & Converter</div>
-            <div class="tcard-desc">拾取颜色，HEX/RGB/HSL/CMYK 互转，调色板</div>
-            <div class="tcard-tags"><span class="tag">Design</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">✂️</div>
-          <div class="tcard-body">
-            <div class="tcard-title">SVG Optimizer</div>
-            <div class="tcard-desc">清理和压缩 SVG 代码，去除冗余信息</div>
-            <div class="tcard-tags"><span class="tag">Image</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">✍️</span><span class="tcat-name" data-i18n="textWriting">Text &amp; Writing</span><span class="tcat-cnt">4</span></div>
+        <a href="tools/word-counter.html" class="tcard"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title" data-i18n="wordCount">Word Counter</div><div class="tcard-desc" data-i18n="wordDesc">Count words, chars & sentences</div><div class="tcard-tags"><span class="tag">Writing</span></div></div><div class="tcard-arrow">→</div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">📝</div><div class="tcard-body"><div class="tcard-title" data-i18n="mdEditor">Markdown Editor</div><div class="tcard-desc" data-i18n="mdEditorDesc">Live preview Markdown</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔁</div><div class="tcard-body"><div class="tcard-title" data-i18n="diffCheck">Diff Checker</div><div class="tcard-desc" data-i18n="diffCheckDesc">Compare text & code differences</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔤</div><div class="tcard-body"><div class="tcard-title" data-i18n="caseConv">Case Converter</div><div class="tcard-desc" data-i18n="caseConvDesc">Convert text between cases</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
-      <!-- Text & Writing Tools -->
+      <!-- Utilities -->
       <div class="tcat">
-        <div class="tcat-head"><span class="tcat-icon">✍️</span><span class="tcat-name">Text & Writing</span><span class="tcat-cnt">4</span></div>
-        <a href="tools/word-counter.html" class="tcard">
-          <div class="tcard-icon">📊</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Word & Character Counter</div>
-            <div class="tcard-desc">统计字数、字符数(含/不含空格)、行数、段落数</div>
-            <div class="tcard-tags"><span class="tag">Writing</span></div>
-          </div>
-          <div class="tcard-arrow">→</div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">📝</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Markdown Editor</div>
-            <div class="tcard-desc">实时预览 Markdown，支持 GFM 语法和代码高亮</div>
-            <div class="tcard-tags"><span class="tag">Writing</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🔁</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Diff Checker</div>
-            <div class="tcard-desc">对比两段文本/代码的差异，高亮显示增删改</div>
-            <div class="tcard-tags"><span class="tag">Dev</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
-        <a href="#" class="tcard tcard-soon">
-          <div class="tcard-icon">🔤</div>
-          <div class="tcard-body">
-            <div class="tcard-title">Case Converter</div>
-            <div class="tcard-desc">大小写转换：大写、小写、驼峰、蛇形、帕斯卡</div>
-            <div class="tcard-tags"><span class="tag">Writing</span><span class="tag soon">Coming Soon</span></div>
-          </div>
-        </a>
+        <div class="tcat-head"><span class="tcat-icon">📐</span><span class="tcat-name" data-i18n="utilities">Utilities</span><span class="tcat-cnt">2</span></div>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">⏰</div><div class="tcard-body"><div class="tcard-title" data-i18n="tzConv">Timezone Converter</div><div class="tcard-desc" data-i18n="tzConvDesc">Convert time across timezones</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
+        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">📏</div><div class="tcard-body"><div class="tcard-title" data-i18n="unitConv">Unit Converter</div><div class="tcard-desc" data-i18n="unitConvDesc">Length, weight & temperature</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></div></a>
       </div>
 
     </div>
   </section>
 
-  <!-- Cross-sell section -->
+  <!-- Popular -->
   <section class="cross-section">
     <div class="section-header">
       <span class="section-icon">🔥</span>
-      <h2>Most Used Today</h2>
+      <h2 data-i18n="mostUsed">Most Used Today</h2>
     </div>
     <div class="cross-grid">
-      <a href="tools/ip.html" class="cross-card"><span class="cross-icon">🌐</span><span class="cross-name">IP Lookup</span><span class="cross-count">1.2k uses</span></a>
-      <a href="tools/json-formatter.html" class="cross-card"><span class="cross-icon">📋</span><span class="cross-name">JSON Formatter</span><span class="cross-count">890 uses</span></a>
-      <a href="tools/password-generator.html" class="cross-card"><span class="cross-icon">🔑</span><span class="cross-name">Password Gen</span><span class="cross-count">756 uses</span></a>
-      <a href="tools/compound-interest.html" class="cross-card"><span class="cross-icon">📈</span><span class="cross-name">Investment Calc</span><span class="cross-count">423 uses</span></a>
-      <a href="tools/dns-test.html" class="cross-card"><span class="cross-icon">🛡️</span><span class="cross-name">DNS Test</span><span class="cross-count">312 uses</span></a>
-      <a href="#" class="cross-card" style="opacity:0.5;cursor:default"><span class="cross-icon">🖼️</span><span class="cross-name">Image Tools</span><span class="cross-count" style="color:var(--accent2)">Coming soon</span></a>
-      <a href="#" class="cross-card" style="opacity:0.5;cursor:default"><span class="cross-icon">✍️</span><span class="cross-name">Text Tools</span><span class="cross-count" style="color:var(--accent2)">Coming soon</span></a>
+      <a href="tools/ip.html" class="cross-card"><span class="cross-icon">🌐</span><span class="cross-name" data-i18n="ipLookup">IP Lookup</span><span class="cross-count">1.2k <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/json-formatter.html" class="cross-card"><span class="cross-icon">📋</span><span class="cross-name" data-i18n="jsonFmt">JSON Formatter</span><span class="cross-count">890 <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/password-generator.html" class="cross-card"><span class="cross-icon">🔑</span><span class="cross-name" data-i18n="pwdGen">Password Gen</span><span class="cross-count">756 <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/compound-interest.html" class="cross-card"><span class="cross-icon">📈</span><span class="cross-name" data-i18n="invCalc">Investment</span><span class="cross-count">423 <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/dns-test.html" class="cross-card"><span class="cross-icon">🛡️</span><span class="cross-name" data-i18n="dnsTest">DNS Test</span><span class="cross-count">312 <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/qr-generator.html" class="cross-card"><span class="cross-icon">📱</span><span class="cross-name" data-i18n="qrGen">QR Code</span><span class="cross-count">280 <span data-i18n="uses">uses</span></span></a>
+      <a href="tools/word-counter.html" class="cross-card"><span class="cross-icon">📊</span><span class="cross-name" data-i18n="wordCount">Word Count</span><span class="cross-count">198 <span data-i18n="uses">uses</span></span></a>
     </div>
   </section>
 
@@ -297,15 +155,11 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <p>Toolflow — Free Online Tools for Developers · <a href="#">toolspotr.com</a></p>
-    <p class="f-small">所有工具在浏览器本地运行，不上传服务器，保护你的隐私</p>
+    <p data-i18n="footerText">Free Online Tools for Developers &middot; All tools run locally in your browser. Nothing is uploaded.</p>
+    <p class="f-small" data-i18n="footerPrivacy">Your privacy matters — zero data leaves your device.</p>
   </div>
 </footer>
 
-<!-- Ad Placeholder -->
-<div class="ad-banner">
-  <div class="ad-placeholder">AdSense Ready — 728×90</div>
-</div>
-
+<script src="assets/app.js"></script>
 </body>
 </html>
