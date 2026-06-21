@@ -9,7 +9,7 @@
 const LANG = {
   en: {
     siteName: 'Toolflow', siteDesc: 'Free Online Tools for Developers',
-    navTools: 'tools', searchPlaceholder: 'Search 23 tools...',
+    navTools: 'tools', searchPlaceholder: 'Search tools...',
     heroTitle: 'Your <span class="gradient">Daily Toolkit</span>',
     heroDesc: '50+ free online tools for developers, designers, and everyone. IP lookup, JSON formatter, investment calculator, and more. <span class="speed-text">Constantly updated</span><span class="speed-cursor">|</span>',
     heroTools: 'Tools', heroCategories: 'Categories', heroAlways: 'Always Free',
@@ -53,7 +53,7 @@ const LANG = {
   },
   zh: {
     siteName: 'Toolflow', siteDesc: '免费在线开发者工具集',
-    navTools: '工具', searchPlaceholder: '搜索 23 个工具...',
+    navTools: '工具', searchPlaceholder: '搜索工具...',
     heroTitle: '你的<span class="gradient">每日工具箱</span>',
     heroDesc: '50+ 免费在线工具：IP查询、JSON格式化、投资计算器、密码生成器等等，<span class="speed-text">持续更新中</span><span class="speed-cursor">|</span>',
     heroTools: '工具', heroCategories: '分类', heroAlways: '永久免费',
@@ -210,13 +210,12 @@ function applyLang(l){
     }
   });
   
-  // Translate placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.dataset.i18nPlaceholder;
-    if(t[key] !== undefined){
-      el.placeholder = t[key];
-    }
-  });
+  // Update search placeholder with dynamic count
+  const searchInput = document.getElementById('heroSearchInput');
+  if(searchInput && window.TOOLS){
+    const word = l === 'zh' ? '个工具' : 'tools';
+    searchInput.placeholder = (l === 'zh' ? '搜索 ' + TOOLS.length + ' ' + word : 'Search ' + TOOLS.length + ' ' + word);
+  }
 }
 
 // ── Search ──
@@ -224,6 +223,11 @@ function initSearch(){
   const input = document.getElementById('heroSearchInput');
   const panel = document.getElementById('heroSearchResults');
   if(!input || !panel) return;
+  
+  // Dynamic placeholder: count tools
+  const t = LANG[currentLang] || LANG.en;
+  const langWord = currentLang === 'zh' ? '个工具' : 'tools';
+  input.placeholder = (currentLang === 'zh' ? '搜索 ' + TOOLS.length + ' ' + langWord : 'Search ' + TOOLS.length + ' ' + langWord);
 
   // Create panel if not exists
   input.addEventListener('input', function(){
