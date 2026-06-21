@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b15"/>
+      <stop offset="100%" stop-color="#0f1729"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00d4aa"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid dots -->
+  <g fill="#1a2744" opacity="0.6">
+    <circle cx="100" cy="100" r="2"/><circle cx="300" cy="200" r="2"/><circle cx="500" cy="150" r="2"/>
+    <circle cx="700" cy="300" r="2"/><circle cx="900" cy="100" r="2"/><circle cx="1100" cy="400" r="2"/>
+    <circle cx="200" cy="500" r="2"/><circle cx="400" cy="350" r="2"/><circle cx="600" cy="550" r="2"/>
+    <circle cx="800" cy="500" r="2"/><circle cx="1000" cy="250" r="2"/><circle cx="150" cy="350" r="2"/>
+    <circle cx="850" cy="50" r="2"/><circle cx="450" cy="480" r="2"/><circle cx="1050" cy="550" r="2"/>
+  </g>
+  <!-- Glow -->
+  <ellipse cx="850" cy="200" rx="350" ry="250" fill="#00d4aa" opacity="0.03"/>
+  <ellipse cx="350" cy="400" rx="300" ry="250" fill="#6c5ce7" opacity="0.03"/>
+  <!-- Icon -->
+  <text x="100" y="290" font-size="100" font-family="Inter, Helvetica, sans-serif" fill="url(#g1)" font-weight="800">◇</text>
+  <!-- Title -->
+  <text x="180" y="300" font-size="56" font-family="Inter, Helvetica, sans-serif" font-weight="800" fill="#ffffff">Toolflow</text>
+  <text x="180" y="360" font-size="26" font-family="Inter, Helvetica, sans-serif" font-weight="400" fill="#8892b0">
+    50+ Free Online Tools for Developers
+  </text>
+  <!-- Tags -->
+  <rect x="100" y="430" width="160" height="34" rx="17" fill="#00d4aa" opacity="0.12"/>
+  <text x="180" y="452" text-anchor="middle" font-size="14" font-family="Inter" fill="#00d4aa" font-weight="600">IP Lookup</text>
+  <rect x="280" y="430" width="160" height="34" rx="17" fill="#6c5ce7" opacity="0.12"/>
+  <text x="360" y="452" text-anchor="middle" font-size="14" font-family="Inter" fill="#6c5ce7" font-weight="600">JSON Formatter</text>
+  <rect x="460" y="430" width="180" height="34" rx="17" fill="#00d4aa" opacity="0.12"/>
+  <text x="550" y="452" text-anchor="middle" font-size="14" font-family="Inter" fill="#00d4aa" font-weight="600">Calculator</text>
+  <rect x="660" y="430" width="180" height="34" rx="17" fill="#6c5ce7" opacity="0.12"/>
+  <text x="750" y="452" text-anchor="middle" font-size="14" font-family="Inter" fill="#6c5ce7" font-weight="600">Password Gen</text>
+  <!-- URL -->
+  <text x="100" y="530" font-size="16" font-family="Courier New, monospace" fill="#4a5468">toolspotr.com</text>
+  <text x="1000" y="530" font-size="14" fill="#4a5468" font-family="Inter">Always free · No signup</text>
+</svg>
