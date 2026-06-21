@@ -293,37 +293,66 @@ body {
 .section-count { font-size: 10px; color: var(--text-muted); background: var(--bg-card); padding: 3px 8px; border-radius: 20px; }
 
 /* ── Tool Category ── */
-.tcat { margin-bottom: 24px; }
+.tcat { margin-bottom: 36px; }
 .tcat-head {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 0 10px; font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 0 14px; margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
 }
-.tcat-icon { font-size: 16px; }
-.tcat-name { flex: 1; text-transform: capitalize; }
-.tcat-cnt { font-size: 10px; color: var(--text-muted); background: var(--bg-card); padding: 2px 8px; border-radius: 12px; }
+.tcat-head::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  width: 40px; height: 2px;
+  background: var(--grad); border-radius: 1px;
+}
+.tcat-icon { font-size: 20px; }
+.tcat-name { font-size: 15px; font-weight: 700; flex: 1; text-transform: capitalize; letter-spacing: -0.2px; }
+.tcat-cnt { font-size: 10px; color: var(--text-muted); background: var(--bg-card); padding: 2px 10px; border-radius: 12px; font-weight: 500; }
+
+/* ── Tool Cards Grid ── */
+.tool-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
 
 .tcard {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--border);
+  display: block;
+  padding: 18px 16px 14px;
+  background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius-sm); text-decoration: none; color: inherit;
-  margin-bottom: 5px; transition: all var(--transition);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
 }
-.tcard:hover { background: var(--bg-card-hover); border-color: var(--accent); transform: translateX(3px); }
+.tcard::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--grad);
+  opacity: 0; transition: opacity 0.25s;
+}
+.tcard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.tcard:hover::before { opacity: 1; }
+
 .tcard-icon {
-  width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-  font-size: 18px; background: rgba(0,212,170,0.08); border-radius: var(--radius-xs);
-  flex-shrink: 0;
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  font-size: 22px; background: rgba(0,212,170,0.06); border-radius: 10px;
+  margin-bottom: 12px; transition: background 0.25s;
 }
-.tcard-body { flex: 1; min-width: 0; }
-.tcard-title { font-size: 13px; font-weight: 600; margin-bottom: 1px; }
-.tcard-desc { font-size: 11px; color: var(--text-sec); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tcard-tags { display: flex; gap: 4px; margin-top: 3px; }
-.tag { font-size: 9px; padding: 0 5px; border-radius: 3px; background: rgba(0,212,170,0.08); color: var(--accent); font-weight: 500; }
-.tag.soon { background: rgba(108,92,231,0.12); color: var(--accent2); }
-.tcard-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; transition: transform var(--transition); }
-.tcard:hover .tcard-arrow { transform: translateX(4px); color: var(--accent); }
-.tcard-soon { opacity: 0.45; cursor: default; }
-.tcard-soon:hover { transform: none; border-color: var(--border); background: var(--bg-card); }
+.tcard:hover .tcard-icon { background: rgba(0,212,170,0.12); }
+
+.tcard-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.2px; }
+.tcard-desc { font-size: 12px; color: var(--text-sec); line-height: 1.45; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.tcard-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 1px 7px; border-radius: 4px; background: rgba(0,212,170,0.08); color: var(--accent); font-weight: 500; letter-spacing: 0.2px; }
+.tag.soon { background: rgba(108,92,231,0.1); color: var(--accent2); }
+.tcard-soon { opacity: 0.5; cursor: default; }
+.tcard-soon:hover { transform: none; border-color: var(--border); background: var(--bg-card); box-shadow: none; }
+.tcard-soon:hover::before { opacity: 0; }
+.tcard-soon:hover .tcard-icon { background: rgba(0,212,170,0.06); }
 
 /* ── Cross-sell ── */
 .cross-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 6px; }
@@ -390,7 +419,8 @@ body {
 /* Tablet (768-1024px) */
 @media (max-width: 1024px) {
   .hero-title { font-size: 32px; }
-  .tool-grid .tcat { margin-bottom: 20px; }
+  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); }
+  .tcat { margin-bottom: 28px; }
 }
 
 /* Small tablet / large phone (600-768px) */
@@ -428,14 +458,14 @@ body {
   .section-header h2 { font-size: 15px; }
 
   /* Tool cards */
-  .tcat-head { font-size: 12px; padding: 4px 0 8px; }
-  .tcat-icon { font-size: 14px; }
-  .tcard { padding: 12px; gap: 10px; } /* bigger touch target */
-  .tcard-icon { width: 34px; height: 34px; font-size: 15px; }
-  .tcard-title { font-size: 12px; }
-  .tcard-desc { font-size: 10px; }
-  .tcard-arrow { font-size: 14px; }
-  .tag { font-size: 8px; padding: 0 4px; }
+  .tcat { margin-bottom: 24px; }
+  .tcat-head { font-size: 13px; padding: 0 0 10px; margin-bottom: 12px; }
+  .tcat-icon { font-size: 17px; }
+  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .tcard { padding: 14px 12px 12px; }
+  .tcard-icon { width: 34px; height: 34px; font-size: 18px; margin-bottom: 8px; border-radius: 8px; }
+  .tcard-title { font-size: 13px; }
+  .tcard-desc { font-size: 11px; -webkit-line-clamp: 2; }
 
   /* Cross-sell */
   .cross-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
@@ -474,7 +504,8 @@ body {
 }
 
 /* Small phone (<400px) */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  .tool-grid-cards { grid-template-columns: 1fr; }
   .nav-inner { gap: 4px; }
   .logo-text { display: none; } /* logo text hidden on tiny screens */
   .hero-title { font-size: 20px; }
