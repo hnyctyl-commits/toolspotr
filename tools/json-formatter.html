@@ -5,6 +5,11 @@
 <meta name="description" content="免费在线 JSON 格式化和验证工具。格式化、压缩、验证 JSON 数据，语法高亮显示。本地运行，数据不上传。">
 <link rel="stylesheet" href="../assets/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+#themePanel, #langPanel { display: none !important; }
+#themePanel.show, #langPanel.show { display: block !important; }
+</style>
 </head>
 <body>
 
@@ -13,13 +18,13 @@
   <div class="nav-controls">
       <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
       <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <!-- close controls div -->
+      
     </div>
     <div class="nav-links" style="position:relative">
+      <div class="nav-links" style="position:relative">
       <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
-      <div class="theme-panel" id="themePanel">
-        <div class="theme-panel-title">Theme</div>
-        <div class="theme-options">
-          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+    </div><span>Cosmic</span></div>
           <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
           <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
           <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
