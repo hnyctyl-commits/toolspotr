@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Retirement Calculator — Toolflow</title>
+<meta name="description" content="Free online retirement calculator. Plan your retirement savings. Calculate how much you need to save monthly to reach your retirement goal.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.rt-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}.rt-card{background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center}.rt-label{font-size:10px;color:var(--text-muted);text-transform:uppercase}.rt-val{font-size:22px;font-weight:700;margin-top:4px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Retirement Calculator</strong></div><h1 class="tool-page-title">🎯 Retirement Calculator</h1><p class="tool-page-desc">Plan your retirement. See how much you need to save each month to reach your retirement goal.</p></div>
+  <div class="tool-box">
+    <div class="input-row">
+      <div><label>Current Age</label><input type="number" id="rtAge" value="30" min="18" max="80"></div>
+      <div><label>Retirement Age</label><input type="number" id="rtRetire" value="65" min="30" max="90"></div>
+      <div><label>Life Expectancy</label><input type="number" id="rtLife" value="85" min="50" max="120"></div>
+    </div>
+    <div class="input-row">
+      <div><label>Current Savings ($)</label><input type="number" id="rtSavings" value="50000" min="0"></div>
+      <div><label>Monthly Contribution ($)</label><input type="number" id="rtMonthly" value="500" min="0"></div>
+      <div><label>Annual Return (%)</label><input type="number" id="rtReturn" value="7" min="0" max="30" step="0.1"></div>
+    </div>
+    <button class="tool-btn" id="rtBtn">🧮 Calculate</button>
+    <div class="rt-summary" id="rtSummary"></div>
+    <div id="rtChart" style="margin-top:12px"></div>
+  </div>
+  <div class="tool-article"><h3>Retirement Planning Basics</h3><p>The earlier you start saving for retirement, the more time compound interest works in your favor. A 25-year-old who saves $500/month at 7% return will have over $1.3 million by age 65. Waiting until 35 means saving $1,000/month to reach the same goal — the power of starting early.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="compound-interest.html" class="tcard" style="margin:0"><div class="tcard-icon">📈</div><div class="tcard-body"><div class="tcard-title">Investment Calc</div><div class="tcard-desc">Compound interest & growth</div></div></a>
+    <a href="loan-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🏠</div><div class="tcard-body"><div class="tcard-title">Loan Calculator</div><div class="tcard-desc">Monthly payment & amortization</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+document.getElementById('rtBtn').addEventListener('click',calc);calc();
+function calc(){
+  const age=parseInt(document.getElementById('rtAge').value)||30,retire=parseInt(document.getElementById('rtRetire').value)||65,life=parseInt(document.getElementById('rtLife').value)||85;
+  const savings=parseFloat(document.getElementById('rtSavings').value)||0,monthly=parseFloat(document.getElementById('rtMonthly').value)||0,rate=(parseFloat(document.getElementById('rtReturn').value)||7)/100/12;
+  const workMonths=(retire-age)*12,retireMonths=(life-retire)*12;
+  let balance=savings;for(let i=0;i<workMonths;i++)balance=(balance+monthly)*(1+rate);
+  let totalSaved=savings+monthly*workMonths;
+  let withdrawal=retireMonths>0?balance*(rate*(1+rate)**retireMonths)/((1+rate)**retireMonths-1):balance;
+  const needShort=withdrawal*retireMonths<balance?'✅ Sufficient':'⚠️ May run short';
+  const fmt=x=>'$'+Math.round(x).toLocaleString();
+  document.getElementById('rtSummary').innerHTML=
+    `<div class="rt-card"><div class="rt-label">At Retirement (${retire})</div><div class="rt-val" style="color:var(--accent)">${fmt(balance)}</div></div>`+
+    `<div class="rt-card"><div class="rt-label">Monthly Withdrawal</div><div class="rt-val" style="color:var(--accent)">${fmt(withdrawal)}</div></div>`+
+    `<div class="rt-card"><div class="rt-label">Total Saved</div><div class="rt-val">${fmt(totalSaved)}</div></div>`;
+  // Simple chart
+  let chart='',bv=savings,mv=savings,step=Math.max(1,Math.floor((retire-age)/10));
+  for(let y=age;y<=retire;y+=step){for(let m=0;m<12&&y<retire;m++)bv=(bv+monthly)*(1+rate);const pct=Math.max(3,(bv/balance)*100);chart+=`<div style="display:flex;align-items:center;gap:6px;margin:3px 0;font-size:11px;font-family:var(--mono)"><span style="width:30px;text-align:right;color:var(--text-muted)">${y}</span><div style="height:18px;width:${pct}%;background:var(--grad);border-radius:3px;min-width:4px"></div><span style="color:var(--text-sec)">${fmt(bv)}</span></div>`;}
+  document.getElementById('rtChart').innerHTML=chart;
+}
+</script>
+</body>
+</html>

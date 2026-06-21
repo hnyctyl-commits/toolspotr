@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SVG Optimizer — Toolflow</title>
+<meta name="description" content="Free online SVG optimizer. Clean and compress SVG code. Remove unnecessary attributes, comments, and metadata to reduce file size.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.sv-stat{display:flex;gap:12px;margin-top:8px}.sv-stat-item{flex:1;background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>SVG Optimizer</strong></div><h1 class="tool-page-title">✂️ SVG Optimizer</h1><p class="tool-page-desc">Clean and compress SVG code. Remove unnecessary attributes, comments, and metadata to reduce file size while keeping the same visual result.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <button class="tool-btn" id="svOptBtn">✨ Optimize</button>
+      <button class="tool-btn-sec" id="svCopyBtn">📋 Copy</button>
+      <button class="tool-btn-sec" id="svExampleBtn">📄 Load Example</button>
+    </div>
+    <label>Input SVG</label>
+    <textarea id="svInput" rows="6" style="font-family:var(--mono);font-size:12px"></textarea>
+    <label>Optimized SVG</label>
+    <textarea id="svOutput" rows="6" style="font-family:var(--mono);font-size:12px" readonly></textarea>
+    <div id="svStats"></div>
+    <div id="svPreview" style="margin-top:12px;padding:20px;background:var(--bg-main);border-radius:var(--radius-sm);text-align:center"></div>
+  </div>
+  <div class="tool-article"><h3>Why Optimize SVGs?</h3><p>SVG files from design tools (Figma, Illustrator, Sketch) often contain redundant metadata, unused definitions, and unnecessary attributes. Optimizing SVGs can reduce file size by 20-60% without any visual change, making your websites load faster.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title">Image Optimizer</div><div class="tcard-desc">Compress PNG/JPG/WebP</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">Browse all tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const svInp=document.getElementById('svInput'),svOut=document.getElementById('svOutput'),svStats=document.getElementById('svStats'),svPrev=document.getElementById('svPreview');
+const example='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">\n  <!-- A simple circle -->\n  <circle cx="50" cy="50" r="40" fill="#00d4aa" stroke="#6c5ce7" stroke-width="3"/>\n  <rect x="30" y="30" width="20" height="20" fill="white" opacity="0.8"/>\n  <text x="50" y="85" text-anchor="middle" font-size="10" fill="white">SVG</text>\n</svg>';
+document.getElementById('svExampleBtn').addEventListener('click',()=>{svInp.value=example;optimize();});
+document.getElementById('svOptBtn').addEventListener('click',optimize);
+document.getElementById('svCopyBtn').addEventListener('click',()=>{navigator.clipboard.writeText(svOut.value);});
+function optimize(){
+  let svg=svInp.value;
+  const orig=svg.length;
+  // Remove comments
+  svg=svg.replace(/<!--[\s\S]*?-->/g,'');
+  // Remove XML declaration
+  svg=svg.replace(/<\?xml[^>]*\?>/g,'');
+  // Remove doctype
+  svg=svg.replace(/<!DOCTYPE[^>]*>/gi,'');
+  // Remove redundant xmlns
+  svg=svg.replace(/\s+xmlns[^=]*="[^"]*"/g,(m)=>{if(m.includes('svg'))return m;return '';});
+  // Collapse whitespace
+  svg=svg.replace(/>\s+</g,'><').replace(/\s{2,}/g,' ').replace(/\n/g,'');
+  // Remove empty attributes
+  svg=svg.replace(/\s+\w+=""/g,'');
+  // Remove default stroke-width
+  svg=svg.replace(/\s+stroke-width="1"/g,'');
+  // Trim
+  svg=svg.trim();
+  svOut.value=svg;
+  const saved=Math.round((1-svg.length/orig)*100);
+  svStats.innerHTML=`<div class="sv-stat"><div class="sv-stat-item"><div style="font-size:10px;color:var(--text-muted)">Original</div><div style="font-size:16px;font-weight:700">${orig}B</div></div><div class="sv-stat-item"><div style="font-size:10px;color:var(--text-muted)">Optimized</div><div style="font-size:16px;font-weight:700;color:var(--accent)">${svg.length}B</div></div><div class="sv-stat-item"><div style="font-size:10px;color:var(--text-muted)">Saved</div><div style="font-size:16px;font-weight:700;color:var(--accent)">${saved}%</div></div></div>`;
+  svPrev.innerHTML=svg;
+}
+// Load example on page load
+window.addEventListener('DOMContentLoaded',()=>{svInp.value=example;optimize();});
+</script>
+</body>
+</html>

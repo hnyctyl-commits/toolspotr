@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Browser Fingerprint — Toolflow</title>
+<meta name="description" content="Free online browser fingerprint checker. See your unique browser fingerprint including screen resolution, timezone, fonts, plugins and more.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.fp-item{padding:10px 12px;background:var(--bg-main);border-radius:var(--radius-sm);border:1px solid var(--border)}.fp-label{font-size:10px;color:var(--text-muted);text-transform:uppercase}.fp-value{font-size:13px;font-weight:600;margin-top:2px;font-family:var(--mono);word-break:break-all}.fp-id{font-size:24px;font-weight:800;text-align:center;padding:20px;background:var(--bg-main);border-radius:var(--radius-sm);margin-top:12px;border:1px solid var(--border-light);font-family:var(--mono);color:var(--accent);letter-spacing:1px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Security & Privacy / <strong>Browser Fingerprint</strong></div><h1 class="tool-page-title">👆 Browser Fingerprint</h1><p class="tool-page-desc">See your unique browser fingerprint. Websites use this data to identify you even without cookies. Learn what information your browser exposes.</p></div>
+  <div class="tool-box">
+    <button class="tool-btn" id="fpBtn">🔍 Analyze My Browser</button>
+    <div class="fp-id" id="fpId">Click to generate fingerprint</div>
+    <div class="fp-grid" id="fpGrid"></div>
+  </div>
+  <div class="tool-article"><h3>What is Browser Fingerprinting?</h3><p>Browser fingerprinting is a tracking technique that collects unique characteristics of your browser and device — screen resolution, installed fonts, timezone, language, plugins, and more. Combined, these can create a nearly unique identifier (fingerprint) that follows you across the web, even without cookies. This tool shows you what information your browser exposes.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="dns-test.html" class="tcard" style="margin:0"><div class="tcard-icon">🛡️</div><div class="tcard-body"><div class="tcard-title">DNS Leak Test</div><div class="tcard-desc">Check VPN DNS leaks</div></div></a>
+    <a href="ip.html" class="tcard" style="margin:0"><div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title">IP Lookup</div><div class="tcard-desc">Find your public IP</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+document.getElementById('fpBtn').addEventListener('click',fingerprint);fingerprint();
+function fingerprint(){
+  const g=document.getElementById('fpGrid'),id=document.getElementById('fpId');
+  const data=[
+    {label:'User Agent',val:navigator.userAgent},
+    {label:'Screen',val:`${screen.width}×${screen.height} (${screen.colorDepth}-bit)`},
+    {label:'Viewport',val:`${window.innerWidth}×${window.innerHeight}`},
+    {label:'Language',val:navigator.language||navigator.userLanguage},
+    {label:'Languages',val:(navigator.languages||[]).join(', ')},
+    {label:'Timezone',val:Intl.DateTimeFormat().resolvedOptions().timeZone},
+    {label:'Platform',val:navigator.platform},
+    {label:'Cookies',val:navigator.cookieEnabled?'Enabled':'Disabled'},
+    {label:'Do Not Track',val:navigator.doNotTrack||'Not set'},
+    {label:'Hardware Concurrency',val:navigator.hardwareConcurrency+' cores'},
+    {label:'Device Memory',val:navigator.deviceMemory?navigator.deviceMemory+' GB':'Unknown'},
+    {label:'Touch Support',val:'ontouchstart' in window?'Yes':'No'},
+    {label:'WebGL Vendor',val:getGLInfo('UNMASKED_VENDOR_WEBGL')},
+    {label:'WebGL Renderer',val:getGLInfo('UNMASKED_RENDERER_WEBGL')},
+  ];
+  g.innerHTML=data.map(d=>`<div class="fp-item"><div class="fp-label">${d.label}</div><div class="fp-value">${esc(d.val||'Unknown')}</div></div>`).join('');
+  // Generate a simple fingerprint hash
+  const hash=btoa(data.map(d=>d.val||'').join('|')).slice(0,20);
+  id.textContent=hash;
+}
+function getGLInfo(p){
+  try{const c=document.createElement('canvas'),gl=c.getContext('webgl')||c.getContext('experimental-webgl');if(gl){const info=gl.getParameter(gl.getExtension('WEBGL_debug_renderer_info')?0x9245:37445);return info||'N/A';}return 'No WebGL';}catch(e){return 'Blocked';}
+}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+</script>
+</body>
+</html>

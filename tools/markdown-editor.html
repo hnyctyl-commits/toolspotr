@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Markdown Editor — Toolflow</title>
+<meta name="description" content="Free online markdown editor with live preview. Write in Markdown and see the rendered HTML in real-time. Supports headings, lists, code blocks, tables and more.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.md-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:400px}.md-layout textarea{height:400px;margin:0;font-size:13px;resize:none}.md-preview{padding:16px;background:var(--bg-main);border:1px solid var(--border-light);border-radius:var(--radius-sm);overflow-y:auto;height:400px;font-size:14px;line-height:1.7}.md-preview h1,.md-preview h2,.md-preview h3{margin:12px 0 6px}.md-preview h1{font-size:22px}.md-preview h2{font-size:18px}.md-preview p{margin:6px 0}.md-preview code{padding:2px 5px;background:var(--bg-card);border-radius:3px;font-size:12px}.md-preview pre{background:var(--bg-card);padding:12px;border-radius:6px;overflow-x:auto;margin:8px 0}.md-preview pre code{padding:0;background:none}.md-preview table{border-collapse:collapse;width:100%;margin:8px 0}.md-preview th,.md-preview td{padding:6px 10px;border:1px solid var(--border);text-align:left}.md-preview th{background:var(--bg-card)}.md-preview blockquote{border-left:3px solid var(--accent);padding:6px 12px;margin:8px 0;background:rgba(0,212,170,0.04);border-radius:0 4px 4px 0;color:var(--text-sec)}.md-preview img{max-width:100%;border-radius:6px}.md-preview ul,.md-preview ol{padding-left:20px;margin:6px 0}@media(max-width:768px){.md-layout{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Markdown Editor</strong></div><h1 class="tool-page-title">📝 Markdown Editor</h1><p class="tool-page-desc">Write in Markdown and see the rendered HTML in real-time. Supports headings, lists, code blocks, tables, images and more.</p></div>
+  <div class="tool-box">
+    <div class="md-layout">
+      <textarea id="mdInput" placeholder="Type Markdown here..." style="font-family:var(--mono);font-size:13px"></textarea>
+      <div class="md-preview" id="mdPreview"></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Markdown Made Simple</h3><p>Markdown is a lightweight markup language that lets you format text using plain-text syntax. Created by John Gruber in 2004, it's become the standard for documentation, README files, forum posts, and note-taking. Common syntax includes <code>#</code> for headings, <code>**bold**</code> for bold, and ``` for code blocks.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div><div class="tcard-desc">Count words & characters</div></div></a>
+    <a href="diff-checker.html" class="tcard" style="margin:0"><div class="tcard-icon">🔁</div><div class="tcard-body"><div class="tcard-title">Diff Checker</div><div class="tcard-desc">Compare text differences</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/marked.min.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+const mdInp=document.getElementById('mdInput'),mdPrev=document.getElementById('mdPreview');
+const sample=`# Welcome to Markdown!
+
+## Text Formatting
+**Bold text**, *italic text*, ~~strikethrough~~, and \`inline code\`.
+
+## Lists
+
+- Item 1
+- Item 2
+- Sub item
+
+1. First step
+2. Second step
+
+## Code Block
+
+\`\`\`javascript
+function hello() {
+  console.log("Hello, Toolflow!");
+}
+\`\`\`
+
+## Table
+
+| Name | Type | Stars |
+|------|------|-------|
+| Toolflow | Toolkit | ⭐⭐⭐⭐⭐ |
+| IP Lookup | Utility | ⭐⭐⭐⭐ |
+
+## Blockquote
+
+> Markdown is a writer's best friend.
+
+## Image and Link
+
+`;
+mdInp.value=sample;
+function render(){mdPrev.innerHTML=marked.parse(mdInp.value,{breaks:true,gfm:true});}
+mdInp.addEventListener('input',render);render();
+</script>
+</body>
+</html>

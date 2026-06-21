@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Port Reference & Checker — Toolflow</title>
+<meta name="description" content="Free online port reference tool. Check common TCP/UDP ports, see what services run on them, and verify if a port is open on a domain.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ps-table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--mono)}.ps-table th{padding:8px 10px;text-align:left;background:var(--bg-card);border-bottom:2px solid var(--border);font-size:11px;text-transform:uppercase;color:var(--text-muted)}.ps-table td{padding:6px 10px;border-bottom:1px solid var(--border);color:var(--text-sec)}.ps-table tr:hover td{background:var(--bg-card)}.ps-port{color:var(--accent);font-weight:600}.ps-svc{color:var(--text-pri)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Security / <strong>Port Reference</strong></div><h1 class="tool-page-title">🔌 Port Reference & Checker</h1><p class="tool-page-desc">Common TCP/UDP ports reference guide. Check which services run on each port. Quick port lookup for network troubleshooting and security.</p></div>
+  <div class="tool-box">
+    <label>Search ports (e.g. "22", "http", "mysql")</label>
+    <input type="text" id="psSearch" placeholder="Type port number or service name..." style="font-family:var(--font)">
+    <div style="margin-top:12px;max-height:400px;overflow-y:auto" id="psTableWrap"></div>
+  </div>
+  <div class="tool-article"><h3>Why Ports Matter</h3><p>Network ports are virtual endpoints for network communication. Each port can be associated with a specific service or protocol. Knowing common ports helps with firewall configuration, network troubleshooting, and security auditing. This is a reference tool — real port scanning requires server-side tools.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="dns-test.html" class="tcard" style="margin:0"><div class="tcard-icon">🛡️</div><div class="tcard-body"><div class="tcard-title">DNS Leak Test</div><div class="tcard-desc">Check VPN DNS leaks</div></div></a>
+    <a href="ip.html" class="tcard" style="margin:0"><div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title">IP Lookup</div><div class="tcard-desc">Find your public IP</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const ports=[
+  {port:20,svc:'FTP Data',proto:'TCP',desc:'File Transfer Protocol data transfer'},
+  {port:21,svc:'FTP Control',proto:'TCP',desc:'File Transfer Protocol control'},
+  {port:22,svc:'SSH',proto:'TCP',desc:'Secure Shell — secure remote access'},
+  {port:23,svc:'Telnet',proto:'TCP',desc:'Unencrypted remote terminal'},
+  {port:25,svc:'SMTP',proto:'TCP',desc:'Simple Mail Transfer Protocol'},
+  {port:53,svc:'DNS',proto:'UDP/TCP',desc:'Domain Name System resolution'},
+  {port:67,svc:'DHCP Server',proto:'UDP',desc:'Dynamic Host Configuration Protocol'},
+  {port:68,svc:'DHCP Client',proto:'UDP',desc:'DHCP client communication'},
+  {port:80,svc:'HTTP',proto:'TCP',desc:'Hypertext Transfer Protocol — web'},
+  {port:110,svc:'POP3',proto:'TCP',desc:'Post Office Protocol v3 — email retrieval'},
+  {port:143,svc:'IMAP',proto:'TCP',desc:'Internet Message Access Protocol'},
+  {port:443,svc:'HTTPS',proto:'TCP',desc:'HTTP Secure — encrypted web'},
+  {port:3306,svc:'MySQL',proto:'TCP',desc:'MySQL database server'},
+  {port:3389,svc:'RDP',proto:'TCP',desc:'Remote Desktop Protocol'},
+  {port:5432,svc:'PostgreSQL',proto:'TCP',desc:'PostgreSQL database server'},
+  {port:27017,svc:'MongoDB',proto:'TCP',desc:'MongoDB database server'},
+  {port:6379,svc:'Redis',proto:'TCP',desc:'Redis key-value store'},
+  {port:8080,svc:'HTTP-Alt',proto:'TCP',desc:'HTTP alternative (proxies/dev)'},
+  {port:8443,svc:'HTTPS-Alt',proto:'TCP',desc:'HTTPS alternative'},
+  {port:3000,svc:'Dev Server',proto:'TCP',desc:'Common development server'},
+  {port:5000,svc:'Flask/Swift',proto:'TCP',desc:'Flask dev server / Swift'},
+  {port:9200,svc:'Elasticsearch',proto:'TCP',desc:'Elasticsearch REST API'},
+  {port:11211,svc:'Memcached',proto:'TCP/UDP',desc:'Memory caching system'},
+];
+
+const wrap=document.getElementById('psTableWrap'),search=document.getElementById('psSearch');
+function render(filter){
+  const q=(filter||'').toLowerCase();
+  const f=ports.filter(p=>String(p.port).includes(q)||p.svc.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q));
+  let html='<table class="ps-table"><tr><th>Port</th><th>Service</th><th>Protocol</th><th>Description</th></tr>';
+  f.forEach(p=>{html+=`<tr><td class="ps-port">${p.port}</td><td class="ps-svc">${p.svc}</td><td>${p.proto}</td><td>${p.desc}</td></tr>`;});
+  html+='</table>';
+  wrap.innerHTML=f.length?html:`<div style="text-align:center;padding:24px;color:var(--text-muted)">No ports found for "${filter}"</div>`;
+}
+search.addEventListener('input',()=>render(search.value));
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Unit Converter — Toolflow</title>
+<meta name="description" content="Free online unit converter. Convert length, weight, temperature, area, volume, speed and more. Instant results.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.uc-tab{padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:12px;color:var(--text-sec);font-family:var(--font);transition:all .15s}.uc-tab:hover{border-color:var(--accent)}.uc-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}.uc-result{font-size:24px;font-weight:700;font-family:var(--mono);text-align:center;padding:16px;background:var(--bg-main);border-radius:var(--radius-sm);margin-top:12px;color:var(--accent)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Unit Converter</strong></div><h1 class="tool-page-title">📏 Unit Converter</h1><p class="tool-page-desc">Convert between units of length, weight, temperature, area, volume, speed and more. Instant results as you type.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px" id="ucTabs">
+      <button class="uc-tab active" data-cat="length">Length</button>
+      <button class="uc-tab" data-cat="weight">Weight</button>
+      <button class="uc-tab" data-cat="temp">Temperature</button>
+      <button class="uc-tab" data-cat="area">Area</button>
+      <button class="uc-tab" data-cat="volume">Volume</button>
+      <button class="uc-tab" data-cat="speed">Speed</button>
+    </div>
+    <div class="input-row">
+      <div><label>From</label><div class="input-row"><div style="flex:1"><input type="number" id="ucVal" value="1"></div><div style="flex:1"><select id="ucFrom" style="font-family:var(--font)"></select></div></div></div>
+      <div><label>To</label><div class="input-row"><div style="flex:1"><input type="text" id="ucResult" readonly style="font-size:18px;font-weight:700;color:var(--accent)"></div><div style="flex:1"><select id="ucTo" style="font-family:var(--font)"></select></div></div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Why Unit Conversion Matters</h3><p>Unit conversion is essential in engineering, cooking, travel, science, and daily life. Whether you're converting kilometers to miles for a road trip, Celsius to Fahrenheit for weather, or kilograms to pounds for fitness, this tool has you covered.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="timezone-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">⏰</div><div class="tcard-body"><div class="tcard-title">Timezone Converter</div><div class="tcard-desc">Convert time across zones</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">Browse all tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a><span>— get $200 free credit</span></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const units={length:{m:1,km:1000,cm:0.01,mm:0.001,mi:1609.34,yd:0.9144,ft:0.3048,in:0.0254},weight:{kg:1,g:0.001,mg:1e-6,lb:0.453592,oz:0.0283495,t:1000},temp:{c:'c',f:'f',k:'k'},area:{m2:1,km2:1e6,ha:10000,acre:4046.86,ft2:0.092903,in2:0.00064516},volume:{l:1,ml:0.001,gal:3.78541,qt:0.946353,pt:0.473176,cup:0.236588,floz:0.0295735,m3:1000},speed:{kmh:1,mph:1.60934,ms:3.6,knot:1.852}};
+const unitLabels={m:'Meters',km:'Kilometers',cm:'Centimeters',mm:'Millimeters',mi:'Miles',yd:'Yards',ft:'Feet',in:'Inches',kg:'Kilograms',g:'Grams',mg:'Milligrams',lb:'Pounds',oz:'Ounces',t:'Metric Tons',c:'Celsius',f:'Fahrenheit',k:'Kelvin',m2:'Square Meters',km2:'Square Kilometers',ha:'Hectares',acre:'Acres',ft2:'Square Feet',in2:'Square Inches',l:'Liters',ml:'Milliliters',gal:'Gallons',qt:'Quarts',pt:'Pints',cup:'Cups',floz:'Fluid Ounces',m3:'Cubic Meters',kmh:'km/h',mph:'mph',ms:'m/s',knot:'Knots'};
+const ucVal=document.getElementById('ucVal'),ucFrom=document.getElementById('ucFrom'),ucTo=document.getElementById('ucTo'),ucResult=document.getElementById('ucResult');
+let currentCat='length';
+function populate(cat){const u=units[cat];ucFrom.innerHTML='';ucTo.innerHTML='';Object.keys(u).forEach(k=>{ucFrom.innerHTML+=`<option value="${k}">${unitLabels[k]||k}</option>`;ucTo.innerHTML+=`<option value="${k}">${unitLabels[k]||k}</option>`;});ucTo.value=Object.keys(u)[1]||Object.keys(u)[0];convert();}
+function convert(){const val=parseFloat(ucVal.value)||0,from=ucFrom.value,to=ucTo.value,cat=currentCat;let result=0;if(cat==='temp'){if(from==='c'&&to==='f')result=val*9/5+32;else if(from==='c'&&to==='k')result=val+273.15;else if(from==='f'&&to==='c')result=(val-32)*5/9;else if(from==='f'&&to==='k')result=(val-32)*5/9+273.15;else if(from==='k'&&to==='c')result=val-273.15;else if(from==='k'&&to==='f')result=(val-273.15)*9/5+32;else result=val;}else{result=val*units[cat][from]/units[cat][to];}ucResult.value=result.toFixed(4);}
+document.querySelectorAll('.uc-tab').forEach(t=>{t.addEventListener('click',function(){document.querySelectorAll('.uc-tab').forEach(x=>x.classList.remove('active'));this.classList.add('active');currentCat=this.dataset.cat;populate(currentCat);});});
+ucVal.addEventListener('input',convert);ucFrom.addEventListener('change',convert);ucTo.addEventListener('change',convert);
+populate('length');
+</script>
+</body>
+</html>

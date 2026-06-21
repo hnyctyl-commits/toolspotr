@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Timezone Converter — Toolflow</title>
+<meta name="description" content="Free online timezone converter. Convert time across world timezones. Compare multiple timezones at once.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.tz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:12px}.tz-card{padding:12px;background:var(--bg-main);border-radius:var(--radius-sm);text-align:center;border:1px solid var(--border)}.tz-city{font-size:13px;font-weight:600}.tz-time{font-size:20px;font-weight:700;font-family:var(--mono);margin:4px 0;color:var(--accent)}.tz-offset{font-size:10px;color:var(--text-muted)}.tz-date{font-size:11px;color:var(--text-sec)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Timezone Converter</strong></div><h1 class="tool-page-title">⏰ Timezone Converter</h1><p class="tool-page-desc">See the current time across multiple timezones. Plan meetings across different cities.</p></div>
+  <div class="tool-box">
+    <label>Select a reference time</label>
+    <div class="input-row"><div><input type="datetime-local" id="tzRefTime"></div><div><select id="tzRefZone" style="font-family:var(--font)"></select></div></div>
+    <div class="tz-grid" id="tzGrid"></div>
+  </div>
+  <div class="tool-article"><h3>Working Across Timezones</h3><p>Time zone conversion is essential for remote teams, international clients, and global collaboration. This tool shows the current time in major cities worldwide and lets you convert any time across zones. All calculations run locally — nothing is sent to a server.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="unit-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">📏</div><div class="tcard-body"><div class="tcard-title">Unit Converter</div><div class="tcard-desc">Length, weight & temperature</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">Browse all tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a><span>— get $200 free credit</span></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p><p class="f-small">All tools run locally. Nothing is uploaded.</p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const cities=[{name:'London',tz:'Europe/London'},{name:'New York',tz:'America/New_York'},{name:'Los Angeles',tz:'America/Los_Angeles'},{name:'Tokyo',tz:'Asia/Tokyo'},{name:'Shanghai',tz:'Asia/Shanghai'},{name:'Sydney',tz:'Australia/Sydney'},{name:'Dubai',tz:'Asia/Dubai'},{name:'Singapore',tz:'Asia/Singapore'},{name:'Berlin',tz:'Europe/Berlin'},{name:'Paris',tz:'Europe/Paris'},{name:'Mumbai',tz:'Asia/Kolkata'},{name:'São Paulo',tz:'America/Sao_Paulo'},{name:'Toronto',tz:'America/Toronto'},{name:'Seoul',tz:'Asia/Seoul'},{name:'Hong Kong',tz:'Asia/Hong_Kong'},{name:'UTC',tz:'UTC'}];
+const refZone=document.getElementById('tzRefZone'),refTime=document.getElementById('tzRefTime'),grid=document.getElementById('tzGrid');
+cities.forEach(c=>{const o=document.createElement('option');o.value=c.tz;o.textContent=c.name;refZone.appendChild(o);});
+refTime.value=new Date().toISOString().slice(0,16);
+function render(){
+  const t=new Date(refTime.value||new Date());
+  const ref=refZone.value;
+  grid.innerHTML='';
+  cities.forEach(c=>{
+    const local=new Date(t.toLocaleString('en-US',{timeZone:c.tz}));
+    const offset=-local.getTimezoneOffset();
+    const offStr='UTC'+(offset>=0?'+':'')+(offset/60);
+    const time=local.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
+    const date=local.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    const isRef=c.tz===ref;
+    grid.innerHTML+=`<div class="tz-card" style="${isRef?'border-color:var(--accent)':''}"><div class="tz-city">${c.name}</div><div class="tz-time">${time}</div><div class="tz-offset">${offStr}</div><div class="tz-date">${date}</div></div>`;
+  });
+}
+refZone.addEventListener('change',render);refTime.addEventListener('input',render);render();
+setInterval(render,60000);
+</script>
+</body>
+</html>

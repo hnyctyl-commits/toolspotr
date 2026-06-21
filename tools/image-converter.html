@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Image Format Converter — Toolflow</title>
+<meta name="description" content="Free online image format converter. Convert images between PNG, JPEG, WebP, and GIF formats in your browser. No upload needed.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ic-preview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.ic-card{text-align:center;padding:12px;background:var(--bg-main);border-radius:var(--radius-sm)}.ic-card img{max-width:100%;max-height:180px;border-radius:6px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Image Format Converter</strong></div><h1 class="tool-page-title">🔄 Image Format Converter</h1><p class="tool-page-desc">Convert images between PNG, JPEG, WebP, and GIF formats. All processing happens in your browser — no files are uploaded.</p></div>
+  <div class="tool-box">
+    <div class="io-zone" id="dropZone" style="text-align:center;padding:30px 20px;border:2px dashed var(--border-light);border-radius:16px;cursor:pointer;transition:.25s;background:var(--bg-main)">
+      <div style="font-size:36px;margin-bottom:8px">🖼️</div>
+      <div style="font-size:13px;color:var(--text-sec)">Drop an image or click to browse</div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+    </div>
+    <div class="input-row" style="margin-top:16px">
+      <div><label>Convert to</label><select id="icFormat" style="font-family:var(--font)"><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option><option value="image/gif">GIF</option></select></div>
+      <div><label>Quality (for JPEG/WebP)</label><input type="range" id="icQuality" min="10" max="100" value="85" style="padding:0;height:4px;accent-color:var(--accent)"><span id="icQVal" style="font-size:12px;color:var(--text-sec)">85%</span></div>
+    </div>
+    <button class="tool-btn" id="icConvertBtn">🔄 Convert & Download</button>
+    <div id="icPreview"></div>
+  </div>
+  <div class="tool-article"><h3>Image Format Guide</h3><p><strong>PNG</strong> — Best for graphics, logos, and screenshots. Lossless, supports transparency. <strong>JPEG</strong> — Best for photos. Smaller file size, no transparency. <strong>WebP</strong> — Modern format, 25-35% smaller than JPEG with same quality. <strong>GIF</strong> — Supports animation, limited to 256 colors.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title">Image Optimizer</div><div class="tcard-desc">Compress images</div></div></a>
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div><div class="tcard-desc">HEX/RGB/HSL converter</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const dz=document.getElementById('dropZone'),fi=document.getElementById('fileInput'),fmt=document.getElementById('icFormat'),qual=document.getElementById('icQuality'),qv=document.getElementById('icQVal'),prev=document.getElementById('icPreview'),conv=document.getElementById('icConvertBtn');
+let curFile=null;
+dz.addEventListener('click',()=>fi.click());dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--accent)';});dz.addEventListener('dragleave',()=>dz.style.borderColor='var(--border-light)');
+dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='var(--border-light)';handleFile(e.dataTransfer.files[0]);});fi.addEventListener('change',()=>{if(fi.files[0])handleFile(fi.files[0]);});
+qual.addEventListener('input',()=>qv.textContent=qual.value+'%');
+function handleFile(f){if(!f||!f.type.match(/image\//))return;curFile=f;const r=new FileReader();r.onload=function(e){prev.innerHTML=`<div class="ic-preview"><div class="ic-card"><div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Original</div><img src="${e.target.result}"><div style="font-size:13px;font-weight:600;margin-top:4px">${Math.round(f.size/1024)}KB · ${f.type.replace('image/','')}</div></div><div class="ic-card"><div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Preview</div><img src="${e.target.result}" id="icPreviewImg"><div style="font-size:13px;font-weight:600;margin-top:4px;color:var(--accent)" id="icPreviewSize">Ready to convert</div></div></div>`;};r.readAsDataURL(f);}
+conv.addEventListener('click',function(){if(!curFile)return;const img=new Image();const r=new FileReader();r.onload=function(e){img.src=e.target.result;img.onload=function(){const c=document.createElement('canvas');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);c.toBlob(function(b){const a=document.createElement('a');const ext=fmt.value.replace('image/','');a.download='converted-'+Date.now()+'.'+ext;a.href=URL.createObjectURL(b);a.click();document.getElementById('icPreviewSize').textContent=Math.round(b.size/1024)+'KB · '+ext;},fmt.value,parseInt(qual.value)/100);}};r.readAsDataURL(curFile);});
+</script>
+</body>
+</html>
