@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GPA Calculator — Toolflow</title>
+<meta name="description" content="Free online GPA calculator. Calculate your grade point average on a 4.0 scale. Add multiple courses with letter grades and credits.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>GPA Calculator</strong></div><h1 class="tool-page-title">🎓 GPA Calculator</h1><p class="tool-page-desc">Calculate your Grade Point Average on a 4.0 scale. Add courses with letter grades and credit hours to compute your cumulative GPA.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><button class="tool-btn" id="gpaAdd">➕ Add Course</button><button class="tool-btn-sec" id="gpaReset">↺ Reset</button></div>
+    <div id="gpaCourses"><div class="gpa-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-bottom:4px"><input placeholder="Course (e.g. Math 101)"><select style="font-family:var(--mono)"><option value="4.0">A (4.0)</option><option value="3.7">A- (3.7)</option><option value="3.3">B+ (3.3)</option><option value="3.0">B (3.0)</option><option value="2.7">B- (2.7)</option><option value="2.3">C+ (2.3)</option><option value="2.0">C (2.0)</option><option value="1.7">C- (1.7)</option><option value="1.3">D+ (1.3)</option><option value="1.0">D (1.0)</option><option value="0">F (0)</option></select><input type="number" value="3" min="0.5" max="6" step="0.5" style="width:60px"></div></div>
+    <div style="text-align:center;padding:12px;margin-top:8px;background:var(--bg-main);border-radius:var(--radius-sm)">
+      <div style="font-size:10px;color:var(--text-muted)">Cumulative GPA</div>
+      <div style="font-size:36px;font-weight:800;color:var(--accent);font-family:var(--mono)" id="gpaResult">4.00</div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>GPA Calculation</h3><p>GPA is calculated by multiplying each course's grade points by its credit hours, then dividing by total credits. Most US colleges use a 4.0 scale where A=4.0, B=3.0, C=2.0, D=1.0, F=0.0. Some schools use +/- grading (A-=3.7, B+=3.3).</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+    <a href="age-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🎂</div><div class="tcard-body"><div class="tcard-title">Age Calculator</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function calcGPA(){const rows=document.querySelectorAll('.gpa-row');let totalPts=0,totalCred=0;rows.forEach(r=>{const inputs=r.querySelectorAll('input,select');const grade=parseFloat(inputs[1].value)||0;const cred=parseFloat(inputs[2].value)||0;totalPts+=grade*cred;totalCred+=cred;});const gpa=totalCred>0?totalPts/totalCred:0;document.getElementById("gpaResult").textContent=gpa.toFixed(2);}
+function addRow(){const div=document.createElement('div');div.className='gpa-row';div.style.cssText='display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-bottom:4px';div.innerHTML='<input placeholder="Course name"><select style="font-family:var(--mono)"><option value="4.0">A (4.0)</option><option value="3.7" selected>A- (3.7)</option><option value="3.3">B+ (3.3)</option><option value="3.0">B (3.0)</option><option value="2.7">B- (2.7)</option><option value="2.3">C+ (2.3)</option><option value="2.0">C (2.0)</option><option value="1.7">C- (1.7)</option><option value="1.3">D+ (1.3)</option><option value="1.0">D (1.0)</option><option value="0">F (0)</option></select><input type="number" value="3" min="0.5" max="6" style="width:60px">';div.querySelectorAll('input,select').forEach(el=>el.addEventListener('change',calcGPA));document.getElementById("gpaCourses").appendChild(div);calcGPA();}
+document.getElementById("gpaAdd").addEventListener('click',addRow);document.getElementById("gpaReset").addEventListener('click',function(){document.getElementById("gpaCourses").innerHTML='<div class="gpa-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-bottom:4px"><input placeholder="Course (e.g. Math 101)"><select style="font-family:var(--mono)"><option value="4.0">A (4.0)</option><option value="3.7">A- (3.7)</option><option value="3.3">B+ (3.3)</option><option value="3.0" selected>B (3.0)</option><option value="2.7">B- (2.7)</option><option value="2.3">C+ (2.3)</option><option value="2.0">C (2.0)</option><option value="1.7">C- (1.7)</option><option value="1.3">D+ (1.3)</option><option value="1.0">D (1.0)</option><option value="0">F (0)</option></select><input type="number" value="3" min="0.5" max="6" style="width:60px"></div>';document.querySelectorAll('.gpa-row input,.gpa-row select').forEach(el=>el.addEventListener('change',calcGPA));calcGPA();});
+document.querySelectorAll('.gpa-row input,.gpa-row select').forEach(el=>el.addEventListener('change',calcGPA));calcGPA();
+</script>
+</body>
+</html>

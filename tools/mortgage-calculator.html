@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mortgage Calculator — Toolflow</title>
+<meta name="description" content="Free online mortgage calculator. Calculate monthly payments, total interest, and amortization schedule. Compare loan terms and interest rates.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Mortgage Calculator</strong></div><h1 class="tool-page-title">🏠 Mortgage Calculator</h1><p class="tool-page-desc">Calculate monthly mortgage payments, total interest, and full amortization schedule. Compare loan options instantly.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Loan Amount ($)</label><input type="number" id="mcAmount" value="300000" min="0"></div><div><label>Interest Rate (%)</label><input type="number" id="mcRate" value="6.5" min="0" step="0.1"></div><div><label>Loan Term (years)</label><input type="number" id="mcTerm" value="30" min="1" max="50"></div></div>
+    <button class="tool-btn" id="mcCalc">🧮 Calculate</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Monthly Payment</div><div id="mcMonthly" style="font-size:20px;font-weight:700;color:var(--accent);font-family:var(--mono)">$1,896</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total Interest</div><div id="mcInterest" style="font-size:20px;font-weight:700;color:var(--accent);font-family:var(--mono)">$382,633</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total Paid</div><div id="mcTotal" style="font-size:20px;font-weight:700;color:var(--accent);font-family:var(--mono)">$682,633</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Mortgage Planning</h3><p>Buying a home is the biggest purchase most people make. Understanding your monthly payment, total interest, and how different rates affect your costs is essential. A 1% rate difference on a $300,000 loan can save or cost you over $60,000 over 30 years.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="loan-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🏠</div><div class="tcard-body"><div class="tcard-title">Loan Calculator</div></div></a>
+    <a href="compound-interest.html" class="tcard" style="margin:0"><div class="tcard-icon">📈</div><div class="tcard-body"><div class="tcard-title">Investment Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+document.getElementById("mcCalc").addEventListener("click",calc);calc();
+function calc(){const amount=parseFloat(document.getElementById("mcAmount").value)||0,rate=(parseFloat(document.getElementById("mcRate").value)||0)/100/12,months=(parseInt(document.getElementById("mcTerm").value)||30)*12;let monthly=0;if(rate>0){monthly=amount*rate*Math.pow(1+rate,months)/(Math.pow(1+rate,months)-1);}else{monthly=amount/months;}const total=monthly*months;const interest=total-amount;document.getElementById("mcMonthly").textContent='$'+Math.round(monthly).toLocaleString();document.getElementById("mcInterest").textContent='$'+Math.round(interest).toLocaleString();document.getElementById("mcTotal").textContent='$'+Math.round(total).toLocaleString();}
+</script>
+</body>
+</html>

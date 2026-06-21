@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Tip Calculator — Toolflow</title>
+<meta name="description" content="Free online tip calculator. Calculate tip amounts, split bills, and total per person. 10%, 15%, 18%, 20% and custom tip percentages.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tip-card{background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center}.tip-val{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Tip Calculator</strong></div><h1 class="tool-page-title">💵 Tip Calculator</h1><p class="tool-page-desc">Calculate tips and split bills. Quick 10-25% tips, split between any number of people.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Bill Amount ($)</label><input type="number" id="tcBill" value="85.50" min="0" step="0.01"></div><div><label>Tip %</label><input type="number" id="tcPct" value="15" min="0" max="100"></div><div><label>Split (people)</label><input type="number" id="tcSplit" value="2" min="1" max="100"></div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0">Quick: <button class="tool-btn-sec" style="font-size:12px;padding:4px 12px" data-tip="10">10%</button><button class="tool-btn-sec" style="font-size:12px;padding:4px 12px" data-tip="15">15%</button><button class="tool-btn-sec" style="font-size:12px;padding:4px 12px" data-tip="18">18%</button><button class="tool-btn-sec" style="font-size:12px;padding:4px 12px" data-tip="20">20%</button><button class="tool-btn-sec" style="font-size:12px;padding:4px 12px" data-tip="25">25%</button></div>
+    <div class="tip-grid">
+      <div class="tip-card"><div style="font-size:9px;color:var(--text-muted)">Tip Amount</div><div class="tip-val" id="tcTip">$12.83</div></div>
+      <div class="tip-card"><div style="font-size:9px;color:var(--text-muted)">Total</div><div class="tip-val" id="tcTotal">$98.33</div></div>
+      <div class="tip-card"><div style="font-size:9px;color:var(--text-muted)">Each Pays (tip)</div><div class="tip-val" id="tcEachTip">$6.41</div></div>
+      <div class="tip-card"><div style="font-size:9px;color:var(--text-muted)">Each Pays (total)</div><div class="tip-val" id="tcEachTotal">$49.16</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Tipping Guide</h3><p>Standard tipping rates: 15% for standard service, 18-20% for good service, 25%+ for exceptional service. This calculator helps you quickly figure out the right amount, even when splitting with friends.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+    <a href="mortgage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🏠</div><div class="tcard-body"><div class="tcard-title">Mortgage Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function calcTip(){const b=parseFloat(document.getElementById("tcBill").value)||0,p=parseFloat(document.getElementById("tcPct").value)||0,s=parseInt(document.getElementById("tcSplit").value)||1;const tip=b*p/100,total=b+tip;document.getElementById("tcTip").textContent='$'+tip.toFixed(2);document.getElementById("tcTotal").textContent='$'+total.toFixed(2);document.getElementById("tcEachTip").textContent='$'+(tip/s).toFixed(2);document.getElementById("tcEachTotal").textContent='$'+(total/s).toFixed(2);}
+document.querySelectorAll('#tcBill,#tcPct,#tcSplit').forEach(el=>el.addEventListener('input',calcTip));document.querySelectorAll('[data-tip]').forEach(b=>b.addEventListener('click',function(){document.getElementById("tcPct").value=this.dataset.tip;calcTip();}));calcTip();
+</script>
+</body>
+</html>

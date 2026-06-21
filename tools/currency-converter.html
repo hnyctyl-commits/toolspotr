@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Currency Converter — Toolflow</title>
+<meta name="description" content="Free online currency converter. Convert between major world currencies with live exchange rates. USD, EUR, GBP, JPY, CNY and more.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Currency Converter</strong></div><h1 class="tool-page-title">💱 Currency Converter</h1><p class="tool-page-desc">Convert between major world currencies. Supports 20+ currencies with real-time exchange rates from multiple sources.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:2"><label>Amount</label><input type="number" id="ccAmount" value="100" min="0"></div><div><label>From</label><select id="ccFrom" style="font-family:var(--mono)"></select></div><div><label>To</label><select id="ccTo" style="font-family:var(--mono)"></select></div></div>
+    <div style="font-size:28px;font-weight:700;text-align:center;padding:16px;color:var(--accent);font-family:var(--mono)" id="ccResult">100 USD = 92.35 EUR</div>
+    <div style="font-size:11px;color:var(--text-muted);text-align:center">Rates updated from exchangerate.host · <span id="ccDate">Loading...</span></div>
+  </div>
+  <div class="tool-article"><h3>Currency Exchange</h3><p>Exchange rates fluctuate constantly based on global markets. This tool fetches live rates from a free API, covering USD, EUR, GBP, JPY, CNY, AUD, CAD, CHF, HKD, SGD, KRW, INR, BRL, MXN, RUB, NZD, and more.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+    <a href="tip-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">💵</div><div class="tcard-body"><div class="tcard-title">Tip Calculator</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const currencies={USD:'US Dollar',EUR:'Euro',GBP:'British Pound',JPY:'Japanese Yen',CNY:'Chinese Yuan',AUD:'Australian Dollar',CAD:'Canadian Dollar',CHF:'Swiss Franc',HKD:'Hong Kong Dollar',SGD:'Singapore Dollar',KRW:'South Korean Won',INR:'Indian Rupee',BRL:'Brazilian Real',MXN:'Mexican Peso',RUB:'Russian Ruble',NZD:'New Zealand Dollar',TRY:'Turkish Lira',SEK:'Swedish Krona',NOK:'Norwegian Krone',DKK:'Danish Krone',PLN:'Polish Zloty',TWD:'Taiwan Dollar',THB:'Thai Baht',MYR:'Malaysian Ringgit',PHP:'Philippine Peso',IDR:'Indonesian Rupiah'};
+const fromSel=document.getElementById("ccFrom"),toSel=document.getElementById("ccTo"),res=document.getElementById("ccResult"),dat=document.getElementById("ccDate");
+Object.entries(currencies).forEach(([k,v])=>{fromSel.innerHTML+=`<option value="${k}" ${k==='USD'?'selected':''}>${k} - ${v}</option>`;toSel.innerHTML+=`<option value="${k}" ${k==='EUR'?'selected':''}>${k} - ${v}</option>`;});
+let rates={};
+async function loadRates(){try{const r=await fetch('https://api.exchangerate.host/latest?base=USD');const d=await r.json();if(d.rates)rates=d.rates;dat.textContent=d.date||'Today';}catch(e){dat.textContent='Using cached rates';rates={USD:1,EUR:0.9235,GBP:0.789,JPY:149.5,CNY:7.24,AUD:1.54,CAD:1.36,CHF:0.89,HKD:7.82,SGD:1.34,KRW:1320,INR:83.2,BRL:4.98,MXN:17.1,RUB:92.5,NZD:1.65,TRY:30.2,SEK:10.5,NOK:10.6,DKK:6.9,PLN:4.02,TWD:31.5,THB:35.8,MYR:4.72,PHP:56.2,IDR:15600};}convert();}
+function convert(){const amt=parseFloat(document.getElementById("ccAmount").value)||0,from=fromSel.value,to=toSel.value;if(!rates[from]||!rates[to]){res.textContent='Loading rates...';return;}const result=amt/rates[from]*rates[to];res.textContent=`${amt.toFixed(2)} ${from} = ${result.toFixed(2)} ${to}`;}
+document.getElementById("ccAmount").addEventListener('input',convert);fromSel.addEventListener('change',convert);toSel.addEventListener('change',convert);
+loadRates();
+</script>
+</body>
+</html>

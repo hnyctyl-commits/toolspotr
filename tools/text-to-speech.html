@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Text to Speech — Toolflow</title>
+<meta name="description" content="Free online text to speech converter. Type any text and listen to it spoken aloud. Supports multiple voices, languages, and speed control.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Text to Speech</strong></div><h1 class="tool-page-title">🔊 Text to Speech</h1><p class="tool-page-desc">Type any text and listen to it spoken aloud. Uses your browser's built-in speech synthesis. Supports multiple voices and languages.</p></div>
+  <div class="tool-box">
+    <textarea id="ttsInput" rows="5" style="font-family:var(--font);font-size:15px">Hello! Welcome to Toolflow. Type any text here and click play to hear it spoken aloud.</textarea>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0">
+      <button class="tool-btn" id="ttsPlay">🔊 Play</button>
+      <button class="tool-btn-sec" id="ttsStop">⏹ Stop</button>
+      <div><label style="font-size:11px;color:var(--text-muted)">Speed</label><select id="ttsSpeed" style="font-family:var(--font)"><option value="0.5">0.5x</option><option value="0.75">0.75x</option><option value="1" selected>1x</option><option value="1.25">1.25x</option><option value="1.5">1.5x</option><option value="2">2x</option></select></div>
+      <div><label style="font-size:11px;color:var(--text-muted)">Voice</label><select id="ttsVoice" style="font-family:var(--font);max-width:160px"></select></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Browser Speech Synthesis</h3><p>Text-to-speech converts written text into spoken words. This tool uses the Web Speech API — your browser's built-in speech engine — so everything stays on your device. Useful for proofreading, language learning, accessibility, and multitasking.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div></div></a>
+    <a href="online-notepad.html" class="tcard" style="margin:0"><div class="tcard-icon">📝</div><div class="tcard-body"><div class="tcard-title">Notepad</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const synth=window.speechSynthesis;let utterance=null;const vs=document.getElementById("ttsVoice");
+function loadVoices(){const v=synth.getVoices();vs.innerHTML=v.map((v,i)=>`<option value="${i}" ${v.lang.startsWith('en')&&v.name.includes('Female')?'selected':''}>${v.name} (${v.lang})</option>`).join('');}
+loadVoices();if(speechSynthesis.onvoiceschanged!==undefined)synth.onvoiceschanged=loadVoices;
+document.getElementById("ttsPlay").addEventListener("click",function(){synth.cancel();const text=document.getElementById("ttsInput").value;if(!text)return;utterance=new SpeechSynthesisUtterance(text);utterance.rate=parseFloat(document.getElementById("ttsSpeed").value);const idx=parseInt(vs.value);const v=synth.getVoices();if(v[idx])utterance.voice=v[idx];synth.speak(utterance);});
+document.getElementById("ttsStop").addEventListener("click",()=>synth.cancel());
+</script>
+</body>
+</html>

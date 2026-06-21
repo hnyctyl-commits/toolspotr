@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calorie Calculator — Toolflow</title>
+<meta name="description" content="Free online calorie calculator. Estimate your daily calorie needs based on age, gender, weight, height, and activity level. BMR and TDEE calculator.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cal-card{background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Calorie Calculator</strong></div><h1 class="tool-page-title">🔥 Calorie Calculator</h1><p class="tool-page-desc">Calculate your daily calorie needs using the Mifflin-St Jeor equation. BMR, TDEE, and calorie estimates for weight maintenance, loss, or gain.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Age</label><input type="number" id="calAge" value="30" min="10" max="120"></div><div><label>Gender</label><select id="calGender" style="font-family:var(--font)"><option value="male">Male</option><option value="female">Female</option></select></div></div>
+    <div class="input-row"><div><label>Weight (kg)</label><input type="number" id="calWeight" value="75" min="20" max="300"></div><div><label>Height (cm)</label><input type="number" id="calHeight" value="175" min="50" max="250"></div></div>
+    <div><label>Activity Level</label><select id="calActivity" style="font-family:var(--font)"><option value="1.2">Sedentary (desk job)</option><option value="1.375" selected>Light (1-3 days/week)</option><option value="1.55">Moderate (3-5 days/week)</option><option value="1.725">Active (6-7 days/week)</option><option value="1.9">Very Active (athlete)</option></select></div>
+    <div class="cal-grid" style="margin-top:12px">
+      <div class="cal-card"><div style="font-size:9px;color:var(--text-muted)">BMR (basal)</div><div id="calBmr" class="tip-val" style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)">1,684</div></div>
+      <div class="cal-card"><div style="font-size:9px;color:var(--text-muted)">Daily Calories (TDEE)</div><div id="calTdee" style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)">2,315</div></div>
+      <div class="cal-card"><div style="font-size:9px;color:var(--text-muted)">Mild Weight Loss</div><div id="calLoss" style="font-size:18px;font-weight:700;color:#f97316;font-family:var(--mono)">1,865</div></div>
+      <div class="cal-card"><div style="font-size:9px;color:var(--text-muted)">Mild Weight Gain</div><div id="calGain" style="font-size:18px;font-weight:700;color:#4ade80;font-family:var(--mono)">2,765</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Calorie Basics</h3><p><strong>BMR</strong> (Basal Metabolic Rate) is the calories your body needs at rest. <strong>TDEE</strong> (Total Daily Energy Expenditure) includes activity. For weight loss, subtract 500 calories/day (~0.5kg/week). For weight gain, add 500 calories/day. These are estimates — individual results vary.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="bmi-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">⚕️</div><div class="tcard-body"><div class="tcard-title">BMI Calculator</div></div></a>
+    <a href="age-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🎂</div><div class="tcard-body"><div class="tcard-title">Age Calculator</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function calcCal(){const age=parseInt(document.getElementById("calAge").value)||30,gender=document.getElementById("calGender").value,w=parseFloat(document.getElementById("calWeight").value)||70,h=parseFloat(document.getElementById("calHeight").value)||170,act=parseFloat(document.getElementById("calActivity").value)||1.375;let bmr=gender==='male'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;const tdee=bmr*act;document.getElementById("calBmr").textContent=Math.round(bmr).toLocaleString();document.getElementById("calTdee").textContent=Math.round(tdee).toLocaleString();document.getElementById("calLoss").textContent=Math.round(tdee-500).toLocaleString();document.getElementById("calGain").textContent=Math.round(tdee+500).toLocaleString();}
+document.querySelectorAll('#calAge,#calGender,#calWeight,#calHeight,#calActivity').forEach(el=>el.addEventListener('input',calcCal));calcCal();
+</script>
+</body>
+</html>

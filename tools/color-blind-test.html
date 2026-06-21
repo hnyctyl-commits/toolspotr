@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Color Blind Test — Toolflow</title>
+<meta name="description" content="Free online color blindness test. Take an Ishihara-style test to check for color vision deficiency. See if you have normal color vision, protanopia, or deuteranopia.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cb-plate{width:200px;height:200px;border-radius:50%;margin:12px auto;position:relative;cursor:pointer;transition:transform .15s}.cb-plate:hover{transform:scale(1.03)}.cb-plate canvas{width:200px;height:200px;border-radius:50%}.cb-options{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}.cb-opt{padding:8px 20px;border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;font-weight:600;background:var(--bg-card);color:var(--text-pri);transition:all .15s;min-width:80px}.cb-opt:hover{border-color:var(--accent)}.cb-opt.selected{border-color:var(--accent);background:rgba(0,212,170,0.1);color:var(--accent)}.cb-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,0.1);color:#ef4444}.cb-result{text-align:center;padding:20px;border-radius:var(--radius-sm);margin-top:12px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Color Blind Test</strong></div><h1 class="tool-page-title">👁️ Color Blind Test</h1><p class="tool-page-desc">Take an Ishihara-style color blindness test. Identify the numbers hidden in the colored dots to check your color vision.</p></div>
+  <div class="tool-box">
+    <div style="text-align:center;font-size:13px;color:var(--text-sec);margin-bottom:8px" id="cbProgress">Question 1 of 8</div>
+    <div class="cb-plate" id="cbPlate"></div>
+    <div class="cb-options" id="cbOptions"></div>
+    <div id="cbResult"></div>
+    <button class="tool-btn" id="cbNext" style="display:none;margin:8px auto">Next →</button>
+    <button class="tool-btn-sec" id="cbReset" style="display:none;margin:8px auto">🔄 Retake Test</button>
+  </div>
+  <div class="tool-article"><h3>Color Blindness</h3><p>Color blindness affects approximately 1 in 12 men (8%) and 1 in 200 women. The most common types are <strong>deuteranopia</strong> (green deficiency) and <strong>protanopia</strong> (red deficiency). This test uses Ishihara-style plates — the same method used by eye doctors — to screen for color vision deficiency.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="color-contrast.html" class="tcard" style="margin:0"><div class="tcard-icon">👁️</div><div class="tcard-body"><div class="tcard-title">Contrast Check</div></div></a>
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const plates=[
+  {answer:12,options:[12,8,15,21],colors:{bg:'#2ecc40',dot:'#e74c3c'}},
+  {answer:29,options:[29,22,67,92],colors:{bg:'#3498db',dot:'#f1c40f'}},
+  {answer:5,options:[5,3,8,6],colors:{bg:'#1abc9c',dot:'#9b59b6'}},
+  {answer:74,options:[74,47,73,44],colors:{bg:'#2980b9',dot:'#e67e22'}},
+  {answer:8,options:[8,3,6,9],colors:{bg:'#27ae60',dot:'#c0392b'}},
+  {answer:16,options:[16,61,19,13],colors:{bg:'#8e44ad',dot:'#f39c12'}},
+  {answer:42,options:[42,24,48,26],colors:{bg:'#16a085',dot:'#d35400'}},
+  {answer:7,options:[7,1,4,9],colors:{bg:'#2c3e50',dot:'#e74c3c'}},
+];
+let current=0,correct=0,finished=false;
+const plate=document.getElementById("cbPlate"),opts=document.getElementById("cbOptions"),res=document.getElementById("cbResult"),prog=document.getElementById("cbProgress"),nxt=document.getElementById("cbNext"),rst=document.getElementById("cbReset");
+function drawPlate(idx){
+  const p=plates[idx];const c=document.createElement("canvas");c.width=200;c.height=200;
+  const ctx=c.getContext("2d");const cx=100,cy=100,r=98;
+  const gradient=ctx.createRadialGradient(cx,cy,0,cx,cy,r);gradient.addColorStop(0,'#ffffff33');gradient.addColorStop(1,'#00000022');
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=p.colors.bg;ctx.fill();
+  const numStr=String(p.answer);const size=Math.min(60,180/numStr.length);
+  ctx.font=`bold ${size}px Inter,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle=p.colors.dot;ctx.fillText(numStr,cx,cy);
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fill();
+  plate.innerHTML='';plate.appendChild(c);
+  prog.textContent=`Question ${idx+1} of ${plates.length}`;
+}
+function showOptions(idx){
+  const p=plates[idx];opts.innerHTML=p.options.map(o=>`<button class="cb-opt" data-val="${o}">${o}</button>`).join('');
+  opts.querySelectorAll('.cb-opt').forEach(b=>b.addEventListener('click',function(){if(finished)return;
+    const sel=this;const val=parseInt(sel.dataset.val);
+    opts.querySelectorAll('.cb-opt').forEach(x=>x.disabled=true);
+    if(val===p.answer){correct++;sel.classList.add('selected');}else{sel.classList.add('wrong');opts.querySelector(`[data-val="${p.answer}"]`).classList.add('selected');}
+    if(current<plates.length-1){nxt.style.display='inline-block';}else{showResult();}
+  }));
+}
+function showResult(){
+  finished=true;const pct=Math.round(correct/plates.length*100);
+  let msg,color;if(pct>=100){msg='✅ Excellent! Your color vision appears normal.';color='var(--accent)';}
+  else if(pct>=75){msg='✅ Good vision. You may have a slight color deficiency.';color='var(--accent)';}
+  else if(pct>=50){msg='⚠️ Moderate color deficiency detected. Consider an eye exam.';color='#facc15';}
+  else{msg='🔴 Significant color deficiency detected. Please consult an eye doctor.';color='#ef4444';}
+  res.innerHTML=`<div class="cb-result" style="background:${color}11;border:1px solid ${color}"><div style="font-size:28px;font-weight:700;color:${color}">${correct}/${plates.length}</div><div style="font-size:14px;color:var(--text-sec);margin-top:4px">${msg}</div></div>`;
+  nxt.style.display='none';rst.style.display='inline-block';
+}
+nxt.addEventListener('click',function(){current++;res.innerHTML='';this.style.display='none';drawPlate(current);showOptions(current);});
+rst.addEventListener('click',function(){current=0;correct=0;finished=false;rst.style.display='none';res.innerHTML='';drawPlate(0);showOptions(0);});
+drawPlate(0);showOptions(0);
+</script>
+</body>
+</html>
