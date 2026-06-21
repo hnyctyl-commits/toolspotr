@@ -22,25 +22,25 @@
     <a href="/" class="logo"><span class="logo-icon">◇</span><span class="logo-text" data-i18n="siteName">Toolflow</span></a>
 
     <div class="nav-controls">
-      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
-      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
-
-      <!-- Theme Panel -->
-      <div class="theme-panel" id="themePanel">
-        <div class="theme-panel-title" data-i18n="themeLabel">Theme</div>
-        <div class="theme-options">
-          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
-          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
-          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
-          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
-          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+      <div class="ctrl-group">
+        <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+        <div class="lang-panel" id="langPanel">
+          <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+          <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
         </div>
       </div>
-
-      <!-- Language Panel -->
-      <div class="lang-panel" id="langPanel">
-        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
-        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      <div class="ctrl-group">
+        <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+        <div class="theme-panel" id="themePanel">
+          <div class="theme-panel-title" data-i18n="themeLabel">Theme</div>
+          <div class="theme-options">
+            <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+            <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+            <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+            <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+            <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -127,7 +127,7 @@
       <div class="tool-grid-cards">
         <a href="tools/qr-generator.html" class="tcard"><div class="tcard-icon">📱</div><div class="tcard-title" data-i18n="qrGen">QR Code Generator</div><div class="tcard-desc" data-i18n="qrDesc">Custom QR codes with logo</div><div class="tcard-tags"><span class="tag">Media</span></div></a>
         <a href="tools/color-picker.html" class="tcard"><div class="tcard-icon">🎨</div><div class="tcard-title" data-i18n="colorPick">Color Picker</div><div class="tcard-desc" data-i18n="colorDesc">HEX/RGB/HSL color converter</div><div class="tcard-tags"><span class="tag">Design</span></div></a>
-        <a href="#" class="tcard tcard-soon"><div class="tcard-icon">📦</div><div class="tcard-title" data-i18n="imgOpt">Image Optimizer</div><div class="tcard-desc" data-i18n="imgOptDesc">Compress PNG/JPG/WebP images</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></a>
+        <a href="tools/image-optimizer.html" class="tcard"><div class="tcard-icon">📦</div><div class="tcard-title" data-i18n="imgOpt">Image Optimizer</div><div class="tcard-desc" data-i18n="imgOptDesc">Compress PNG/JPG/WebP images</div><div class="tcard-tags"><span class="tag">Image</span></div></a>
         <a href="#" class="tcard tcard-soon"><div class="tcard-icon">🔄</div><div class="tcard-title" data-i18n="imgFmt">Image Format Converter</div><div class="tcard-desc" data-i18n="imgFmtDesc">Convert between image formats</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></a>
         <a href="#" class="tcard tcard-soon"><div class="tcard-icon">✂️</div><div class="tcard-title" data-i18n="svgOpt">SVG Optimizer</div><div class="tcard-desc" data-i18n="svgOptDesc">Clean and compress SVG files</div><div class="tcard-tags"><span class="tag soon" data-i18n="comingSoon">Coming Soon</span></div></a>
       </div>

@@ -95,6 +95,7 @@ body {
 
 /* ── Controls (theme/lang/search) ── */
 .nav-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; position: relative; }
+.ctrl-group { position: relative; display: flex; }
 .ctrl-btn {
   width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
   background: var(--bg-card); border: 1px solid var(--border);
@@ -230,7 +231,7 @@ body {
 
 /* ── Theme Panel ── */
 .theme-panel {
-  display: none; position: absolute; top: 100%; left: 0; z-index: 200;
+  display: none; position: absolute; top: 100%; right: 0; z-index: 200;
   margin-top: 6px; background: var(--bg-elevated); border: 1px solid var(--border-light);
   border-radius: var(--radius); box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   padding: 12px; width: 200px;
@@ -249,7 +250,7 @@ body {
 
 /* ── Lang Panel ── */
 .lang-panel {
-  display: none; position: absolute; top: 100%; left: 0; z-index: 200;
+  display: none; position: absolute; top: 100%; right: 0; z-index: 200;
   margin-top: 6px; background: var(--bg-elevated); border: 1px solid var(--border-light);
   border-radius: var(--radius); box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   padding: 8px; width: 140px;
@@ -432,8 +433,7 @@ body {
   .ctrl-btn { width: 28px; height: 28px; font-size: 13px; }
   .lang-btn { width: auto; padding: 0 6px; font-size: 10px; }
 
-  /* Theme/Lang panels reposition for mobile */
-  .theme-panel, .lang-panel { left: auto; right: 0; }
+  /* Theme/Lang panels on mobile */
   .theme-panel { width: 180px; }
   .lang-panel { width: 120px; }
 
@@ -513,7 +513,7 @@ body {
   .hero-stats { gap: 14px; }
   .hs-num { font-size: 18px; }
   .cross-grid { grid-template-columns: 1fr; }
-  .theme-panel { left: auto; right: 0; width: 160px; }
+  .theme-panel { width: 160px; }
   
   /* Tool page extreme compact */
   .tool-page-title { font-size: 18px; }

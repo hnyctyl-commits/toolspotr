@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Image Optimizer — Compress PNG, JPG & WebP — Toolflow</title>
+<meta name="description" content="Free online image optimizer. Compress PNG, JPG and WebP images in your browser. Reduce file size while keeping quality. No upload required.">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+#themePanel, #langPanel { display: none !important; }
+#themePanel.show, #langPanel.show { display: block !important; }
+.io-zone{text-align:center;padding:40px 20px;border:2px dashed var(--border-light);border-radius:16px;cursor:pointer;transition:all 0.25s;background:var(--bg-main)}
+.io-zone:hover,.io-zone.dragover{border-color:var(--accent);background:rgba(0,212,170,0.04)}
+.io-zone-icon{font-size:48px;margin-bottom:12px}
+.io-zone-text{font-size:14px;color:var(--text-sec);margin-bottom:4px}
+.io-zone-hint{font-size:11px;color:var(--text-muted)}
+.io-preview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.io-card{background:var(--bg-main);border-radius:var(--radius-sm);padding:12px;text-align:center}
+.io-card-img{max-width:100%;max-height:200px;border-radius:6px;margin-bottom:8px}
+.io-card-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.io-card-size{font-size:18px;font-weight:700;margin:2px 0;font-variant-numeric:tabular-nums}
+.io-card-sub{font-size:11px;color:var(--text-sec)}
+.io-controls{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
+.io-controls label{font-size:12px;color:var(--text-sec);display:flex;align-items:center;gap:8px}
+.io-controls input[type=range]{flex:1;min-width:120px;accent-color:var(--accent);height:4px}
+.io-stat{font-size:12px;color:var(--accent);font-weight:600;padding:4px 10px;background:rgba(0,212,170,0.08);border-radius:6px}
+@media(max-width:600px){.io-preview{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Image Optimizer</strong></div>
+    <h1 class="tool-page-title">📦 Image Optimizer</h1>
+    <p class="tool-page-desc">Compress PNG, JPG and WebP images in your browser. Reduce file size by 50-80% while keeping quality. No files are uploaded — everything runs locally.</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="io-zone" id="dropZone">
+      <div class="io-zone-icon">🖼️</div>
+      <div class="io-zone-text">Drop an image here or click to browse</div>
+      <div class="io-zone-hint">Supports PNG, JPG, WebP — up to 20MB</div>
+      <input type="file" id="fileInput" accept="image/*" style="display:none">
+    </div>
+
+    <div id="editorArea" style="display:none">
+      <div class="io-controls">
+        <label>Quality: <span id="qualityVal">80</span>%</label>
+        <input type="range" id="qualityRange" min="10" max="100" value="80">
+        <label>Format: <select id="formatSelect" style="width:auto;padding:4px 8px;margin:0;font-family:var(--font)">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp" selected>WebP</option>
+        </select></label>
+        <button class="tool-btn" id="downloadBtn">💾 Download</button>
+      </div>
+      <div class="io-preview" id="previewArea"></div>
+      <div style="margin-top:12px;text-align:center" id="savingsArea"></div>
+    </div>
+  </div>
+
+  <div class="tool-article">
+    <h3>Why Optimize Images?</h3>
+    <p>Images account for over 50% of a typical webpage's size. Optimized images load faster, improve SEO rankings, reduce bandwidth costs, and provide a better user experience. A well-optimized WebP image can be 25-35% smaller than JPEG at the same quality. All processing happens in your browser — nothing is uploaded.</p>
+  </div>
+
+  <div class="tool-cross">
+    <h3>You might also like</h3>
+    <div class="tool-cross-grid">
+      <a href="qr-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">📱</div><div class="tcard-body"><div class="tcard-title">QR Code Generator</div><div class="tcard-desc">Custom QR codes with logo</div></div></a>
+      <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div><div class="tcard-desc">HEX/RGB/HSL converter</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">Browse all tools</div></div></a>
+    </div>
+  </div>
+
+  <!-- Affiliate -->
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm)">
+    <span>🚀 Deploy your projects with</span>
+    <a href="https://www.digitalocean.com/?refcode=YOUR_REF" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a>
+    <span>or</span>
+    <a href="https://vercel.com/?ref=YOUR_REF" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">Vercel</a>
+    <span>— Get $200 free credit</span>
+  </div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools for Developers · <a href="../index.html">toolspotr.com</a></p>
+  <p class="f-small">All tools run locally in your browser. Nothing is uploaded.</p>
+</div></footer>
+
+<script src="../assets/app.js"></script>
+<script>
+(function(){
+  const dropZone=document.getElementById('dropZone'), fileInput=document.getElementById('fileInput');
+  const editorArea=document.getElementById('editorArea'), previewArea=document.getElementById('previewArea');
+  const qualityRange=document.getElementById('qualityRange'), qualityVal=document.getElementById('qualityVal');
+  const formatSelect=document.getElementById('formatSelect'), downloadBtn=document.getElementById('downloadBtn');
+  const savingsArea=document.getElementById('savingsArea');
+  let originalFile=null, originalSize=0, compressedBlob=null;
+
+  dropZone.addEventListener('click',()=>fileInput.click());
+  dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('dragover');});
+  dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('dragover');handleFile(e.dataTransfer.files[0]);});
+  fileInput.addEventListener('change',()=>{if(fileInput.files[0])handleFile(fileInput.files[0]);});
+
+  function formatBytes(b){if(b<1024)return b+' B';if(b<1048576)return (b/1024).toFixed(1)+' KB';return (b/1048576).toFixed(2)+' MB';}
+
+  function handleFile(file){
+    if(!file||!file.type.match(/image\//))return;
+    originalFile=file; originalSize=file.size;
+    const reader=new FileReader();
+    reader.onload=function(e){
+      const img=new Image();
+      img.onload=function(){
+        compress(img,file.type);
+        document.getElementById('dropZone').style.display='none';
+        editorArea.style.display='block';
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function compress(img,mime){
+    const q=parseInt(qualityRange.value)/100;
+    const fmt=formatSelect.value;
+    const canvas=document.createElement('canvas');
+    canvas.width=img.width; canvas.height=img.height;
+    const ctx=canvas.getContext('2d');
+    ctx.drawImage(img,0,0);
+
+    canvas.toBlob(function(blob){
+      compressedBlob=blob;
+      const savings=Math.round((1-blob.size/originalSize)*100);
+
+      previewArea.innerHTML=
+        '<div class="io-card"><div class="io-card-label">Original</div>'+
+        '<img class="io-card-img" src="'+img.src+'"><div class="io-card-size">'+formatBytes(originalSize)+'</div>'+
+        '<div class="io-card-sub">'+img.width+'×'+img.height+'</div></div>'+
+        '<div class="io-card"><div class="io-card-label">Compressed</div>'+
+        '<img class="io-card-img" src="'+URL.createObjectURL(blob)+'"><div class="io-card-size" style="color:var(--accent)">'+formatBytes(blob.size)+'</div>'+
+        '<div class="io-card-sub">'+img.width+'×'+img.height+'</div></div>';
+
+      savingsArea.innerHTML='<span class="io-stat">🎉 Saved '+formatBytes(originalSize-blob.size)+' ('+savings+'% smaller)</span>';
+    }, fmt, q);
+  }
+
+  qualityRange.addEventListener('input',function(){
+    qualityVal.textContent=this.value;
+    if(originalFile){
+      const img=new Image();
+      const reader=new FileReader();
+      reader.onload=function(e){img.src=e.target.result;img.onload=function(){compress(img,originalFile.type);};};
+      reader.readAsDataURL(originalFile);
+    }
+  });
+
+  formatSelect.addEventListener('change',function(){
+    if(originalFile){
+      const img=new Image();
+      const reader=new FileReader();
+      reader.onload=function(e){img.src=e.target.result;img.onload=function(){compress(img,originalFile.type);};};
+      reader.readAsDataURL(originalFile);
+    }
+  });
+
+  downloadBtn.addEventListener('click',function(){
+    if(!compressedBlob)return;
+    const ext=formatSelect.value.replace('image/','');
+    const a=document.createElement('a');
+    a.download='optimized-'+Date.now()+'.'+ext;
+    a.href=URL.createObjectURL(compressedBlob);
+    a.click();
+  });
+})();
+</script>
+</body>
+</html>
