@@ -273,6 +273,25 @@ function initSearch(){
     }
   });
 
+  // Clear button
+  const clearBtn = document.getElementById('searchClearBtn');
+  if(clearBtn){
+    clearBtn.addEventListener('click', function(){
+      input.value = '';
+      input.focus();
+      panel.classList.remove('show');
+    });
+  }
+
+  // ⌘K / Ctrl+K shortcut
+  document.addEventListener('keydown', function(e){
+    if((e.metaKey || e.ctrlKey) && e.key === 'k'){
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+  });
+
   // Close on Escape / outside
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){ panel.classList.remove('show'); input.blur(); }

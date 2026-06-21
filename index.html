@@ -55,8 +55,15 @@
       
       <!-- Search (prominent) -->
       <div class="hero-search">
-        <input type="text" id="heroSearchInput" placeholder="Search 23 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
-        <span class="hero-search-icon">🔍</span>
+        <div class="hero-search-inner">
+          <svg class="hero-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="heroSearchInput" placeholder="Search 23 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+          <button class="hero-search-clear" id="searchClearBtn" aria-label="Clear search">✕</button>
+          <div class="hero-search-kbd"><kbd>⌘</kbd><kbd>K</kbd></div>
+        </div>
         <div class="hero-search-results" id="heroSearchResults"></div>
       </div>
 
