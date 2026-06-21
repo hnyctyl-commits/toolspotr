@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Color Name Finder — Toolflow</title>
+<meta name="description" content="Free online color name finder. Enter any HEX or RGB color code to find the closest named color. Browse named colors and copy values.">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:12px}.cn-item{padding:8px;border-radius:var(--radius-xs);text-align:center;cursor:pointer;transition:transform .15s;border:1px solid var(--border);background:var(--bg-card)}.cn-item:hover{transform:scale(1.05);border-color:var(--accent)}.cn-swatch{width:100%;height:36px;border-radius:4px;margin-bottom:4px}.cn-name{font-size:10px;color:var(--text-sec);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cn-hex{font-size:9px;color:var(--text-muted);font-family:var(--mono)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Color Name Finder</strong></div><h1 class="tool-page-title">🎨 Color Name Finder</h1><p class="tool-page-desc">Find the closest named color for any HEX code. Browse popular named colors and copy values with one click.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Enter HEX color</label><input type="text" id="cnInput" value="#00d4aa" style="font-family:var(--mono);font-size:18px"></div><div><label>Preview</label><div id="cnPreview" style="height:40px;border-radius:var(--radius-sm);border:1px solid var(--border)"></div></div></div>
+    <div style="font-size:16px;font-weight:600;margin:8px 0" id="cnName">Medium Spring Green</div>
+    <div class="cn-grid" id="cnGrid"></div>
+  </div>
+  <div class="tool-article"><h3>Color Names Reference</h3><p>Named colors make design communication easier. Instead of saying "use the bluish-green color with code #00d4aa", you can say "Medium Spring Green". This tool matches any HEX code to the closest CSS named color and lets you browse common colors.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div></div></a>
+    <a href="image-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title">Image Optimizer</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const namedColors={'aliceblue':'#f0f8ff','antiquewhite':'#faebd7','aqua':'#00ffff','aquamarine':'#7fffd4','azure':'#f0ffff','beige':'#f5f5dc','bisque':'#ffe4c4','black':'#000000','blanchedalmond':'#ffebcd','blue':'#0000ff','blueviolet':'#8a2be2','brown':'#a52a2a','burlywood':'#deb887','cadetblue':'#5f9ea0','chartreuse':'#7fff00','chocolate':'#d2691e','coral':'#ff7f50','cornflowerblue':'#6495ed','cornsilk':'#fff8dc','crimson':'#dc143c','cyan':'#00ffff','darkblue':'#00008b','darkcyan':'#008b8b','darkgoldenrod':'#b8860b','darkgray':'#a9a9a9','darkgreen':'#006400','darkkhaki':'#bdb76b','darkmagenta':'#8b008b','darkolivegreen':'#556b2f','darkorange':'#ff8c00','darkorchid':'#9932cc','darkred':'#8b0000','darksalmon':'#e9967a','darkseagreen':'#8fbc8f','darkslateblue':'#483d8b','darkslategray':'#2f4f4f','darkturquoise':'#00ced1','darkviolet':'#9400d3','deeppink':'#ff1493','deepskyblue':'#00bfff','dimgray':'#696969','dodgerblue':'#1e90ff','firebrick':'#b22222','floralwhite':'#fffaf0','forestgreen':'#228b22','fuchsia':'#ff00ff','gainsboro':'#dcdcdc','ghostwhite':'#f8f8ff','gold':'#ffd700','goldenrod':'#daa520','gray':'#808080','green':'#008000','greenyellow':'#adff2f','honeydew':'#f0fff0','hotpink':'#ff69b4','indianred':'#cd5c5c','indigo':'#4b0082','ivory':'#fffff0','khaki':'#f0e68c','lavender':'#e6e6fa','lavenderblush':'#fff0f5','lawngreen':'#7cfc00','lemonchiffon':'#fffacd','lightblue':'#add8e6','lightcoral':'#f08080','lightcyan':'#e0ffff','lightgoldenrodyellow':'#fafad2','lightgray':'#d3d3d3','lightgreen':'#90ee90','lightpink':'#ffb6c1','lightsalmon':'#ffa07a','lightseagreen':'#20b2aa','lightskyblue':'#87cefa','lightslategray':'#778899','lightsteelblue':'#b0c4de','lightyellow':'#ffffe0','lime':'#00ff00','limegreen':'#32cd32','linen':'#faf0e6','magenta':'#ff00ff','maroon':'#800000','mediumaquamarine':'#66cdaa','mediumblue':'#0000cd','mediumorchid':'#ba55d3','mediumpurple':'#9370db','mediumseagreen':'#3cb371','mediumslateblue':'#7b68ee','mediumspringgreen':'#00fa9a','mediumturquoise':'#48d1cc','mediumvioletred':'#c71585','midnightblue':'#191970','mintcream':'#f5fffa','mistyrose':'#ffe4e1','moccasin':'#ffe4b5','navajowhite':'#ffdead','navy':'#000080','oldlace':'#fdf5e6','olive':'#808000','olivedrab':'#6b8e23','orange':'#ffa500','orangered':'#ff4500','orchid':'#da70d6','palegoldenrod':'#eee8aa','palegreen':'#98fb98','paleturquoise':'#afeeee','palevioletred':'#db7093','papayawhip':'#ffefd5','peachpuff':'#ffdab9','peru':'#cd853f','pink':'#ffc0cb','plum':'#dda0dd','powderblue':'#b0e0e6','purple':'#800080','rebeccapurple':'#663399','red':'#ff0000','rosybrown':'#bc8f8f','royalblue':'#4169e1','saddlebrown':'#8b4513','salmon':'#fa8072','sandybrown':'#f4a460','seagreen':'#2e8b57','seashell':'#fff5ee','sienna':'#a0522d','silver':'#c0c0c0','skyblue':'#87ceeb','slateblue':'#6a5acd','slategray':'#708090','snow':'#fffafa','springgreen':'#00ff7f','steelblue':'#4682b4','tan':'#d2b48c','teal':'#008080','thistle':'#d8bfd8','tomato':'#ff6347','turquoise':'#40e0d0','violet':'#ee82ee','wheat':'#f5deb3','white':'#ffffff','whitesmoke':'#f5f5f5','yellow':'#ffff00','yellowgreen':'#9acd32'};
+
+const inp=document.getElementById('cnInput'),prev=document.getElementById('cnPreview'),name=document.getElementById('cnName'),grid=document.getElementById('cnGrid');
+
+function hexDist(a,b){const ax=parseInt(a.slice(1),16),bx=parseInt(b.slice(1),16);return Math.abs((ax>>16)-(bx>>16))+Math.abs(((ax>>8)&0xff)-((bx>>8)&0xff))+Math.abs(ax&0xff-bx&0xff);}
+
+function findClosest(hex){let closest='',min=Infinity;for(const[n,c]of Object.entries(namedColors)){const d=hexDist(hex,c);if(d<min){min=d;closest=n;}}return closest;}
+
+function update(){let hex=inp.value.trim();if(!hex.startsWith('#'))hex='#'+hex;if(!/^#[0-9a-f]{6}$/i.test(hex)){name.textContent='Invalid color';return;}
+  prev.style.background=hex;const cn=findClosest(hex);name.textContent=cn.charAt(0).toUpperCase()+cn.slice(1);}
+
+function renderGrid(){grid.innerHTML=Object.entries(namedColors).slice(0,48).map(([n,c])=>`<div class="cn-item" onclick="document.getElementById('cnInput').value='${c}';update()"><div class="cn-swatch" style="background:${c}"></div><div class="cn-name">${n}</div><div class="cn-hex">${c}</div></div>`).join('');}
+
+inp.addEventListener('input',update);renderGrid();update();
+</script>
+</body>
+</html>

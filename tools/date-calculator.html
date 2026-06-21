@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Date Calculator — Toolflow</title>
+<meta name="description" content="Free online date calculator. Calculate days between two dates, add or subtract days from a date. Find the exact date after X days.">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dc-card{background:var(--bg-main);padding:16px;border-radius:var(--radius-sm);border:1px solid var(--border)}.dc-card h3{font-size:12px;font-weight:600;margin-bottom:8px}.dc-big{font-size:24px;font-weight:700;font-family:var(--mono);color:var(--accent)}@media(max-width:600px){.dc-grid{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Date Calculator</strong></div><h1 class="tool-page-title">📅 Date Calculator</h1><p class="tool-page-desc">Calculate days between dates, or add/subtract days from any date.</p></div>
+  <div class="tool-box">
+    <div class="dc-grid">
+      <div class="dc-card"><h3>Days Between Dates</h3><div class="input-row" style="gap:6px"><div><label style="font-size:10px">Start</label><input type="date" id="dcStart"></div><div><label style="font-size:10px">End</label><input type="date" id="dcEnd"></div></div><div class="dc-big" id="dcBetween">0 days</div></div>
+      <div class="dc-card"><h3>Add / Subtract Days</h3><div class="input-row" style="gap:6px"><div><label style="font-size:10px">Date</label><input type="date" id="dcBase"></div><div><label style="font-size:10px">Days</label><input type="number" id="dcDays" value="90"></div></div><div class="dc-big" id="dcAddResult">Jul 1, 2026</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Date Calculations</h3><p>Date difference calculations are used for project planning, countdowns, age calculation, contract durations, and more. This tool handles all date math instantly — including leap years and timezone-aware calculations.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+    <a href="timezone-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">⏰</div><div class="tcard-body"><div class="tcard-title">Timezone</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+const s=document.getElementById('dcStart'),e=document.getElementById('dcEnd'),b=document.getElementById('dcBase'),d=document.getElementById('dcDays');
+const today=new Date();const t2=new Date();t2.setDate(t2.getDate()+7);
+s.valueAsDate=today;e.valueAsDate=t2;b.valueAsDate=today;d.value=90;
+function calc(){
+  const d1=new Date(s.value),d2=new Date(e.value);document.getElementById('dcBetween').textContent=Math.round(Math.abs(d2-d1)/86400000)+' days';
+  const base=new Date(b.value);base.setDate(base.getDate()+parseInt(d.value)||0);document.getElementById('dcAddResult').textContent=fmt(base);
+}
+s.addEventListener('input',calc);e.addEventListener('input',calc);b.addEventListener('input',calc);d.addEventListener('input',calc);calc();
+</script>
+</body>
+</html>
