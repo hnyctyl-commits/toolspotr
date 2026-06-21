@@ -97,6 +97,7 @@ const LANG = {
 };
 
 // ── Tool Data (for search) ──
+const TOOL_COUNT = 58;
 const TOOLS = [
   {id:'ip', icon:'🌐', key:'ipLookup', cat:'dev', ready:true, url:'tools/ip.html', tags:'network,ip,location'},
   {id:'json', icon:'📋', key:'jsonFmt', cat:'dev', ready:true, url:'tools/json-formatter.html', tags:'json,format,validate'},
@@ -212,9 +213,9 @@ function applyLang(l){
   
   // Update search placeholder with dynamic count
   const searchInput = document.getElementById('heroSearchInput');
-  if(searchInput && window.TOOLS){
+  if(searchInput){
     const word = l === 'zh' ? '个工具' : 'tools';
-    searchInput.placeholder = (l === 'zh' ? '搜索 ' + TOOLS.length + ' ' + word : 'Search ' + TOOLS.length + ' ' + word);
+    searchInput.placeholder = (l === 'zh' ? '搜索 ' + TOOL_COUNT + ' ' + word : 'Search ' + TOOL_COUNT + ' ' + word);
   }
 }
 
@@ -225,9 +226,8 @@ function initSearch(){
   if(!input || !panel) return;
   
   // Dynamic placeholder: count tools
-  const t = LANG[currentLang] || LANG.en;
   const langWord = currentLang === 'zh' ? '个工具' : 'tools';
-  input.placeholder = (currentLang === 'zh' ? '搜索 ' + TOOLS.length + ' ' + langWord : 'Search ' + TOOLS.length + ' ' + langWord);
+  input.placeholder = (currentLang === 'zh' ? '搜索 ' + TOOL_COUNT + ' ' + langWord : 'Search ' + TOOL_COUNT + ' ' + langWord);
 
   // Create panel if not exists
   input.addEventListener('input', function(){
