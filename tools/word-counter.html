@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Word & Character Counter — Toolflow</title>
+<meta name="description" content="免费在线字数统计工具。统计字数、字符数（含/不含空格）、行数、段落数、阅读时间。实时统计。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Word & Character Counter</strong></div>
+    <h1 class="tool-page-title">📊 Word & Character Counter</h1>
+    <p class="tool-page-desc">实时统计文本的字数、字符数、行数、段落数、预估阅读时间。输入即统计，无需点击按钮。</p>
+  </div>
+  <div class="tool-box">
+    <label for="wcInput">Type or paste your text below:</label>
+    <textarea id="wcInput" rows="8" placeholder="Paste your text here to start counting..." style="font-family:var(--font);font-size:14px;line-height:1.7"></textarea>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:12px">
+      <div class="stat-card"><div class="stat-lbl">Words</div><div class="stat-num" id="wcWords">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Characters (no space)</div><div class="stat-num" id="wcCharsNoSpace">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Characters (with space)</div><div class="stat-num" id="wcChars">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Sentences</div><div class="stat-num" id="wcSentences">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Paragraphs</div><div class="stat-num" id="wcParagraphs">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Reading Time</div><div class="stat-num" id="wcReadTime">0 min</div></div>
+      <div class="stat-card"><div class="stat-lbl">Lines</div><div class="stat-num" id="wcLines">0</div></div>
+      <div class="stat-card"><div class="stat-lbl">Avg Word Length</div><div class="stat-num" id="wcAvgLen">0</div></div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>为什么需要字数统计？</h3>
+    <p>无论是写文章、社交媒体帖子、SEO 内容还是学术论文，字数统计都是基本需求。Twitter 限制 280 字符、Google 更喜欢 1500+ 词的长文、SEO meta description 最好 150-160 字符。本工具实时统计，让你精确控制文本长度。</p>
+  </div>
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="base64.html" class="tcard" style="margin:0"><div class="tcard-icon">🔤</div><div class="tcard-body"><div class="tcard-title">Base64 Encode</div><div class="tcard-desc">编码解码 Base64</div></div></a>
+      <a href="uuid-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">UUID Generator</div><div class="tcard-desc">生成 UUID v4/v7</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div></a>
+    </div>
+  </div>
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<style>
+.stat-card{background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center;border:1px solid var(--border)}
+.stat-lbl{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.stat-card .stat-num{font-size:22px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-variant-numeric:tabular-nums}
+</style>
+<script>
+const inp=document.getElementById('wcInput');
+function count(){
+  const t=inp.value;
+  const words=t.trim()?t.trim().split(/\s+/).filter(Boolean).length:0;
+  const chars=t.length;
+  const charsNoSpace=t.replace(/\s/g,'').length;
+  const sentences=t.split(/[.!?]+/).filter(Boolean).length;
+  const paragraphs=t.split(/\n\s*\n/).filter(Boolean).length||(t.trim()?1:0);
+  const lines=t.split('\n').length;
+  const readTime=Math.max(1,Math.round(words/200));
+  const avgLen=words>0?Math.round(charsNoSpace/words*10)/10:0;
+  document.getElementById('wcWords').textContent=words.toLocaleString();
+  document.getElementById('wcChars').textContent=chars.toLocaleString();
+  document.getElementById('wcCharsNoSpace').textContent=charsNoSpace.toLocaleString();
+  document.getElementById('wcSentences').textContent=sentences.toLocaleString();
+  document.getElementById('wcParagraphs').textContent=paragraphs.toLocaleString();
+  document.getElementById('wcLines').textContent=lines.toLocaleString();
+  document.getElementById('wcReadTime').textContent=readTime+' min';
+  document.getElementById('wcAvgLen').textContent=avgLen;
+}
+inp.addEventListener('input',count);
+// Sample text
+inp.value=`The quick brown fox jumps over the lazy dog. This is a sample sentence to demonstrate the word counter tool.\n\nToolflow provides free online tools for developers, writers, and designers. All tools run in your browser -- nothing is uploaded to any server.\n\nStart typing or replace this text with your own content to see real-time statistics. The tool counts words, characters, sentences, paragraphs, and even estimates reading time.`;
+count();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IP Address Lookup — Toolflow</title>
+<meta name="description" content="免费在线 IP 地址查询工具。查看你的公网 IP、地理位置、ISP、时区等信息。即开即用，隐私保护。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>IP Address Lookup</strong></div>
+    <h1 class="tool-page-title">🌐 IP Address Lookup</h1>
+    <p class="tool-page-desc">查看你的公网 IP 地址、地理位置、ISP、时区等详细信息。所有检测在本地完成，不上传服务器。</p>
+  </div>
+
+  <!-- Tool -->
+  <div class="tool-box">
+    <button class="tool-btn" id="ipBtn">🔍 Detect My IP</button>
+    <div class="tool-output" id="ipOutput" style="margin-top:16px">点击按钮开始检测...</div>
+  </div>
+
+  <!-- Article -->
+  <div class="tool-article">
+    <h3>什么是公网 IP？</h3>
+    <p>公网 IP 地址是你在互联网上的唯一身份标识。通过查询 IP，你可以了解自己的网络位置信息，这对排查网络问题、检查 VPN 连接状态、确认 DNS 泄露等场景非常有用。本工具使用 WebRTC 和第三方 API 综合检测你的网络状态，数据仅在你的浏览器中展示，不会被记录或上传。</p>
+  </div>
+
+  <!-- Related -->
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="dns-test.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🛡️</div>
+        <div class="tcard-body">
+          <div class="tcard-title">DNS Leak Test</div>
+          <div class="tcard-desc">检测 VPN/DNS 是否泄露</div>
+        </div>
+      </a>
+      <a href="password-generator.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🔑</div>
+        <div class="tcard-body">
+          <div class="tcard-title">Password Generator</div>
+          <div class="tcard-desc">创建高强度密码</div>
+        </div>
+      </a>
+      <a href="../index.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🔍</div>
+        <div class="tcard-body">
+          <div class="tcard-title">更多工具 →</div>
+          <div class="tcard-desc">回到工具首页</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Ad -->
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p>
+</div></footer>
+
+<script>
+document.getElementById('ipBtn').addEventListener('click', async function(){
+  const out = document.getElementById('ipOutput');
+  out.textContent = 'Detecting...';
+  try {
+    const r = await fetch('https://ipapi.co/json/');
+    const d = await r.json();
+    out.innerHTML = `
+┌──────────────────────────┐
+│ IP Address:   ${d.ip||'N/A'}${' '.repeat(Math.max(0,20-(d.ip||'').length))}│
+│ Country:      ${d.country_name||'N/A'}${' '.repeat(Math.max(0,20-(d.country_name||'').length))}│
+│ Region:       ${d.region||'N/A'}${' '.repeat(Math.max(0,20-(d.region||'').length))}│
+│ City:         ${d.city||'N/A'}${' '.repeat(Math.max(0,20-(d.city||'').length))}│
+│ ZIP:          ${d.postal||'N/A'}${' '.repeat(Math.max(0,20-(d.postal||'').length))}│
+│ ISP:          ${d.org||d.asn||'N/A'}${' '.repeat(Math.max(0,20-(d.org||d.asn||'').length))}│
+│ Timezone:     ${d.timezone||'N/A'}${' '.repeat(Math.max(0,20-(d.timezone||'').length))}│
+│ Lat/Lon:      ${d.latitude||'?'}, ${d.longitude||'?'}${' '.repeat(9)}│
+└──────────────────────────┘`.replace(/ /g,'&nbsp;').replace(/\n/g,'<br>');
+  } catch(e) {
+    out.innerHTML = '❌ Detection failed. Your browser may be blocking cross-origin requests.';
+  }
+});
+</script>
+</body>
+</html>

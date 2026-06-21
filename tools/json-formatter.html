@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JSON Formatter & Validator — Toolflow</title>
+<meta name="description" content="免费在线 JSON 格式化和验证工具。格式化、压缩、验证 JSON 数据，语法高亮显示。本地运行，数据不上传。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>JSON Formatter</strong></div>
+    <h1 class="tool-page-title">📋 JSON Formatter & Validator</h1>
+    <p class="tool-page-desc">格式化、压缩和验证 JSON 数据。内置语法高亮和错误检测，所有处理在你的浏览器本地完成。</p>
+  </div>
+
+  <div class="tool-box">
+    <label for="jsonInput">Paste your JSON here:</label>
+    <textarea id="jsonInput" placeholder='{"name":"Toolflow","version":"1.0","features":["free","fast","private"]}'></textarea>
+    <div class="input-row">
+      <button class="tool-btn" id="formatBtn">✨ Format</button>
+      <button class="tool-btn-sec" id="compressBtn">📦 Compress</button>
+      <button class="tool-btn-sec" id="clearBtn">🗑️ Clear</button>
+      <button class="tool-btn-sec" id="copyBtn">📋 Copy</button>
+    </div>
+    <div class="tool-output" id="jsonOutput" style="margin-top:12px;white-space:pre-wrap;font-size:13px;line-height:1.5">等待输入...</div>
+  </div>
+
+  <div class="tool-article">
+    <h3>什么是 JSON？</h3>
+    <p>JSON (JavaScript Object Notation) 是一种轻量级的数据交换格式，广泛用于 API 通信、配置文件和数据存储中。格式化的 JSON 更易于人类阅读和调试，而压缩后的 JSON 更适合传输。本工具还提供实时验证功能，帮助你快速发现 JSON 语法错误。</p>
+  </div>
+
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="ip.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title">IP Lookup</div><div class="tcard-desc">查看你的公网 IP</div></div>
+      </a>
+      <a href="password-generator.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title">Password Gen</div><div class="tcard-desc">创建高强度密码</div></div>
+      </a>
+      <a href="compound-interest.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">📈</div><div class="tcard-body"><div class="tcard-title">Investment Calc</div><div class="tcard-desc">计算复利收益</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p>
+</div></footer>
+
+<script>
+const inp = document.getElementById('jsonInput');
+const out = document.getElementById('jsonOutput');
+
+function format(){try{const p=JSON.parse(inp.value);out.textContent=JSON.stringify(p,null,2);}catch(e){out.textContent='❌ Invalid JSON: '+e.message;}}
+function compress(){try{const p=JSON.parse(inp.value);out.textContent=JSON.stringify(p);}catch(e){out.textContent='❌ Invalid JSON: '+e.message;}}
+
+document.getElementById('formatBtn').addEventListener('click',format);
+document.getElementById('compressBtn').addEventListener('click',compress);
+document.getElementById('clearBtn').addEventListener('click',()=>{inp.value='';out.textContent='等待输入...';});
+document.getElementById('copyBtn').addEventListener('click',()=>{navigator.clipboard.writeText(out.textContent);});
+inp.addEventListener('input',()=>{if(inp.value.trim())format();});
+</script>
+</body>
+</html>

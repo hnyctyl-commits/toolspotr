@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>QR Code Generator — Toolflow</title>
+<meta name="description" content="免费在线二维码生成器。自定义颜色、大小、Logo，生成可下载的 QR Code。浏览器本地生成，不上传。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>QR Code Generator</strong></div>
+    <h1 class="tool-page-title">📱 QR Code Generator</h1>
+    <p class="tool-page-desc">生成自定义二维码，支持 URL、文本、WiFi 配置。可调颜色、大小、添加 Logo。浏览器本地生成，不上传服务器。</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="input-row">
+      <div style="flex:2"><label>Content (URL / Text / WiFi config)</label>
+        <textarea id="qrInput" rows="2" style="font-family:var(--font)">https://toolspotr.com</textarea>
+      </div>
+    </div>
+    <div class="input-row">
+      <div><label>Size</label><select id="qrSize"><option value="128">Small (128px)</option><option value="256" selected>Medium (256px)</option><option value="384">Large (384px)</option><option value="512">X-Large (512px)</option></select></div>
+      <div><label>Foreground</label><input type="color" id="qrFg" value="#00d4aa"></div>
+      <div><label>Background</label><input type="color" id="qrBg" value="#0b1120"></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-sec)">
+        <input type="checkbox" id="qrAddLogo"> Add Logo
+      </label>
+      <div id="logoUpload" style="display:none">
+        <input type="file" id="qrLogoFile" accept="image/*" style="font-size:12px;color:var(--text-sec);padding:0">
+      </div>
+    </div>
+    <div class="input-row">
+      <button class="tool-btn" id="qrGenBtn">🔲 Generate QR Code</button>
+      <button class="tool-btn-sec" id="qrDlBtn">💾 Download PNG</button>
+    </div>
+    <div style="text-align:center;margin-top:20px;padding:20px;background:var(--bg-main);border-radius:var(--radius-sm)" id="qrCanvasWrap">
+      <canvas id="qrCanvas" style="max-width:100%"></canvas>
+    </div>
+  </div>
+
+  <div class="tool-article">
+    <h3>QR 码的应用场景</h3>
+    <p>QR 码（快速响应码）是当今最流行的二维码格式。你可以用它分享网址、WiFi 密码、联系方式、活动信息等。本工具使用纯 JavaScript 生成 QR 码，所有数据在你的浏览器中处理，不会上传到任何服务器，确保隐私安全。</p>
+  </div>
+
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div><div class="tcard-desc">颜色代码转换</div></div></a>
+      <a href="ip.html" class="tcard" style="margin:0"><div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title">IP Lookup</div><div class="tcard-desc">查看你的公网 IP</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div></a>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p>
+</div></footer>
+
+<script src="../assets/qrcode.min.js"></script>
+<script>
+(function(){
+  const inp=document.getElementById('qrInput'), sz=document.getElementById('qrSize');
+  const fg=document.getElementById('qrFg'), bg=document.getElementById('qrBg');
+  const genBtn=document.getElementById('qrGenBtn'), dlBtn=document.getElementById('qrDlBtn');
+  const canvasWrap=document.getElementById('qrCanvasWrap');
+  const addLogo=document.getElementById('qrAddLogo'), logoFile=document.getElementById('qrLogoFile');
+  const logoUpload=document.getElementById('logoUpload');
+  let qr=null, curCanvas=null;
+
+  addLogo.addEventListener('change',function(){logoUpload.style.display=this.checked?'block':'none';});
+
+  function generate(){
+    const val=inp.value.trim()||'toolspotr.com';
+    const size=parseInt(sz.value);
+    const fgColor=fg.value, bgColor=bg.value;
+
+    // Clear previous
+    canvasWrap.innerHTML='<canvas id="qrCanvas" style="max-width:100%"></canvas>';
+    curCanvas=document.getElementById('qrCanvas');
+
+    qr=new QRCode(curCanvas,{
+      text:val, width:size, height:size,
+      colorDark:fgColor, colorLight:bgColor,
+      correctLevel:QRCode.CorrectLevel.H
+    });
+
+    // Add logo overlay
+    if(addLogo.checked && logoFile.files && logoFile.files[0]){
+      const img=new Image();
+      img.onload=function(){
+        const ctx=curCanvas.getContext('2d');
+        const lSize=size*0.22;
+        const lx=(size-lSize)/2, ly=(size-lSize)/2;
+        ctx.fillStyle='#fff';
+        ctx.beginPath(); ctx.arc(size/2,size/2,lSize/2+4,0,Math.PI*2); ctx.fill();
+        ctx.save(); ctx.beginPath(); ctx.arc(size/2,size/2,lSize/2,0,Math.PI*2); ctx.clip();
+        ctx.drawImage(img,lx,ly,lSize,lSize); ctx.restore();
+      };
+      img.src=URL.createObjectURL(logoFile.files[0]);
+    }
+  }
+
+  genBtn.addEventListener('click',generate);
+  dlBtn.addEventListener('click',function(){
+    if(!curCanvas) return;
+    const link=document.createElement('a');
+    link.download='qrcode-'+Date.now()+'.png';
+    link.href=curCanvas.toDataURL('image/png');
+    link.click();
+  });
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')generate();});
+  generate();
+})();
+</script>
+</body>
+</html>

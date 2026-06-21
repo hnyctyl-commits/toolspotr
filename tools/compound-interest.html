@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Compound Interest Calculator — Toolflow</title>
+<meta name="description" content="免费在线复利投资计算器。输入本金、利率、年限，直观图表展示你的钱如何复利增长。金融工具。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>.chart-bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px;font-family:var(--mono)}.bar-fill{height:22px;border-radius:4px;transition:width 0.5s ease;min-width:4px}.bar-principal{background:var(--accent2)}.bar-interest{background:var(--accent)}.bar-label{width:50px;text-align:right;color:var(--text-muted);flex-shrink:0}.bar-val{color:var(--text-pri);white-space:nowrap;font-size:11px}</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Compound Interest Calculator</strong></div>
+    <h1 class="tool-page-title">📈 Compound Interest Calculator</h1>
+    <p class="tool-page-desc">看看你的钱如何复利增长。输入本金、每月投入、年化收益率和年限，直观展示最终收益。</p>
+  </div>
+
+  <div class="tool-box">
+    <div class="input-row">
+      <div><label>Initial Amount ($)</label><input type="number" id="principal" value="10000" min="0"></div>
+      <div><label>Monthly Contribution ($)</label><input type="number" id="monthly" value="500" min="0"></div>
+    </div>
+    <div class="input-row">
+      <div><label>Annual Return (%)</label><input type="number" id="rate" value="8" min="0" max="100" step="0.1"></div>
+      <div><label>Years</label><input type="number" id="years" value="10" min="1" max="50"></div>
+      <div><label>Compound</label><select id="compound"><option value="1">Yearly</option><option value="12" selected>Monthly</option><option value="365">Daily</option></select></div>
+    </div>
+    <button class="tool-btn" id="calcBtn">🧮 Calculate</button>
+
+    <div id="results" style="margin-top:20px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+        <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center">
+          <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Total Invested</div>
+          <div style="font-size:22px;font-weight:700;color:var(--accent2)" id="rInvested">$0</div>
+        </div>
+        <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center">
+          <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Total Return</div>
+          <div style="font-size:22px;font-weight:700;color:var(--accent)" id="rReturn">$0</div>
+        </div>
+        <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center">
+          <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Final Balance</div>
+          <div style="font-size:22px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent" id="rFinal">$0</div>
+        </div>
+      </div>
+      <div id="chart"></div>
+    </div>
+  </div>
+
+  <div class="tool-article">
+    <h3>复利的力量</h3>
+    <p>爱因斯坦曾说复利是世界第八大奇迹。简单来说，复利就是你赚的利息也能继续产生利息。时间越长、收益率越高，复利的效果就越惊人。例如，每月存 $500、年化 8%、30 年后你投入 $190,000，最终可能获得超过 $750,000。这就是长期投资的魅力。</p>
+    <p><strong>💡 核心公式：</strong> A = P(1 + r/n)^(nt) + PMT × ((1 + r/n)^(nt) - 1) / (r/n)</p>
+  </div>
+
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="../index.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div>
+      </a>
+      <a href="password-generator.html" class="tcard" style="margin:0">
+        <div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title">Password Gen</div><div class="tcard-desc">创建高强度密码</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p>
+</div></footer>
+
+<script>
+document.getElementById('calcBtn').addEventListener('click', calc);
+document.querySelectorAll('.tool-box input, .tool-box select').forEach(el => {
+  el.addEventListener('keydown', e => { if(e.key==='Enter') calc(); });
+});
+calc();
+
+function calc(){
+  const P = parseFloat(document.getElementById('principal').value) || 0;
+  const PMT = parseFloat(document.getElementById('monthly').value) || 0;
+  const r = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+  const t = parseInt(document.getElementById('years').value) || 1;
+  const n = parseInt(document.getElementById('compound').value) || 12;
+
+  let totalInvested = P;
+  let finalBalance = P;
+  const yearly = [];
+
+  for(let y=1; y<=t; y++){
+    // Compound existing balance
+    finalBalance = P * Math.pow(1 + r/n, n*y);
+    // Add monthly contributions compounded
+    if(PMT > 0){
+      const mpy = n; // months per year equivalent
+      const ratePerPeriod = r / n;
+      const totalPeriods = n * y;
+      const fvPMT = PMT * ((Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod);
+      finalBalance += fvPMT;
+    }
+    totalInvested += PMT * 12;
+    yearly.push({year: y, balance: Math.round(finalBalance), invested: Math.round(P + PMT * 12 * y)});
+  }
+
+  const totalReturn = Math.round(finalBalance - (P + PMT * 12 * t));
+  const finalVal = Math.round(finalBalance);
+
+  document.getElementById('rInvested').textContent = '$' + (P + PMT * 12 * t).toLocaleString();
+  document.getElementById('rReturn').textContent = '$' + totalReturn.toLocaleString();
+  document.getElementById('rFinal').textContent = '$' + finalVal.toLocaleString();
+
+  // Chart
+  const maxVal = Math.max(...yearly.map(y=>y.balance));
+  let chartHtml = '';
+  yearly.forEach(y => {
+    const bw = Math.max(4, (y.balance / maxVal) * 100);
+    const iw = Math.max(4, (y.invested / maxVal) * 100);
+    chartHtml += `<div class="chart-bar">
+      <span class="bar-label">Y${y.year}</span>
+      <div class="bar-fill bar-principal" style="width:${iw}%"></div>
+      <div class="bar-fill bar-interest" style="width:${bw - iw}%"></div>
+      <span class="bar-val">$${(y.balance/1000).toFixed(1)}k</span>
+    </div>`;
+  });
+  document.getElementById('chart').innerHTML = '<div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">▬ Invested  ▬ Growth</div>' + chartHtml;
+}
+</script>
+</body>
+</html>

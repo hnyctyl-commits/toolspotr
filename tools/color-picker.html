@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Color Picker & Converter — Toolflow</title>
+<meta name="description" content="免费在线颜色选择器和转换工具。HEX、RGB、HSL、CMYK 互转，视觉调色板，一键复制颜色值。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Color Picker & Converter</strong></div>
+    <h1 class="tool-page-title">🎨 Color Picker & Converter</h1>
+    <p class="tool-page-desc">拾取颜色，在 HEX、RGB、HSL、CMYK 之间互转，获取颜色名称。设计师和开发者的日常工具。</p>
+  </div>
+  <div class="tool-box">
+    <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+      <div style="text-align:center">
+        <input type="color" id="colorMain" value="#00d4aa" style="width:120px;height:120px;border:none;cursor:pointer;padding:0;background:transparent">
+        <div style="margin-top:6px;font-size:11px;color:var(--text-muted)">Click to pick</div>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div class="input-row">
+          <div><label>HEX</label><input type="text" id="colorHEX" value="#00d4aa"></div>
+          <div><label>RGB</label><input type="text" id="colorRGB" value="rgb(0,212,170)"></div>
+        </div>
+        <div class="input-row">
+          <div><label>HSL</label><input type="text" id="colorHSL" value="hsl(168,100%,42%)"></div>
+          <div><label>CMYK</label><input type="text" id="colorCMYK" value="cmyk(100,0,20,17)"></div>
+        </div>
+        <div style="margin-top:8px">
+          <button class="tool-btn-sec" id="copyHex">📋 Copy HEX</button>
+          <button class="tool-btn-sec" id="copyRgb">📋 Copy RGB</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <label>Color Name</label>
+      <div class="tool-output" id="colorName" style="font-size:13px;font-family:var(--font)">Medium Spring Green</div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>颜色格式说明</h3>
+    <p><strong>HEX</strong>（如 #00d4aa）是网页中最常用的颜色格式。<strong>RGB</strong> 用红绿蓝三通道表示。<strong>HSL</strong> 用色相、饱和度、亮度表示，更直观。<strong>CMYK</strong> 是印刷四色模式。不同场景需要不同格式，本工具让它们之间的转换一键完成。</p>
+  </div>
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="qr-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">📱</div><div class="tcard-body"><div class="tcard-title">QR Code Gen</div><div class="tcard-desc">生成二维码</div></div></a>
+      <a href="json-formatter.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON Formatter</div><div class="tcard-desc">格式化 JSON</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div></a>
+    </div>
+  </div>
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script>
+const picker=document.getElementById('colorMain');
+const h=document.getElementById('colorHEX'),r=document.getElementById('colorRGB');
+const sl=document.getElementById('colorHSL'),cmyk=document.getElementById('colorCMYK');
+const nameEl=document.getElementById('colorName');
+
+function hexToRgb(hx){const x=parseInt(hx.replace('#',''),16);return{x:(x>>16)&255,y:(x>>8)&255,z:x&255};}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const M=Math.max(r,g,b),m=Math.min(r,g,b),d=M-m;let h=0,s=0,l=(M+m)/2;if(d){s=d/(1-Math.abs(2*l-1));if(M===r)h=((g-b)/d)%6;else if(M===g)h=(b-r)/d+2;else h=(r-g)/d+4;h=Math.round(h*60);if(h<0)h+=360;s=Math.round(s*100);}l=Math.round(l*100);return{h,s,l};}
+function rgbToCmyk(r,g,b){const c=1-r/255,m=1-g/255,y=1-b/255,k=Math.min(c,m,y);if(k===1)return{c:0,m:0,y:0,k:100};return{c:Math.round((c-k)/(1-k)*100),m:Math.round((m-k)/(1-k)*100),y:Math.round((y-k)/(1-k)*100),k:Math.round(k*100)};}
+
+const colorNames={'#ff0000':'Red','#00ff00':'Lime','#0000ff':'Blue','#ffff00':'Yellow','#ff00ff':'Magenta','#00ffff':'Cyan','#000000':'Black','#ffffff':'White','#808080':'Gray','#c0c0c0':'Silver','#800000':'Maroon','#808000':'Olive','#008000':'Green','#800080':'Purple','#008080':'Teal','#000080':'Navy','#ffa500':'Orange','#ffc0cb':'Pink','#a52a2a':'Brown','#f0f8ff':'AliceBlue','#00d4aa':'Medium Spring Green','#6c5ce7':'Medium Slate Blue','#e2e8f0':'Lavender'};
+
+function update(from){
+  let hex='';
+  if(from==='picker'){hex=picker.value;}
+  else if(from==='hex'){hex=h.value.startsWith('#')?h.value:'#'+h.value;}
+  else{
+    let match; const inp=from==='rgb'?r:from==='hsl'?sl:cmyk;
+    if(from==='rgb'&&(match=inp.value.match(/rgb\((\d+),(\d+),(\d+)\)/))){
+      const r_=Math.min(255,Math.max(0,parseInt(match[1])||0));
+      const g_=Math.min(255,Math.max(0,parseInt(match[2])||0));
+      const b_=Math.min(255,Math.max(0,parseInt(match[3])||0));
+      hex='#'+((1<<24)|(r_<<16)|(g_<<8)|b_).toString(16).slice(1);
+    } else if(from==='hsl'&&(match=inp.value.match(/hsl\((\d+),(\d+)%,(\d+)%\)/))){
+      let h_=parseInt(match[1])/360,s=parseInt(match[2])/100,l_=parseInt(match[3])/100;
+      const k=n=>{const m=n+h_*12;const a=s*Math.min(l_,1-l_);return l_-a*Math.max(-1,Math.min(m-3,9-m,1));};
+      const r_=Math.round(k(0)*255),g_=Math.round(k(8)*255),b_=Math.round(k(4)*255);
+      hex='#'+((1<<24)|(r_<<16)|(g_<<8)|b_).toString(16).slice(1);
+    } else {picker.value='#00d4aa';hex='#00d4aa';}
+  }
+  picker.value=hex;h.value=hex.toUpperCase();
+  const{rgb:{x:r_,y:g_,z:b_}}={rgb:hexToRgb(hex)};
+  r.value=`rgb(${r_},${g_},${b_})`;
+  const{hsl:{h:h_,s:s_,l:l_}}={hsl:rgbToHsl(r_,g_,b_)};
+  sl.value=`hsl(${h_},${s_}%,${l_}%)`;
+  const{cmyk:{c:c_,m:m_,y:y_,k:k_}}={cmyk:rgbToCmyk(r_,g_,b_)};
+  cmyk.value=`cmyk(${c_},${m_},${y_},${k_})`;
+  nameEl.textContent=colorNames[hex.toLowerCase()]||'Custom Color';
+}
+
+picker.addEventListener('input',()=>update('picker'));
+h.addEventListener('input',()=>update('hex'));
+r.addEventListener('input',()=>update('rgb'));
+sl.addEventListener('input',()=>update('hsl'));
+cmyk.addEventListener('input',()=>update('cmyk'));
+document.getElementById('copyHex').addEventListener('click',()=>{navigator.clipboard.writeText(h.value);});
+document.getElementById('copyRgb').addEventListener('click',()=>{navigator.clipboard.writeText(r.value);});
+update('picker');
+</script>
+</body>
+</html>

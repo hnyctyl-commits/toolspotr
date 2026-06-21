@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>UUID Generator — Toolflow</title>
+<meta name="description" content="免费在线 UUID/GUID 生成器。生成 UUID v4（随机）和 v7（时间排序），批量生成，一键复制。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>UUID Generator</strong></div>
+    <h1 class="tool-page-title">🔀 UUID Generator</h1>
+    <p class="tool-page-desc">生成 UUID v4（随机）和 v7（时间戳排序）格式的唯一标识符。支持批量生成，点击复制。</p>
+  </div>
+  <div class="tool-box">
+    <div class="input-row">
+      <div><label>Version</label><select id="uuidVer"><option value="v4">UUID v4 (Random)</option><option value="v7">UUID v7 (Time-sorted)</option></select></div>
+      <div><label>Count</label><select id="uuidCount"><option value="1">1</option><option value="5">5</option><option value="10" selected>10</option><option value="25">25</option><option value="50">50</option></select></div>
+      <div><label>Format</label><select id="uuidFormat"><option value="standard">Standard (xxxxxxxx-xxxx-xxxx)</option><option value="compact">Compact (no dashes)</option><option value="braces">{braces}</option></select></div>
+    </div>
+    <div class="input-row">
+      <button class="tool-btn" id="uuidGenBtn">🔄 Generate</button>
+      <button class="tool-btn-sec" id="uuidCopyAll">📋 Copy All</button>
+    </div>
+    <div class="tool-output" id="uuidOutput" style="font-size:12px;line-height:1.8;margin-top:12px;white-space:pre-wrap;font-family:var(--mono)"></div>
+  </div>
+  <div class="tool-article">
+    <h3>UUID 的用途</h3>
+    <p>UUID（通用唯一标识符）是数据库主键、API 资源 ID、分布式追踪等场景的标准方案。<strong>UUID v4</strong> 基于随机数，适合一般场景。<strong>UUID v7</strong> 包含时间戳，生成的值按时间排序，适合数据库索引性能优化。</p>
+  </div>
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="base64.html" class="tcard" style="margin:0"><div class="tcard-icon">🔤</div><div class="tcard-body"><div class="tcard-title">Base64 Encode</div><div class="tcard-desc">编码解码 Base64</div></div></a>
+      <a href="json-formatter.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON Formatter</div><div class="tcard-desc">格式化 JSON 数据</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div></a>
+    </div>
+  </div>
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script>
+function uuidV4(){return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=crypto.getRandomValues(new Uint8Array(1))[0]%16|0;return(c==='x'?r:(r&0x3|0x8)).toString(16);});}
+function uuidV7(){
+  const t=Date.now(); const arr=new Uint8Array(16);
+  arr[0]=(t>>28)&0xff; arr[1]=(t>>20)&0xff; arr[2]=(t>>12)&0xff; arr[3]=(t>>4)&0xff;
+  arr[4]=(t<<4)&0xf0|0x0; arr[5]=crypto.getRandomValues(new Uint8Array(1))[0]&0xff;
+  arr[6]=0x70|(crypto.getRandomValues(new Uint8Array(1))[0]&0x0f);
+  arr[7]=0x80|(crypto.getRandomValues(new Uint8Array(1))[0]&0x3f);
+  for(let i=8;i<16;i++)arr[i]=crypto.getRandomValues(new Uint8Array(1))[0];
+  let s=''; for(let i=0;i<16;i++){s+=arr[i].toString(16).padStart(2,'0');if([3,5,7,9].includes(i))s+='-';}
+  return s;
+}
+function fmtUUID(s,fmt){
+  if(fmt==='compact')return s.replace(/-/g,'');
+  if(fmt==='braces')return '{'+s+'}';
+  return s;
+}
+function gen(){
+  const ver=document.getElementById('uuidVer').value;
+  const cnt=parseInt(document.getElementById('uuidCount').value);
+  const fmt=document.getElementById('uuidFormat').value;
+  const fn=ver==='v4'?uuidV4:uuidV7;
+  const out=document.getElementById('uuidOutput');
+  let r='';
+  for(let i=0;i<cnt;i++)r+=fmtUUID(fn(),fmt)+'\n';
+  out.textContent=r.trim();
+}
+document.getElementById('uuidGenBtn').addEventListener('click',gen);
+document.getElementById('uuidCopyAll').addEventListener('click',()=>{navigator.clipboard.writeText(document.getElementById('uuidOutput').textContent);});
+gen();
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DNS Leak Test — Toolflow</title>
+<meta name="description" content="免费在线 DNS 泄露检测工具。检测你的 VPN 或代理是否泄露真实 DNS 请求。即开即用，隐私保护。">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-links" style="margin-left:auto"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Security / <strong>DNS Leak Test</strong></div>
+    <h1 class="tool-page-title">🛡️ DNS Leak Test</h1>
+    <p class="tool-page-desc">检测你的 VPN 或代理是否正在泄露 DNS 请求。如果 DNS 服务商和 VPN 不在同一地区，说明你的 DNS 可能正在泄露。</p>
+  </div>
+
+  <div class="tool-box" style="text-align:center">
+    <button class="tool-btn" id="dnsBtn">🔍 Start DNS Leak Test</button>
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:var(--bg-main);padding:16px;border-radius:var(--radius-sm)">
+        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">Your IP</div>
+        <div style="font-size:18px;font-weight:700;font-family:var(--mono)" id="dnsIP">—</div>
+      </div>
+      <div style="background:var(--bg-main);padding:16px;border-radius:var(--radius-sm)">
+        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase">DNS Server</div>
+        <div style="font-size:18px;font-weight:700;font-family:var(--mono)" id="dnsServer">—</div>
+      </div>
+    </div>
+    <div id="dnsVerdict" style="margin-top:16px;padding:12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600"></div>
+  </div>
+
+  <div class="tool-article">
+    <h3>什么是 DNS 泄露？</h3>
+    <p>当你使用 VPN 时，所有网络流量应该通过 VPN 加密隧道传输，包括 DNS 查询。但如果配置不当，你的 DNS 请求可能会绕过 VPN，直接发送给你的 ISP（互联网服务提供商）。这就是 DNS 泄露。这意味着你的 ISP（以及潜在的监控者）可以看到你访问了哪些网站，即使你正在使用 VPN。</p>
+  </div>
+
+  <div class="tool-cross">
+    <h3>你可能还感兴趣</h3>
+    <div class="tool-cross-grid">
+      <a href="ip.html" class="tcard" style="margin:0"><div class="tcard-icon">🌐</div><div class="tcard-body"><div class="tcard-title">IP Lookup</div><div class="tcard-desc">查看你的公网 IP</div></div></a>
+      <a href="password-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title">Password Gen</div><div class="tcard-desc">创建高强度密码</div></div></a>
+      <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div><div class="tcard-desc">浏览全部工具</div></div></a>
+    </div>
+  </div>
+
+  <div class="ad-placeholder" style="margin-top:24px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);font-size:12px;color:var(--text-muted)">AdSense Ready — 728×90</div>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p>
+</div></footer>
+
+<script>
+document.getElementById('dnsBtn').addEventListener('click', testDNS);
+testDNS();
+
+async function testDNS(){
+  const ipEl = document.getElementById('dnsIP');
+  const nsEl = document.getElementById('dnsServer');
+  const verdict = document.getElementById('dnsVerdict');
+
+  ipEl.textContent = 'Testing...';
+  nsEl.textContent = 'Testing...';
+  verdict.innerHTML = '';
+
+  try {
+    // Get IP
+    const ipR = await fetch('https://ipapi.co/json/');
+    const ipD = await ipR.json();
+    ipEl.textContent = ipD.ip || 'Unknown';
+
+    // Try to detect DNS via multiple methods
+    let dnsInfo = 'Unknown';
+    // Use a DNS-over-HTTPS query to compare
+    try {
+      const dnsR = await fetch('https://dns.google/resolve?name=whoami.akamai.net&type=A');
+      const dnsD = await dnsR.json();
+      if(dnsD.Answer && dnsD.Answer.length > 0){
+        dnsInfo = dnsD.Answer[0].data;
+      }
+    } catch(e) {}
+    nsEl.textContent = dnsInfo;
+
+    // Verdict
+    if(dnsInfo === 'Unknown' || ipD.ip === 'Unknown'){
+      verdict.innerHTML = '⚠️ Unable to complete test. Try disabling ad blockers.';
+      verdict.style.background = 'rgba(255,183,0,0.1)';
+      verdict.style.color = '#ffb700';
+    } else if(dnsInfo === ipD.ip){
+      verdict.innerHTML = '✅ Your DNS appears to be secure. IP and DNS match.';
+      verdict.style.background = 'rgba(0,212,170,0.1)';
+      verdict.style.color = 'var(--accent)';
+    } else {
+      verdict.innerHTML = '⚠️ Possible DNS leak detected! Your IP and DNS server differ. IP: ' + ipD.ip + ' — DNS: ' + dnsInfo;
+      verdict.style.background = 'rgba(239,68,68,0.1)';
+      verdict.style.color = '#ef4444';
+    }
+  } catch(e) {
+    ipEl.textContent = 'Error';
+    nsEl.textContent = 'Error';
+    verdict.innerHTML = '❌ Test failed. Check your internet connection and try again.';
+    verdict.style.background = 'rgba(239,68,68,0.1)';
+    verdict.style.color = '#ef4444';
+  }
+}
+</script>
+</body>
+</html>
