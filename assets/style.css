@@ -72,7 +72,11 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
 
-/* ── Nav ── */
+/* ── Speed Animation for "Constantly updated" ── */
+.speed-text{position:relative;display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 2s ease-in-out infinite;font-weight:700}
+.speed-cursor{display:inline-block;color:var(--accent);font-weight:700;animation:blink 0.8s step-end infinite;margin-left:1px;font-size:1.1em}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(7,11,21,0.85); backdrop-filter: blur(20px);
