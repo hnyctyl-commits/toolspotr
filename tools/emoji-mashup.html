@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Emoji Mashup Generator — Toolflow</title>
+<meta name="description" content="Free online emoji generator. Type any word or feeling and get matching emoji combinations. Create emoji art, reactions, and mashups instantly.">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.em-result{font-size:56px;text-align:center;padding:24px;background:var(--bg-main);border-radius:var(--radius);margin:12px 0;min-height:80px;letter-spacing:8px;cursor:pointer;transition:all .2s}.em-result:hover{background:var(--bg-card);border:1px solid var(--accent)}.em-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-top:12px}.em-item{padding:10px 6px;text-align:center;background:var(--bg-card);border-radius:var(--radius-xs);cursor:pointer;transition:all .15s;border:1px solid var(--border)}.em-item:hover{border-color:var(--accent);background:var(--bg-card-hover)}.em-item-emoji{font-size:28px}.em-item-label{font-size:9px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Emoji Mashup</strong></div><h1 class="tool-page-title">🎭 Emoji Mashup Generator</h1><p class="tool-page-desc">Type any word, feeling, or situation and get matching emoji combinations. Click result to copy. Perfect for social media, reactions, and fun.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:1"><input type="text" id="emInput" placeholder="e.g. 'happy cat', 'coding', 'sunset beach'..." value="happy" style="font-size:16px"></div><div><button class="tool-btn" id="emBtn">✨ Generate</button></div></div>
+    <div class="em-result" id="emResult" title="Click to copy!">😊😺✨</div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted)"><span id="emCount">3 emojis</span><span>Click result to copy</span></div>
+    <div class="em-grid" id="emMore"></div>
+  </div>
+  <div class="tool-article"><h3>Emoji Mashups</h3><p>Express yourself with emoji combinations! Type any concept — "love coding", "rainy day", "party time" — and get a unique emoji mashup. Each result is a creative mix of relevant emojis that capture your feeling. Click any result to copy it instantly.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="emoji-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">😄</div><div class="tcard-body"><div class="tcard-title">Emoji Picker</div></div></a>
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const kw={
+  happy:'😊😀😄😁😆🥳🎉✨🌟',sad:'😢😭😥😞😔😩🥺💔🌧',love:'❤️💕😍🥰💗💖💘😘💑',angry:'😠😡🤬💢🔥👿😤🤯💥',
+  cat:'🐱🐈😺😸😻🐾🐈‍⬛😹🙀',dog:'🐶🐕🐩🦮🐾🐕‍🦺😍🥰',cool:'😎🕶️✨🔥💯🎸🏎️🚀🌟',fire:'🔥🔥🔥🔥🔥🔥🔥🔥🔥',
+  party:'🥳🎉🎊🎈🎁🎶💃🪅🍾',music:'🎵🎶🎤🎸🎹🎧🎼🎺🎷',coding:'💻⌨️🖥️🔧⚙️🚀💡📱🤖',
+  coffee:'☕☕☕☕☕☕☕☕☕',food:'🍕🍔🌮🍜🍣🥗🍩🍪🍰',travel:'✈️🌍🗺️🧳🏖️🚢🏔️🌅🚁',
+  beach:'🏖️🌊☀️🏄🚤🦀🐚🌅🌴',rain:'🌧️☔💧⛆🌦️🌊🌫️💨🌀',sun:'☀️🌞🔥🌅🌇☀️☀️☀️☀️',
+  night:'🌙🌚🌛🌜🌃🌌🌠✨🌟',star:'⭐🌟✨💫⭐🌟✨💫⭐',heart:'❤️💕💗💖💘💝💟❣️🧡',
+  nature:'🌿🌲🌳🌱🍀🌺🌸🌼🌻',flower:'🌹🌷🌺🌸🌼🌻💐🌿🍀',fruit:'🍎🍊🍋🍌🍉🍇🍓🫐🍑',
+  pizza:'🍕🍕🍕🍕🍕🍕🍕🍕🍕',burger:'🍔🍔🍔🍔🍔🍔🍔🍔🍔',cake:'🎂🍰🧁🎂🍰🧁🎂🍰🧁',
+  gift:'🎁🎁🎁🎁🎁🎁🎁🎁🎁',christmas:'🎄🎅🤶🦌🔔❄️☃️⛄🎁',
+  ghost:'👻👻👻👻👻👻👻👻👻',spooky:'🎃👻💀🕸️🦇🧛🧟🕯️👹',
+  run:'🏃🏃‍♂️🏃‍♀️💨🏃🏃‍♂️🏃‍♀️💨🔥',sleep:'😴💤🛌🌙💤😴💤🛌🌙',
+  think:'🤔🧐💭🤔🧐💭🤔🧐💭',strong:'💪💪💪💪💪💪💪💪💪',
+  money:'💰💵💶💷🪙💳💰💵💶',crown:'👑👑👑👑👑👑👑👑👑',
+  king:'👑🤴🦁👑🤴🦁👑🤴🦁',queen:'👑👸🦁👑👸🦁👑👸🦁',
+  lol:'😂🤣😂🤣😂🤣😂🤣😂🤣',wow:'😮😯😲🤩😮😯😲🤩😮',
+  sick:'🤒🤢🤮😷🤧🤒🤢🤮😷',cold:'🥶❄️☃️🥶❄️☃️🥶❄️☃️',
+  hot:'🥵🔥☀️🥵🔥☀️🥵🔥☀️',space:'🚀🌍🌕🛸🌟🚀🌍🌕🛸',
+  ocean:'🌊🐬🐳🦈🌊🐬🐳🦈🌊',book:'📚📖📕📗📘📙📚📖📕',
+  game:'🎮🕹️🎲🎯🎮🕹️🎲🎯🎮',art:'🎨🖼️🖌️🎭🎨🖼️🖌️🎭🎨',
+  photo:'📷📸📱📷📸📱📷📸📱',phone:'📱📞📲📱📞📲📱📞📲',
+  email:'📧📨📩📧📨📩📧📨📩',time:'⏰🕐⌛⏰🕐⌛⏰🕐⌛',
+  weather:'🌤️🌥️☁️🌧️⛈️🌤️🌥️☁️🌧️',snow:'❄️☃️⛄❄️☃️⛄❄️☃️⛄',
+  storm:'⛈️🌩️🌪️⚡⛈️🌩️🌪️⚡💨',rainbow:'🌈🌈🌈🌈🌈🌈🌈🌈🌈',
+  bike:'🚲🚴🚴‍♂️🚴‍♀️🚲🚴🚴‍♂️🚴‍♀️',car:'🚗🚙🚕🏎️🚗🚙🚕🏎️🚗',
+  airplane:'✈️🛫🛬🛩️✈️🛫🛬🛩️✈️',train:'🚂🚃🚄🚅🚆🚇🚈🚉🚊'
+};
+
+const inp=document.getElementById('emInput'),res=document.getElementById('emResult'),cnt=document.getElementById('emCount'),more=document.getElementById('emMore'),btn=document.getElementById('emBtn');
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')generate();});btn.addEventListener('click',generate);
+res.addEventListener('click',function(){navigator.clipboard.writeText(this.textContent);this.title='✅ Copied!';setTimeout(()=>this.title='Click to copy!',1500);});
+generate();
+function generate(){
+  const q=inp.value.trim().toLowerCase();if(!q){res.textContent='❓';cnt.textContent='0 emojis';more.innerHTML='';return;}
+  const words=q.split(/[\s,]+/);let results=[],used=new Set();
+  words.forEach(w=>{for(const[key,val]of Object.entries(kw)){if(key.includes(w)||w.includes(key)){const es=val.split('').filter(e=>!used.has(e));es.slice(0,3).forEach(e=>{used.add(e);results.push(e);});}}});
+  if(results.length<3){const emojiList='😀😃😄😁😆😅😂🤣😊😇🙂😉😌😍🥰😘😗😋😛😜🤪😝🤑🤗🤭🤫🤔🤐🤨😐😑😶😏😒🙄😬😮😯😲😳🥺😢😭😤😡😠🤬💀☠️💩🤡👹👺👻💃🕺👯🧖🧗🏄🚣🏊🤽🪂🚀🛸🎠🎡🎢💫⭐🌟✨⚡☄💥🔥🌈🌊🎵🎶🎼🎹🥁🎷🎺🎸🪕🎻🎲♟️🎯🎳🎮🕹️🎰🧩'.split('').filter(e=>!used.has(e));
+    while(results.length<3&&emojiList.length>0){const e=emojiList.splice(Math.floor(Math.random()*emojiList.length),1)[0];results.push(e);}
+  }
+  res.textContent=results.slice(0,6).join('');cnt.textContent=results.length+' emojis';
+  // Show more suggestions
+  more.innerHTML='';
+  const suggestions=['love','cat','party','coding','coffee','travel','rain','star','fire','money','game'].sort(()=>Math.random()-0.5).slice(0,4);
+  suggestions.forEach(s=>{if(s!==q){const el=document.createElement('div');el.className='em-item';el.innerHTML=`<div class="em-item-emoji">${kw[s].slice(0,3)}</div><div class="em-item-label">${s}</div>`;el.addEventListener('click',()=>{inp.value=s;generate();});more.appendChild(el);}});
+}
+</script>
+</body>
+</html>
