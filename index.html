@@ -9,6 +9,11 @@
 <link rel="alternate" hreflang="zh" href="https://toolspotr.com/?lang=zh">
 <link rel="stylesheet" href="assets/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Force-hide panels until JS shows them - prevents flash of visible content */
+#themePanel, #langPanel { display: none !important; }
+#themePanel.show, #langPanel.show { display: block !important; }
+</style>
 </head>
 <body>
 
@@ -19,10 +24,6 @@
     <div class="nav-controls">
       <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
       <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
-    </div>
-
-    <div class="nav-links">
-      <span class="nav-stat" id="navStat"><span data-i18n="navTools">tools</span></span>
 
       <!-- Theme Panel -->
       <div class="theme-panel" id="themePanel">
@@ -41,6 +42,10 @@
         <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
         <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
       </div>
+    </div>
+
+    <div class="nav-links">
+      <span class="nav-stat"><span data-i18n="navTools">23</span></span>
     </div>
   </div>
 </nav>

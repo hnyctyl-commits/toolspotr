@@ -94,7 +94,7 @@ body {
 .logo-text { font-size: 16px; font-weight: 800; color: var(--text-pri); letter-spacing: -0.5px; }
 
 /* ── Controls (theme/lang/search) ── */
-.nav-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.nav-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; position: relative; }
 .ctrl-btn {
   width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
   background: var(--bg-card); border: 1px solid var(--border);
@@ -273,7 +273,7 @@ body {
   pointer-events: none;
 }
 .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
-.hero-title { font-size: 38px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 10px; }
+.hero-title { font-size: 32px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; margin-bottom: 10px; }
 .gradient { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-desc { font-size: 15px; color: var(--text-sec); margin-bottom: 4px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
