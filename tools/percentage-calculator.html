@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Percentage Calculator — Toolflow</title>
+<meta name="description" content="Free online percentage calculator. Calculate percentages, percentage increase/decrease, percentage of a number. Instant results.">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pc-card{background:var(--bg-main);padding:16px;border-radius:var(--radius-sm);border:1px solid var(--border)}.pc-card h3{font-size:13px;font-weight:600;margin-bottom:8px}.pc-result{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono);margin-top:6px}@media(max-width:600px){.pc-grid{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links" style="position:relative"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Percentage Calculator</strong></div><h1 class="tool-page-title">📊 Percentage Calculator</h1><p class="tool-page-desc">Calculate percentages, percentage change, and percentage of a number. Three calculators in one.</p></div>
+  <div class="tool-box">
+    <div class="pc-grid">
+      <div class="pc-card"><h3>What is <em>X</em>% of <em>Y</em>?</h3><div class="input-row" style="gap:6px"><div><input type="number" id="pc1Pct" value="15" placeholder="%"></div><div><input type="number" id="pc1Num" value="200" placeholder="Number"></div></div><div class="pc-result" id="pc1Result">30</div></div>
+      <div class="pc-card"><h3><em>X</em> is what % of <em>Y</em>?</h3><div class="input-row" style="gap:6px"><div><input type="number" id="pc2Val" value="25" placeholder="Value"></div><div><input type="number" id="pc2Total" value="80" placeholder="Total"></div></div><div class="pc-result" id="pc2Result">31.25%</div></div>
+      <div class="pc-card"><h3>Percentage Increase/Decrease</h3><div class="input-row" style="gap:6px"><div><input type="number" id="pc3Old" value="100" placeholder="Old value"></div><div><input type="number" id="pc3New" value="150" placeholder="New value"></div></div><div class="pc-result" id="pc3Result">+50.00%</div></div>
+      <div class="pc-card"><h3>Add <em>X</em>% to a Number</h3><div class="input-row" style="gap:6px"><div><input type="number" id="pc4Num" value="200" placeholder="Number"></div><div><input type="number" id="pc4Pct" value="10" placeholder="%"></div></div><div class="pc-result" id="pc4Result">220</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Why Percentages Matter</h3><p>Percentages are everywhere — sales tax, discounts, tips, investment returns, grade scores, and statistics. A solid understanding of percentage calculations is essential for everyday financial decisions. "Percentage calculator" is one of the most searched math queries online.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="compound-interest.html" class="tcard" style="margin:0"><div class="tcard-icon">📈</div><div class="tcard-body"><div class="tcard-title">Investment Calc</div><div class="tcard-desc">Compound interest</div></div></a>
+    <a href="unit-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">📏</div><div class="tcard-body"><div class="tcard-title">Unit Converter</div><div class="tcard-desc">60+ units</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a><span>$200 free credit</span></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function calc(){const p=parseFloat(document.getElementById('pc1Pct').value)||0,n=parseFloat(document.getElementById('pc1Num').value)||0;document.getElementById('pc1Result').textContent=(p*n/100).toFixed(2);const v=parseFloat(document.getElementById('pc2Val').value)||0,t=parseFloat(document.getElementById('pc2Total').value)||1;document.getElementById('pc2Result').textContent=(v/t*100).toFixed(2)+'%';const o=parseFloat(document.getElementById('pc3Old').value)||1,w=parseFloat(document.getElementById('pc3New').value)||0,c=(w-o)/o*100;document.getElementById('pc3Result').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';const m=parseFloat(document.getElementById('pc4Num').value)||0,p4=parseFloat(document.getElementById('pc4Pct').value)||0;document.getElementById('pc4Result').textContent=(m*(1+p4/100)).toFixed(2);}
+document.querySelectorAll('.tool-box input').forEach(el=>el.addEventListener('input',calc));calc();
+</script>
+</body>
+</html>
