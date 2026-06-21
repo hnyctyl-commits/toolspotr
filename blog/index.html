@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Blog — Toolflow</title>
+<meta name="description" content="Toolflow blog — free online tools guides, tips, and rankings. Learn about the best developer tools, security tools, and financial calculators.">
+<meta name="keywords" content="tool blog, developer tools guide, online tools ranking">
+<link rel="canonical" href="https://toolspotr.com/blog/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}
+.blg{max-width:720px;margin:0 auto;padding:40px 24px 60px}
+.blg h1{font-size:32px;font-weight:800;margin-bottom:6px}
+.blg-desc{color:var(--text-sec);font-size:14px;margin-bottom:30px}
+.blg-card{display:flex;gap:16px;padding:20px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;text-decoration:none;color:inherit;transition:all .2s}
+.blg-card:hover{border-color:var(--accent);background:var(--bg-card-hover);transform:translateY(-2px)}
+.blg-icon{font-size:36px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--bg-main);border-radius:12px;flex-shrink:0}
+.blg-body{flex:1}
+.blg-title{font-size:17px;font-weight:600;margin-bottom:4px;color:var(--text-pri)}
+.blg-body .meta{font-size:11px;color:var(--text-muted);margin-bottom:4px}
+.blg-body p{font-size:13px;color:var(--text-sec);line-height:1.5}
+.blg-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;background:rgba(0,212,170,0.06);color:var(--accent);margin-right:4px}
+@media(max-width:480px){.blg-card{flex-direction:column;gap:10px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← Home</a></div>
+</div></nav>
+<main class="blg">
+  <h1>📖 Blog</h1>
+  <p class="blg-desc">Free online tools guides, rankings, and tips. New articles added regularly.</p>
+
+  <a href="top-10-free-developer-tools-2026.html" class="blg-card">
+    <div class="blg-icon">💻</div>
+    <div class="blg-body">
+      <div class="blg-title">Top 10 Free Online Developer Tools in 2026</div>
+      <div class="meta">June 21, 2026 · 5 min read <span class="blg-tag">Developer</span><span class="blg-tag">Popular</span></div>
+      <p>The essential toolkit every developer needs — from IP lookup and JSON formatter to regex tester and QR code generator. All free, all in your browser.</p>
+    </div>
+  </a>
+
+  <a href="top-10-security-privacy-tools-2026.html" class="blg-card">
+    <div class="blg-icon">🔒</div>
+    <div class="blg-body">
+      <div class="blg-title">10 Best Free Online Security & Privacy Tools in 2026</div>
+      <div class="meta">June 21, 2026 · 6 min read <span class="blg-tag">Security</span><span class="blg-tag">Privacy</span></div>
+      <p>Protect your privacy online. DNS leak test, password strength checker, browser fingerprint analysis, and more essential security tools.</p>
+    </div>
+  </a>
+
+  <a href="best-free-financial-calculators-2026.html" class="blg-card">
+    <div class="blg-icon">💰</div>
+    <div class="blg-body">
+      <div class="blg-title">Best Free Online Financial Calculators in 2026</div>
+      <div class="meta">June 21, 2026 · 5 min read <span class="blg-tag">Finance</span><span class="blg-tag">Investment</span></div>
+      <p>Compound interest, loan amortization, and retirement planning calculators. Take control of your financial future with the right tools.</p>
+    </div>
+  </a>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

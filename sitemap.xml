@@ -40,4 +40,5 @@
   <url><loc>https://toolspotr.com/tools/emoji-picker.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/emoji-mashup.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/word-suggester.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/blog/index.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
 </urlset>
