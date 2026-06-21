@@ -9,7 +9,7 @@
 const LANG = {
   en: {
     siteName: 'Toolflow', siteDesc: 'Free Online Tools for Developers',
-    navTools: 'tools', searchPlaceholder: 'Search tools...',
+    navTools: 'tools', searchPlaceholder: 'Search 58 tools...',
     heroTitle: 'Your <span class="gradient">Daily Toolkit</span>',
     heroDesc: '50+ free online tools for developers, designers, and everyone. IP lookup, JSON formatter, investment calculator, and more. <span class="speed-text">Constantly updated</span><span class="speed-cursor">|</span>',
     heroTools: 'Tools', heroCategories: 'Categories', heroAlways: 'Always Free',
