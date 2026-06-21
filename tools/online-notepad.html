@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Online Notepad — Toolflow</title>
+<meta name="description" content="Free online notepad. Write notes in your browser with auto-save. Text is stored locally and never leaves your device.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Online Notepad</strong></div><h1 class="tool-page-title">📝 Online Notepad</h1><p class="tool-page-desc">Write notes in your browser. Auto-saves to local storage. Nothing is uploaded — your notes stay on your device.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:11px;color:var(--text-muted)"><span id="npWordCount">0</span> words · <span id="npCharCount">0</span> chars</span>
+      <button class="tool-btn-sec" id="npClear" style="font-size:12px">🗑️ Clear</button>
+    </div>
+    <textarea id="npEditor" rows="14" style="font-family:var(--mono);font-size:14px;resize:vertical;line-height:1.7" placeholder="Start typing..."></textarea>
+    <div style="margin-top:4px;font-size:10px;color:var(--text-muted)">💾 Auto-saved locally · Data never leaves your device</div>
+  </div>
+  <div class="tool-article"><h3>Private & Offline Notes</h3><p>This notepad saves your work automatically every few seconds using localStorage. Close the browser, come back later — your notes are still there. Perfect for quick notes, brainstorming, code snippets, and drafts that don't need cloud storage.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div></div></a>
+    <a href="markdown-editor.html" class="tcard" style="margin:0"><div class="tcard-icon">📝</div><div class="tcard-body"><div class="tcard-title">Markdown Editor</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const editor=document.getElementById("npEditor"),wc=document.getElementById("npWordCount"),cc=document.getElementById("npCharCount");
+const saved=localStorage.getItem("tf_notepad");if(saved)editor.value=saved;
+editor.addEventListener("input",function(){
+  const t=this.value;const words=t.trim()?t.trim().split(/\s+/).length:0;wc.textContent=words;cc.textContent=t.length;
+  clearTimeout(editor._save);editor._save=setTimeout(()=>localStorage.setItem("tf_notepad",t),500);
+});
+document.getElementById("npClear").addEventListener("click",function(){if(confirm("Clear all text?")){editor.value="";localStorage.removeItem("tf_notepad");wc.textContent="0";cc.textContent="0";}});
+editor.dispatchEvent(new Event("input"));
+</script>
+</body>
+</html>

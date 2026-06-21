@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Typing Speed Test — Toolflow</title>
+<meta name="description" content="Free online typing speed test. Measure your WPM (words per minute) and accuracy. Type random words and see your score.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ts-word{display:inline-block;padding:3px 6px;margin:2px;border-radius:4px;font-family:var(--mono);font-size:18px;transition:all .05s}.ts-active{background:rgba(0,212,170,0.15);color:var(--accent);transform:scale(1.05)}.ts-done{color:var(--text-muted)}.ts-wrong{background:rgba(239,68,68,0.2);color:#ef4444}.ts-stat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Typing Speed Test</strong></div><h1 class="tool-page-title">⌨️ Typing Speed Test</h1><p class="tool-page-desc">Test your typing speed. Type the words as fast and accurately as you can. Get your WPM and accuracy score.</p></div>
+  <div class="tool-box">
+    <div class="ts-stat">
+      <div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">WPM</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="tsWpm">0</div></div>
+      <div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Accuracy</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="tsAcc">100%</div></div>
+      <div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Time</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="tsTime">0s</div></div>
+    </div>
+    <div style="padding:12px;background:var(--bg-main);border-radius:var(--radius-sm);line-height:1.8;min-height:100px;margin-bottom:8px;user-select:none" id="tsDisplay">Click "Start" to begin</div>
+    <input type="text" id="tsInput" placeholder="Type here..." style="font-family:var(--mono);font-size:16px" disabled>
+    <div style="margin-top:8px"><button class="tool-btn" id="tsStart">▶ Start Test</button><button class="tool-btn-sec" id="tsReset">↺ Reset</button></div>
+  </div>
+  <div class="tool-article"><h3>Improve Your Typing</h3><p>Average typing speed is around 40 WPM. Professional typists reach 65-75 WPM. This test uses common English words to measure your speed and accuracy. Practice daily to improve — regular typing practice can increase your speed by 10-20 WPM in a month.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const WORDS="the,quick,brown,fox,jumps,over,lazy,dog,hello,world,typing,speed,test,free,online,tool,code,developer,design,programming,keyboard,fingers,practice,words,minute,accurate,faster,better,strong,house,plant,book,water,light,star,moon,sun,earth,fire,wind,stone,cloud,rain,snow,night,day,time,life,love,hope,peace,joy,kind,true,brave,calm,deep,fast,soft,warm,cool,green,blue,red,gold,silver,iron,wood,glass,heart,mind,soul,spirit,wave,tide,flow,stream,river,lake,ocean,sea,ship,sail,port,anchor,map,compass,north,south,east,west,path,road,street,lane,hill,mountain,valley,forest,tree,leaf,flower,garden,field,meadow,deer,bird,fish,horse,duck,frog,turtle,snake,butterfly,dragon,castle,king,queen,prince,princess,knight,sword,shield,crown,throne".split(",");
+let state="idle",words=[],current=0,correct=0,errors=0,startTime=0,timer=null;
+const display=document.getElementById("tsDisplay"),input=document.getElementById("tsInput"),wpm=document.getElementById("tsWpm"),acc=document.getElementById("tsAcc"),time=document.getElementById("tsTime");
+document.getElementById("tsStart").addEventListener("click",start);document.getElementById("tsReset").addEventListener("click",reset);
+input.addEventListener("keydown",function(e){
+  if(state!=="running")return;
+  if(e.key===" "){e.preventDefault();const typed=this.value.trim();if(typed==="")return;
+    if(typed===words[current]){correct++;}else{errors++;}
+    current++;this.value="";render();
+    if(current>=words.length)finish();
+  }else if(e.key==="Backspace"){/* allow */}});
+function start(){
+  state="running";words=Array.from({length:30},()=>WORDS[Math.floor(Math.random()*WORDS.length)]);
+  current=0;correct=0;errors=0;startTime=Date.now();
+  input.disabled=false;input.value="";input.focus();render();
+  document.getElementById("tsStart").textContent="▶ Running...";
+  timer=setInterval(()=>{const s=Math.floor((Date.now()-startTime)/1000);time.textContent=s+"s";calcWPM();},200);
+}
+function calcWPM(){const elapsed=(Date.now()-startTime)/60000;if(elapsed>0){const w=correct/elapsed;wpm.textContent=Math.round(w);}const total=correct+errors;acc.textContent=total>0?Math.round(correct/total*100)+"%":"100%";}
+function render(){display.innerHTML=words.map((w,i)=>{
+  let cls="ts-word";if(i<current)cls+=" ts-done";if(i===current)cls+=" ts-active";return `<span class="${cls}">${w}</span>`;
+}).join("");}
+function finish(){clearInterval(timer);state="done";calcWPM();input.disabled=true;document.getElementById("tsStart").textContent="▶ Start Test";time.textContent=Math.round((Date.now()-startTime)/1000)+"s";}
+function reset(){clearInterval(timer);state="idle";words=[];current=0;correct=0;errors=0;input.disabled=true;input.value="";display.textContent='Click "Start" to begin';wpm.textContent="0";acc.textContent="100%";time.textContent="0s";document.getElementById("tsStart").textContent="▶ Start Test";}
+</script>
+</body>
+</html>

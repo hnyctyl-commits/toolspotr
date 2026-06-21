@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Palindrome Checker — Toolflow</title>
+<meta name="description" content="Free palindrome checker. Check if any word, phrase, or number is a palindrome. Supports ignoring spaces, punctuation, and case.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.pc-big{font-size:32px;text-align:center;padding:20px;border-radius:var(--radius-sm);margin-top:10px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Palindrome Checker</strong></div><h1 class="tool-page-title">🔄 Palindrome Checker</h1><p class="tool-page-desc">Check if any word, phrase, or number reads the same forwards and backwards. Supports custom options.</p></div>
+  <div class="tool-box">
+    <input type="text" id="pcInput" value="A man, a plan, a canal: Panama" style="font-size:16px;font-family:var(--mono)">
+    <div style="display:flex;gap:12px;margin:8px 0;font-size:12px;color:var(--text-sec)">
+      <label><input type="checkbox" id="pcCase" checked> Ignore case</label>
+      <label><input type="checkbox" id="pcSpace" checked> Ignore spaces & punctuation</label>
+    </div>
+    <div class="pc-big" id="pcResult">✅ Palindrome!</div>
+  </div>
+  <div class="tool-article"><h3>What is a Palindrome?</h3><p>A palindrome is a word, phrase, number, or sequence that reads the same forwards and backwards. Famous examples: "racecar", "madam", "level", and "A man, a plan, a canal: Panama". Palindromes date back to ancient times and appear in Latin, Greek, and English.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="anagram-solver.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">Anagram Solver</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const inp=document.getElementById("pcInput"),res=document.getElementById("pcResult"),cC=document.getElementById("pcCase"),cS=document.getElementById("pcSpace");
+[inp,cC,cS].forEach(el=>el.addEventListener("input",check));check();
+function check(){
+  let t=inp.value;if(!t){res.textContent="Enter text";res.style.background="var(--bg-main)";res.style.color="var(--text-sec)";return;}
+  if(cC.checked)t=t.toLowerCase();if(cS.checked)t=t.replace(/[^a-z0-9]/gi,"");
+  const rev=[...t].reverse().join("");
+  if(t===rev){res.textContent="✅ Palindrome!";res.style.background="rgba(0,212,170,0.08)";res.style.color="var(--accent)";}
+  else{res.textContent="❌ Not a palindrome";res.style.background="rgba(239,68,68,0.08)";res.style.color="#ef4444";}
+}
+</script>
+</body>
+</html>

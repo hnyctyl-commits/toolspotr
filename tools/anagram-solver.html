@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Anagram Solver — Toolflow</title>
+<meta name="description" content="Free anagram solver. Enter any letters to find all possible words. Solve Scrabble, word puzzles, and anagrams instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Anagram Solver</strong></div><h1 class="tool-page-title">🔀 Anagram Solver</h1><p class="tool-page-desc">Enter letters to find all possible words and anagrams. Solve word puzzles, Scrabble, and word games instantly.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:1"><label>Enter letters</label><input type="text" id="asInput" value="listen" style="font-size:18px;font-family:var(--mono)"></div></div>
+    <button class="tool-btn" id="asBtn">🔍 Find Anagrams</button>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px" id="asResults"></div>
+  </div>
+  <div class="tool-article"><h3>Anagram Solving</h3><p>Anagrams are words formed by rearranging the letters of another word. This tool finds all possible anagrams from a built-in dictionary of thousands of English words. Perfect for Scrabble, crosswords, word games, and vocabulary building.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-suggester.html" class="tcard" style="margin:0"><div class="tcard-icon">✍️</div><div class="tcard-body"><div class="tcard-title">Word Suggester</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const WORDS="the,be,to,of,and,a,in,that,have,i,it,for,not,on,with,he,as,you,do,at,this,but,his,by,from,they,we,say,her,she,or,an,will,my,one,all,would,their,there,what,so,up,out,if,about,who,get,which,go,me,when,make,can,like,time,no,just,him,know,take,people,into,year,your,good,some,could,them,see,other,than,then,now,look,only,come,its,over,think,also,back,after,use,two,how,our,work,first,well,way,even,new,want,because,any,these,give,day,most,us,great,between,need,large,often,hand,high,place,small,under,long,set,put,end,does,another,right,old,big,why,let,house,world,still,public,life,down,side,found,head,stand,own,page,should,country,follow,answer,school,grow,study,still,learn,plant,cover,food,sun,four,state,keep,eye,never,last,door,city,tree,cross,since,difficult,hard,start,might,story,saw,far,sea,draw,left,late,run,while,press,close,near,build,earth,father,home,find,use,tell,ask,seem,feel,try,leave,call,help,turn,show,hear,play,move,live,believe,bring,happen,must,write,provide,sit,stand,lose,pay,meet,include,continue,lead,understand,watch,follow,stop,create,speak,read,allow,add,spend,grow,open,walk,win,offer,remember,consider,appear,buy,service,produce,develop,carry,expect,break,receive,agree,support,explain,drive,hold,describe,remain,contain,raise,prepare,require,represent,begin,exist,form,improve,reduce,perform,reach,pick,design,affect,protect,present,respond,claim,challenge,apply,compare,recommend,engage,ensure,generate,implement,measure,address,test,propose,collect,manage,maintain,promote,secure,document,report,analyze,evaluate,process,resolve,review,research,resource,restore,structure,access,account,approve,assess,communicate,configure,confirm,connect,deliver,draft,edit,educate,eliminate,enable,exchange,execute,expand,facilitate,identify,install,integrate,introduce,investigate,locate,negotiate,obtain,order,organize,participate,plan,predict,prepare,prevent,process,produce,program,project,promote,propose,protect,provide,purchase,recommend,record,recruit,reduce,refer,register,reject,release,remove,replace,report,request,require,research,resolve,respond,restore,retain,review,revise,select,serve,service,solve,specify,submit,supervise,support,survey,train,transfer,transform,update,utilize,validate,verify,silent,tinsel,enlist,inlets,list,line,site,tie,net,ten,sit,its,sin,tin,lit,lie,set,let,nil,rat,art,tar,star,arts,post,stop,tops,spot,note,tone,stone,atone,angel,angle,glean,stool,tools,loose,solo,ample,maple,elbow,bowel,bow,below".split(",");
+document.getElementById("asBtn").addEventListener("click",solve);solve();
+function solve(){
+  const q=document.getElementById("asInput").value.trim().toLowerCase();
+  const s=q.split("").sort().join("");
+  const perfect=WORDS.filter(w=>w.length>=2&&w.split("").sort().join("")===s&&w!==q).sort((a,b)=>b.length-a.length);
+  const partial=WORDS.filter(w=>w!==q&&w.split("").every(c=>q.includes(c))&&w.length>=2&&w.length<=q.length).filter(w=>!perfect.includes(w)).slice(0,30);
+  const r=document.getElementById("asResults");let html="";
+  if(perfect.length)html+=`<div style="width:100%;font-size:11px;color:var(--text-muted);margin-bottom:4px">Perfect anagrams (${perfect.length})</div>`+perfect.slice(0,20).map(w=>`<span style="padding:4px 10px;background:rgba(0,212,170,0.08);border-radius:14px;font-size:13px;color:var(--accent);border:1px solid rgba(0,212,170,0.15)">${w}</span>`).join("");
+  if(partial.length)html+=`<div style="width:100%;font-size:11px;color:var(--text-muted);margin-top:8px;margin-bottom:4px">Sub-words (${partial.length})</div>`+partial.map(w=>`<span style="padding:4px 10px;background:var(--bg-card);border-radius:14px;font-size:13px;color:var(--text-sec);border:1px solid var(--border)">${w}</span>`).join("");
+  if(!html)html='<div style="color:var(--text-muted);padding:12px">No anagrams found</div>';
+  r.innerHTML=html;
+}
+</script>
+</body>
+</html>

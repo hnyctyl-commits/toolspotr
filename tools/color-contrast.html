@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Color Contrast Checker — Toolflow</title>
+<meta name="description" content="Free online color contrast checker. Check WCAG compliance of foreground/background color pairs. Ensure your website is accessible.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cc-box{height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin-top:8px}.cc-aa{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design / <strong>Color Contrast Checker</strong></div><h1 class="tool-page-title">👁️ Color Contrast Checker</h1><p class="tool-page-desc">Check the contrast ratio between two colors. Ensure your designs meet WCAG accessibility standards for normal and large text.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Background</label><input type="color" id="ccBg" value="#070b15"></div><div><label>Text</label><input type="color" id="ccFg" value="#00d4aa"></div></div>
+    <div class="cc-box" id="ccBox">Sample Text</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center">
+        <div style="font-size:9px;color:var(--text-muted)">Contrast Ratio</div>
+        <div style="font-size:24px;font-weight:700;color:var(--accent)" id="ccRatio">4.5:1</div>
+      </div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center">
+        <div style="font-size:9px;color:var(--text-muted)">Rating</div>
+        <div style="font-size:16px;font-weight:600" id="ccRating">AA</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap" id="ccBadges"></div>
+  </div>
+  <div class="tool-article"><h3>WCAG Contrast Standards</h3><p><strong>AA Normal</strong> — 4.5:1 minimum for text under 18px. <strong>AA Large</strong> — 3:1 for text 18px+ or bold 14px+. <strong>AAA Normal</strong> — 7:1 for enhanced accessibility. Proper contrast ensures your content is readable by users with visual impairments.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div></div></a>
+    <a href="color-name-finder.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Names</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function lum(r,g,b){const [R,G,B]=[r,g,b].map(c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);});return 0.2126*R+0.7152*G+0.0722*B;}
+function contrast(h1,h2){const c1=parseInt(h1.slice(1),16);const c2=parseInt(h2.slice(1),16);const l1=lum(c1>>16,(c1>>8)&0xff,c1&0xff);const l2=lum(c2>>16,(c2>>8)&0xff,c2&0xff);const lighter=Math.max(l1,l2),darker=Math.min(l1,l2);return((lighter+0.05)/(darker+0.05));}
+const bg=document.getElementById("ccBg"),fg=document.getElementById("ccFg"),box=document.getElementById("ccBox"),ratio=document.getElementById("ccRatio"),rating=document.getElementById("ccRating"),badges=document.getElementById("ccBadges");
+[bg,fg].forEach(el=>el.addEventListener("input",check));check();
+function check(){
+  const r=contrast(bg.value,fg.value);ratio.textContent=r.toFixed(1)+":1";
+  box.style.background=bg.value;box.style.color=fg.value;
+  const ratings=[];
+  if(r>=4.5)ratings.push('AA Normal ✅');else if(r>=3)ratings.push('AA Normal ❌');
+  if(r>=3)ratings.push('AA Large ✅');else ratings.push('AA Large ❌');
+  if(r>=7)ratings.push('AAA ✅');else ratings.push('AAA ❌');
+  if(r>=4.5)rating.textContent=ratings[0];else if(r>=3)rating.textContent="AA Large only";else rating.textContent="FAIL";
+  rating.style.color=r>=4.5?"var(--accent)":"#ef4444";
+  badges.innerHTML=ratings.map(b=>`<span class="cc-aa" style="background:${b.includes('✅')?'rgba(0,212,170,0.1)':'rgba(239,68,68,0.1)'};color:${b.includes('✅')?'var(--accent)':'#ef4444'}">${b}</span>`).join("");
+}
+</script>
+</body>
+</html>
