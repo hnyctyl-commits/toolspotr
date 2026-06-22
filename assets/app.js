@@ -565,14 +565,13 @@ function getRecentTools(){
     ).join('');
   }
   
-  // Click handler
+  // Click handler — 直接跳转到工具页，比搜索更快
   suggest.addEventListener('click', function(e){
     const tag = e.target.closest('.hot-tag');
     if(!tag) return;
-    const name = tag.dataset.toolName;
-    input.value = name;
-    input.dispatchEvent(new Event('input'));
-    input.focus();
+    const toolId = tag.dataset.toolId;
+    const tool = TOOLS.find(t => t.id === toolId);
+    if(tool && tool.url) window.location.href = tool.url;
   });
   
   renderHotTags();
