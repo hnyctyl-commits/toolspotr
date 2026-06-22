@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Hashtag Generator — Toolflow</title><meta name="description" content="Free hashtag generator. Generate popular hashtags for Instagram, TikTok, and Twitter from any keyword.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style></head>
+<body><nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div></div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Writing / <strong>Hashtag Generator</strong></div>
+  <h1 class="tool-page-title">#️⃣ Hashtag Generator</h1><p class="tool-page-desc">Generate relevant hashtags for social media from any keyword.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:1"><input type="text" id="hgInput" value="travel" placeholder="Enter a keyword..." style="font-size:16px"></div></div>
+    <button class="tool-btn" id="hgBtn"># Generate Hashtags</button>
+    <div id="hgResults" style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px"></div>
+    <button class="tool-btn-sec" id="hgCopy" style="margin-top:8px">Copy All</button>
+  </div>
+  <div class="tool-article"><h3>Social Media Hashtags</h3><p>Using the right hashtags increases your post visibility by up to 12x. This tool generates relevant hashtags based on your keyword, combining it with popular social media tags.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+document.getElementById("hgBtn").addEventListener("click",function(){
+  const k=document.getElementById("hgInput").value.trim().toLowerCase().replace(/\s+/g,"");
+  if(!k)return;
+  const pop=["love","instagood","photooftheday","beautiful","fashion","happy","cute","follow","tbt","like4like","art","nature","travel","photography","style","summer","makeup","food","fitness","motivation","inspiration","funny","lifestyle"];
+  const tags=[];
+  tags.push("#"+k);
+  pop.slice(0,12).forEach(t => tags.push("#"+k+t));
+  pop.slice(0,8).forEach(t => tags.push("#"+t+k));
+  document.getElementById("hgResults").innerHTML=tags.map(t =>
+    '<span style="padding:4px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;font-size:12px;color:var(--accent);cursor:pointer" onclick="navigator.clipboard.writeText(\''+t+'\')">'+t+'</span>'
+  ).join("");
+});
+document.getElementById("hgCopy").addEventListener("click",function(){
+  const tags=[...document.querySelectorAll("#hgResults span")].map(s=>s.textContent).join(" ");
+  navigator.clipboard.writeText(tags);
+  this.textContent="Copied!";
+  setTimeout(()=>this.textContent="Copy All",2000);
+});
+</script>
+</body>
+</html>

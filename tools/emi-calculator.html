@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EMI Calculator — Toolflow</title><meta name="description" content="Free EMI calculator. Calculate equated monthly installment for home loans, car loans, and personal loans.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style></head>
+<body><nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div></div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / finance / <strong>EMI Calculator</strong></div>
+  <h1 class="tool-page-title">🏦 EMI Calculator</h1><p class="tool-page-desc">Calculate monthly EMI for loans. Enter loan amount, interest rate, and tenure to see EMI, total interest, and payment schedule.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Loan Amount ($)</label><input type="number" id="emiAmt" value="50000"><div><label>Annual Rate (%)</label><input type="number" id="emiRate" value="8" step="0.1"><div><label>Tenure (months)</label><input type="number" id="emiTenure" value="60"></div></div></div></div><button class="tool-btn" id="emiBtn">🧮 Calculate EMI</button><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px"><div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Monthly EMI</div><div style="font-size:20px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="emiMonthly">$1,014</div></div><div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total Interest</div><div style="font-size:18px;font-weight:700;color:var(--accent2);font-family:var(--mono)" id="emiInterest">$10,840</div></div><div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total Payment</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="emiTotal">$60,840</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free EMI calculator. Calculate equated monthly installment for home loans, car loans, and personal loans.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script><script>document.getElementById("emiBtn").addEventListener("click",function(){const p=parseFloat(document.getElementById("emiAmt").value)||0,r=(parseFloat(document.getElementById("emiRate").value)||0)/12/100,n=parseInt(document.getElementById("emiTenure").value)||1;const emi=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);const total=emi*n;document.getElementById("emiMonthly").textContent="$"+Math.round(emi).toLocaleString();document.getElementById("emiTotal").textContent="$"+Math.round(total).toLocaleString();document.getElementById("emiInterest").textContent="$"+Math.round(total-p).toLocaleString();});document.getElementById("emiBtn").click();</script></body></html>
