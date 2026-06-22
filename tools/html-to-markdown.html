@@ -23,7 +23,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>document.getElementById("hmBtn").addEventListener("click",()=>{let h=document.getElementById("hmInput").value;h=h.replace(/<h1[^>]*>(.*?)<\/h1>/gi,"# $1\n\n");h=h.replace(/<h2[^>]*>(.*?)<\/h2>/gi,"## $1\n\n");h=h.replace(/<h3[^>]*>(.*?)<\/h3>/gi,"### $1\n\n");h=h.replace(/<strong>(.*?)<\/strong>/gi,"**$1**");h=h.replace(/<em>(.*?)<\/em>/gi,"*$1*");h=h.replace(/<code>(.*?)<\/code>/gi,"`$1`");h=h.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi,"[$2]($1)");h=h.replace(/<li>(.*?)<\/li>/gi,"- $1\n");h=h.replace(/<\/?ul>/gi,"\n");h=h.replace(/<\/?ol[^>]*>/gi,"\n");h=h.replace(/<p[^>]*>(.*?)<\/p>/gi,"$1\n\n");h=h.replace(/<br\s*\/?>/gi,"\n");h=h.replace(/<[^>]+>/g,"");h=h.replace(/\n{3,}/g,"\n\n").trim();const e=document.createElement("textarea");e.textContent=h;document.getElementById("hmOutput").value=e.innerHTML;});document.getElementById("hmCopy").addEventListener("click",()=>navigator.clipboard.writeText(document.getElementById("hmOutput").value));</script>
 </body>
 </html>

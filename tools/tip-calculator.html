@@ -35,7 +35,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>
 function calcTip(){const b=parseFloat(document.getElementById("tcBill").value)||0,p=parseFloat(document.getElementById("tcPct").value)||0,s=parseInt(document.getElementById("tcSplit").value)||1;const tip=b*p/100,total=b+tip;document.getElementById("tcTip").textContent='$'+tip.toFixed(2);document.getElementById("tcTotal").textContent='$'+total.toFixed(2);document.getElementById("tcEachTip").textContent='$'+(tip/s).toFixed(2);document.getElementById("tcEachTotal").textContent='$'+(total/s).toFixed(2);}
 document.querySelectorAll('#tcBill,#tcPct,#tcSplit').forEach(el=>el.addEventListener('input',calcTip));document.querySelectorAll('[data-tip]').forEach(b=>b.addEventListener('click',function(){document.getElementById("tcPct").value=this.dataset.tip;calcTip();}));calcTip();

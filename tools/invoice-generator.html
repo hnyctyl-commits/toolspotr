@@ -23,7 +23,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>document.getElementById("invAdd").addEventListener("click",()=>{const d=document.createElement("div");d.className="input-row";d.style.gap="4px";d.innerHTML='<div style="flex:2"><input placeholder="Item"></div><div style="flex:1"><input type="number" placeholder="Qty" value="1"></div><div style="flex:1"><input type="number" placeholder="Rate" value="0"></div>';document.getElementById("invItems").appendChild(d);});document.getElementById("invCalc").addEventListener("click",()=>{let sub=0;document.querySelectorAll("#invItems .input-row").forEach(r=>{const inputs=r.querySelectorAll("input");const q=parseFloat(inputs[1]?.value)||0;const rate=parseFloat(inputs[2]?.value)||0;sub+=q*rate;});document.getElementById("invSub").textContent="$"+sub.toLocaleString();document.getElementById("invTotal").textContent="$"+sub.toLocaleString();});</script>
 </body>
 </html>

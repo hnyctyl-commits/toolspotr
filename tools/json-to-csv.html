@@ -27,7 +27,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>function escCSV(v){const s=String(v);if(s.includes(",")||s.includes('"')||s.includes("\n"))return '"'+s.replace(/"/g,'""')+'"';return s;}document.getElementById("jcBtn").addEventListener("click",function(){const raw=document.getElementById("jcInput").value;try{const data=JSON.parse(raw);if(!Array.isArray(data)){document.getElementById("jcOutput").value="Error: Input must be a JSON array";return;}const keys=[...new Set(data.flatMap(Object.keys))];let csv=keys.join(",")+"\n";data.forEach(row=>{csv+=keys.map(k=>escCSV(row[k]??"")).join(",")+"\n";});document.getElementById("jcOutput").value=csv;}catch(e){document.getElementById("jcOutput").value="Error: "+e.message;}});document.getElementById("jcCopy").addEventListener("click",function(){navigator.clipboard.writeText(document.getElementById("jcOutput").value);});</script>
 </body>
 </html>

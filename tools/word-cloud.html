@@ -22,7 +22,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>document.getElementById("wcBtn").addEventListener("click",()=>{const t=document.getElementById("wcInput").value.toLowerCase();const words=t.match(/\b[a-z]{2,}\b/gi);if(!words){document.getElementById("wcCloud").innerHTML="<span style=color:var(--text-muted)>No words found</span>";return;}const freq={};words.forEach(w=>{freq[w]=(freq[w]||0)+1;});const max=Math.max(...Object.values(freq));const colors=["#00d4aa","#6c5ce7","#ff6b6b","#facc15","#38bdf8","#fb923c","#4ade80","#a78bfa","#f472b6","#22d3ee"];document.getElementById("wcCloud").innerHTML=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,40).map(([w,c])=>`<span style="font-size:${Math.max(14,c/max*30+12)}px;color:${colors[Math.floor(Math.random()*colors.length)]};font-weight:${c>1?600:400}">${w}</span>`).join("");});</script>
 </body>
 </html>

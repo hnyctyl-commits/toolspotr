@@ -44,7 +44,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>
 function calcCal(){const age=parseInt(document.getElementById("calAge").value)||30,gender=document.getElementById("calGender").value,w=parseFloat(document.getElementById("calWeight").value)||70,h=parseFloat(document.getElementById("calHeight").value)||170,act=parseFloat(document.getElementById("calActivity").value)||1.375;let bmr=gender==='male'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;const tdee=bmr*act;document.getElementById("calBmr").textContent=Math.round(bmr).toLocaleString();document.getElementById("calTdee").textContent=Math.round(tdee).toLocaleString();document.getElementById("calLoss").textContent=Math.round(tdee-500).toLocaleString();document.getElementById("calGain").textContent=Math.round(tdee+500).toLocaleString();}
 document.querySelectorAll('#calAge,#calGender,#calWeight,#calHeight,#calActivity').forEach(el=>el.addEventListener('input',calcCal));calcCal();

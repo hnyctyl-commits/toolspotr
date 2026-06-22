@@ -62,7 +62,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/app.js?v=1782130359"></script>
 <script>
 document.getElementById("mcCalc").addEventListener("click",calc);calc();
 function calc(){const amount=parseFloat(document.getElementById("mcAmount").value)||0,rate=(parseFloat(document.getElementById("mcRate").value)||0)/100/12,months=(parseInt(document.getElementById("mcTerm").value)||30)*12;let monthly=0;if(rate>0){monthly=amount*rate*Math.pow(1+rate,months)/(Math.pow(1+rate,months)-1);}else{monthly=amount/months;}const total=monthly*months;const interest=total-amount;document.getElementById("mcMonthly").textContent='$'+Math.round(monthly).toLocaleString();document.getElementById("mcInterest").textContent='$'+Math.round(interest).toLocaleString();document.getElementById("mcTotal").textContent='$'+Math.round(total).toLocaleString();}
