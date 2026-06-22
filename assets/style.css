@@ -125,20 +125,14 @@ body {
   max-width: 560px; margin: 20px auto 0; position: relative;
 }
 .hero-search::before {
-  content: ''; position: absolute; inset: -2px; z-index: 0;
-  border-radius: 28px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent));
-  background-size: 200% 200%;
+  content: ''; position: absolute; inset: -1px; z-index: 0;
+  border-radius: 27px;
+  background: var(--accent);
   opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: searchGlow 3s ease infinite;
+  transition: opacity 0.3s ease;
 }
-.hero-search:focus-within::before { opacity: 1; }
-@keyframes searchGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+.hero-search:focus-within::before { opacity: 0.3; }
+
 
 .hero-search-inner {
   position: relative; z-index: 1; display: flex; align-items: center;
@@ -150,7 +144,7 @@ body {
   width: 20px; height: 20px; color: var(--text-muted);
   pointer-events: none; z-index: 2; transition: color 0.3s;
 }
-.hero-search:focus-within .hero-search-icon { color: var(--accent); }
+.hero-search:focus-within .hero-search-icon { color: var(--text-sec); }
 
 .hero-search input {
   width: 100%; height: 52px; padding: 0 100px 0 50px;
