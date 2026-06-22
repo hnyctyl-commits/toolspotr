@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Invoice Generator — Toolflow</title>
+<meta name="description" content="Free invoice generator. Create professional invoices for your business. Enter items, rates, and download as PDF.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Invoice Generator</strong></div><h1 class="tool-page-title">🧾 Invoice Generator</h1><p class="tool-page-desc">Create simple invoices. Enter company info, items, and generate a printable invoice.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Client Name</label><input type="text" id="invClient" value="Acme Corp"></div><div><label>Invoice #</label><input type="text" id="invNum" value="INV-001"></div></div><div id="invItems"><div class="input-row" style="gap:4px"><div style="flex:2"><input placeholder="Item" value="Web Development"></div><div style="flex:1"><input type="number" placeholder="Qty" value="10"></div><div style="flex:1"><input type="number" placeholder="Rate" value="150"></div></div></div><button class="tool-btn-sec" id="invAdd">➕ Add Item</button><button class="tool-btn" id="invCalc">🧮 Calculate Total</button><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Subtotal</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="invSub">$1,500</div></div><div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="invTotal">$1,500</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free invoice generator. Create professional invoices for your business. Enter items, rates, and download as PDF.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>document.getElementById("invAdd").addEventListener("click",()=>{const d=document.createElement("div");d.className="input-row";d.style.gap="4px";d.innerHTML='<div style="flex:2"><input placeholder="Item"></div><div style="flex:1"><input type="number" placeholder="Qty" value="1"></div><div style="flex:1"><input type="number" placeholder="Rate" value="0"></div>';document.getElementById("invItems").appendChild(d);});document.getElementById("invCalc").addEventListener("click",()=>{let sub=0;document.querySelectorAll("#invItems .input-row").forEach(r=>{const inputs=r.querySelectorAll("input");const q=parseFloat(inputs[1]?.value)||0;const rate=parseFloat(inputs[2]?.value)||0;sub+=q*rate;});document.getElementById("invSub").textContent="$"+sub.toLocaleString();document.getElementById("invTotal").textContent="$"+sub.toLocaleString();});</script>
+</body>
+</html>

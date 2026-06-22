@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Audio Visualizer — Toolflow</title>
+<meta name="description" content="Free online audio visualizer. Generate beautiful visualizations from any audio or microphone input. Real-time waveforms.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}canvas{display:block;margin:0 auto;border-radius:var(--radius-sm);width:100%;max-width:500px;height:200px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Audio Visualizer</strong></div><h1 class="tool-page-title">🎵 Audio Visualizer</h1><p class="tool-page-desc">Visualize audio from your microphone in real-time. See waveforms, frequencies, and amplitude.</p></div>
+  <div class="tool-box">
+    <div style="text-align:center;margin-bottom:8px">
+      <button class="tool-btn" id="avStart">🎤 Start Mic</button>
+      <button class="tool-btn-sec" id="avStop" disabled>⏹ Stop</button>
+    </div>
+    <canvas id="avCanvas"></canvas>
+    <div style="text-align:center;font-size:11px;color:var(--text-muted);margin-top:4px" id="avStatus">Click "Start Mic" to begin</div>
+  </div>
+  <div class="tool-article"><h3>Audio Visualization</h3><p>This tool uses the Web Audio API to capture microphone input and render a real-time waveform visualization. The waveform shows amplitude over time. Great for testing microphones, demonstrating sound concepts, or just enjoying visual effects.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="text-to-speech.html" class="tcard" style="margin:0"><div class="tcard-icon">🔊</div><div class="tcard-body"><div class="tcard-title">Text to Speech</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+let avCtx=null,avAn=null,avSrc=null,avStream=null;const c=document.getElementById("avCanvas"),ctx=c.getContext("2d");
+c.width=500;c.height=200;
+document.getElementById("avStart").addEventListener("click",async()=>{
+  try{avStream=await navigator.mediaDevices.getUserMedia({audio:true});avCtx=new AudioContext();avSrc=avCtx.createMediaStreamSource(avStream);const an=avCtx.createAnalyser();an.fftSize=256;avSrc.connect(an);const buf=new Uint8Array(an.frequencyBinCount);
+    document.getElementById("avStart").disabled=true;document.getElementById("avStop").disabled=false;
+    document.getElementById("avStatus").textContent="🎤 Recording...";
+    function draw(){avAn=requestAnimationFrame(draw);an.getByteTimeDomainData(buf);ctx.fillStyle="rgba(7,11,21,0.1)";ctx.fillRect(0,0,c.width,c.height);ctx.lineWidth=2;ctx.strokeStyle="#00d4aa";ctx.beginPath();const step=c.width/buf.length;let x=0;for(let i=0;i<buf.length;i++){const v=buf[i]/128;const y=v*c.height/2;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);x+=step;}ctx.stroke();}
+    draw();}catch(e){document.getElementById("avStatus").textContent="❌ Mic access denied";}
+});
+document.getElementById("avStop").addEventListener("click",()=>{
+  cancelAnimationFrame(avAn);if(avStream)avStream.getTracks().forEach(t=>t.stop());
+  ctx.fillStyle="#070b15";ctx.fillRect(0,0,c.width,c.height);
+  document.getElementById("avStart").disabled=false;document.getElementById("avStop").disabled=true;
+  document.getElementById("avStatus").textContent="⏹ Stopped";
+});
+</script>
+</body>
+</html>

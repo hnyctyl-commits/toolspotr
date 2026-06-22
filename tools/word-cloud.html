@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Word Cloud Generator — Toolflow</title>
+<meta name="description" content="Free word cloud generator. Paste text and generate a visual word cloud showing word frequency.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text / <strong>Word Cloud Generator</strong></div><h1 class="tool-page-title">☁️ Word Cloud Generator</h1><p class="tool-page-desc">Generate a word cloud from text. Paste any text and see word frequency as a visual cloud.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Text</label><textarea id="wcInput" rows="6" style="font-family:var(--font)">The quick brown fox jumps over the lazy dog near the bank of the river where the fox saw a fish</textarea></div></div><button class="tool-btn" id="wcBtn">☁️ Generate Cloud</button><div id="wcCloud" style="display:flex;flex-wrap:wrap;gap:4px;padding:16px;background:var(--bg-main);border-radius:var(--radius-sm);min-height:120px;align-items:center;justify-content:center"></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free word cloud generator. Paste text and generate a visual word cloud showing word frequency.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>document.getElementById("wcBtn").addEventListener("click",()=>{const t=document.getElementById("wcInput").value.toLowerCase();const words=t.match(/\b[a-z]{2,}\b/gi);if(!words){document.getElementById("wcCloud").innerHTML="<span style=color:var(--text-muted)>No words found</span>";return;}const freq={};words.forEach(w=>{freq[w]=(freq[w]||0)+1;});const max=Math.max(...Object.values(freq));const colors=["#00d4aa","#6c5ce7","#ff6b6b","#facc15","#38bdf8","#fb923c","#4ade80","#a78bfa","#f472b6","#22d3ee"];document.getElementById("wcCloud").innerHTML=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,40).map(([w,c])=>`<span style="font-size:${Math.max(14,c/max*30+12)}px;color:${colors[Math.floor(Math.random()*colors.length)]};font-weight:${c>1?600:400}">${w}</span>`).join("");});</script>
+</body>
+</html>

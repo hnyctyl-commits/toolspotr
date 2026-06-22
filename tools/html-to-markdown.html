@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML to Markdown — Toolflow</title>
+<meta name="description" content="Free HTML to Markdown converter. Convert HTML code to clean Markdown format for documentation and content management.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer / <strong>HTML to Markdown</strong></div><h1 class="tool-page-title">🔀 HTML to Markdown</h1><p class="tool-page-desc">Convert HTML to Markdown format. Paste any HTML and get clean Markdown output.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>HTML Input</label><textarea id="hmInput" rows="6" style="font-family:var(--mono);font-size:12px"><h1>Hello World</h1><p>This is a <strong>paragraph</strong> with <a href="https://example.com">a link</a>.</p><ul><li>Item 1</li><li>Item 2</li></ul></textarea></div></div><button class="tool-btn" id="hmBtn">🔀 Convert to Markdown</button><label>Markdown Output</label><textarea id="hmOutput" rows="6" style="font-family:var(--mono);font-size:12px" readonly></textarea><button class="tool-btn-sec" id="hmCopy">📋 Copy</button></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free HTML to Markdown converter. Convert HTML code to clean Markdown format for documentation and content management.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>document.getElementById("hmBtn").addEventListener("click",()=>{let h=document.getElementById("hmInput").value;h=h.replace(/<h1[^>]*>(.*?)<\/h1>/gi,"# $1\n\n");h=h.replace(/<h2[^>]*>(.*?)<\/h2>/gi,"## $1\n\n");h=h.replace(/<h3[^>]*>(.*?)<\/h3>/gi,"### $1\n\n");h=h.replace(/<strong>(.*?)<\/strong>/gi,"**$1**");h=h.replace(/<em>(.*?)<\/em>/gi,"*$1*");h=h.replace(/<code>(.*?)<\/code>/gi,"`$1`");h=h.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi,"[$2]($1)");h=h.replace(/<li>(.*?)<\/li>/gi,"- $1\n");h=h.replace(/<\/?ul>/gi,"\n");h=h.replace(/<\/?ol[^>]*>/gi,"\n");h=h.replace(/<p[^>]*>(.*?)<\/p>/gi,"$1\n\n");h=h.replace(/<br\s*\/?>/gi,"\n");h=h.replace(/<[^>]+>/g,"");h=h.replace(/\n{3,}/g,"\n\n").trim();const e=document.createElement("textarea");e.textContent=h;document.getElementById("hmOutput").value=e.innerHTML;});document.getElementById("hmCopy").addEventListener("click",()=>navigator.clipboard.writeText(document.getElementById("hmOutput").value));</script>
+</body>
+</html>

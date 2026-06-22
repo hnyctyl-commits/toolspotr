@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calorie Burn Calculator — Toolflow</title>
+<meta name="description" content="Free calorie burn calculator. Estimate calories burned during exercise based on activity, duration, and body weight.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Calorie Burn Calculator</strong></div><h1 class="tool-page-title">🏃 Calorie Burn Calculator</h1><p class="tool-page-desc">Estimate calories burned during exercise. Choose from 10+ activities, enter duration and weight.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Weight (kg)</label><input type="number" id="cbWeight" value="70"></div><div><label>Duration (minutes)</label><input type="number" id="cbTime" value="30"></div></div>
+    <div><label>Activity</label><select id="cbActivity" style="font-family:var(--mono)">
+      <option value="6">Running (6 mph / 10kph)</option><option value="8">Running (8 mph / 13kph)</option>
+      <option value="3.5">Walking (3.5 mph)</option><option value="5">Cycling (moderate)</option>
+      <option value="7">Cycling (vigorous)</option><option value="4.5">Swimming</option>
+      <option value="5.5">Jump Rope</option><option value="3">Yoga</option>
+      <option value="4">Weight Training</option><option value="6">HIIT Workout</option>
+      <option value="2.5">Stretching</option><option value="4">Dancing</option>
+    </select></div>
+    <button class="tool-btn" id="cbBtn">🔥 Calculate</button>
+    <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px">
+      <div style="background:var(--bg-main);padding:16px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted)">Calories Burned</div><div style="font-size:36px;font-weight:800;color:var(--accent);font-family:var(--mono)" id="cbResult">245</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Calories Burned During Exercise</h3><p>The MET (Metabolic Equivalent of Task) method estimates calories burned based on activity intensity. Formula: MET × weight(kg) × duration(hours) × 0.0175. A 70kg person running 30 minutes burns ~245 calories.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="calorie-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔥</div><div class="tcard-body"><div class="tcard-title">Calorie Calc</div></div></a>
+    <a href="bmi-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">⚕️</div><div class="tcard-body"><div class="tcard-title">BMI Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>document.getElementById("cbBtn").addEventListener('click',()=>{const w=parseFloat(document.getElementById("cbWeight").value)||70,t=parseFloat(document.getElementById("cbTime").value)||30,m=parseFloat(document.getElementById("cbActivity").value)||6;const c=Math.round(m*w*(t/60)*0.0175);document.getElementById("cbResult").textContent=c;});document.getElementById("cbBtn").click();</script>
+</body>
+</html>

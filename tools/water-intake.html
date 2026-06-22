@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Water Intake Calculator — Toolflow</title>
+<meta name="description" content="Free water intake calculator. Find out how many ounces or liters of water you should drink daily based on your weight.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Water Intake Calculator</strong></div><h1 class="tool-page-title">💧 Water Intake Calculator</h1><p class="tool-page-desc">Calculate how much water you should drink daily based on weight and activity level.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Weight (kg)</label><input type="number" id="wiWeight" value="70"><div><label>Activity Level</label><select id="wiAct" style="font-family:var(--font)"><option value="1">Sedentary</option><option value="1.2" selected>Light Exercise</option><option value="1.4">Moderate Exercise</option><option value="1.6">Heavy Exercise</option></select></div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Daily Water (ml)</div><div style="font-size:24px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="wiMl">2,450</div></div><div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Daily Water (oz)</div><div style="font-size:24px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="wiOz">82.8</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free water intake calculator. Find out how many ounces or liters of water you should drink daily based on your weight.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>function wi(){const w=parseFloat(document.getElementById("wiWeight").value)||70,a=parseFloat(document.getElementById("wiAct").value)||1;const ml=Math.round(w*35*a);document.getElementById("wiMl").textContent=ml.toLocaleString();document.getElementById("wiOz").textContent=(ml/29.57).toFixed(1);}document.querySelectorAll("#wiWeight,#wiAct").forEach(e=>e.addEventListener("input",wi));wi();</script>
+</body>
+</html>

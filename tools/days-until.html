@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Days Until Calculator — Toolflow</title>
+<meta name="description" content="Free days until calculator. Find out how many days, hours, and minutes until any date or event.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Days Until Calculator</strong></div><h1 class="tool-page-title">📆 Days Until Calculator</h1><p class="tool-page-desc">Calculate how many days until a specific date. Countdown to birthdays, holidays, events.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Target Date</label><input type="date" id="duDate"></div></div><button class="tool-btn" id="duBtn">📆 Calculate</button><div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px"><div style="background:var(--bg-main);padding:16px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:10px;color:var(--text-muted)">Days Until</div><div style="font-size:48px;font-weight:800;color:var(--accent);font-family:var(--mono)" id="duResult">—</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free days until calculator. Find out how many days, hours, and minutes until any date or event.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>const t=new Date();t.setFullYear(2027,0,1);document.getElementById("duDate").valueAsDate=t;document.getElementById("duBtn").addEventListener("click",()=>{const d=new Date(document.getElementById("duDate").value);const n=new Date();const diff=Math.round((d-n)/86400000);document.getElementById("duResult").textContent=diff>=0?diff:"Past";});document.getElementById("duBtn").click();</script>
+</body>
+</html>

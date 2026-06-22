@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Salary Calculator — Toolflow</title>
+<meta name="description" content="Free salary calculator. Convert hourly wage to annual salary and vice versa. See weekly, monthly, and yearly pay.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Salary Calculator</strong></div><h1 class="tool-page-title">💼 Salary Calculator</h1><p class="tool-page-desc">Convert between hourly, daily, weekly, monthly, and yearly salary. Calculate take-home pay.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Hourly Rate ($)</label><input type="number" id="scRate" value="25" step="0.5"></div><div><label>Hours/Week</label><input type="number" id="scHours" value="40"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Daily</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="scDay">$200</div></div><div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Weekly</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="scWeek">$1,000</div></div><div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Monthly</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="scMonth">$4,333</div></div><div style="background:var(--bg-main);padding:10px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Yearly</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="scYear">$52,000</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free salary calculator. Convert hourly wage to annual salary and vice versa. See weekly, monthly, and yearly pay.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>function sc(){const r=parseFloat(document.getElementById("scRate").value)||0,h=parseFloat(document.getElementById("scHours").value)||40;const d=r*8,w=r*h,m=w*4.33,y=w*52;document.getElementById("scDay").textContent="$"+Math.round(d).toLocaleString();document.getElementById("scWeek").textContent="$"+Math.round(w).toLocaleString();document.getElementById("scMonth").textContent="$"+Math.round(m).toLocaleString();document.getElementById("scYear").textContent="$"+Math.round(y).toLocaleString();}document.querySelectorAll("#scRate,#scHours").forEach(e=>e.addEventListener("input",sc));sc();</script>
+</body>
+</html>

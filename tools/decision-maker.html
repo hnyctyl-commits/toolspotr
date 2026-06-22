@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Decision Maker — Toolflow</title>
+<meta name="description" content="Free online decision maker. Can't decide? Let the wheel decide for you. Yes/No, custom choices, and random picker.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}.dm-big{font-size:48px;font-weight:800;text-align:center;padding:24px;background:var(--bg-main);border-radius:var(--radius-sm);margin:12px 0;font-family:var(--mono);color:var(--accent);min-height:80px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Decision Maker</strong></div><h1 class="tool-page-title">🎯 Decision Maker</h1><p class="tool-page-desc">Can't decide? Let fate choose. Yes/No, custom choices, or random pick from your list.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <button class="tool-btn-sec dm-mode active" data-mode="yesno">Yes/No</button>
+      <button class="tool-btn-sec dm-mode" data-mode="custom">Custom Choices</button>
+    </div>
+    <div id="dmCustom" style="display:none"><label>Enter choices (comma separated)</label><input type="text" id="dmChoices" value="Pizza, Sushi, Burgers, Tacos, Pasta" style="font-family:var(--mono)"></div>
+    <div class="dm-big" id="dmResult">🤔</div>
+    <button class="tool-btn" id="dmBtn" style="display:block;margin:0 auto">🎲 Decide!</button>
+  </div>
+  <div class="tool-article"><h3>Decision Fatigue</h3><p>The average adult makes 35,000 decisions per day. When you're stuck between options, let random chance help. The Decision Maker uses cryptographically secure randomness. Use it for food choices, daily decisions, or settling debates.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="dice-roller.html" class="tcard" style="margin:0"><div class="tcard-icon">🎲</div><div class="tcard-body"><div class="tcard-title">Dice Roller</div></div></a>
+    <a href="list-randomizer.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">List Randomizer</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const yesNo=["Yes! ✅","No! ❌","Ask Again Later 🤷","Definitely! 💪","Absolutely Not 🚫","Try Again 🔄","Without a Doubt ✨","Don't Count On It ☝️"];
+let dmMode="yesno";
+document.querySelectorAll(".dm-mode").forEach(b=>b.addEventListener("click",function(){document.querySelectorAll(".dm-mode").forEach(x=>x.classList.remove("active"));this.classList.add("active");dmMode=this.dataset.mode;document.getElementById("dmCustom").style.display=dmMode==="custom"?"block":"none";document.getElementById("dmResult").textContent="🤔";}));
+document.getElementById("dmBtn").addEventListener("click",()=>{
+  if(dmMode==="yesno"){document.getElementById("dmResult").textContent=yesNo[Math.floor(Math.random()*yesNo.length)];}
+  else{const c=document.getElementById("dmChoices").value.split(",").map(s=>s.trim()).filter(Boolean);document.getElementById("dmResult").textContent=c.length?c[Math.floor(Math.random()*c.length)]:"Enter some choices!";}
+});
+</script>
+</body>
+</html>

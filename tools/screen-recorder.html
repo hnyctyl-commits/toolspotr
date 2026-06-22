@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Screen Recorder — Toolflow</title>
+<meta name="description" content="Free screen recorder. Record your screen, browser tab, or window. No software installation needed.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Screen Recorder</strong></div><h1 class="tool-page-title">🎥 Screen Recorder</h1><p class="tool-page-desc">Record your screen or browser tab directly in your browser. Download as WebM video.</p></div>
+  <div class="tool-box"><div style="text-align:center;padding:12px"><div style="font-size:48px;margin-bottom:8px" id="srIcon">🎥</div><div id="srStatus" style="font-size:13px;color:var(--text-sec);margin-bottom:10px">Click Start to begin recording</div><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="tool-btn" id="srStart">🔴 Start Recording</button><button class="tool-btn-sec" id="srStop" disabled>⏹ Stop</button><a id="srDl" style="display:none" class="tool-btn-sec">⬇ Download</a></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free screen recorder. Record your screen, browser tab, or window. No software installation needed.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>let srMedia=null,srRec=null,srChunks=[];const s=document.getElementById("srStart"),p=document.getElementById("srStop"),st=document.getElementById("srStatus"),ic=document.getElementById("srIcon"),dl=document.getElementById("srDl");s.addEventListener("click",async()=>{try{srChunks=[];srMedia=await navigator.mediaDevices.getDisplayMedia({video:{mediaSource:"screen"},audio:true});srRec=new MediaRecorder(srMedia);srRec.ondataavailable=e=>{if(e.data.size>0)srChunks.push(e.data);};srRec.onstop=()=>{const b=new Blob(srChunks,{type:"video/webm"});dl.href=URL.createObjectURL(b);dl.download="recording.webm";dl.style.display="inline-block";dl.textContent="⬇ Download ("+Math.round(b.size/1024/1024*10)/10+"MB)";st.textContent="Recording saved!";ic.textContent="✅";srMedia.getTracks().forEach(t=>t.stop());};srRec.start();s.disabled=true;p.disabled=false;st.textContent="🔴 Recording...";ic.textContent="⏺️";}catch(e){st.textContent="Error: "+e.message;}});p.addEventListener("click",()=>{if(srRec&&srRec.state!=="inactive"){srRec.stop();s.disabled=false;p.disabled=true;st.textContent="Processing...";}});</script>
+</body>
+</html>

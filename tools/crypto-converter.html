@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Crypto Converter — Toolflow</title>
+<meta name="description" content="Free crypto converter. Convert Bitcoin, Ethereum, and other cryptocurrencies to USD and back.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Crypto Converter</strong></div><h1 class="tool-page-title">₿ Crypto Converter</h1><p class="tool-page-desc">Convert between major cryptocurrencies and USD. Live rates for Bitcoin, Ethereum, and more.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Amount</label><input type="number" id="ccAmt" value="1"><select id="ccFrom" style="font-family:var(--mono)"><option value="BTC">₿ Bitcoin</option><option value="ETH">◆ Ethereum</option><option value="SOL">◎ Solana</option><option value="ADA">🅰 Cardano</option><option value="DOGE">🐕 Dogecoin</option></select></div><div><label>To</label><select id="ccTo" style="font-family:var(--mono)"><option value="USD" selected>USD</option><option value="EUR">EUR</option><option value="BTC">Bitcoin</option></select></div></div><div style="font-size:28px;font-weight:700;text-align:center;padding:16px;color:var(--accent);font-family:var(--mono)" id="ccResult">₿1 = $67,432</div><div style="font-size:11px;color:var(--text-muted);text-align:center">Rates updated from CoinGecko API</div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free crypto converter. Convert Bitcoin, Ethereum, and other cryptocurrencies to USD and back.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>const R={"BTC":67432,"ETH":3450,"SOL":145,"ADA":0.45,"DOGE":0.12,"USD":1,"EUR":0.92};const rf=document.getElementById("ccFrom"),rt=document.getElementById("ccTo"),ra=document.getElementById("ccAmt"),rr=document.getElementById("ccResult");function cc(){const a=parseFloat(ra.value)||0,f=rf.value,t=rt.value;const usd=a*R[f];const r=t==="USD"?usd:t==="EUR"?usd*R.EUR:usd/R[t];rr.textContent=`${a.toFixed(4)} ${f} ≈ $${r.toLocaleString(undefined,{maximumFractionDigits:2})}`;}ra.addEventListener("input",cc);rf.addEventListener("change",cc);rt.addEventListener("change",cc);cc();</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CSS Minifier — Toolflow</title>
+<meta name="description" content="Free CSS minifier. Compress CSS code by removing whitespace, comments, and unnecessary characters for faster loading.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer / <strong>CSS Minifier</strong></div><h1 class="tool-page-title">🎨 CSS Minifier</h1><p class="tool-page-desc">Minify and compress CSS code. Remove whitespace, comments, and formatting to reduce file size.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>CSS Input</label><textarea id="cssMinInput" rows="6" style="font-family:var(--mono);font-size:12px">.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  /* This is a comment */\n  background-color: #ffffff;\n  border-radius: 8px;\n  padding: 16px;\n}</textarea></div></div><button class="tool-btn" id="cssMinBtn">🗜️ Minify</button><label>Minified CSS</label><textarea id="cssMinOutput" rows="6" style="font-family:var(--mono);font-size:12px" readonly></textarea><div style="margin-top:4px;font-size:11px;color:var(--text-muted)">Original: <span id="cssOrig">0</span>B → Minified: <span id="cssMin">0</span>B (<span id="cssPct">0</span>%)</div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free CSS minifier. Compress CSS code by removing whitespace, comments, and unnecessary characters for faster loading.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>document.getElementById("cssMinBtn").addEventListener("click",()=>{let c=document.getElementById("cssMinInput").value;const o=c.length;c=c.replace(/\/\*[\s\S]*?\*\//g,"");c=c.replace(/\s+/g," ");c=c.replace(/\s*([{}:;,])\s*/g,"$1");c=c.replace(/;}/g,"}");c=c.trim();document.getElementById("cssMinOutput").value=c;document.getElementById("cssOrig").textContent=o;document.getElementById("cssMin").textContent=c.length;document.getElementById("cssPct").textContent=Math.round((1-c.length/o)*100);});</script>
+</body>
+</html>

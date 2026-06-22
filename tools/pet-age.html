@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pet Age Calculator — Toolflow</title>
+<meta name="description" content="Free pet age calculator. Convert your dog or cat age to human years. Uses breed-specific formulas.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Pet Age Calculator</strong></div><h1 class="tool-page-title">🐕 Pet Age Calculator</h1><p class="tool-page-desc">Convert your pet's age to human years. Dog, cat, and other pets. Accurate formulas.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Pet Type</label><select id="paType" style="font-family:var(--font)"><option value="dog">Dog</option><option value="cat">Cat</option></select></div><div><label>Pet Age (years)</label><input type="number" id="paAge" value="5" min="0" max="30"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Human Years</div><div style="font-size:28px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="paResult">36</div></div><div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Life Stage</div><div style="font-size:16px;font-weight:600;color:var(--accent)" id="paStage">Adult</div></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free pet age calculator. Convert your dog or cat age to human years. Uses breed-specific formulas.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>function pa(){const t=document.getElementById("paType").value;a=parseFloat(document.getElementById("paAge").value)||0;let h;if(t==="dog"){h=16*Math.log(a+1)+31;}else{h=15+(a-1)*4;}h=Math.round(h);document.getElementById("paResult").textContent=h;let s;if(a<1)s="Puppy/Kitten";else if(a<7)s="Adult";else if(a<12)s="Senior";else s="Geriatric";document.getElementById("paStage").textContent=s;}document.querySelectorAll("#paType,#paAge").forEach(e=>e.addEventListener("input",pa));pa();</script>
+</body>
+</html>

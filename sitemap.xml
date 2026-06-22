@@ -87,4 +87,27 @@
   <url><loc>https://toolspotr.com/contact.html</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://toolspotr.com/about.html</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://toolspotr.com/robots.txt</loc><priority>0.1</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/audio-visualizer.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/body-fat.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/calorie-burn.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/color-blind-sim.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/crypto-converter.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/css-minifier.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/days-until.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/decision-maker.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/fuel-calculator.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/habit-tracker.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/html-to-markdown.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/invoice-generator.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/macro-calculator.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/pet-age.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/qr-reader.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/salary-calculator.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/savings-goal.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/screen-recorder.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/sql-formatter.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/vat-calculator.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/water-intake.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/website-checker.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/word-cloud.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
 </urlset>
