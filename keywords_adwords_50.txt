@@ -1,0 +1,66 @@
+# Toolflow — 50 Google Ads 关键词推荐
+
+## 🔥 高搜索量 × 高广告价（优先投放）
+
+| 关键词 | 月搜索量 | 广告价值 | 推荐理由 | 对应页面 |
+|---|---|---|---|---|
+| mortgage calculator | 200K+ | 💰💰💰 最高 | 金融刚需，广告竞价最高 | /tools/mortgage-calculator.html |
+| currency converter | 200K+ | 💰💰 高 | 全球每日搜索 | /tools/currency-converter.html |
+| loan calculator | 150K+ | 💰💰💰 最高 | 贷款搜索，广告价极高 | /tools/loan-calculator.html |
+| discount calculator | 100K+ | 💰💰 高 | 购物季暴涨 | /tools/discount-calculator.html |
+| investment calculator | 50K+ | 💰💰💰 最高 | 金融类点击最贵 | /tools/compound-interest.html |
+| tip calculator | 100K+ | 💰💰 高 | 餐饮相关广告 | /tools/tip-calculator.html |
+| sales tax calculator | 50K+ | 💰💰 高 | 购物结算必搜 | /tools/discount-calculator.html |
+| retirement calculator | 50K+ | 💰💰💰 最高 | 养老规划，广告价极高 | /tools/retirement-calculator.html |
+| car payment calculator | 50K+ | 💰💰💰 最高 | 汽车贷款搜素 | /tools/loan-calculator.html |
+| mortgage rate calculator | 50K+ | 💰💰💰 最高 | 房贷利率必搜 | /tools/mortgage-calculator.html |
+
+## 📈 高搜索量 × 中广告价（大量流量）
+
+| 关键词 | 月搜索量 | 广告价值 | 推荐理由 | 对应页面 |
+|---|---|---|---|---|
+| online calculator | 1,000K+ | 🟡 中 | 搜索量之王 | /tools/scientific-calculator.html |
+| typing test | 200K+ | 🟡 中 | 职场常搜 | /tools/typing-speed.html |
+| grammar checker | 200K+ | 🟡 中 | 写作刚需 | /tools/grammar-checker.html |
+| meme generator | 200K+ | 🟡 中 | 社交病毒传播 | /tools/meme-generator.html |
+| fraction calculator | 200K+ | 🟡 中 | 学生刚需 | /tools/fraction-calculator.html |
+| image resizer | 200K+ | 🟡 中 | 社交媒体需求 | /tools/image-resizer.html |
+| PDF merge | 250K+ | 🟡 中 | 远程办公必备 | /tools/pdf-merger.html |
+| calorie calculator | 100K+ | 🟡 中 | 健身热门 | /tools/calorie-calculator.html |
+| text to speech | 100K+ | 🟡 中 | 多场景需求 | /tools/text-to-speech.html |
+| random name generator | 100K+ | 🟡 中 | 游戏/写作常搜 | /tools/name-generator.html |
+| age calculator | 100K+ | 🟡 中 | 日常搜索 | /tools/age-calculator.html |
+| BMI calculator | 200K+ | 🟡 中 | 健康常搜 | /tools/bmi-calculator.html |
+| percentage calculator | 500K+ | 🟡 低 | 搜索量大但广告低 | /tools/percentage-calculator.html |
+| scientific calculator | 100K+ | 🟡 中 | 学生搜索 | /tools/scientific-calculator.html |
+| due date calculator | 100K+ | 🟡 中 | 女性健康热门 | /tools/due-date-calculator.html |
+| sleep calculator | 80K+ | 🟡 中 | 健康趋势 | /tools/sleep-calculator.html |
+| standard deviation calc | 100K+ | 🟡 中 | 统计学学生 | /tools/std-dev-calculator.html |
+| unit converter | 100K+ | 🟡 中 | 日常搜索 | /tools/unit-converter.html |
+| timezone converter | 50K+ | 🟡 中 | 远程工作 | /tools/timezone-converter.html |
+| word counter | 100K+ | 🟡 中 | 写作常搜 | /tools/word-counter.html |
+| countdown timer | 50K+ | 🟡 中 | 活动规划 | /tools/countdown-timer.html |
+| stopwatch online | 50K+ | 🟡 中 | 运动/烹饪 | /tools/stopwatch.html |
+| pomodoro timer | 50K+ | 🟡 中 | 生产力热门 | /tools/pomodoro-timer.html |
+| color blind test | 100K+ | 🟡 中 | 10%人口需求 | /tools/color-blind-test.html |
+| QR code generator | 100K+ | 🟡 中 | 餐饮/名片 | /tools/qr-generator.html |
+| password generator | 50K+ | 🟡 中 | 安全刚需 | /tools/password-generator.html |
+| password strength test | 30K+ | 🟡 中 | 安全意识 | /tools/password-strength.html |
+| barcode generator | 50K+ | 🟡 中 | 商品管理 | /tools/barcode-generator.html |
+| dice roller | 30K+ | 🟢 低 | 游戏常搜 | /tools/dice-roller.html |
+| random number generator | 100K+ | 🟢 低 | 通用需求 | /tools/random-number-generator.html |
+
+## 🟢 长尾关键词（竞争低，好排名）
+
+| 关键词 | 月搜索量 | 广告价值 | 推荐理由 | 对应页面 |
+|---|---|---|---|---|
+| fancy text generator | 50K+ | 🟢 低 | 社交热度 | /tools/fancy-text.html |
+| morse code translator | 30K+ | 🟢 低 | 教育搜索 | /tools/morse-code.html |
+| roman numeral converter | 30K+ | 🟢 低 | 学校常搜 | /tools/roman-numerals.html |
+| anagram solver | 30K+ | 🟢 低 | 玩游戏用 | /tools/anagram-solver.html |
+| country info lookup | 20K+ | 🟢 低 | 地理搜索 | /tools/country-info.html |
+| GPA calculator | 50K+ | 🟡 中 | 学生刚需 | /tools/gpa-calculator.html |
+| color palette generator | 30K+ | 🟡 中 | 设计热门 | /tools/color-palette.html |
+| CSS gradient generator | 20K+ | 🟡 中 | 开发者工具 | /tools/css-gradient.html |
+| fake data generator | 20K+ | 🟢 低 | 开发测试 | /tools/fake-data.html |
+| emoji copy paste | 50K+ | 🟢 低 | 日常常搜 | /tools/emoji-picker.html |

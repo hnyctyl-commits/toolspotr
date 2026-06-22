@@ -83,4 +83,6 @@
   <url><loc>https://toolspotr.com/tools/meme-generator.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/pdf-merger.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/grammar-checker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/privacy.html</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://toolspotr.com/contact.html</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
 </urlset>

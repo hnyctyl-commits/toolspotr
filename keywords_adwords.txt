@@ -1,0 +1,14 @@
+# Google Ads 关键词推荐（第二批·搜索量最高版）
+
+| 排名 | 关键词 | 月搜索量 | 广告竞争 | 广告单价 | 对应工具 |
+|---|---|---|---|---|---|
+| 1 | **online calculator** | **1,000K+** | 🔴 高 | 🟡 中 | 首页/综合 |
+| 2 | **typing test** | **200K+** | 🟡 中 | 🟡 中 | Typing Speed |
+| 3 | **grammar checker free** | **200K+** | 🔴 高 | 🟡 中 | Grammar Checker |
+| 4 | **meme generator** | **200K+** | 🟡 中 | 🟡 中 | Meme Generator |
+| 5 | **fraction calculator** | **200K+** | 🟢 低 | 🟢 低 | Fraction Calc |
+| 6 | **image resizer online** | **200K+** | 🟡 中 | 🟡 中 | Image Resizer |
+| 7 | **calorie calculator** | **100K+** | 🟡 中 | 🟡 中 | Calorie Calc |
+| 8 | **text to speech online** | **100K+** | 🟡 中 | 🟡 中 | Text to Speech |
+| 9 | **random name generator** | **100K+** | 🟢 低 | 🟢 低 | Name Generator |
+| 10 | **investment calculator** | **50K+** | 🟡 中 | 💰💰 **高** | Compound Interest |

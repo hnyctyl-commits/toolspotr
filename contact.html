@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact — Toolflow</title>
+<meta name="description" content="Contact Toolflow. Get in touch for feedback, suggestions, or collaboration.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← Home</a></div>
+</div></nav>
+<main style="max-width:600px;margin:40px auto;padding:0 24px 60px">
+  <h1 style="font-size:28px;font-weight:800;margin-bottom:4px">📬 Contact</h1>
+  <p style="color:var(--text-sec);font-size:14px;margin-bottom:24px">Have a suggestion, found a bug, or want to collaborate? Let us know.</p>
+
+  <form action="https://formspree.io/f/xqapwjap" method="POST" style="display:grid;gap:14px">
+    <div><label>Name</label><input type="text" name="name" required style="font-family:var(--font)"></div>
+    <div><label>Email</label><input type="email" name="_replyto" required style="font-family:var(--font)"></div>
+    <div><label>Message</label><textarea name="message" rows="5" required style="font-family:var(--font)"></textarea></div>
+    <button type="submit" class="tool-btn" style="width:100%">📨 Send Message</button>
+  </form>
+
+  <div style="margin-top:30px;padding:16px;background:var(--bg-card);border-radius:var(--radius-sm);border:1px solid var(--border)">
+    <p style="font-size:13px;color:var(--text-sec);margin:0"><strong>Prefer email?</strong> Reach us at: <a href="mailto:hello@toolspotr.com" style="color:var(--accent)">hello@toolspotr.com</a></p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="index.html">toolspotr.com</a></p></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
