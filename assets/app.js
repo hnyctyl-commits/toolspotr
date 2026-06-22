@@ -198,7 +198,6 @@ const TOOLS = [
   {id:'sleep-calculator', icon:'💤', key:'sleepCalc', cat:'health', ready:true, url:'tools/sleep-calculator.html', tags:'sleep,calculator,cycles,wake'},
   {id:'fraction-calculator', icon:'➗', key:'fractionCalc', cat:'utility', ready:true, url:'tools/fraction-calculator.html', tags:'fraction,calculator,math'},
   {id:'std-dev-calculator', icon:'📊', key:'stdDev', cat:'utility', ready:true, url:'tools/std-dev-calculator.html', tags:'standard,deviation,variance,statistics'},
-];
   {id:'border-radius', icon:'🛠️', key:'borderradius', cat:'image', ready:true, url:'tools/border-radius.html', tags:'border,radius'},
   {id:'box-shadow', icon:'🛠️', key:'boxshadow', cat:'image', ready:true, url:'tools/box-shadow.html', tags:'box,shadow'},
   {id:'color-from-image', icon:'🛠️', key:'colorfromimage', cat:'image', ready:true, url:'tools/color-from-image.html', tags:'color,from,image'},
@@ -208,6 +207,7 @@ const TOOLS = [
   {id:'signature-maker', icon:'🛠️', key:'signaturemaker', cat:'image', ready:true, url:'tools/signature-maker.html', tags:'signature,maker'},
   {id:'timestamp-converter', icon:'🛠️', key:'timestampconverter', cat:'dev', ready:true, url:'tools/timestamp-converter.html', tags:'timestamp,converter'},
   {id:'yaml-json', icon:'🛠️', key:'yamljson', cat:'dev', ready:true, url:'tools/yaml-json.html', tags:'yaml,json'},
+];
 
 // ── Tool Count (auto from array) ──
 const TOOL_COUNT = TOOLS.length;
