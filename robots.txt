@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toolspotr.com/sitemap.xml
