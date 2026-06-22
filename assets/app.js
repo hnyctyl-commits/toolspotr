@@ -97,7 +97,6 @@ const LANG = {
 };
 
 // ── Tool Data (for search) ──
-const TOOL_COUNT = 64;
 const TOOLS = [
   {id:'ip', icon:'🌐', key:'ipLookup', cat:'dev', ready:true, url:'tools/ip.html', tags:'network,ip,location,isp'},
   {id:'json-formatter', icon:'📋', key:'jsonFmt', cat:'dev', ready:true, url:'tools/json-formatter.html', tags:'json,format,validate,beautify'},
@@ -164,6 +163,9 @@ const TOOLS = [
   {id:'calorie-calculator', icon:'🔥', key:'calorie', cat:'utility', ready:true, url:'tools/calorie-calculator.html', tags:'calorie,bmr,tdee,calculator'},
   {id:'text-to-speech', icon:'🔊', key:'tts', cat:'utility', ready:true, url:'tools/text-to-speech.html', tags:'text,speech,tts,reader'},
 ];
+
+// ── Tool Count (auto from array) ──
+const TOOL_COUNT = TOOLS.length;
 
 // ── State ──
 let currentLang = localStorage.getItem('tf_lang') || 'en';
