@@ -84,16 +84,20 @@ with open(hp, 'r', encoding='utf-8') as f:
 cats = ['dev', 'finance', 'security', 'design', 'writing', 'utility', 'health', 'math', 'fun', 'network']
 all_ok = True
 for cat in cats:
-    start = html.find(f'class="tcat" data-cat="{cat}"')
+    start = html.find(f'<div class="tcat" data-cat="{cat}">')
     if start < 0:
         warn(f"分类 {cat} 未找到")
         all_ok = False
         continue
-    # Find the closing </div> of this tcat
-    section = html[start:start+500]
-    section = section[:section.find('</div>\n\n')+len('</div>')]
-    opens = len(re.findall(r'<div\b', section))
-    closes = len(re.findall(r'</div>', section))
+    rest = html[start:]
+    import re as re2
+    endpoints = [rest.find(f'<div class="tcat" data-cat="{c}">') for c in cats if c != cat]
+    endpoints.append(rest.find('<!-- Most Used Today -->'))
+    endpoints = [e for e in endpoints if e >= 0]
+    end = min(endpoints) if endpoints else len(rest)
+    section = rest[:end]
+    opens = len(re2.findall(r'<div\b', section))
+    closes = len(re2.findall(r'</div>', section))
     if opens != closes:
         warn(f"分类 {cat} div 不平衡: {opens}开/{closes}关")
         all_ok = False
