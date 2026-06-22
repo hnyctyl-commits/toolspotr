@@ -566,12 +566,14 @@ body {
 @media (max-width: 768px) {
   .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 6px; }
   .tcard { padding: 10px 10px 8px; }
-  .tcard-icon { width: 28px; height: 28px; font-size: 16px; margin-bottom: 6px; }
+  .tcard-icon { width: 28px; height: 28px; font-size: 16px; margin-bottom: 6px; border-radius: 6px; }
   .tcard-title { font-size: 12px; }
-  .tcard-desc { font-size: 10px; }
+  .tcard-desc { font-size: 10px; -webkit-line-clamp: 1; }
   .tcat-head { padding: 0 0 6px; margin-bottom: 8px; gap: 6px; }
   .tcat-name { font-size: 13px; }
   .tcat { margin-bottom: 16px; }
+  .tab-btn { padding: 5px 10px; font-size: 11px; }
+  .hot-tag { font-size: 10px; padding: 3px 8px; }
 }
 @media (max-width: 480px) {
   .tool-grid-cards { grid-template-columns: 1fr; }
@@ -582,15 +584,16 @@ body {
   .hs-num { font-size: 18px; }
   .cross-grid { grid-template-columns: 1fr; }
   .theme-panel { width: 160px; }
-  
+  .tool-quick { display: none !important; }
+  .nav-links { display: none; }
+  .hero-search-kbd { display: none; }
   /* Tool page extreme compact */
   .tool-page-title { font-size: 18px; }
   .tool-box { padding: 10px; }
-  .tool-cross-grid .tcard { padding: 8px 10px; }
-  
-  /* Double column theme options on small screen */
-  .theme-options { gap: 4px; }
-  .theme-opt { padding: 6px; font-size: 10px; }
+}
+@media (max-width: 360px) {
+  .tab-bar { padding: 6px 8px; gap: 3px; }
+  .tab-btn { padding: 4px 8px; font-size: 10px; }
 }
 
 /* Landscape phone */
