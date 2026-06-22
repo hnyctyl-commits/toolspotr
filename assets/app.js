@@ -565,13 +565,11 @@ function getRecentTools(){
     ).join('');
   }
   
-  // Click handler — 直接跳转到工具页，比搜索更快
+  // Click handler — 直接跳转到工具页
   suggest.addEventListener('click', function(e){
     const tag = e.target.closest('.hot-tag');
     if(!tag) return;
-    const toolId = tag.dataset.toolId;
-    const tool = TOOLS.find(t => t.id === toolId);
-    if(tool && tool.url) window.location.href = tool.url;
+    window.location.href = '/tools/' + tag.dataset.toolId + '.html';
   });
   
   renderHotTags();
