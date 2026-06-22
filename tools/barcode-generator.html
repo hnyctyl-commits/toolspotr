@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Barcode Generator — Toolflow</title>
+<meta name="description" content="Free online barcode generator. Generate EAN-13 barcodes from any number. Download as PNG for product labels, inventory, and more.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>Barcode Generator</strong></div><h1 class="tool-page-title">📊 Barcode Generator</h1><p class="tool-page-desc">Generate EAN-13 barcodes from any 12-digit number. Download as PNG for product labels, inventory tracking, and more.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>12-digit number</label><input type="text" id="bcInput" value="590123456789" maxlength="12" style="font-family:var(--mono);font-size:18px"></div></div>
+    <button class="tool-btn" id="bcBtn">📊 Generate Barcode</button>
+    <div style="text-align:center;padding:12px;background:#fff;border-radius:var(--radius-sm);margin-top:10px" id="bcCanvasWrap">
+      <canvas id="bcCanvas" height="120"></canvas>
+    </div>
+    <button class="tool-btn-sec" id="bcDl">⬇ Download PNG</button>
+  </div>
+  <div class="tool-article"><h3>EAN-13 Barcodes</h3><p>EAN-13 is the standard barcode format used worldwide for retail products. It encodes 13 digits — 12 data digits plus a check digit. The first digits indicate the country (e.g., 590 = Poland, 690-699 = China, 000-019 = US/Canada). This tool generates barcodes you can use for product labels and inventory.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="qr-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">📱</div><div class="tcard-body"><div class="tcard-title">QR Code Gen</div></div></a>
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function drawBarcode(code){
+  const c=document.getElementById("bcCanvas"),ctx=c.getContext("2d"),w=c.width=400,h=c.height=130;
+  ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);
+  const x0=20,barW=2.0,quiet=10;
+  const patterns={L:['0001101','0011001','0010011','0111101','0100011','0110001','0101111','0111011','0110111','0001011'],R:['1110010','1100110','1101100','1000010','1011100','1001110','1010000','1000100','1001000','1110100'],G:['0100111','0110011','0011011','0100001','0011101','0111001','0000101','0010001','0001001','0010111']};
+  const parity={0:'LLLLLL',1:'LLGLGG',2:'LLGGLG',3:'LLGGGL',4:'LGLLGG',5:'LGGLLG',6:'LGGGLL',7:'LGLGLG',8:'LGLGGL',9:'LGGLGL'};
+  
+  // Start guard
+  ['101'].forEach(p=>p.split('').forEach(b=>{ctx.fillStyle=b==='1'?'#000':'#fff';ctx.fillRect(x0+quiet*barW,10,barW,100);quiet++;}));
+  
+  const digits=code.padEnd(12,'0').slice(0,12).split('').map(Number);
+  const p=parity[digits[0]];
+  digits.forEach((d,i)=>{
+    if(i===0){ctx.fillStyle='#000';ctx.font='12px monospace';ctx.textAlign='center';ctx.fillText(String(d),x0+quiet*barW-9*barW,125);return;}
+    const set=i<6?p[i-1]:'R';
+    const pattern=i<6?patterns[set][d]:patterns.R[d];
+    pattern.split('').forEach(b=>{ctx.fillStyle=b==='1'?'#000':'#fff';ctx.fillRect(x0+quiet*barW,10,barW,100);quiet++;});
+    if(i===6){ctx.fillStyle='#fff';ctx.fillRect(x0+quiet*barW,10,barW*3,100);quiet+=3;}
+    ctx.fillStyle='#000';ctx.font='12px monospace';ctx.textAlign='center';
+    ctx.fillText(String(d),x0+quiet*barW-barW*0.5,125);
+  });
+  // End guard
+  ['101'].forEach(p=>p.split('').forEach(b=>{ctx.fillStyle=b==='1'?'#000':'#fff';ctx.fillRect(x0+quiet*barW,10,barW,100);quiet++;}));
+}
+
+document.getElementById("bcBtn").addEventListener('click',()=>{const v=document.getElementById("bcInput").value.replace(/\D/g,'').slice(0,12);drawBarcode(v.padEnd(12,'0'));});
+document.getElementById("bcDl").addEventListener('click',()=>{const c=document.getElementById("bcCanvas");const a=document.createElement('a');a.download='barcode.png';a.href=c.toDataURL('image/png');a.click();});
+drawBarcode('590123456789');
+</script>
+</body>
+</html>

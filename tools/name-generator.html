@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Random Name Generator — Toolflow</title>
+<meta name="description" content="Free online name generator. Generate random names for characters, usernames, businesses, fantasy worlds, and more. Thousands of combinations.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ng-name{font-size:28px;font-weight:700;text-align:center;padding:20px;background:var(--bg-main);border-radius:var(--radius-sm);margin:12px 0;color:var(--accent);font-family:var(--mono);letter-spacing:1px;border:1px solid var(--border)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Name Generator</strong></div><h1 class="tool-page-title">📛 Random Name Generator</h1><p class="tool-page-desc">Generate names for characters, usernames, businesses, fantasy worlds, and more. Thousands of possible combinations.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <button class="tool-btn-sec ng-mode active" data-type="person" style="font-size:12px;padding:6px 14px">👤 Person</button>
+      <button class="tool-btn-sec ng-mode" data-type="fantasy" style="font-size:12px;padding:6px 14px">🧝 Fantasy</button>
+      <button class="tool-btn-sec ng-mode" data-type="business" style="font-size:12px;padding:6px 14px">🏢 Business</button>
+      <button class="tool-btn-sec ng-mode" data-type="username" style="font-size:12px;padding:6px 14px">@ Username</button>
+    </div>
+    <div class="ng-name" id="ngResult">James Mitchell</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button class="tool-btn" id="ngGen">🎲 Generate</button>
+      <button class="tool-btn-sec" id="ngCopy">📋 Copy</button>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center" id="ngMore"></div>
+  </div>
+  <div class="tool-article"><h3>Name Generators</h3><p>Finding the perfect name is hard. Whether you're naming a character, starting a business, creating a username, or writing a fantasy novel, this generator gives you endless possibilities. With thousands of name components, no two names are the same.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="password-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title">Password Gen</div></div></a>
+    <a href="anagram-solver.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">Anagram Solver</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const NAMES={person:{f:['James','Mary','Robert','Patricia','John','Jennifer','Michael','Linda','David','Barbara','William','Elizabeth','Richard','Susan','Joseph','Jessica','Thomas','Sarah','Christopher','Karen','Charles','Lisa','Daniel','Nancy','Matthew','Betty','Anthony','Margaret','Mark','Sandra','Donald','Ashley','Steven','Kimberly','Andrew','Emily','Paul','Donna','Joshua','Michelle','Kenneth','Carol','Kevin','Amanda','Brian','Dorothy','George','Melissa','Timothy','Deborah','Ronald','Stephanie','Edward','Rebecca','Jason','Sharon'],l:['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Rodriguez','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Wright','Scott','Torres','Nguyen','Hill','Flores','Green','Adams','Nelson','Baker','Hall','Rivera','Campbell','Mitchell','Carter','Roberts']},
+fantasy:{f:['Aelar','Briar','Caelum','Dawn','Elara','Faelan','Glynn','Hawthorn','Ivy','Juniper','Kael','Lark','Meadow','Nyx','Orion','Peregrine','Quest','Rain','Storm','Thorn','Umbria','Vesper','Willow','Xanthe','Yarrow','Zephyr'],l:['Moonshadow','Starweaver','Ironforge','Oakenshield','Silverstream','Dawnbringer','Stormrider','Fireheart','Winterborne','Goldleaf','Nightwalker','Brightflame','Darkwater','Swiftarrow','Trueblade']},
+business:{p:['Tech','Cloud','Digital','Data','Smart','Next','Peak','Core','Apex','Nova','Prime','Flux','Nexus','Spark','Wave','Bright','Swift','True','Zen','Arc'],s:['Labs','Studio','Works','Group','Hub','Forge','Systems','Solutions','Media','Ventures','Global','Collective','Network','Partners','Technologies','Innovations']},
+username:{p:['cool','super','mega','ultra','neo','cyber','astro','cosmo','quantum','blaze','storm','shadow','phantom','crystal','thunder'],s:['fox','wolf','bear','hawk','owl','panda','tiger','lion','raven','phoenix','dragon','eagle','shark','whale','ninja']}};
+let ngType='person';const R=document.getElementById("ngResult"),M=document.getElementById("ngMore");
+document.querySelectorAll('.ng-mode').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.ng-mode').forEach(x=>x.classList.remove('active'));this.classList.add('active');ngType=this.dataset.type;gen();}));
+document.getElementById("ngGen").addEventListener('click',gen);document.getElementById("ngCopy").addEventListener('click',()=>{navigator.clipboard.writeText(R.textContent);});
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function gen(){const d=NAMES[ngType];let name='';if(ngType==='person')name=pick(d.f)+' '+pick(d.l);else if(ngType==='fantasy')name=pick(d.f)+' '+pick(d.l);else if(ngType==='business')name=pick(d.p)+pick(d.s);else name=pick(d.p)+'_'+pick(d.s)+Math.floor(Math.random()*999);R.textContent=name;
+  M.innerHTML=Array.from({length:4},()=>{let n='';if(ngType==='person')n=pick(d.f)+' '+pick(d.l);else if(ngType==='fantasy')n=pick(d.f)+' '+pick(d.l);else if(ngType==='business')n=pick(d.p)+pick(d.s);else n=pick(d.p)+'_'+pick(d.s)+Math.floor(Math.random()*999);return `<span style="padding:4px 10px;background:var(--bg-card);border-radius:14px;font-size:12px;border:1px solid var(--border);cursor:pointer" onclick="document.getElementById('ngResult').textContent='${n}'">${n}</span>`;}).join('');
+}gen();
+</script>
+</body>
+</html>

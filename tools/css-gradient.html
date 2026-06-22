@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CSS Gradient Generator — Toolflow</title>
+<meta name="description" content="Free online CSS gradient generator. Create beautiful linear and radial gradients with live preview. Copy CSS code instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.grad-preview{height:160px;border-radius:var(--radius);margin:10px 0;border:1px solid var(--border)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design / <strong>CSS Gradient Generator</strong></div><h1 class="tool-page-title">🌈 CSS Gradient Generator</h1><p class="tool-page-desc">Create beautiful CSS gradients with live preview. Linear, radial, multiple color stops. Copy the CSS code instantly.</p></div>
+  <div class="tool-box">
+    <div class="grad-preview" id="gradPreview"></div>
+    <div class="input-row"><div><label>Color 1</label><input type="color" id="grad1" value="#00d4aa"></div><div><label>Color 2</label><input type="color" id="grad2" value="#6c5ce7"></div><div><label>Color 3</label><input type="color" id="grad3" value="#070b15"></div></div>
+    <div class="input-row"><div><label>Direction</label><select id="gradDir" style="font-family:var(--mono)"><option value="to right">→ Horizontal</option><option value="to bottom">↓ Vertical</option><option value="to bottom right">↘ Diagonal</option><option value="135deg">↗ Angle 135°</option></select></div><div><label>Style</label><select id="gradType" style="font-family:var(--font)"><option value="linear">Linear</option><option value="radial">Radial</option></select></div></div>
+    <label>CSS Code</label><textarea id="gradCss" rows="3" style="font-family:var(--mono);font-size:12px" readonly></textarea>
+    <button class="tool-btn-sec" id="gradCopy">📋 Copy CSS</button>
+  </div>
+  <div class="tool-article"><h3>CSS Gradients</h3><p>CSS gradients allow you to create smooth transitions between colors without using images. They reduce HTTP requests, scale perfectly, and can be animated. Use linear-gradient for stripes and directional fades, radial-gradient for spotlight and circular effects.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="color-palette.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Palette</div></div></a>
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const c1=document.getElementById("grad1"),c2=document.getElementById("grad2"),c3=document.getElementById("grad3"),dir=document.getElementById("gradDir"),type=document.getElementById("gradType"),preview=document.getElementById("gradPreview"),css=document.getElementById("gradCss");
+[c1,c2,c3,dir,type].forEach(el=>el.addEventListener('input',update));
+function update(){const d=dir.value,t=type.value;const colors=`${c1.value}, ${c2.value} 50%, ${c3.value}`;const v=t==='radial'?`radial-gradient(circle, ${colors})`:`linear-gradient(${d}, ${colors})`;preview.style.background=v;css.value=`background: ${v};`;}
+document.getElementById("gradCopy").addEventListener('click',()=>{navigator.clipboard.writeText(css.value);});update();
+</script>
+</body>
+</html>

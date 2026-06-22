@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fake Data Generator — Toolflow</title>
+<meta name="description" content="Free online fake data generator. Generate fake names, emails, phone numbers, addresses, and more for testing and development.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>Fake Data Generator</strong></div><h1 class="tool-page-title">📋 Fake Data Generator</h1><p class="tool-page-desc">Generate realistic fake data for testing and development. Names, emails, phone numbers, addresses, and more.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+      <button class="tool-btn-sec fd-mode active" data-type="person">👤 Full Person</button>
+      <button class="tool-btn-sec fd-mode" data-type="email">📧 Emails</button>
+      <button class="tool-btn-sec fd-mode" data-type="phone">📞 Phones</button>
+      <button class="tool-btn-sec fd-mode" data-type="address">📍 Addresses</button>
+      <button class="tool-btn-sec fd-mode" data-type="company">🏢 Companies</button>
+    </div>
+    <div><label>Count</label><select id="fdCount" style="font-family:var(--font)"><option value="1">1</option><option value="5" selected>5</option><option value="10">10</option><option value="25">25</option></select></div>
+    <button class="tool-btn" id="fdGen" style="margin:8px 0">🎲 Generate</button>
+    <textarea id="fdOutput" rows="8" style="font-family:var(--mono);font-size:12px" readonly></textarea>
+    <button class="tool-btn-sec" id="fdCopy">📋 Copy</button>
+  </div>
+  <div class="tool-article"><h3>Test Data for Developers</h3><p>When building and testing applications, you need realistic-looking data. This generator creates names, emails, phone numbers, addresses, and company data that looks real but is completely fake. Perfect for database seeding, UI testing, and demo environments.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="json-to-csv.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON to CSV</div></div></a>
+    <a href="uuid-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">UUID Gen</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const F={f:['James','Mary','Robert','Patricia','John','Jennifer','Michael','Linda','David','Barbara','William','Elizabeth','Richard','Susan','Joseph','Jessica','Thomas','Sarah','Christopher','Karen','Lisa','Daniel','Nancy','Matthew','Betty','Anthony','Margaret','Mark','Sandra','Donald','Ashley','Steven','Kimberly','Andrew','Emily','Paul','Donna','Joshua','Michelle','Kenneth','Carol','Kevin','Amanda','Brian','Dorothy','George','Melissa','Timothy','Deborah'],l:['Smith','Johnson','Williams','Brown','Jones','Garcia','Miller','Davis','Martinez','Hernandez','Lopez','Gonzalez','Wilson','Anderson','Thomas','Taylor','Moore','Jackson','Martin','Lee','Perez','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Green','Adams','Nelson'],c:['Google','Microsoft','Apple','Amazon','Meta','Netflix','Tesla','Adobe','Salesforce','Oracle','IBM','Intel','Spotify','Uber','Airbnb','Twitter','Samsung','Dell','HP','Cisco','PayPal','Shopify','Slack','GitHub'],st:['Main','Oak','Elm','Maple','Cedar','Pine','Walnut','Birch','Willow','Cherry','Hill','Lake','Park','River','View','Spring','Forest','Meadow','Highland','Sunset'],ct:['New York','Los Angeles','Chicago','Houston','Phoenix','Philadelphia','San Antonio','San Diego','Dallas','Austin','Seattle','Denver','Boston','Portland','Miami','Atlanta','San Francisco'],s:['NY','CA','IL','TX','AZ','PA','TX','CA','TX','TX','WA','CO','MA','OR','FL','GA','CA'],dom:['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','proton.me','pm.me']};
+let fdType='person';const O=document.getElementById("fdOutput");
+document.querySelectorAll('.fd-mode').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.fd-mode').forEach(x=>x.classList.remove('active'));this.classList.add('active');fdType=this.dataset.type;genFake();}));
+document.getElementById("fdGen").addEventListener('click',genFake);document.getElementById("fdCopy").addEventListener('click',()=>navigator.clipboard.writeText(O.value));
+function p(a){return a[Math.floor(Math.random()*a.length)];}
+function r(n,m){return Math.floor(Math.random()*(m-n+1))+n;}
+function genFake(){const n=parseInt(document.getElementById("fdCount").value)||5;let rows=[];for(let i=0;i<n;i++){const fn=p(F.f),ln=p(F.l);switch(fdType){
+  case'person':rows.push(`${fn} ${ln} | ${fn.toLowerCase()}.${ln.toLowerCase()}@${p(F.dom)} | (${r(200,999)}) ${r(100,999)}-${r(1000,9999)}`);break;
+  case'email':rows.push(`${fn.toLowerCase()}.${ln.toLowerCase()}${r(1,99)}@${p(F.dom)}`);break;
+  case'phone':rows.push(`(${r(200,999)}) ${r(100,999)}-${r(1000,9999)}`);break;
+  case'address':const s=p(F.st);rows.push(`${r(100,9999)} ${s} ${p(F.st)==='Main'?'St':'Ave'}, ${p(F.ct)}, ${p(F.s)} ${r(10000,99999)}`);break;
+  case'company':rows.push(`${p(F.c)} | ${r(10,9999)} ${p(F.st)} Blvd, ${p(F.ct)}, ${p(F.s)} | ${p(F.f)}.${p(F.l)}@${p(F.dom)}`);break;
+}}O.value=rows.join('\n');}genFake();
+</script>
+</body>
+</html>

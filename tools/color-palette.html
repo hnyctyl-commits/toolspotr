@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Color Palette Generator — Toolflow</title>
+<meta name="description" content="Free online color palette generator. Generate beautiful color schemes from any starting color. Copy HEX codes with one click.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.pal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}.pal-item{height:60px;border-radius:var(--radius-sm);cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:10px;font-family:var(--mono);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.5);transition:transform .15s}.pal-item:hover{transform:scale(1.05)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design / <strong>Color Palette Generator</strong></div><h1 class="tool-page-title">🎨 Color Palette Generator</h1><p class="tool-page-desc">Generate beautiful 5-color palettes from any starting color. Click any color to copy its HEX code.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Starting Color</label><input type="color" id="palColor" value="#00d4aa"></div><div><label>Scheme</label><select id="palScheme" style="font-family:var(--font)"><option value="analogous">Analogous</option><option value="complementary" selected>Complementary</option><option value="triadic">Triadic</option><option value="tetradic">Tetradic</option><option value="monochrome">Monochrome</option></select></div></div>
+    <div class="pal-grid" id="palGrid"></div>
+    <div style="margin-top:8px;font-size:11px;color:var(--text-muted);text-align:center">Click a color to copy its HEX code</div>
+  </div>
+  <div class="tool-article"><h3>Color Schemes</h3><p><strong>Analogous</strong> — adjacent colors on the wheel, harmonious. <strong>Complementary</strong> — opposite colors, high contrast. <strong>Triadic</strong> — three evenly spaced colors, vibrant. <strong>Tetradic</strong> — two complementary pairs, rich. <strong>Monochrome</strong> — single hue variations, elegant.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="color-picker.html" class="tcard" style="margin:0"><div class="tcard-icon">🎨</div><div class="tcard-body"><div class="tcard-title">Color Picker</div></div></a>
+    <a href="color-contrast.html" class="tcard" style="margin:0"><div class="tcard-icon">👁️</div><div class="tcard-body"><div class="tcard-title">Contrast Check</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function hexToHsl(h){let r=parseInt(h.slice(1,3),16)/255,g=parseInt(h.slice(3,5),16)/255,b=parseInt(h.slice(5,7),16)/255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let hh=0,s=0,l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:hh=((g-b)/d+(g<b?6:0))/6;break;case g:hh=((b-r)/d+2)/6;break;case b:hh=((r-g)/d+4)/6;break;}}return[hh*360,s,l];}
+function hslToHex(h,s,l){h/=360;const a=s*Math.min(l,1-l);const f=n=>{const k=(n+h*12)%12;return l-a*Math.max(Math.min(k-3,9-k,1),-1);};const toHex=x=>Math.round(255*f(x)).toString(16).padStart(2,'0');return'#'+toHex(0)+toHex(8)+toHex(4);}
+const inp=document.getElementById("palColor"),sch=document.getElementById("palScheme"),grid=document.getElementById("palGrid");
+[inp,sch].forEach(el=>el.addEventListener('input',gen));
+function gen(){const[h,s,l]=hexToHsl(inp.value);const type=sch.value;let hues=[];if(type==='analogous')hues=[h-30,h-15,h,h+15,h+30];else if(type==='complementary')hues=[h,h+180,h+15,h+195,h-15];else if(type==='triadic')hues=[h,h+120,h+240,h+60,h+180];else if(type==='tetradic')hues=[h,h+90,h+180,h+270,h+45];else hues=[h,h-10,h+10,h-20,h+20];
+  const saturations=type==='monochrome'?[s*100,s*85,s*70,s*55,s*40]:[s*100,s*85,s*100,s*85,s*100];
+  const lights=type==='monochrome'?[l*100,l*80,l*60,l*40,l*20]:[l*100,l*90,l*80,l*70,l*60];
+  grid.innerHTML=hues.map((h,i)=>{const idx=((i%hues.length)+hues.length)%hues.length;const c=hslToHex(((hues[idx]%360)+360)%360,saturations[i]/100,lights[i]/100);return`<div class="pal-item" style="background:${c}" onclick="navigator.clipboard.writeText('${c}');this.style.transform='scale(0.95)';setTimeout(()=>this.style.transform='',200)" title="Click to copy ${c}">${c}</div>`;}).join('');
+}gen();
+</script>
+</body>
+</html>

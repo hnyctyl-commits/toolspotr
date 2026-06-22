@@ -97,7 +97,7 @@ const LANG = {
 };
 
 // ── Tool Data (for search) ──
-const TOOL_COUNT = 58;
+const TOOL_COUNT = 64;
 const TOOLS = [
   {id:'ip', icon:'🌐', key:'ipLookup', cat:'dev', ready:true, url:'tools/ip.html', tags:'network,ip,location'},
   {id:'json', icon:'📋', key:'jsonFmt', cat:'dev', ready:true, url:'tools/json-formatter.html', tags:'json,format,validate'},
