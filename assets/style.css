@@ -244,6 +244,8 @@ body {
 .hsr-item-tag { font-size: 9px; color: var(--accent2); background: rgba(108,92,231,0.08); padding: 1px 6px; border-radius: 4px; flex-shrink: 0; font-weight: 500; }
 
 /* ── Theme Panel ── */
+.theme-panel,.lang-panel{display:none!important}
+.theme-panel.show,.lang-panel.show{display:block!important}
 .theme-panel {
   display: none; position: absolute; top: 100%; right: 0; z-index: 200;
   margin-top: 6px; background: var(--bg-elevated); border: 1px solid var(--border-light);
