@@ -637,4 +637,53 @@ function getRecentTools(){
   if(document.readyState!=='loading'){renderFavBtns();renderFavs();}
 })();
 
+// ── Tool Page Enhancements ──
+(function initToolPage(){
+  const path = window.location.pathname;
+  const match = path.match(/\/tools\/(.+)\.html/);
+  if(!match) return; // Only on tool pages
+  const currentId = match[1];
+  
+  // Find current tool info
+  const tool = TOOLS.find(t => t.id === currentId);
+  if(!tool) return;
+  
+  // 1. Copy Link Button
+  const header = document.querySelector('.tool-page-title');
+  if(header){
+    const btn = document.createElement('button');
+    btn.className = 'copy-link-btn';
+    btn.innerHTML = '🔗 Share';
+    btn.title = 'Copy link to this tool';
+    btn.onclick = function(){
+      navigator.clipboard.writeText(window.location.href);
+      this.innerHTML = '✅ Copied!';
+      setTimeout(() => this.innerHTML = '🔗 Share', 2000);
+    };
+    header.parentElement?.querySelector('.tool-page-header')?.appendChild(btn);
+  }
+  
+  // 2. Quick Nav (same category tools)
+  const sameCat = TOOLS.filter(t => t.cat === tool.cat && t.id !== currentId && t.ready).slice(0, 10);
+  if(sameCat.length){
+    const bar = document.createElement('div');
+    bar.className = 'tool-quick show';
+    bar.innerHTML = `<span style="color:var(--text-muted);font-size:10px;padding:0 4px">${tool.cat === 'dev' ? '💻' : tool.cat === 'finance' ? '💰' : tool.cat === 'image' ? '🎨' : tool.cat === 'text' ? '✍️' : tool.cat === 'health' ? '🏥' : tool.cat === 'security' ? '🔒' : '🛠️'}</span>` +
+      sameCat.map(t => `<a href="${t.url}" ${t.id===currentId?'class="active"':''}>${t.icon||'🛠️'} ${t.name||t.id.replace(/-/g,' ')}</a>`).join('');
+    document.body.appendChild(bar);
+  }
+})();
+
+// ── Scroll to Top ──
+(function initScrollTop(){
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top';
+  btn.innerHTML = '↑';
+  btn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+  document.body.appendChild(btn);
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 300);
+  });
+})();
+
 })();
