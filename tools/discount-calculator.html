@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Discount Calculator — Toolflow</title>
+<meta name="description" content="Free online discount calculator. Calculate sale prices, savings, and final amounts. Find out how much you save with percentage discounts.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Finance / <strong>Discount Calculator</strong></div><h1 class="tool-page-title">🏷️ Discount Calculator</h1><p class="tool-page-desc">Calculate sale prices, savings, and final amounts instantly. Works with percentage discounts, fixed amount discounts, and sales tax.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Original Price ($)</label><input type="number" id="dcPrice" value="100" min="0" step="0.01"></div><div><label>Discount %</label><input type="number" id="dcPct" value="25" min="0" max="100"></div><div><label>Sales Tax %</label><input type="number" id="dcTax" value="0" min="0" max="50" step="0.1"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">You Save</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="dcSave">$25.00</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Final Price</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="dcFinal">$75.00</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">After Tax</div><div style="font-size:18px;font-weight:700;color:var(--accent2);font-family:var(--mono)" id="dcAfterTax">$75.00</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Total Saved</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="dcTotal">25% off</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Smart Shopping</h3><p>Whether you're shopping during Black Friday, using a coupon code, or comparing deals, this discount calculator helps you understand exactly what you'll pay. The "After Tax" field is especially useful in countries where sales tax is added at checkout.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="tip-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">💵</div><div class="tcard-body"><div class="tcard-title">Tip Calc</div></div></a>
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function calcDC(){const p=parseFloat(document.getElementById("dcPrice").value)||0,d=parseFloat(document.getElementById("dcPct").value)||0,t=parseFloat(document.getElementById("dcTax").value)||0;const save=p*d/100,final=p-save,afterTax=final*(1+t/100);document.getElementById("dcSave").textContent='$'+save.toFixed(2);document.getElementById("dcFinal").textContent='$'+final.toFixed(2);document.getElementById("dcAfterTax").textContent='$'+afterTax.toFixed(2);document.getElementById("dcTotal").textContent=d+'% off';}
+document.querySelectorAll('#dcPrice,#dcPct,#dcTax').forEach(el=>el.addEventListener('input',calcDC));calcDC();
+</script>
+</body>
+</html>

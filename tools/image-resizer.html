@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Image Resizer — Toolflow</title>
+<meta name="description" content="Free online image resizer. Resize images to exact dimensions or by percentage. Maintain aspect ratio. Download resized image instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Image Resizer</strong></div><h1 class="tool-page-title">📐 Image Resizer</h1><p class="tool-page-desc">Resize any image to exact dimensions or by percentage. Maintain aspect ratio. Download the resized image instantly.</p></div>
+  <div class="tool-box">
+    <div class="io-zone" id="irDrop" style="text-align:center;padding:30px;border:2px dashed var(--border-light);border-radius:16px;cursor:pointer;background:var(--bg-main)">
+      <div style="font-size:36px">🖼️</div><div style="font-size:13px;color:var(--text-sec)">Drop image or click to browse</div>
+      <input type="file" id="irFile" accept="image/*" style="display:none">
+    </div>
+    <div class="input-row" style="margin-top:10px"><div><label>Width (px)</label><input type="number" id="irW" value="400" min="1"></div><div><label>Height (px)</label><input type="number" id="irH" value="300" min="1"></div></div>
+    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-sec)"><input type="checkbox" id="irRatio" checked> Maintain aspect ratio</label>
+    <div style="display:flex;gap:8px;margin:8px 0"><button class="tool-btn" id="irResize">📐 Resize</button><button class="tool-btn-sec" id="irDl">⬇ Download</button></div>
+    <div style="text-align:center;margin-top:8px"><canvas id="irCanvas" style="max-width:100%;border-radius:var(--radius-sm);display:none"></canvas></div>
+    <div style="font-size:11px;color:var(--text-muted);text-align:center" id="irInfo">No image loaded</div>
+  </div>
+  <div class="tool-article"><h3>Image Resizing</h3><p>Resizing images is essential for web optimization, social media posts, email attachments, and printing. This tool processes everything in your browser — no image is uploaded to any server. Supports JPG and PNG output formats.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title">Image Optimizer</div></div></a>
+    <a href="image-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">🔄</div><div class="tcard-body"><div class="tcard-title">Image Converter</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+let irImg=null;const C=document.getElementById("irCanvas"),IF=document.getElementById("irFile"),info=document.getElementById("irInfo"),wI=document.getElementById("irW"),hI=document.getElementById("irH"),rC=document.getElementById("irRatio");
+document.getElementById("irDrop").addEventListener('click',()=>IF.click());IF.addEventListener('change',function(){if(this.files[0])loadImg(this.files[0]);});
+document.getElementById("irDrop").addEventListener('dragover',e=>{e.preventDefault();document.getElementById("irDrop").style.borderColor='var(--accent)';});
+document.getElementById("irDrop").addEventListener('dragleave',()=>document.getElementById("irDrop").style.borderColor='var(--border-light)');
+document.getElementById("irDrop").addEventListener('drop',e=>{e.preventDefault();document.getElementById("irDrop").style.borderColor='var(--border-light)';if(e.dataTransfer.files[0])loadImg(e.dataTransfer.files[0]);});
+function loadImg(f){const r=new FileReader();r.onload=function(e){const img=new Image();img.onload=function(){irImg=img;wI.value=img.width;hI.value=img.height;info.textContent=`${img.width}×${img.height} · ${Math.round(f.size/1024)}KB`;resizeImg();};img.src=e.target.result;};r.readAsDataURL(f);}
+function resizeImg(){if(!irImg)return;const w=parseInt(wI.value)||irImg.width,h=parseInt(hI.value)||irImg.height;C.width=w;C.height=h;const ctx=C.getContext('2d');ctx.imageSmoothingQuality='high';ctx.drawImage(irImg,0,0,w,h);C.style.display='block';info.textContent=`${w}×${h} px`;}
+document.getElementById("irResize").addEventListener('click',resizeImg);
+document.getElementById("irDl").addEventListener('click',function(){if(!irImg)return;const a=document.createElement('a');a.download='resized-'+wI.value+'x'+hI.value+'.png';a.href=C.toDataURL('image/png');a.click();});
+</script>
+</body>
+</html>

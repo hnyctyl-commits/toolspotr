@@ -162,6 +162,11 @@ const TOOLS = [
   {id:'gpa-calculator', icon:'🎓', key:'gpa', cat:'utility', ready:true, url:'tools/gpa-calculator.html', tags:'gpa,calculator,grade,average'},
   {id:'calorie-calculator', icon:'🔥', key:'calorie', cat:'utility', ready:true, url:'tools/calorie-calculator.html', tags:'calorie,bmr,tdee,calculator'},
   {id:'text-to-speech', icon:'🔊', key:'tts', cat:'utility', ready:true, url:'tools/text-to-speech.html', tags:'text,speech,tts,reader'},
+  {id:'scientific-calculator', icon:'🔢', key:'sciCalc', cat:'utility', ready:true, url:'tools/scientific-calculator.html', tags:'scientific,calculator,trig,log'},
+  {id:'discount-calculator', icon:'🏷️', key:'discount', cat:'finance', ready:true, url:'tools/discount-calculator.html', tags:'discount,sale,tax,savings'},
+  {id:'image-resizer', icon:'📐', key:'imgResize', cat:'image', ready:true, url:'tools/image-resizer.html', tags:'image,resizer,crop,resize'},
+  {id:'dice-roller', icon:'🎲', key:'diceRoll', cat:'utility', ready:true, url:'tools/dice-roller.html', tags:'dice,roller,coin,flip'},
+  {id:'country-info', icon:'🌍', key:'country', cat:'utility', ready:true, url:'tools/country-info.html', tags:'country,info,capital,flag'},
 ];
 
 // ── Tool Count (auto from array) ──

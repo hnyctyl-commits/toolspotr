@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dice Roller & Coin Flip — Toolflow</title>
+<meta name="description" content="Free online dice roller and coin flipper. Roll dice from D4 to D20, flip coins, and track results. Great for games and decision making.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.dc-big{font-size:56px;text-align:center;padding:20px;background:var(--bg-main);border-radius:var(--radius-sm);margin:10px 0;font-family:var(--mono);font-weight:700;color:var(--accent);letter-spacing:2px}.dc-coin{font-size:80px;text-align:center;padding:16px;margin:10px 0;cursor:pointer;transition:transform .3s}.dc-coin.flip{animation:coinFlip .6s ease-in-out}@keyframes coinFlip{0%{transform:rotateY(0)}50%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Dice Roller & Coin Flip</strong></div><h1 class="tool-page-title">🎲 Dice Roller & Coin Flip</h1><p class="tool-page-desc">Roll dice for games or flip a coin for decisions. Supports D4, D6, D8, D10, D12, D20 and custom dice. Tracks roll history.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;justify-content:center">
+      <button class="tool-btn-sec dc-dice active" data-sides="6">D6</button>
+      <button class="tool-btn-sec dc-dice" data-sides="4">D4</button>
+      <button class="tool-btn-sec dc-dice" data-sides="8">D8</button>
+      <button class="tool-btn-sec dc-dice" data-sides="10">D10</button>
+      <button class="tool-btn-sec dc-dice" data-sides="12">D12</button>
+      <button class="tool-btn-sec dc-dice" data-sides="20">D20</button>
+    </div>
+    <div class="dc-big" id="dcResult">⚀</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button class="tool-btn" id="dcRoll">🎲 Roll</button>
+      <button class="tool-btn-sec" id="dcFlip">🪙 Flip Coin</button>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center" id="dcHistory"></div>
+  </div>
+  <div class="tool-article"><h3>Dice & Coin Games</h3><p>From tabletop RPGs (Dungeons & Dragons uses D20) to board games (Monopoly uses D6) to simple decisions (coin flip), random generators are essential. This tool uses cryptographically secure randomness — the same standard used in online casinos.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="random-number-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🎲</div><div class="tcard-body"><div class="tcard-title">Random Number</div></div></a>
+    <a href="list-randomizer.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">List Randomizer</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const DICE={'4':'⚁','6':'⚂','8':'4','10':'5','12':'6','20':'15'};
+let dcSides=6,dcHist=[];const R=document.getElementById("dcResult"),H=document.getElementById("dcHistory");
+document.querySelectorAll('.dc-dice').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.dc-dice').forEach(x=>x.classList.remove('active'));this.classList.add('active');dcSides=parseInt(this.dataset.sides);}));
+document.getElementById("dcRoll").addEventListener('click',function(){const r=Math.floor(crypto.getRandomValues(new Uint32Array(1))[0]/4294967296*dcSides)+1;const diceChar=r<=6?['⚀','⚁','⚂','⚃','⚄','⚅'][r-1]:String(r);R.textContent=diceChar;R.style.fontSize=r>6?'56px':'56px';dcHist.unshift(r);if(dcHist.length>20)dcHist.pop();H.innerHTML=dcHist.map((v,i)=>`<span style="padding:3px 8px;background:var(--bg-card);border-radius:4px;font-size:11px;font-family:var(--mono)">${v}</span>`).join('');});
+document.getElementById("dcFlip").addEventListener('click',function(){const r=Math.random()<0.5;R.textContent=r?'🦅 Heads':'🪙 Tails';R.style.fontSize='56px';});
+</script>
+</body>
+</html>

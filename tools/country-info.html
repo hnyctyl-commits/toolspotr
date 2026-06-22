@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Country Info Lookup — Toolflow</title>
+<meta name="description" content="Free online country information lookup. Search any country to find its capital, population, currency, language, flag and more.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ci-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.ci-item{padding:8px 10px;background:var(--bg-main);border-radius:var(--radius-xs)}.ci-label{font-size:9px;color:var(--text-muted);text-transform:uppercase}.ci-val{font-size:14px;font-weight:600;color:var(--text-pri)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Country Info</strong></div><h1 class="tool-page-title">🌍 Country Info Lookup</h1><p class="tool-page-desc">Search any country to find its capital, population, currency, languages, area, flag emoji, and more.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:1"><input type="text" id="ciInput" value="Japan" placeholder="Search country..." style="font-size:16px"></div></div>
+    <div class="ci-grid" id="ciGrid"></div>
+  </div>
+  <div class="tool-article"><h3>Country Facts</h3><p>Whether you're studying geography, planning travel, or just curious, this tool gives you quick access to essential country information. Data includes capital cities, population figures, official languages, currencies, area, and continental region.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="currency-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">💱</div><div class="tcard-body"><div class="tcard-title">Currency</div></div></a>
+    <a href="timezone-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">⏰</div><div class="tcard-body"><div class="tcard-title">Timezone</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const COUNTRIES={
+  china:{name:'China',flag:'🇨🇳',capital:'Beijing',population:'1.41B',currency:'CNY (Yuan)',lang:'Mandarin',area:'9.6M km²',region:'Asia'},
+  japan:{name:'Japan',flag:'🇯🇵',capital:'Tokyo',population:'125.7M',currency:'JPY (Yen)',lang:'Japanese',area:'378K km²',region:'Asia'},
+  india:{name:'India',flag:'🇮🇳',capital:'New Delhi',population:'1.43B',currency:'INR (Rupee)',lang:'Hindi, English',area:'3.3M km²',region:'Asia'},
+  usa:{name:'United States',flag:'🇺🇸',capital:'Washington DC',population:'335M',currency:'USD (Dollar)',lang:'English',area:'9.8M km²',region:'North America'},
+  uk:{name:'United Kingdom',flag:'🇬🇧',capital:'London',population:'67.3M',currency:'GBP (Pound)',lang:'English',area:'243K km²',region:'Europe'},
+  france:{name:'France',flag:'🇫🇷',capital:'Paris',population:'67.8M',currency:'EUR (Euro)',lang:'French',area:'551K km²',region:'Europe'},
+  germany:{name:'Germany',flag:'🇩🇪',capital:'Berlin',population:'84.3M',currency:'EUR (Euro)',lang:'German',area:'357K km²',region:'Europe'},
+  australia:{name:'Australia',flag:'🇦🇺',capital:'Canberra',population:'26.1M',currency:'AUD (Dollar)',lang:'English',area:'7.7M km²',region:'Oceania'},
+  canada:{name:'Canada',flag:'🇨🇦',capital:'Ottawa',population:'39.6M',currency:'CAD (Dollar)',lang:'English, French',area:'9.98M km²',region:'North America'},
+  brazil:{name:'Brazil',flag:'🇧🇷',capital:'Brasília',population:'216M',currency:'BRL (Real)',lang:'Portuguese',area:'8.5M km²',region:'South America'},
+  southkorea:{name:'South Korea',flag:'🇰🇷',capital:'Seoul',population:'51.7M',currency:'KRW (Won)',lang:'Korean',area:'100K km²',region:'Asia'},
+  singapore:{name:'Singapore',flag:'🇸🇬',capital:'Singapore',population:'5.6M',currency:'SGD (Dollar)',lang:'English, Chinese, Malay',area:'733 km²',region:'Asia'},
+  italy:{name:'Italy',flag:'🇮🇹',capital:'Rome',population:'58.7M',currency:'EUR (Euro)',lang:'Italian',area:'301K km²',region:'Europe'},
+  spain:{name:'Spain',flag:'🇪🇸',capital:'Madrid',population:'47.5M',currency:'EUR (Euro)',lang:'Spanish',area:'506K km²',region:'Europe'},
+  mexico:{name:'Mexico',flag:'🇲🇽',capital:'Mexico City',population:'129M',currency:'MXN (Peso)',lang:'Spanish',area:'1.96M km²',region:'North America'},
+  russia:{name:'Russia',flag:'🇷🇺',capital:'Moscow',population:'144.2M',currency:'RUB (Ruble)',lang:'Russian',area:'17.1M km²',region:'Europe/Asia'},
+  egypt:{name:'Egypt',flag:'🇪🇬',capital:'Cairo',population:'111M',currency:'EGP (Pound)',lang:'Arabic',area:'1M km²',region:'Africa'},
+  nigeria:{name:'Nigeria',flag:'🇳🇬',capital:'Abuja',population:'224M',currency:'NGN (Naira)',lang:'English',area:'924K km²',region:'Africa'},
+  thailand:{name:'Thailand',flag:'🇹🇭',capital:'Bangkok',population:'71.9M',currency:'THB (Baht)',lang:'Thai',area:'513K km²',region:'Asia'},
+  vietnam:{name:'Vietnam',flag:'🇻🇳',capital:'Hanoi',population:'100M',currency:'VND (Dong)',lang:'Vietnamese',area:'331K km²',region:'Asia'},
+};
+const inp=document.getElementById("ciInput"),grid=document.getElementById("ciGrid");
+inp.addEventListener('input',search);
+function search(){const q=inp.value.trim().toLowerCase();const found=Object.values(COUNTRIES).filter(c=>c.name.toLowerCase().includes(q)||c.capital.toLowerCase().includes(q)||c.region.toLowerCase().includes(q));if(found.length===0){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-muted)">No country found</div>';return;}const c=found[0];grid.innerHTML=`<div class="ci-item" style="grid-column:1/-1;text-align:center;font-size:40px">${c.flag}</div><div class="ci-item"><div class="ci-label">Country</div><div class="ci-val">${c.name}</div></div><div class="ci-item"><div class="ci-label">Capital</div><div class="ci-val">${c.capital}</div></div><div class="ci-item"><div class="ci-label">Population</div><div class="ci-val">${c.population}</div></div><div class="ci-item"><div class="ci-label">Currency</div><div class="ci-val">${c.currency}</div></div><div class="ci-item"><div class="ci-label">Language</div><div class="ci-val">${c.lang}</div></div><div class="ci-item"><div class="ci-label">Area</div><div class="ci-val">${c.area}</div></div><div class="ci-item"><div class="ci-label">Region</div><div class="ci-val">${c.region}</div></div>`;}
+search();
+</script>
+</body>
+</html>
