@@ -605,7 +605,41 @@ function getRecentTools(){
   });
 })();
 
-// ── Heat Sorting (move popular tools first) ──
+// ── Hot Grid (12 tools, daily updated) ──
+(function initHotGrid(){
+  const grid = document.getElementById('hotGrid');
+  if(!grid) return;
+  
+  function renderHotGrid(){
+    const usage = getUsageStats();
+    
+    // Score all tools: usage + daily rotation
+    const scored = TOOLS.filter(t => t.ready).map((t, i) => {
+      const used = usage[t.id]?.count || 0;
+      // Daily rotation: different mix each day
+      const dayNum = new Date().getDate();
+      const daily = ((i * 3 + dayNum) % 109) < 12 ? 5 : 0;
+      return { ...t, score: used * 2 + daily };
+    });
+    
+    scored.sort((a,b) => b.score - a.score);
+    const top = scored.slice(0, 12);
+    
+    grid.innerHTML = top.map(t => 
+      `<a href="${t.url}" class="cross-card">
+        <span class="cross-icon">${t.icon || '🛠️'}</span>
+        <span class="cross-name">${t.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+        <span class="cross-count">${usage[t.id]?.count || 0} <span>uses</span></span>
+      </a>`
+    ).join('');
+  }
+  
+  renderHotGrid();
+  // Re-render on page focus (in case of cross-tab usage)
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) renderHotGrid();
+  });
+})();
 (function initHeatSort(){
   const usage = getUsageStats();
   const cats = document.querySelectorAll('.tcat');
