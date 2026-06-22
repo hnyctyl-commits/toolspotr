@@ -451,4 +451,36 @@ function getRecentTools(){
   }
 })();
 
+// ── Cookie Consent (GDPR/EEA compliance) ──
+(function initCookieBar(){
+  const cookieConsent = localStorage.getItem('tf_cookie');
+  if(cookieConsent) return;
+  
+  // Create banner
+  const bar = document.createElement('div');
+  bar.className = 'cookie-bar show';
+  bar.innerHTML = `
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        This site uses cookies from Google to personalize ads and analyze traffic. 
+        <a href="/privacy.html" target="_blank">Learn more</a>
+      </div>
+      <div class="cookie-btns">
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">✗ Reject</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">✓ Accept All</button>
+      </div>
+    </div>`;
+  document.body.appendChild(bar);
+  
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem('tf_cookie', 'accepted');
+    bar.classList.remove('show');
+  });
+  
+  document.getElementById('cookieReject').addEventListener('click', function(){
+    localStorage.setItem('tf_cookie', 'rejected');
+    bar.classList.remove('show');
+  });
+})();
+
 })();

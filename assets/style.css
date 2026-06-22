@@ -77,6 +77,16 @@ body {
 .speed-cursor{display:inline-block;color:var(--accent);font-weight:700;animation:blink 0.8s step-end infinite;margin-left:1px;font-size:1.1em}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── Cookie Consent Banner ── */
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:16px 24px;background:rgba(7,11,21,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:none;font-size:13px;line-height:1.6}
+.cookie-bar.show{display:block}.cookie-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cookie-text{flex:1;min-width:200px;color:var(--text-sec)}.cookie-text a{color:var(--accent);text-decoration:none}
+.cookie-btns{display:flex;gap:8px;flex-wrap:wrap}
+.cookie-btn{padding:8px 20px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--font)}
+.cookie-btn-accept{background:var(--accent);color:#000}.cookie-btn-accept:hover{opacity:0.9}
+.cookie-btn-reject{background:var(--bg-card);color:var(--text-sec);border:1px solid var(--border)}.cookie-btn-reject:hover{background:var(--border)}
+@media(max-width:600px){.cookie-bar{padding:12px 16px}.cookie-inner{flex-direction:column;align-items:stretch;gap:10px}}
 .nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(7,11,21,0.85); backdrop-filter: blur(20px);
