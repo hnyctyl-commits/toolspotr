@@ -91,6 +91,7 @@
           <input type="text" id="heroSearchInput" placeholder="Search 109 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
           <button class="hero-search-clear" id="searchClearBtn" aria-label="Clear search">✕</button>
           <div class="hero-search-kbd"><kbd>⌘</kbd><kbd>K</kbd></div>
+        <div class="search-suggest" id="searchSuggest"></div>
         </div>
         <div class="hero-search-results" id="heroSearchResults"></div>
       </div>
@@ -110,10 +111,13 @@
       <h2 data-i18n="sectionAll">All Tools</h2>
       <span class="section-count">109</span>
     </div>
+    
+    <!-- Category Tabs -->
+    <div class="tab-bar" id="tabBar"></div>
 
     <!-- Developer Tools -->
     <div class="tcat">
-      <div class="tcat-head"><span class="tcat-icon">💻</span><span class="tcat-name" data-i18n="devTools">Developer Tools</span><span class="tcat-cnt">8</span></div>
+      <div class="tcat" data-cat="dev"><div class="tcat" data-cat="finance"><div class="tcat" data-cat="security"><div class="tcat" data-cat="image"><div class="tcat" data-cat="text"><div class="tcat" data-cat="utility"><div class="tcat-head"><span class="tcat-icon">💻</span><span class="tcat-name" data-i18n="devTools">Developer Tools</span><span class="tcat-cnt">8</span></div>
       <div class="tool-grid-cards">
         <a href="tools/ip.html" class="tcard"><div class="tcard-icon">🌐</div><div class="tcard-title">IP Address Lookup</div><div class="tcard-desc">Find your public IP, location & ISP</div><div class="tcard-tags"><span class="tag">Network</span></div></a>
         <a href="tools/json-formatter.html" class="tcard"><div class="tcard-icon">📋</div><div class="tcard-title">JSON Formatter</div><div class="tcard-desc">Format, validate & compress JSON</div><div class="tcard-tags"><span class="tag">Dev</span></div></a>

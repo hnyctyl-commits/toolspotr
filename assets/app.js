@@ -515,4 +515,60 @@ function getRecentTools(){
   });
 })();
 
+// ── Category Tabs ──
+(function initTabs(){
+  const tabBar = document.getElementById('tabBar');
+  if(!tabBar) return;
+  const cats = [
+    {key:'all', icon:'🛠️', name:'All'},
+    {key:'dev', icon:'💻', name:'Developer'},
+    {key:'finance', icon:'💰', name:'Finance'},
+    {key:'security', icon:'🔒', name:'Security'},
+    {key:'image', icon:'🎨', name:'Design'},
+    {key:'text', icon:'✍️', name:'Text'},
+    {key:'utility', icon:'📐', name:'Utilities'},
+  ];
+  tabBar.innerHTML = cats.map(c => `<button class="tab-btn ${c.key==='all'?'active':''}" data-cat="${c.key}">${c.icon} ${c.name}</button>`).join('');
+  
+  tabBar.addEventListener('click', function(e){
+    const btn = e.target.closest('.tab-btn');
+    if(!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.tcat').forEach(t => {
+      t.classList.toggle('hidden', cat !== 'all' && t.dataset.cat !== cat);
+    });
+  });
+})();
+
+// ── Search Suggestions ──
+(function initSearchSuggest(){
+  const input = document.getElementById('heroSearchInput');
+  const suggest = document.getElementById('searchSuggest');
+  if(!input || !suggest) return;
+  const popular = ['Currency Converter', 'Color Blind Test', 'Mortgage Calculator', 'BMI Calculator', 'QR Code', 'Password Gen', 'Pomodoro Timer', 'Meme Gen'];
+  suggest.innerHTML = popular.map(t => `<span onclick="document.getElementById('heroSearchInput').value='${t}';document.getElementById('heroSearchInput').dispatchEvent(new Event('input'));document.getElementById('heroSearchInput').focus()">${t}</span>`).join('');
+})();
+
+// ── Heat Sorting (move popular tools first) ──
+(function initHeatSort(){
+  const usage = getUsageStats();
+  const cats = document.querySelectorAll('.tcat');
+  if(!Object.keys(usage).length) return;
+  cats.forEach(cat => {
+    const grid = cat.querySelector('.tool-grid-cards');
+    if(!grid) return;
+    const cards = [...grid.querySelectorAll('.tcard')];
+    cards.sort((a,b) => {
+      const aid = a.getAttribute('href')?.match(/tools\/(.+)\.html/)?.[1] || '';
+      const bid = b.getAttribute('href')?.match(/tools\/(.+)\.html/)?.[1] || '';
+      const ac = usage[aid]?.count || 0;
+      const bc = usage[bid]?.count || 0;
+      return bc - ac;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  });
+})();
+
 })();
