@@ -167,6 +167,11 @@ const TOOLS = [
   {id:'image-resizer', icon:'📐', key:'imgResize', cat:'image', ready:true, url:'tools/image-resizer.html', tags:'image,resizer,crop,resize'},
   {id:'dice-roller', icon:'🎲', key:'diceRoll', cat:'utility', ready:true, url:'tools/dice-roller.html', tags:'dice,roller,coin,flip'},
   {id:'country-info', icon:'🌍', key:'country', cat:'utility', ready:true, url:'tools/country-info.html', tags:'country,info,capital,flag'},
+  {id:'fancy-text', icon:'✨', key:'fancyText', cat:'text', ready:true, url:'tools/fancy-text.html', tags:'fancy,text,unicode,font,stylish'},
+  {id:'due-date-calculator', icon:'🤰', key:'dueDate', cat:'health', ready:true, url:'tools/due-date-calculator.html', tags:'due,date,pregnancy,calculator'},
+  {id:'sleep-calculator', icon:'💤', key:'sleepCalc', cat:'health', ready:true, url:'tools/sleep-calculator.html', tags:'sleep,calculator,cycles,wake'},
+  {id:'fraction-calculator', icon:'➗', key:'fractionCalc', cat:'utility', ready:true, url:'tools/fraction-calculator.html', tags:'fraction,calculator,math'},
+  {id:'std-dev-calculator', icon:'📊', key:'stdDev', cat:'utility', ready:true, url:'tools/std-dev-calculator.html', tags:'standard,deviation,variance,statistics'},
 ];
 
 // ── Tool Count (auto from array) ──
