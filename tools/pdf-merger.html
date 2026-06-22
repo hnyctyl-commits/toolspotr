@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PDF Merger — Toolflow</title>
+<meta name="description" content="Free online PDF merger. Combine multiple PDF files into one document. No uploads, all processing in your browser with pdf-lib.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.pf-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-card);border-radius:var(--radius-xs);margin-bottom:6px;border:1px solid var(--border)}.pf-name{flex:1;font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pf-size{font-size:11px;color:var(--text-muted);font-family:var(--mono)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>PDF Merger</strong></div><h1 class="tool-page-title">📄 PDF Merger</h1><p class="tool-page-desc">Combine multiple PDF files into one. Drag and drop or select files. All processing happens in your browser — nothing is uploaded.</p></div>
+  <div class="tool-box">
+    <div class="io-zone" id="pfDrop" style="text-align:center;padding:30px;border:2px dashed var(--border-light);border-radius:16px;cursor:pointer;background:var(--bg-main)">
+      <div style="font-size:36px">📄</div>
+      <div style="font-size:13px;color:var(--text-sec)">Drop PDF files here or click to select</div>
+      <input type="file" id="pfFiles" accept=".pdf" multiple style="display:none">
+    </div>
+    <div id="pfList" style="margin-top:10px"></div>
+    <button class="tool-btn" id="pfMerge" disabled style="display:block;margin:10px auto">🔗 Merge & Download</button>
+    <div id="pfStatus" style="text-align:center;font-size:13px;color:var(--text-sec);margin-top:6px"></div>
+  </div>
+  <div class="tool-article"><h3>PDF Merging</h3><p>Combine multiple PDF files into a single document right in your browser. No uploads, no privacy concerns — everything stays on your device. Uses the pdf-lib library for reliable, standards-compliant PDF processing. Perfect for combining scanned documents, reports, and forms.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📦</div><div class="tcard-body"><div class="tcard-title">Image Optimizer</div></div></a>
+    <a href="json-to-csv.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON to CSV</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/pdf-lib.min.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+let pdfFiles=[];const drop=document.getElementById("pfDrop"),fi=document.getElementById("pfFiles"),list=document.getElementById("pfList"),btn=document.getElementById("pfMerge"),status=document.getElementById("pfStatus");
+drop.addEventListener('click',()=>fi.click());
+drop.addEventListener('dragover',e=>{e.preventDefault();drop.style.borderColor='var(--accent)';});
+drop.addEventListener('dragleave',()=>drop.style.borderColor='var(--border-light)');
+drop.addEventListener('drop',e=>{e.preventDefault();drop.style.borderColor='var(--border-light)';handleFiles([...e.dataTransfer.files]);});
+fi.addEventListener('change',()=>{if(fi.files.length)handleFiles([...fi.files]);fi.value='';});
+function handleFiles(files){const newFiles=files.filter(f=>f.type==='application/pdf');pdfFiles=[...pdfFiles,...newFiles];updateList();}
+function updateList(){if(!pdfFiles.length){list.innerHTML='';btn.disabled=true;status.textContent='';return;}
+  list.innerHTML=pdfFiles.map((f,i)=>`<div class="pf-item"><span style="color:var(--text-muted);font-size:11px;font-family:var(--mono)">${i+1}</span><span class="pf-name">${f.name}</span><span class="pf-size">${Math.round(f.size/1024)}KB</span><span style="cursor:pointer;color:#ef4444;font-size:16px;padding:0 4px" onclick="removeFile(${i})">×</span></div>`).join('');
+  btn.disabled=false;status.textContent=`${pdfFiles.length} file(s) selected`;}
+function removeFile(i){pdfFiles.splice(i,1);updateList();}
+document.getElementById("pfMerge").addEventListener('click',async function(){
+  if(pdfFiles.length<2){status.textContent='Please select at least 2 PDF files';return;}
+  this.disabled=true;this.textContent='⏳ Merging...';status.textContent='Processing...';
+  try{const {PDFDocument}=PDFLib;const merged=await PDFDocument.create();
+    for(const f of pdfFiles){const buf=await f.arrayBuffer();const doc=await PDFDocument.load(buf);const pages=await merged.copyPages(doc,doc.getPageIndices());pages.forEach(p=>merged.addPage(p));}
+    const bytes=await merged.save();const blob=new Blob([bytes],{type:'application/pdf'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='merged.pdf';a.click();
+    status.textContent=`✅ Merged ${pdfFiles.length} files (${Math.round(bytes.length/1024)}KB)`;}
+  catch(e){status.textContent='❌ Error: '+e.message;}
+  this.disabled=false;this.textContent='🔗 Merge & Download';
+});
+</script>
+</body>
+</html>

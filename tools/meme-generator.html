@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Meme Generator — Toolflow</title>
+<meta name="description" content="Free online meme generator. Add custom text to images to create memes. Top, bottom, and middle text. Download your meme instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.mg-preview{background:#000;border-radius:var(--radius-sm);margin:12px 0;text-align:center;min-height:200px;overflow:hidden}.mg-preview canvas{max-width:100%;display:block;margin:0 auto}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Image & Media / <strong>Meme Generator</strong></div><h1 class="tool-page-title">😂 Meme Generator</h1><p class="tool-page-desc">Add text to images to create memes. Upload any image, add top/bottom text, choose font size. Download and share instantly.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div><label>Top Text</label><input type="text" id="mgTop" value="When someone says" style="font-size:16px;text-align:center"></div></div>
+    <div class="input-row"><div><label>Bottom Text</label><input type="text" id="mgBottom" value="it's just a small bug" style="font-size:16px;text-align:center"></div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="tool-btn" id="mgLoadSample">🖼️ Load Sample</button>
+      <button class="tool-btn-sec" id="mgUpload">📁 Upload Image</button>
+      <input type="file" id="mgFile" accept="image/*" style="display:none">
+      <button class="tool-btn-sec" id="mgDl">⬇ Download</button>
+    </div>
+    <div class="mg-preview"><canvas id="mgCanvas"></canvas></div>
+  </div>
+  <div class="tool-article"><h3>Meme Culture</h3><p>Memes are the universal language of the internet. This meme generator adds bold white text with black outline (Impact font style) to any image — the classic meme format. Upload your own image or use the sample. All processing happens in your browser.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="emoji-mashup.html" class="tcard" style="margin:0"><div class="tcard-icon">🎭</div><div class="tcard-body"><div class="tcard-title">Emoji Mashup</div></div></a>
+    <a href="image-resizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📐</div><div class="tcard-body"><div class="tcard-title">Image Resizer</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const C=document.getElementById("mgCanvas"),ctx=C.getContext("2d"),tI=document.getElementById("mgTop"),bI=document.getElementById("mgBottom");
+let img=null;
+function drawMeme(){if(!img)return;C.width=Math.min(img.width,600);C.height=C.width/img.width*img.height;ctx.drawImage(img,0,0,C.width,C.height);const fs=Math.max(20,Math.floor(C.height*0.08));ctx.textAlign='center';ctx.textBaseline='top';ctx.font=`bold ${fs}px Impact,sans-serif`;ctx.strokeStyle='#000';ctx.lineWidth=fs*0.08;ctx.fillStyle='#fff';
+  ctx.textBaseline='top';wrapText(ctx,tI.value||' ',C.width/2,10,C.width-20,fs+4);
+  ctx.textBaseline='bottom';wrapText(ctx,bI.value||' ',C.width/2,C.height-10,C.width-20,fs+4);}
+function wrapText(ctx,t,x,y,mw,lh){const lines=[];let line='',words=t.split(' ');for(let w of words){const test=line+w+' ';if(ctx.measureText(test).width>mw&&line){lines.push(line.trim());line=w+' ';}else line=test;}lines.push(line.trim());
+  const startY=y-(lines.length-1)*lh/2;lines.forEach((l,i)=>{const ly=startY+i*lh;ctx.strokeText(l,x,ly);ctx.fillText(l,x,ly);});}
+function loadSample(){const c=document.createElement('canvas');c.width=600;c.height=400;const cx=c.getContext('2d');const g=cx.createLinearGradient(0,0,0,400);g.addColorStop(0,'#667eea');g.addColorStop(1,'#764ba2');cx.fillStyle=g;cx.fillRect(0,0,600,400);cx.fillStyle='#fff';cx.font='40px Inter';cx.textAlign='center';cx.fillText('🤔',300,120);cx.font='20px Inter';cx.fillText('Upload your own image',300,280);cx.fillText('for the best memes!',300,310);const img2=new Image();img2.src=c.toDataURL();img2.onload=function(){img=img2;drawMeme();};}
+document.getElementById("mgUpload").addEventListener('click',()=>document.getElementById("mgFile").click());
+document.getElementById("mgFile").addEventListener('change',function(){if(!this.files[0])return;const r=new FileReader();r.onload=function(e){const i=new Image();i.onload=function(){img=i;drawMeme();};i.src=e.target.result;};r.readAsDataURL(this.files[0]);});
+document.getElementById("mgLoadSample").addEventListener('click',loadSample);
+document.getElementById("mgDl").addEventListener('click',function(){if(!img)return;const a=document.createElement('a');a.download='meme.png';a.href=C.toDataURL('image/png');a.click();});
+[tI,bI].forEach(el=>el.addEventListener('input',drawMeme));
+// Draw initial sample
+loadSample();
+</script>
+</body>
+</html>

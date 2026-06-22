@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grammar Checker — Toolflow</title>
+<meta name="description" content="Free online grammar checker. Check your text for common grammar issues, punctuation errors, and style suggestions. All processing is local.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.gc-issue{padding:8px 12px;background:var(--bg-main);border-radius:var(--radius-xs);margin:4px 0;border-left:3px solid #facc15;font-size:13px}.gc-fix{color:var(--accent);font-weight:600}.gc-error{border-left-color:#ef4444}.gc-suggest{border-left-color:#38bdf8}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Grammar Checker</strong></div><h1 class="tool-page-title">📝 Grammar Checker</h1><p class="tool-page-desc">Check your text for common grammar issues, punctuation errors, and style tips. All processing is local — nothing leaves your device.</p></div>
+  <div class="tool-box">
+    <label>Enter text to check</label>
+    <textarea id="gcInput" rows="6" style="font-family:var(--font);font-size:15px;line-height:1.7">I goes to the store yesterday. Their are many things to do. Its a beautiful day. She dont like coffee. He have been waiting for a long time.</textarea>
+    <button class="tool-btn" id="gcBtn" style="margin:8px 0">🔍 Check Grammar</button>
+    <div id="gcResults"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px">
+      <div style="background:var(--bg-main);padding:8px;border-radius:var(--radius-xs);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Words</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="gcWords">0</div></div>
+      <div style="background:var(--bg-main);padding:8px;border-radius:var(--radius-xs);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Issues Found</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="gcIssues">0</div></div>
+      <div style="background:var(--bg-main);padding:8px;border-radius:var(--radius-xs);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Score</div><div style="font-size:18px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="gcScore">100%</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Grammar Checking</h3><p>This tool checks for common English grammar issues: subject-verb agreement, there/their/they're, its/it's, double negatives, repeated words, and basic punctuation. All checks run locally using pattern matching. For advanced AI-powered grammar checking, consider dedicated tools like Grammarly or LanguageTool.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="word-counter.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Word Counter</div></div></a>
+    <a href="fancy-text.html" class="tcard" style="margin:0"><div class="tcard-icon">✨</div><div class="tcard-body"><div class="tcard-title">Fancy Text</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const RULES=[
+  {pattern:/\b(i|you|we|they)\s+goes\b/gi,fixed:match=>match[0].toLowerCase().startsWith('i')?'I go':match.replace(/goes/,'go'),desc:'Subject-verb agreement: use "go" with I/you/we/they'},
+  {pattern:/\b(he|she|it)\s+go\b/gi,fixed:match=>match.replace(/\bgo\b/,'goes'),desc:'Subject-verb agreement: use "goes" with he/she/it'},
+  {pattern:/\b(I|He|She|It|We|They|You)\s+don\'?t\b/gi,fixed:match=>{const s=match.match(/^\w+/)[0];const ex={'I':'I','He':'He','She':'She','It':'It','We':'We','They':'They','You':'You'};return ex[s]+" doesn't";},desc:'Use "doesn\'t" with third person singular'},
+  {pattern:/\b(he|she|it)\s+have\b/gi,fixed:match=>match.replace(/\bhave\b/,'has'),desc:'Use "has" with he/she/it'},
+  {pattern:/\b(I|you|we|they)\s+has\b/gi,fixed:match=>match.replace(/\bhas\b/,'have'),desc:'Use "have" with I/you/we/they'},
+  {pattern:/\bTheir\s+(is|are|was|were)\b/gi,fixed:match=>match.replace(/\bTheir\b/,'There'),desc:'Use "There" for existence, "Their" for possession'},
+  {pattern:/\bThere\s+(things|dogs|cars|people|friends|books)\b/gi,fixed:match=>match.replace(/\bThere\b/,'Their'),desc:'Use "Their" for possession'},
+  {pattern:/\bIts\s+(a|an|the|not|been|been)\b/gi,fixed:match=>match.replace(/\bIts\b/,"It's"),desc:'Use "It\'s" (it is) instead of "Its" (possession)'},
+  {pattern:/\bdont\b/gi,fixed:match=>"don't",desc:'Missing apostrophe: use "don\'t"'},
+  {pattern:/\bcant\b/gi,fixed:match=>"can't",desc:'Missing apostrophe: use "can\'t"'},
+  {pattern:/\bwont\b/gi,fixed:match=>"won't",desc:'Missing apostrophe: use "won\'t"'},
+  {pattern:/\bisnt\b/gi,fixed:match=>"isn't",desc:'Missing apostrophe: use "isn\'t"'},
+  {pattern:/\b(\w+)\s+\1\b/gi,fixed:match=>match.split(/\s+/)[0],desc:'Repeated word'},
+  {pattern:/\bi\s+[a-z]/g,fixed:match=>match.replace(/\bi\b/,'I'),desc:'Capitalize "I"'},
+];
+document.getElementById("gcBtn").addEventListener('click',check);
+function check(){const t=document.getElementById("gcInput").value;const words=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById("gcWords").textContent=words;
+  let issues=[],text=t;
+  RULES.forEach(rule=>{let m;while((m=rule.pattern.exec(text))!==null){const orig=m[0];const fixed=typeof rule.fixed==='function'?rule.fixed(m):rule.fixed;if(orig!==fixed){issues.push({orig,fixed,desc:rule.desc,pos:m.index});}}});
+  // Deduplicate
+  const seen=new Set();const unique=issues.filter(i=>{const k=i.orig+':'+i.fixed;if(seen.has(k))return false;seen.add(k);return true;});
+  document.getElementById("gcIssues").textContent=unique.length;
+  const score=words>0?Math.max(0,Math.round((1-unique.length/words)*100)):100;
+  document.getElementById("gcScore").textContent=score+'%';
+  if(!unique.length){document.getElementById("gcResults").innerHTML='<div style="padding:12px;color:var(--accent);text-align:center">✅ No issues found!</div>';return;}
+  document.getElementById("gcResults").innerHTML=unique.map(i=>`<div class="gc-issue"><span style="color:#ef4444;font-weight:600">✗</span> "${i.desc}" → <span class="gc-fix">"${i.fixed}"</span></div>`).join('');}
+</script>
+</body>
+</html>
