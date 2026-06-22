@@ -6,7 +6,7 @@
 <title>Roman Numeral Converter — Toolflow</title>
 <meta name="description" content="Free Roman numeral converter. Convert numbers to Roman numerals (I, V, X, L, C, D, M) and vice versa. Supports 1-3999.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782130957"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
 </head>
 <body>
@@ -38,7 +38,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782130359"></script>
+<script src="../assets/app.js?v=1782133111"></script>
 <script>
 function toRoman(n){if(n<1||n>3999)return"Out of range";const v=[1000,900,500,400,100,90,50,40,10,9,5,4,1];const r=["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];let s="",i=0;while(i<v.length){if(n>=v[i]){s+=r[i];n-=v[i];}else i++;}return s;}
 function fromRoman(r){const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};let t=0;for(let i=0;i<r.length;i++){const c=m[r[i]];const n=m[r[i+1]];if(n&&c<n){t-=c;}else{t+=c;}}return t;}

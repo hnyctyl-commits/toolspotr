@@ -4,7 +4,7 @@
 <title>QR Code Reader — Toolflow</title>
 <meta name="description" content="Free QR code reader. Scan QR codes with your camera or upload an image. Works entirely in your browser.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782130957"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
@@ -23,7 +23,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782130359"></script>
+<script src="../assets/app.js?v=1782133111"></script>
 <script>document.getElementById("qrDrop").addEventListener("click",()=>document.getElementById("qrFile").click());document.getElementById("qrFile").addEventListener("change",function(){if(!this.files[0])return;const r=new FileReader();r.onload=function(e){const img=new Image();img.onload=function(){const c=document.createElement("canvas"),ctx=c.getContext("2d");c.width=img.width;c.height=img.height;ctx.drawImage(img,0,0);const id=ctx.getImageData(0,0,c.width,c.height);let data="";for(let y=0;y<id.height;y+=4){for(let x=0;x<id.width;x+=4){const i=(y*id.width+x)*4;data+=id.data[i]>128?"1":"0";}}document.getElementById("qrResult").innerHTML=`<div style="font-size:10px;color:var(--text-muted)">Decoded QR Data</div><div style="font-size:13px;font-family:var(--mono);color:var(--accent);margin-top:4px">QR code detected (${c.width}x${c.height})<br>For precise decoding, use a dedicated QR scanner.</div>`;};img.src=e.target.result;};r.readAsDataURL(this.files[0]);});</script>
 </body>
 </html>

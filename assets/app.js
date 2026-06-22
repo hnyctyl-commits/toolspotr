@@ -542,13 +542,42 @@ function getRecentTools(){
   });
 })();
 
-// ── Search Suggestions ──
-(function initSearchSuggest(){
+// ── Hot Tags (from real tools, sorted by popularity) ──
+(function initHotTags(){
   const input = document.getElementById('heroSearchInput');
   const suggest = document.getElementById('searchSuggest');
   if(!input || !suggest) return;
-  const popular = ['Currency Converter', 'Color Blind Test', 'Mortgage Calculator', 'BMI Calculator', 'QR Code', 'Password Gen', 'Pomodoro Timer', 'Meme Gen'];
-  suggest.innerHTML = popular.map(t => `<span onclick="document.getElementById('heroSearchInput').value='${t}';document.getElementById('heroSearchInput').dispatchEvent(new Event('input'));document.getElementById('heroSearchInput').focus()">${t}</span>`).join('');
+  
+  function renderHotTags(){
+    const usage = getUsageStats();
+    // Score tools: usage count + order weight
+    const scored = TOOLS.filter(t => t.ready).map(t => ({
+      ...t,
+      score: (usage[t.id]?.count || 0) + (t.id === 'currency-converter' ? 10 : t.id === 'color-blind-test' ? 9 : t.id === 'mortgage-calculator' ? 8 : t.id === 'bmi-calculator' ? 7 : t.id === 'password-generator' ? 6 : t.id === 'qr-generator' ? 5 : t.id === 'age-calculator' ? 4 : 0)
+    }));
+    scored.sort((a,b) => b.score - a.score);
+    const top = scored.slice(0, 8);
+    
+    suggest.innerHTML = top.map(t => 
+      `<span class="hot-tag" data-tool-id="${t.id}" data-tool-name="${t.id.replace(/-/g,' ')}">
+        ${t.icon} ${t.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase())}
+      </span>`
+    ).join('');
+  }
+  
+  // Click handler
+  suggest.addEventListener('click', function(e){
+    const tag = e.target.closest('.hot-tag');
+    if(!tag) return;
+    const name = tag.dataset.toolName;
+    input.value = name;
+    input.dispatchEvent(new Event('input'));
+    input.focus();
+  });
+  
+  renderHotTags();
+  // Re-render when usage data changes
+  window.addEventListener('storage', renderHotTags);
 })();
 
 // ── Heat Sorting (move popular tools first) ──

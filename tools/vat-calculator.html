@@ -4,7 +4,7 @@
 <title>VAT Calculator — Toolflow</title>
 <meta name="description" content="Free VAT calculator. Add or remove VAT from any amount. Supports standard 20% and reduced rates.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782130957"><style>#themePanel,#langPanel{display:none!important}</style>
+<link rel="stylesheet" href="../assets/style.css?v=1782133111"><style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
@@ -22,7 +22,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782130359"></script>
+<script src="../assets/app.js?v=1782133111"></script>
 <script>function vat(){const a=parseFloat(document.getElementById("vatAmt").value)||0,r=parseFloat(document.getElementById("vatRate").value)||0;const v=a*r/100;document.getElementById("vatVat").textContent="$"+v.toFixed(2);document.getElementById("vatTotal").textContent="$"+(a+v).toFixed(2);}document.querySelectorAll("#vatAmt,#vatRate").forEach(e=>e.addEventListener("input",vat));vat();</script>
 </body>
 </html>

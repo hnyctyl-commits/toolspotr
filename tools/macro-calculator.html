@@ -4,7 +4,7 @@
 <title>Macro Calculator — Toolflow</title>
 <meta name="description" content="Free macro calculator. Calculate daily protein, carbohydrate, and fat intake based on your calorie goals and fitness objectives.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782130957">
+<link rel="stylesheet" href="../assets/style.css?v=1782133111">
 <style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
@@ -23,7 +23,7 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782130359"></script>
+<script src="../assets/app.js?v=1782133111"></script>
 <script>function mc(){const cal=parseFloat(document.getElementById("mcCal").value)||2000;const g=document.getElementById("mcGoal").value;let pRatio,cRatio,fRatio;if(g==="cut"){pRatio=0.4;cRatio=0.3;fRatio=0.3;}else if(g==="bulk"){pRatio=0.3;cRatio=0.45;fRatio=0.25;}else{pRatio=0.3;cRatio=0.4;fRatio=0.3;}document.getElementById("mcPro").textContent=Math.round(cal*pRatio/4);document.getElementById("mcCarb").textContent=Math.round(cal*cRatio/4);document.getElementById("mcFat").textContent=Math.round(cal*fRatio/9);}document.querySelectorAll("#mcCal,#mcGoal").forEach(e=>e.addEventListener("input",mc));mc();</script>
 </body>
 </html>

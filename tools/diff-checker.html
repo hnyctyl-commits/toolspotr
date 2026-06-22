@@ -15,7 +15,7 @@
 <title>Diff Checker — Toolflow</title>
 <meta name="description" content="Free online diff checker. Compare text and code differences side by side. Highlight added, removed, and changed lines.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782130957">
+<link rel="stylesheet" href="../assets/style.css?v=1782133111">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.df-line{display:flex;font-family:var(--mono);font-size:12px;line-height:1.6;border-bottom:1px solid var(--border)}.df-num{width:36px;text-align:right;padding:0 6px;color:var(--text-muted);flex-shrink:0;user-select:none}.df-add{background:rgba(0,212,170,0.08);color:var(--accent)}.df-rem{background:rgba(239,68,68,0.08);color:#ef4444}.df-eq{color:var(--text-sec)}.df-sign{width:16px;text-align:center;flex-shrink:0}.df-code{flex:1;padding:0 4px;white-space:pre-wrap;word-break:break-all}</style>
 </head>
@@ -51,7 +51,7 @@ New line five</textarea></div></div>
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀 Deploy your projects with</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782130359"></script>
+<script src="../assets/app.js?v=1782133111"></script>
 <script>
 function lcs(a,b){const m=a.length,n=b.length;const dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]+1:Math.max(dp[i-1][j],dp[i][j-1]);const res=[];let i=m,j=n;while(i>0&&j>0){if(a[i-1]===b[j-1]){res.unshift({type:'eq',val:a[i-1]});i--;j--;}else if(dp[i-1][j]>=dp[i][j-1]){res.unshift({type:'del',val:a[i-1]});i--;}else{res.unshift({type:'add',val:b[j-1]});j--;}}while(i>0){res.unshift({type:'del',val:a[i-1]});i--;}while(j>0){res.unshift({type:'add',val:b[j-1]});j--;}return res;}
 
