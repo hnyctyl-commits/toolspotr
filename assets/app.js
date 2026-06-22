@@ -559,18 +559,13 @@ function getRecentTools(){
     const top = scored.slice(0, 8);
     
     suggest.innerHTML = top.map(t => 
-      `<span class="hot-tag" data-tool-id="${t.id}" data-tool-name="${t.id.replace(/-/g,' ')}">
+      `<a href="/tools/${t.id}.html" class="hot-tag">
         ${t.icon} ${t.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase())}
-      </span>`
+      </a>`
     ).join('');
   }
   
-  // Click handler — 直接跳转到工具页
-  suggest.addEventListener('click', function(e){
-    const tag = e.target.closest('.hot-tag');
-    if(!tag) return;
-    window.location.href = '/tools/' + tag.dataset.toolId + '.html';
-  });
+  // No JS click handler needed - using <a> links directly
   
   renderHotTags();
   // Re-render when usage data changes

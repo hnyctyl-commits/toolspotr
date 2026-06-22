@@ -311,7 +311,7 @@ body {
 .tcat.hidden{display:none}
 /* ── Hot Tags ── */
 .search-suggest{display:flex;gap:6px;flex-wrap:wrap;padding:10px 2px 0;justify-content:center}
-.hot-tag{font-size:11px;color:var(--text-muted);padding:4px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;cursor:pointer;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.hot-tag{font-size:11px;color:var(--text-muted);padding:4px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:16px;cursor:pointer;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;text-decoration:none}
 .hot-tag:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,170,0.06);transform:translateY(-1px)}
 .hot-tag:active{transform:scale(0.95)}
 .tcat { margin-bottom: 36px; }
