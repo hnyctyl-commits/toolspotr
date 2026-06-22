@@ -207,12 +207,14 @@ const TOOLS = [
   {id:'signature-maker', icon:'🛠️', key:'signaturemaker', cat:'design', ready:true, url:'tools/signature-maker.html', tags:'signature,maker'},
   {id:'timestamp-converter', icon:'🛠️', key:'timestampconverter', cat:'dev', ready:true, url:'tools/timestamp-converter.html', tags:'timestamp,converter'},
   {id:'yaml-json', icon:'🛠️', key:'yamljson', cat:'dev', ready:true, url:'tools/yaml-json.html', tags:'yaml,json'},
+  {id:'background-remover', icon:'🖼️', key:'bgremover', cat:'design', ready:true, url:'tools/background-remover.html', tags:'background,remover,image'},
+  {id:'bmr-calculator', icon:'⚡', key:'bmr', cat:'health', ready:true, url:'tools/bmr-calculator.html', tags:'bmr,metabolism,calories'},
+  {id:'emi-calculator', icon:'🏦', key:'emi', cat:'finance', ready:true, url:'tools/emi-calculator.html', tags:'emi,loan,installment'},
+  {id:'hashtag-generator', icon:'#️⃣', key:'hashtagGen', cat:'writing', ready:true, url:'tools/hashtag-generator.html', tags:'hashtag,social,media'},
+  {id:'image-cropper', icon:'✂️', key:'imgCrop', cat:'design', ready:true, url:'tools/image-cropper.html', tags:'image,crop,cropper'},
+  {id:'love-calculator', icon:'💕', key:'loveCalc', cat:'fun', ready:true, url:'tools/love-calculator.html', tags:'love,calculator,fun'},
+  {id:'online-ruler', icon:'📏', key:'onlineRuler', cat:'utility', ready:true, url:'tools/online-ruler.html', tags:'ruler,measure,screen'},
 ];
-  {id:'background-remover', icon:'🛠️', key:'backgroundremover', cat:'design', ready:true, url:'tools/background-remover.html', tags:'background,remover'},
-  {id:'bmr-calculator', icon:'🛠️', key:'bmrcalculator', cat:'health', ready:true, url:'tools/bmr-calculator.html', tags:'bmr,calculator'},
-  {id:'emi-calculator', icon:'🛠️', key:'emicalculator', cat:'finance', ready:true, url:'tools/emi-calculator.html', tags:'emi,calculator'},
-  {id:'hashtag-generator', icon:'🛠️', key:'hashtaggenerator', cat:'writing', ready:true, url:'tools/hashtag-generator.html', tags:'hashtag,generator'},
-  {id:'image-cropper', icon:'🛠️', key:'imagecropper', cat:'design', ready:true, url:'tools/image-cropper.html', tags:'image,cropper'},
 
 // ── Tool Count (auto from array) ──
 const TOOL_COUNT = TOOLS.length;

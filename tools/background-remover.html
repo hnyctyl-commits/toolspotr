@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="cosmic">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Background Remover — Toolflow</title><meta name="description" content="Free background remover. Remove image backgrounds using chroma key technology. All processing is local and private.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style></head>
+<link rel="stylesheet" href="../assets/style.css?v=1782138464"><style>#themePanel,#langPanel{display:none!important}</style></head>
 <body><nav class="nav"><div class="nav-inner">
   <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
   <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button></div></div>
@@ -18,4 +20,4 @@
   <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js"></script><script>let brImg=null;const brC=document.getElementById("brCanvas"),brF=document.getElementById("brFile"),brDrop=document.getElementById("brDrop");brDrop.addEventListener("click",()=>brF.click());brF.addEventListener("change",function(){if(this.files[0]){const r=new FileReader();r.onload=function(e){const img=new Image();img.onload=function(){brImg=img;brC.style.display="block";brC.width=Math.min(img.width,400);brC.height=brC.width/img.width*img.height;const ctx=brC.getContext("2d");ctx.drawImage(img,0,0,brC.width,brC.height);};img.src=e.target.result;};r.readAsDataURL(this.files[0]);}});document.getElementById("brRemove").addEventListener("click",function(){if(!brImg)return;const ctx=brC.getContext("2d");const id=ctx.getImageData(0,0,brC.width,brC.height);const d=id.data;for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2];if(r>200&&g>200&&b>200)d[i+3]=0;}ctx.putImageData(id,0,0);});document.getElementById("brDl").addEventListener("click",function(){const a=document.createElement("a");a.download="no-bg.png";a.href=brC.toDataURL("image/png");a.click();});</script></body></html>
+<script src="../assets/app.js?v=1782138464"></script><script>let brImg=null;const brC=document.getElementById("brCanvas"),brF=document.getElementById("brFile"),brDrop=document.getElementById("brDrop");brDrop.addEventListener("click",()=>brF.click());brF.addEventListener("change",function(){if(this.files[0]){const r=new FileReader();r.onload=function(e){const img=new Image();img.onload=function(){brImg=img;brC.style.display="block";brC.width=Math.min(img.width,400);brC.height=brC.width/img.width*img.height;const ctx=brC.getContext("2d");ctx.drawImage(img,0,0,brC.width,brC.height);};img.src=e.target.result;};r.readAsDataURL(this.files[0]);}});document.getElementById("brRemove").addEventListener("click",function(){if(!brImg)return;const ctx=brC.getContext("2d");const id=ctx.getImageData(0,0,brC.width,brC.height);const d=id.data;for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2];if(r>200&&g>200&&b>200)d[i+3]=0;}ctx.putImageData(id,0,0);});document.getElementById("brDl").addEventListener("click",function(){const a=document.createElement("a");a.download="no-bg.png";a.href=brC.toDataURL("image/png");a.click();});</script></body></html>
