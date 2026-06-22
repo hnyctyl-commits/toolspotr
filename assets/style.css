@@ -304,7 +304,7 @@ body {
 .section-count { font-size: 10px; color: var(--text-muted); background: var(--bg-card); padding: 3px 8px; border-radius: 20px; }
 
 /* ── Category Tabs ── */
-.tab-bar{display:flex;gap:4px;margin-bottom:16px;padding:0;position:sticky;top:56px;z-index:50;background:var(--bg-deep);padding:10px 0;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+.tab-bar{display:flex;gap:4px;margin-bottom:16px;padding:0;position:sticky;top:56px;z-index:50;background:var(--bg-deep);padding:10px 0;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;justify-content:center}
 .tab-bar::-webkit-scrollbar{display:none}
 .tab-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;font-family:var(--font);white-space:nowrap}
 .tab-btn:hover{border-color:var(--accent);color:var(--accent)}
