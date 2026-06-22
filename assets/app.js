@@ -9,9 +9,9 @@
 const LANG = {
   en: {
     siteName: 'Toolflow', siteDesc: 'Free Online Tools for Developers',
-    navTools: 'tools', searchPlaceholder: 'Search 58 tools...',
-    heroTitle: 'Your <span class="gradient">Daily Toolkit</span>',
-    heroDesc: '50+ free online tools for developers, designers, and everyone. IP lookup, JSON formatter, investment calculator, and more. <span class="speed-text">Constantly updated</span><span class="speed-cursor">|</span>',
+    navTools: 'tools', searchPlaceholder: 'Search 100+ tools...',
+    heroTitle: 'Your <span class="gradient">All-in-One Toolbox</span>',
+    heroDesc: '100+ free online tools — all in your browser. Zero signups, instant results. <span class="speed-text">Constantly updated</span><span class="speed-cursor">|</span>',
     heroTools: 'Tools', heroCategories: 'Categories', heroAlways: 'Always Free',
     sectionAll: 'All Tools',
     devTools: 'Developer Tools', finance: 'Finance & Investment',
@@ -19,7 +19,7 @@ const LANG = {
     imageMedia: 'Image & Media', textWriting: 'Text & Writing',
     mostUsed: 'Most Used Today', uses: 'uses',
     comingSoon: 'Coming soon',
-    footerText: 'Free Online Tools for Developers &middot; All tools run locally in your browser. Nothing is uploaded.',
+    footerText: '100+ free tools — all local, all private.',
     footerPrivacy: 'Your privacy matters — zero data leaves your device.',
     themeLabel: 'Theme', langLabel: 'Language',
     themeCosmic: 'Cosmic', themeLight: 'Light', themeOcean: 'Ocean',
