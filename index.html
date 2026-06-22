@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="100+ free tools — instant, private, always free.">
 <link rel="alternate" hreflang="en" href="https://toolspotr.com/">
 <link rel="alternate" hreflang="zh" href="https://toolspotr.com/?lang=zh">
-<link rel="stylesheet" href="assets/style.css?v=1782138464"782130957">
+<link rel="stylesheet" href="assets/style.css?v=1782133111"782130957">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* Force-hide panels until JS shows them - prevents flash of visible content */
@@ -68,7 +68,7 @@
     </div>
 
     <div class="nav-links">
-      <span class="nav-stat">116 tools</span>
+      <span class="nav-stat">109 tools</span>
     </div>
   </div>
 </nav>
@@ -89,7 +89,7 @@
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <div class="hero-search-kbd"><kbd>Ctrl+K</kbd></div>
-          <input type="text" id="heroSearchInput" placeholder="Search 116 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+          <input type="text" id="heroSearchInput" placeholder="Search 109 tools..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
           <button class="hero-search-clear" id="searchClearBtn" aria-label="Clear search">✕</button>
         </div>
         <div class="search-suggest" id="searchSuggest"></div>
@@ -97,8 +97,8 @@
       </div>
 
       <div class="hero-stats">
-        <div class="hs"><span class="hs-num">116</span><span class="hs-lbl" data-i18n="heroTools">Tools</span></div>
-        <div class="hs"><span class="hs-num">116</span><span class="hs-lbl" data-i18n="heroCategories">Categories</span></div>
+        <div class="hs"><span class="hs-num">109</span><span class="hs-lbl" data-i18n="heroTools">Tools</span></div>
+        <div class="hs"><span class="hs-num">10</span><span class="hs-lbl" data-i18n="heroCategories">Categories</span></div>
         <div class="hs"><span class="hs-num">∞</span><span class="hs-lbl" data-i18n="heroAlways">Always Free</span></div>
       </div>
     </div>
@@ -109,7 +109,7 @@
     <div class="section-header">
       <span class="section-icon">🛠️</span>
       <h2 data-i18n="sectionAll">All Tools</h2>
-      <span class="section-count">116</span>
+      <span class="section-count">109</span>
     </div>
     
     <!-- Favorites Section -->
@@ -121,67 +121,89 @@
     <!-- Category Tabs -->
     <div class="tab-bar" id="tabBar"></div>
 
-        <!-- Developer Tools -->
+    <!-- Developer Tools -->
     <div class="tcat" data-cat="dev">
       <div class="tcat-head"><span class="tcat-icon">💻</span><span class="tcat-name" data-i18n="devTools">Developer Tools</span><span class="tcat-cnt" id="cnt-dev">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tool-grid-cards"></div></div>
     </div>
 
     <!-- Finance -->
     <div class="tcat" data-cat="finance">
       <div class="tcat-head"><span class="tcat-icon">💰</span><span class="tcat-name" data-i18n="finance">Finance &amp; Investment</span><span class="tcat-cnt" id="cnt-finance">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tool-grid-cards"></div></div>
     </div>
 
     <!-- Security -->
     <div class="tcat" data-cat="security">
       <div class="tcat-head"><span class="tcat-icon">🔒</span><span class="tcat-name" data-i18n="security">Security &amp; Privacy</span><span class="tcat-cnt" id="cnt-security">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tool-grid-cards"></div></div>
     </div>
 
     <!-- Image & Media -->
     <div class="tcat" data-cat="design">
-      <div class="tcat-head"><span class="tcat-icon">🖼️</span><span class="tcat-name" data-i18n="imageMedia">Image &amp; Media</span><span class="tcat-cnt" id="cnt-design">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tcat-head"><span class="tcat-icon">🖼️</span>
+      <div class="tool-grid-cards"></div></div>
     </div>
 
     <!-- Text & Writing -->
     <div class="tcat" data-cat="writing">
-      <div class="tcat-head"><span class="tcat-icon">✍️</span><span class="tcat-name" data-i18n="textWriting">Text &amp; Writing</span><span class="tcat-cnt" id="cnt-writing">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tcat-head"><span class="tcat-icon">✍️</span><span class="tcat-name" data-i18n="textWriting">Text &amp; Writing</span><span class="tcat-cnt">4</span></div>
+      <div class="tool-grid-cards"></div></div>
     </div>
 
     <!-- Utilities -->
     <div class="tcat" data-cat="utility">
-      <div class="tcat-head"><span class="tcat-icon">📐</span><span class="tcat-name" data-i18n="utilities">Utilities</span><span class="tcat-cnt" id="cnt-utility">0</span></div>
-      <div class="tool-grid-cards"></div>
+      <div class="tcat-head"><span class="tcat-icon">📐</span><span class="tcat-name" data-i18n="utilities">Utilities</span><span class="tcat-cnt">5</span></div>
+      <div class="tool-grid-cards">
+        <a href="tools/percentage-calculator.html" class="tcard"><div class="tcard-icon">📊</div><div class="tcard-title">Percentage Calc</div><div class="tcard-desc">Calculate percentages instantly</div><div class="tcard-tags"><span class="tag">Math</span></div></a>
+        <a href="tools/bmi-calculator.html" class="tcard"><div class="tcard-icon">⚕️</div><div class="tcard-title">BMI Calculator</div><div class="tcard-desc">Calculate your body mass index</div><div class="tcard-tags"><span class="tag">Health</span></div></a>
+        <a href="tools/random-number-generator.html" class="tcard"><div class="tcard-icon">🎲</div><div class="tcard-title">Random Number</div><div class="tcard-desc">Generate random numbers</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+        <a href="tools/timezone-converter.html" class="tcard"><div class="tcard-icon">⏰</div><div class="tcard-title">Timezone Converter</div><div class="tcard-desc">Convert time across timezones</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+        <a href="tools/unit-converter.html" class="tcard"><div class="tcard-icon">📏</div><div class="tcard-title">Unit Converter</div><div class="tcard-desc">Length, weight & temperature</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+        <a href="tools/date-calculator.html" class="tcard"><div class="tcard-icon">📅</div><div class="tcard-title">Date Calculator</div><div class="tcard-desc">Days between dates calculator</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+        <a href="tools/list-randomizer.html" class="tcard"><div class="tcard-icon">🔀</div><div class="tcard-title">List Randomizer</div><div class="tcard-desc">Shuffle any list randomly</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+        <a href="tools/text-repeater.html" class="tcard"><div class="tcard-icon">🔁</div><div class="tcard-title">Text Repeater</div><div class="tcard-desc">Repeat text N times</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+                <a href="tools/emoji-mashup.html" class="tcard"><div class="tcard-icon">🎭</div><div class="tcard-title">Emoji Mashup</div><div class="tcard-desc">Generate emoji combos from text</div><div class="tcard-tags"><span class="tag">Fun</span></div></a>
+        <a href="tools/color-name-finder.html" class="tcard"><div class="tcard-icon">🎨</div><div class="tcard-title">Color Name Finder</div><div class="tcard-desc">Find color names from HEX</div><div class="tcard-tags"><span class="tag">Design</span></div></a>
+        <a href="tools/emoji-picker.html" class="tcard"><div class="tcard-icon">😄</div><div class="tcard-title">Emoji Picker</div><div class="tcard-desc">Browse & copy emojis</div><div class="tcard-tags"><span class="tag">Utility</span></div></a>
+      </div>
     </div>
 
-        
+  </section>
 
-
-    <!-- Health -->
-    <div class="tcat" data-cat="health">
-      <div class="tcat-head"><span class="tcat-icon">🏥</span><span class="tcat-name">Health &amp; Fitness</span><span class="tcat-cnt" id="cnt-health">0</span></div>
-      <div class="tool-grid-cards"></div>
+  <!-- Popular -->
+  <section class="cross-section">
+    <div class="section-header">
+      <span class="section-icon">🔥</span>
+      <h2 data-i18n="mostUsed">Most Used Today</h2>
     </div>
+    <div class="cross-grid" id="hotGrid"></div>
+  </section>
 
-    <!-- Math -->
-    <div class="tcat" data-cat="math">
-      <div class="tcat-head"><span class="tcat-icon">📊</span><span class="tcat-name">Math &amp; Statistics</span><span class="tcat-cnt" id="cnt-math">0</span></div>
-      <div class="tool-grid-cards"></div>
-    </div>
+  <!-- Blog + Affiliate -->
+  <div class="ad-placeholder" style="margin-top:24px;height:auto;display:flex;align-items:center;justify-content:center;gap:10px;font-size:12px;color:var(--text-sec);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:12px 16px">
+    <span>📖 Read:</span>
+    <a href="blog/index.html" style="color:var(--accent);text-decoration:none;font-weight:600">🎨 Design Tools 🆕</a>
+    <span style="color:var(--text-muted)">·</span>
+    <a href="blog/index.html" style="color:var(--accent);text-decoration:none;font-weight:600">Top 10 Developer Tools</a>
+    <span style="color:var(--text-muted)">·</span>
+    <a href="blog/index.html" style="color:var(--accent2);text-decoration:none;font-weight:600">Security & Privacy</a>
+    <span style="color:var(--text-muted)">·</span>
+    <a href="blog/index.html" style="color:var(--accent2);text-decoration:none;font-weight:600">Financial Calculators</a>
+    <span style="color:var(--text-muted)">·</span>
+    <span>🚀 Deploy with</span>
+    <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600" rel="noopener">DigitalOcean</a>
+    <span style="color:var(--text-muted)">— $200 free credit</span>
+  </div>
+</main>
 
-    <!-- Fun -->
-    <div class="tcat" data-cat="fun">
-      <div class="tcat-head"><span class="tcat-icon">🎮</span><span class="tcat-name">Fun &amp; Games</span><span class="tcat-cnt" id="cnt-fun">0</span></div>
-      <div class="tool-grid-cards"></div>
-    </div>
+<footer class="footer">
+  <div class="footer-inner">
+    <p><a href="index.html">Toolflow</a> · <a href="about.html">About</a> · <a href="privacy.html">Privacy</a> · <a href="contact.html">Contact</a></p>
+    <p class="f-small" data-i18n="footerPrivacy">All tools run locally in your browser. Nothing is uploaded.</p>
+  </div>
+</footer>
 
-    <!-- Network -->
-    <div class="tcat" data-cat="network">
-      <div class="tcat-head"><span class="tcat-icon">🌐</span><span class="tcat-name">Network &amp; SEO</span><span class="tcat-cnt" id="cnt-network">0</span></div>
-      <div class="tool-grid-cards"></div>
-    </div>
-
-    Most Used Today -->
+<script src="assets/app.js?v=1782133111"></script>
+</body>
+</html>
