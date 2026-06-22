@@ -560,10 +560,22 @@ body {
 }
 
 /* Small phone (<400px) */
+@media (max-width: 1024px) {
+  .tool-grid-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+@media (max-width: 768px) {
+  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .tcard { padding: 10px 10px 8px; }
+  .tcard-icon { width: 28px; height: 28px; font-size: 16px; margin-bottom: 6px; }
+  .tcard-title { font-size: 12px; }
+  .tcard-desc { font-size: 10px; }
+  .tcat-head { padding: 0 0 6px; margin-bottom: 8px; gap: 6px; }
+  .tcat-name { font-size: 13px; }
+  .tcat { margin-bottom: 16px; }
+}
 @media (max-width: 480px) {
   .tool-grid-cards { grid-template-columns: 1fr; }
-  .nav-inner { gap: 4px; }
-  .logo-text { display: none; } /* logo text hidden on tiny screens */
+  .logo-text { display: none; }
   .hero-title { font-size: 20px; }
   .hero-desc { font-size: 12px; }
   .hero-stats { gap: 14px; }
