@@ -55,7 +55,7 @@ const LANG = {
     siteName: 'Toolflow', siteDesc: '免费在线开发者工具集',
     navTools: '工具', searchPlaceholder: '搜索工具...',
     heroTitle: '你的<span class="gradient">每日工具箱</span>',
-    heroDesc: '50+ 免费在线工具：IP查询、JSON格式化、投资计算器、密码生成器等等，<span class="speed-text">持续更新中</span><span class="speed-cursor">|</span>',
+    heroDesc: '100+ 免费在线工具：IP查询、JSON格式化、投资计算器、密码生成器等等，<span class="speed-text">持续更新中</span><span class="speed-cursor">|</span>',
     heroTools: '工具', heroCategories: '分类', heroAlways: '永久免费',
     sectionAll: '全部工具',
     devTools: '开发者工具', finance: '金融与投资',
