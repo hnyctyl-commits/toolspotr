@@ -542,34 +542,67 @@ function getRecentTools(){
   });
 })();
 
-// ── Hot Tags (from real tools, sorted by popularity) ──
+// ── Hot Tags (7 tools, daily updated by popularity) ──
 (function initHotTags(){
-  const input = document.getElementById('heroSearchInput');
   const suggest = document.getElementById('searchSuggest');
-  if(!input || !suggest) return;
+  if(!suggest) return;
+  
+  // Daily seed: changes every day so tags rotate naturally
+  function getDaySeed(){
+    const d = new Date();
+    return d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+  }
   
   function renderHotTags(){
     const usage = getUsageStats();
-    // Score tools: usage count + order weight
-    const scored = TOOLS.filter(t => t.ready).map(t => ({
-      ...t,
-      score: (usage[t.id]?.count || 0) + (t.id === 'currency-converter' ? 10 : t.id === 'color-blind-test' ? 9 : t.id === 'mortgage-calculator' ? 8 : t.id === 'bmi-calculator' ? 7 : t.id === 'password-generator' ? 6 : t.id === 'qr-generator' ? 5 : t.id === 'age-calculator' ? 4 : 0)
-    }));
+    const seed = getDaySeed();
+    
+    // Score each tool: usage count + daily rotation + fixed popularity base
+    const scored = TOOLS.filter(t => t.ready).map((t, i) => {
+      // Base popularity (tools known to be high-traffic)
+      let base = 0;
+      if(['currency-converter','color-blind-test','bmi-calculator','password-generator',
+          'qr-generator','mortgage-calculator','age-calculator','meme-generator',
+          'tip-calculator','percentage-calculator','unit-converter','word-counter',
+          'stopwatch','countdown-timer','random-number-generator'].includes(t.id)) base = 5;
+      
+      // Daily rotation: different tools get a boost each day
+      const daily = ((i * 7 + seed) % 109) < 7 ? 8 : 0;
+      
+      // Raw usage count
+      const used = usage[t.id]?.count || 0;
+      
+      return {
+        ...t,
+        score: used * 3 + daily + base
+      };
+    });
+    
     scored.sort((a,b) => b.score - a.score);
-    const top = scored.slice(0, 8);
+    const top = scored.slice(0, 7);
     
     suggest.innerHTML = top.map(t => 
       `<a href="/tools/${t.id}.html" class="hot-tag">
         ${t.icon} ${t.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase())}
       </a>`
     ).join('');
+    
+    // Store when we last updated
+    try { localStorage.setItem('tf_hot_date', seed); } catch(e){}
   }
   
-  // No JS click handler needed - using <a> links directly
+  // Check if we need to refresh
+  const lastUpdate = parseInt(localStorage.getItem('tf_hot_date') || '0');
+  if(lastUpdate !== getDaySeed() || !suggest.children.length){
+    renderHotTags();
+  }
   
-  renderHotTags();
-  // Re-render when usage data changes
-  window.addEventListener('storage', renderHotTags);
+  // Also re-render when usage changes
+  window.addEventListener('storage', function(){
+    if(parseInt(localStorage.getItem('tf_hot_date') || '0') !== getDaySeed()){
+      renderHotTags();
+    }
+  });
 })();
 
 // ── Heat Sorting (move popular tools first) ──
