@@ -571,4 +571,70 @@ function getRecentTools(){
   });
 })();
 
+// ── Favorites + Keyboard Shortcuts ──
+(function initFavKeys(){
+  // Favorites
+  function getFavs(){try{return JSON.parse(localStorage.getItem('tf_favs')||'[]')}catch(e){return[]}}
+  function saveFavs(f){localStorage.setItem('tf_favs',JSON.stringify(f))}
+  function toggleFav(id){
+    let f=getFavs();const i=f.indexOf(id);if(i>-1)f.splice(i,1);else f.push(id);saveFavs(f);renderFavs();renderFavBtns();}
+  function isFaved(id){return getFavs().includes(id)}
+  
+  // Add fav buttons to cards
+  function renderFavBtns(){
+    document.querySelectorAll('.fav-btn').forEach(b=>{
+      const id=b.dataset.tool;b.classList.toggle('faved',isFaved(id));b.textContent=isFaved(id)?'★':'☆';
+    });
+  }
+  
+  // Render favorites section
+  function renderFavs(){
+    const sec=document.getElementById('favSection'),grid=document.getElementById('favGrid'),cnt=document.getElementById('favCount');
+    if(!sec)return;const f=getFavs();if(!f.length){sec.classList.remove('show');return;}
+    sec.classList.add('show');cnt.textContent=f.length;
+    grid.innerHTML=f.map(id=>{
+      const card=document.querySelector(`.tcard[href*="${id}"]`);if(!card)return'';
+      const icon=card.querySelector('.tcard-icon')?.textContent||'🛠️',title=card.querySelector('.tcard-title')?.textContent||id;
+      return`<a href="tools/${id}.html" class="fav-card"><span>${icon}</span><span style="font-size:13px;font-weight:500">${title}</span></a>`;
+    }).filter(Boolean).join('');
+  }
+  
+  // Add fav buttons to all cards
+  document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelectorAll('.tcard').forEach(card=>{
+      const match=card.getAttribute('href')?.match(/tools\/(.+)\.html/);
+      if(!match||card.querySelector('.fav-btn'))return;
+      const id=match[1];
+      const btn=document.createElement('button');
+      btn.className='fav-btn'+(isFaved(id)?' faved':'');
+      btn.dataset.tool=id;
+      btn.textContent=isFaved(id)?'★':'☆';
+      btn.onclick=function(e){e.preventDefault();e.stopPropagation();toggleFav(id);};
+      card.style.position='relative';
+      card.appendChild(btn);
+    });
+    renderFavs();
+  });
+  
+  // Keyboard shortcuts
+  const searchInput = document.getElementById('heroSearchInput');
+  document.addEventListener('keydown', function(e){
+    // / or Ctrl+K → focus search
+    if(e.key==='/' && !['INPUT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();searchInput?.focus();}
+    if((e.ctrlKey||e.metaKey) && e.key==='k'){e.preventDefault();searchInput?.focus();}
+    // Esc → blur search
+    if(e.key==='Escape' && document.activeElement===searchInput){searchInput?.blur();document.getElementById('heroSearchResults').innerHTML='';}
+  });
+  // Enter → open first result
+  searchInput?.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){
+      const first=document.querySelector('#heroSearchResults a');
+      if(first){window.location.href=first.getAttribute('href');}
+    }
+  });
+  
+  // Run if already loaded
+  if(document.readyState!=='loading'){renderFavBtns();renderFavs();}
+})();
+
 })();
