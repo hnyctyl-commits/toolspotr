@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Signature Maker — Toolflow</title>
+<meta name="description" content="Free signature maker. Draw your signature with mouse or touch. Download as transparent PNG."><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style></head>
+<body><nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div></div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design / <strong>Signature Maker</strong></div>
+  <h1 class="tool-page-title">✍️ Signature Maker</h1><p class="tool-page-desc">Create a digital signature. Draw with mouse or touch, adjust pen size, download as PNG.</p></div>
+  <div class="tool-box"><div style="text-align:center;margin-bottom:8px"><canvas id="sigCanvas" style="background:#fff;border-radius:var(--radius-sm);cursor:crosshair;touch-action:none;width:100%;max-width:500px;height:150px"></canvas></div><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="tool-btn" id="sigClear">🗑️ Clear</button><button class="tool-btn-sec" id="sigDl">⬇ Download PNG</button><div><label style="font-size:11px">Pen Size</label><select id="sigSize" style="font-family:var(--font)"><option value="1">Thin</option><option value="2" selected>Medium</option><option value="4">Thick</option></select></div></div></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free signature maker. Draw your signature with mouse or touch. Download as transparent PNG.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script><script>const sc=document.getElementById("sigCanvas"),sctx=sc.getContext("2d");let sDrawing=false;sc.width=500;sc.height=150;sctx.strokeStyle="#000";sctx.lineCap="round";function startS(e){sDrawing=true;[sc.lastX,sc.lastY]=[e.offsetX||e.touches?.[0]?.clientX||0,e.offsetY||e.touches?.[0]?.clientY||0];}function drawS(e){if(!sDrawing)return;e.preventDefault();const x=e.offsetX||e.touches?.[0]?.clientX-sc.offsetLeft||0,y=e.offsetY||e.touches?.[0]?.clientY-sc.offsetTop||0;sctx.lineWidth=parseInt(document.getElementById("sigSize").value);sctx.beginPath();sctx.moveTo(sc.lastX,sc.lastY);sctx.lineTo(x,y);sctx.stroke();[sc.lastX,sc.lastY]=[x,y];}function stopS(){sDrawing=false;}sc.addEventListener("mousedown",startS);sc.addEventListener("mousemove",drawS);sc.addEventListener("mouseup",stopS);sc.addEventListener("mouseleave",stopS);sc.addEventListener("touchstart",startS);sc.addEventListener("touchmove",drawS);sc.addEventListener("touchend",stopS);document.getElementById("sigClear").addEventListener("click",()=>sctx.clearRect(0,0,500,150));document.getElementById("sigDl").addEventListener("click",()=>{const a=document.createElement("a");a.download="signature.png";a.href=sc.toDataURL("image/png");a.click();});</script></body></html>

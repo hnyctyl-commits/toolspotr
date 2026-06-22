@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Border Radius Generator — Toolflow</title>
+<meta name="description" content="Free CSS border radius generator. Create custom rounded corners with visual preview. Copy CSS code."><link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><style>#themePanel,#langPanel{display:none!important}</style></head>
+<body><nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div></div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design / <strong>Border Radius Generator</strong></div>
+  <h1 class="tool-page-title">🎯 Border Radius Generator</h1><p class="tool-page-desc">Generate CSS border-radius code. Create rounded corners with individual control for each corner.</p></div>
+  <div class="tool-box"><div class="input-row"><div><label>Top-Left</label><input type="range" id="brTl" min="0" max="100" value="20"><span id="brTlv">20</span></div><div><label>Top-Right</label><input type="range" id="brTr" min="0" max="100" value="20"><span id="brTrv">20</span></div></div><div class="input-row"><div><label>Bottom-Left</label><input type="range" id="brBl" min="0" max="100" value="20"><span id="brBlv">20</span></div><div><label>Bottom-Right</label><input type="range" id="brBr" min="0" max="100" value="20"><span id="brBrv">20</span></div></div><div id="brPreview" style="height:150px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;margin:10px 0;font-size:16px;font-weight:600;color:#fff">Preview</div><textarea id="brCss" rows="3" style="font-family:var(--mono);font-size:12px" readonly></textarea><button class="tool-btn-sec" id="brCopy">📋 Copy CSS</button></div>
+  <div class="tool-article"><h3>About This Tool</h3><p>Free CSS border radius generator. Create custom rounded corners with visual preview. Copy CSS code.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script><script>function br(){const tl=document.getElementById("brTl").value,tr=document.getElementById("brTr").value,bl=document.getElementById("brBl").value,br2=document.getElementById("brBr").value;document.getElementById("brTlv").textContent=tl;document.getElementById("brTrv").textContent=tr;document.getElementById("brBlv").textContent=bl;document.getElementById("brBrv").textContent=br2;const css=`border-radius: ${tl}px ${tr}px ${br2}px ${bl}px;`;document.getElementById("brPreview").style.borderRadius=`${tl}px ${tr}px ${br2}px ${bl}px`;document.getElementById("brCss").value=css;}document.querySelectorAll("#brTl,#brTr,#brBl,#brBr").forEach(e=>e.addEventListener("input",br));br();</script></body></html>
