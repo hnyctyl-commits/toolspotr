@@ -155,6 +155,7 @@ body {
   font-size: 15px; font-family: var(--font); outline: none;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative; z-index: 1;
+  padding: 0 80px 0 44px;
 }
 [data-theme="light"] .hero-search input {
   background: rgba(255,255,255,0.7);
@@ -173,7 +174,7 @@ body {
 
 /* Keyboard shortcut badge */
 .hero-search-kbd {
-  position: absolute; left: 40px; top: 50%; transform: translateY(-50%);
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
   z-index: 2; display: flex; align-items: center; gap: 3px;
   font-size: 10px; color: var(--text-muted);
   pointer-events: none; transition: opacity 0.2s;
@@ -496,9 +497,9 @@ body {
   .hero-title { font-size: 24px; letter-spacing: -0.5px; }
   .hero-desc { font-size: 13px; }
   .hero-search { max-width: 100%; margin-top: 14px; }
-  .hero-search input { height: 44px; font-size: 14px; padding: 0 80px 0 100px; }
+  .hero-search input { height: 44px; font-size: 14px; padding: 0 80px 0 44px; }
   .hero-search-icon { left: 14px; width: 18px; height: 18px; }
-  .hero-search-kbd { left: 40px; }
+  .hero-search-kbd { right: 12px; }
   .hero-search-kbd kbd { min-width: 18px; height: 18px; font-size: 8px; padding: 0 4px; }
   .hero-search-clear { right: 56px; width: 20px; height: 20px; font-size: 10px; }
   .hero-search-results { max-height: 280px; }
