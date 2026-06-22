@@ -582,14 +582,20 @@ function getRecentTools(){
     const top = scored.slice(0, 7);
     
     suggest.innerHTML = top.map(t => 
-      `<a href="/tools/${t.id}.html" class="hot-tag">
+      `<span class="hot-tag" data-url="/tools/${t.id}.html">
         ${t.icon} ${t.id.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase())}
-      </a>`
+      </span>`
     ).join('');
     
     // Store when we last updated
     try { localStorage.setItem('tf_hot_date', seed); } catch(e){}
   }
+  
+  // Click handler - navigate to tool
+  suggest.addEventListener('click', function(e){
+    const tag = e.target.closest('.hot-tag');
+    if(tag && tag.dataset.url) window.location.href = tag.dataset.url;
+  });
   
   // Check if we need to refresh
   const lastUpdate = parseInt(localStorage.getItem('tf_hot_date') || '0');
