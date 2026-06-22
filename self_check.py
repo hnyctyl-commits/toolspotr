@@ -111,7 +111,7 @@ check("搜索建议存在", 'id="searchSuggest"' in html)
 check("收藏区存在", 'id="favSection"' in html)
 check("今日热门存在", 'id="hotGrid"' in html)
 check("hero-stats 存在", 'hero-stats' in html)
-check("109 计数正确", 'hs-num">116<' in html or 'hs-num">116<' in html)
+check(f"计数正确", f'hs-num\">{len(html_files)}<' in html)
 
 # ═══ 4. 分类 Tab 匹配 ═══
 print("\n🔖 [4/7] 分类 Tab 匹配检查")
