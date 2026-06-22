@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sleep Calculator — Toolflow</title>
+<meta name="description" content="Free online sleep calculator. Find the best time to wake up or go to sleep based on 90-minute sleep cycles. Optimize your rest.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Sleep Calculator</strong></div><h1 class="tool-page-title">💤 Sleep Calculator</h1><p class="tool-page-desc">Find the best bedtime or wake-up time based on 90-minute sleep cycles. Wake up refreshed, not groggy.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;margin-bottom:10px"><button class="tool-btn-sec sl-mode active" data-mode="bedtime">Find Bedtime</button><button class="tool-btn-sec sl-mode" data-mode="waketime">Find Wake Time</button></div>
+    <div class="input-row"><div><label>I want to wake up at</label><input type="time" id="slWake" value="07:00"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Bedtime</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="slBedtime">—</div></div>
+      <div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Cycles</div><div style="font-size:28px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="slCycles">—</div></div>
+    </div>
+    <div id="slOptions" style="margin-top:10px"></div>
+  </div>
+  <div class="tool-article"><h3>Sleep Cycles</h3><p>The average sleep cycle lasts about 90 minutes. Waking up in the middle of a cycle leaves you feeling groggy (sleep inertia). This calculator helps you wake up at the end of a cycle — feeling refreshed. Adults need 4-6 cycles (6-9 hours) per night.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="calorie-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔥</div><div class="tcard-body"><div class="tcard-title">Calorie Calc</div></div></a>
+    <a href="bmi-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">⚕️</div><div class="tcard-body"><div class="tcard-title">BMI Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+function fmtTime(h,m){const p=h>=12?'PM':'AM';const hh=h%12||12;return `${String(hh).padStart(2,'0')}:${String(m).padStart(2,'0')} ${p}`;}
+function calcSleep(){const w=document.getElementById("slWake").value;const[mode]=['bedtime'];if(!w)return;const[wh,wm]=w.split(':').map(Number);const wakeMin=wh*60+wm;let html='';const cyc=document.getElementById("slCycles"),bed=document.getElementById("slBedtime");
+  const opts=[5,4.5,4,3.5,3];let best='',bestN=0;
+  opts.forEach(c=>{const mins=c*90;let bedMin=wakeMin-mins;if(bedMin<0)bedMin+=1440;const bh=Math.floor(bedMin/60)%24,bm=bedMin%60;const t=fmtTime(bh,bm);if(!best){best=t;bestN=c;}html+=`<div style="display:flex;justify-content:space-between;padding:6px 10px;background:var(--bg-card);border-radius:var(--radius-xs);margin-bottom:4px;border:1px solid var(--border)"><span style="color:var(--text-muted)">${t}</span><span>${c} cycles (${Math.round(c*90)} min)</span></div>`;});
+  bed.textContent=best;cyc.textContent=bestN;document.getElementById("slOptions").innerHTML=html;}
+document.querySelectorAll('.sl-mode').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.sl-mode').forEach(x=>x.classList.remove('active'));this.classList.add('active');calcSleep();}));
+document.getElementById("slWake").addEventListener('input',calcSleep);calcSleep();
+</script>
+</body>
+</html>

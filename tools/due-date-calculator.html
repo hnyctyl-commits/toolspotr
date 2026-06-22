@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Due Date Calculator — Toolflow</title>
+<meta name="description" content="Free online due date calculator. Calculate estimated due date from last menstrual period or conception date. Track pregnancy weeks.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Health / <strong>Due Date Calculator</strong></div><h1 class="tool-page-title">🤰 Due Date Calculator</h1><p class="tool-page-desc">Calculate your estimated due date based on last menstrual period or conception date. Track pregnancy weeks and trimester.</p></div>
+  <div class="tool-box">
+    <div style="display:flex;gap:6px;margin-bottom:10px"><button class="tool-btn-sec dd-mode active" data-method="lmp">From Last Period</button><button class="tool-btn-sec dd-mode" data-method="conception">From Conception</button></div>
+    <div class="input-row"><div><label>Date</label><input type="date" id="ddDate"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Due Date</div><div style="font-size:16px;font-weight:700;color:var(--accent)" id="ddResult">—</div></div>
+      <div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Current Week</div><div style="font-size:24px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="ddWeek">—</div></div>
+      <div style="background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Trimester</div><div style="font-size:16px;font-weight:700;color:var(--accent)" id="ddTri">—</div></div>
+    </div>
+  </div>
+  <div class="tool-article"><h3>Pregnancy Due Date</h3><p>The average pregnancy lasts 40 weeks (280 days) from the first day of your last menstrual period (LMP). Only about 4% of babies arrive on their exact due date — it's an estimate. Conception typically occurs about 2 weeks after LMP. The three trimesters are approximately 1-13, 14-27, and 28-40 weeks.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="age-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">🎂</div><div class="tcard-body"><div class="tcard-title">Age Calculator</div></div></a>
+    <a href="date-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📅</div><div class="tcard-body"><div class="tcard-title">Date Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+let ddMethod='lmp';const dInp=document.getElementById("ddDate"),dRes=document.getElementById("ddResult"),dWk=document.getElementById("ddWeek"),dTri=document.getElementById("ddTri");
+dInp.valueAsDate=new Date('2026-01-15');
+document.querySelectorAll('.dd-mode').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.dd-mode').forEach(x=>x.classList.remove('active'));this.classList.add('active');ddMethod=this.dataset.method;calcDue();}));
+function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
+function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+function calcDue(){const d=new Date(dInp.value);if(!d||isNaN(d)){dRes.textContent='Invalid date';return;}
+  const due=ddMethod==='lmp'?addDays(d,280):addDays(d,266);
+  dRes.textContent=fmt(due);
+  const now=new Date();const daysPast=Math.round((now-d)/86400000);
+  const week=ddMethod==='lmp'?Math.max(0,Math.floor((280+daysPast)/7)):Math.max(0,Math.floor((266+daysPast)/7));
+  dWk.textContent=week>0&&week<=42?`Week ${week}`:'—';
+  if(week<=13)dTri.textContent='First Trimester';else if(week<=27)dTri.textContent='Second Trimester';else if(week<=42)dTri.textContent='Third Trimester';else dTri.textContent='Post-term';}
+dInp.addEventListener('input',calcDue);calcDue();
+</script>
+</body>
+</html>

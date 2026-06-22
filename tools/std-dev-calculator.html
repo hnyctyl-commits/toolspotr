@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Standard Deviation Calculator — Toolflow</title>
+<meta name="description" content="Free online standard deviation calculator. Calculate mean, variance, and standard deviation for any data set. Population and sample modes.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.sd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Utilities / <strong>Standard Deviation Calculator</strong></div><h1 class="tool-page-title">📊 Standard Deviation Calculator</h1><p class="tool-page-desc">Calculate standard deviation, variance, and mean for any data set. Population and sample modes with step-by-step results.</p></div>
+  <div class="tool-box">
+    <div class="input-row"><div style="flex:1"><label>Numbers (comma or space separated)</label><input type="text" id="sdInput" value="12, 15, 18, 21, 24, 27, 30" style="font-family:var(--mono)"></div></div>
+    <div style="display:flex;gap:8px;margin:8px 0"><button class="tool-btn-sec sd-mode active" data-mode="sample">Sample SD</button><button class="tool-btn-sec sd-mode" data-mode="population">Population SD</button></div>
+    <div class="sd-grid">
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Count (n)</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="sdCount">7</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Mean (μ)</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="sdMean">21.0</div></div>
+      <div style="background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center"><div style="font-size:9px;color:var(--text-muted)">Std Dev (σ)</div><div style="font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)" id="sdResult">6.0</div></div>
+    </div>
+    <div style="margin-top:6px;font-size:11px;color:var(--text-muted);text-align:center">Sum: <span id="sdSum">147</span> · Variance: <span id="sdVar">36.0</span> · Range: <span id="sdRange">18</span></div>
+  </div>
+  <div class="tool-article"><h3>Standard Deviation</h3><p>Standard deviation measures how spread out numbers are. A low SD means values are close to the mean; a high SD means they're spread out. Use <strong>Sample SD</strong> when your data is a sample of a larger population. Use <strong>Population SD</strong> when you have data for the entire group.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="percentage-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">Percentage Calc</div></div></a>
+    <a href="fraction-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">➗</div><div class="tcard-body"><div class="tcard-title">Fraction Calc</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+let sdMode='sample';
+document.querySelectorAll('.sd-mode').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.sd-mode').forEach(x=>x.classList.remove('active'));this.classList.add('active');sdMode=this.dataset.mode;calcSD();}));
+const inp=document.getElementById("sdInput");
+inp.addEventListener('input',calcSD);
+function calcSD(){const raw=inp.value;const nums=raw.split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));if(nums.length<2){document.getElementById("sdCount").textContent=nums.length;document.getElementById("sdMean").textContent='—';document.getElementById("sdResult").textContent='—';document.getElementById("sdSum").textContent='—';document.getElementById("sdVar").textContent='—';document.getElementById("sdRange").textContent='—';return;}
+  const sum=nums.reduce((a,b)=>a+b,0);const mean=sum/nums.length;const sqDiffs=nums.map(n=>(n-mean)**2);const variance=sqDiffs.reduce((a,b)=>a+b,0)/(sdMode==='sample'?nums.length-1:nums.length);const sd=Math.sqrt(variance);const range=Math.max(...nums)-Math.min(...nums);
+  document.getElementById("sdCount").textContent=nums.length;document.getElementById("sdMean").textContent=mean.toFixed(2);document.getElementById("sdResult").textContent=sd.toFixed(4);document.getElementById("sdSum").textContent=sum;document.getElementById("sdVar").textContent=variance.toFixed(4);document.getElementById("sdRange").textContent=range;}
+calcSD();
+</script>
+</body>
+</html>

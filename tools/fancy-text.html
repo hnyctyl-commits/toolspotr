@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fancy Text Generator — Toolflow</title>
+<meta name="description" content="Free fancy text generator. Convert plain text to stylish Unicode fonts for social media bios, usernames, and posts. 20+ font styles.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.ft-card{padding:12px 14px;background:var(--bg-main);border-radius:var(--radius-sm);margin-bottom:6px;cursor:pointer;transition:all .15s;border:1px solid var(--border)}.ft-card:hover{border-color:var(--accent)}.ft-label{font-size:10px;color:var(--text-muted)}.ft-result{font-size:18px;word-break:break-all;color:var(--text-pri)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls"><div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div><div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options"><div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div><div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div><div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div><div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div><div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div></div></div></div></div>
+  <div class="nav-links"><a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header"><div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text & Writing / <strong>Fancy Text Generator</strong></div><h1 class="tool-page-title">✨ Fancy Text Generator</h1><p class="tool-page-desc">Convert plain text to stylish Unicode fonts. Perfect for Instagram bios, Twitter/X usernames, TikTok captions, and more.</p></div>
+  <div class="tool-box">
+    <input type="text" id="ftInput" value="Hello World!" style="font-size:18px">
+    <div style="margin-top:10px" id="ftResults"></div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Click any style to copy</div>
+  </div>
+  <div class="tool-article"><h3>Fancy Unicode Text</h3><p>These characters are Unicode symbols, not actual fonts — they work anywhere that supports Unicode. Use them for social media bios, gaming usernames, Discord profiles, Instagram captions, and more. Popular styles include bold, italic, script, fraktur, and monospace.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="case-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">🔤</div><div class="tcard-body"><div class="tcard-title">Case Converter</div></div></a>
+    <a href="emoji-mashup.html" class="tcard" style="margin:0"><div class="tcard-icon">🎭</div><div class="tcard-body"><div class="tcard-title">Emoji Mashup</div></div></a>
+  </div></div>
+  <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<script src="../assets/app.js"></script>
+<script>
+const STYLES={
+  'Bold':[7680,15000],'Italic':[119808,119964],'Bold Italic':[119860,119912],
+  'Script':[119964,120016],'Fraktur':[120068,120120],'Monospace':[120432,120484],
+  'Double-struck':[120120,120172],'Sans-serif':[120224,120276],'Sans Bold':[120276,120328],
+  'Sans Italic':[120328,120380],'Circled':[9398,9471],'Parenthesized':[9372,9449],
+  'Full-width':'ffull','Small Caps':'ssmall'
+};
+function toFancy(text,type){
+  const r=[...text];const a='A'.charCodeAt(0),z='Z'.charCodeAt(0),la='a'.charCodeAt(0),lz='z'.charCodeAt(0);
+  if(type==='Full-width'){return r.map(c=>{const code=c.charCodeAt(0);if(code>=33&&code<=126)return String.fromCharCode(code+65248);return c;}).join('');}
+  if(type==='Small Caps'){const m={'A':'ᴀ','B':'ʙ','C':'ᴄ','D':'ᴅ','E':'ᴇ','F':'ꜰ','G':'ɢ','H':'ʜ','I':'ɪ','J':'ᴊ','K':'ᴋ','L':'ʟ','M':'ᴍ','N':'ɴ','O':'ᴏ','P':'ᴘ','Q':'ǫ','R':'ʀ','S':'ꜱ','T':'ᴛ','U':'ᴜ','V':'ᴠ','W':'ᴡ','X':'x','Y':'ʏ','Z':'ᴢ','a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ꜰ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'ꜱ','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ'};return r.map(c=>m[c]||c).join('');}
+  const[start]=STYLES[type];const offset=start-a;return r.map(c=>{const code=c.charCodeAt(0);if(code>=a&&code<=z){const idx=code-la;return String.fromCodePoint(start+idx);}if(code>=la&&code<=lz){const idx=code-la;return String.fromCodePoint(start+idx);}return c;}).join('');}
+const inp=document.getElementById("ftInput"),res=document.getElementById("ftResults");
+inp.addEventListener('input',render);
+function render(){const t=inp.value;if(!t){res.innerHTML='<div style="color:var(--text-muted);padding:10px">Type something to see fancy styles</div>';return;}
+  res.innerHTML=Object.keys(STYLES).map(s=>{try{const r=toFancy(t,s);return`<div class="ft-card" onclick="navigator.clipboard.writeText('${r.replace(/'/g,"\\'")}');this.style.borderColor='var(--accent)';setTimeout(()=>this.style.borderColor='',200)"><div class="ft-label">${s}</div><div class="ft-result">${r}</div></div>`;}catch(e){return'';}}).join('');}
+render();
+</script>
+</body>
+</html>
