@@ -214,6 +214,9 @@ const TOOLS = [
   {id:'image-cropper', icon:'✂️', key:'imgCrop', cat:'design', ready:true, url:'tools/image-cropper.html', tags:'image,crop,cropper'},
   {id:'love-calculator', icon:'💕', key:'loveCalc', cat:'fun', ready:true, url:'tools/love-calculator.html', tags:'love,calculator,fun'},
   {id:'online-ruler', icon:'📏', key:'onlineRuler', cat:'utility', ready:true, url:'tools/online-ruler.html', tags:'ruler,measure,screen'},
+  {id:'pdf-compressor', icon:'📄', key:'pdfCompress', cat:'utility', ready:true, url:'tools/pdf-compressor.html', tags:'pdf,compress,reduce'},
+  {id:'resume-builder', icon:'📝', key:'resumeBuilder', cat:'writing', ready:true, url:'tools/resume-builder.html', tags:'resume,cv,builder,career'},
+  {id:'passport-photo-maker', icon:'📸', key:'passportPhoto', cat:'design', ready:true, url:'tools/passport-photo-maker.html', tags:'passport,photo,id,visa'},
 ];
 
 // ── Tool Count (auto from array) ──
@@ -737,18 +740,7 @@ function getRecentTools(){
       if(first){window.location.href=first.getAttribute('href');}
     }
   });
-  
-  // Run if already loaded
-  if(document.readyState!=='loading'){renderFavBtns();renderFavs();}
-})();
 
-// ── Tool Page Enhancements ──
-(function initToolPage(){
-  const path = window.location.pathname;
-  const match = path.match(/\/tools\/(.+)\.html/);
-  if(!match) return; // Only on tool pages
-  const currentId = match[1];
-  
   // Find current tool info
   const tool = TOOLS.find(t => t.id === currentId);
   if(!tool) return;
