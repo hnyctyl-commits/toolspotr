@@ -818,12 +818,14 @@ function populateCategories(){
   });
 }
 
-// Run on DOMContentLoaded (ensures DOM is ready)
+// Run immediately, on DOMContentLoaded, and as fallback
 if(document.readyState === 'loading'){
   document.addEventListener('DOMContentLoaded', populateCategories);
-} else {
-  populateCategories();
-}
+} 
+// Also try immediately (may work if DOM is ready)
+try { populateCategories(); } catch(e) {}
+// Final fallback: try after 500ms
+setTimeout(populateCategories, 500);
 
 })();
 // force rebuild 1782220204
