@@ -55,6 +55,19 @@ if sec_s>0:
     sec=html[sec_s:sec_e if sec_e>0 else sec_s+300]
     check("Security div balanced",sec.count('<div')==sec.count('</div>'))
 
+# Populated categories check (JS-run)
+import urllib.request as ur
+try:
+    resp = ur.urlopen("https://toolspotr.com/?cb=1", timeout=10)
+    html_body = resp.read().decode('utf-8')
+    card_count = len(re.findall(r'class="tcard"', html_body))
+    if card_count > 0:
+        check(f"Homepage has {card_count} tool cards", card_count >= 100)
+    else:
+        warn("No tool cards found - JS not populating")
+except:
+    warn("Could not fetch live site")
+
 check("tabBar exists",'id="tabBar"' in html)
 check("search input",'id="heroSearchInput"' in html)
 check("hotGrid",'id="hotGrid"' in html)
