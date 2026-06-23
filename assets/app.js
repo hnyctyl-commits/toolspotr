@@ -801,32 +801,36 @@ function getRecentTools(){
 
 // ── Populate all category grids from TOOLS array ──
 function populateCategories(){
-  if(typeof TOOLS === 'undefined') return;
-  var cm = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
-  for(var k in cm){
-    var g = document.querySelector('[data-cat="' + k + '"] .tool-grid-cards');
+  if(typeof TOOLS === 'undefined' || !TOOLS.length) return;
+  var cats = ['dev','finance','security','design','writing','utility','health','math','fun','network'];
+  for(var i = 0; i < cats.length; i++){
+    var k = cats[i];
+    var sec = document.querySelector('.tcat[data-cat="' + k + '"]');
+    if(!sec) continue;
+    var g = sec.querySelector('.tool-grid-cards');
     if(!g) continue;
-    var t = TOOLS.filter(function(x){ return x.cat === k && x.ready; });
+    var t = [];
+    for(var j = 0; j < TOOLS.length; j++){
+      if(TOOLS[j].cat === k && TOOLS[j].ready) t.push(TOOLS[j]);
+    }
     if(!t.length) continue;
     var h = '';
-    for(var i = 0; i < t.length; i++){
-      var ti = t[i];
+    for(var j = 0; j < t.length; j++){
+      var ti = t[j];
       var nm = ti.id.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
       h += '<a href="' + ti.url + '" class="tcard"><div class="tcard-icon">' + ti.icon + '</div><div class="tcard-title">' + nm + '</div><div class="tcard-desc">' + ti.tags.split(',')[0] + ' tool</div><div class="tcard-tags"><span class="tag">' + ti.cat + '</span></div></a>';
     }
-    g.innerHTML = h;
+    if(h) g.innerHTML = h;
     var c = document.getElementById('cnt-' + k);
     if(c) c.textContent = t.length;
   }
 }
 
-// Immediate + fallback
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', function(){ setTimeout(populateCategories, 10); });
-} 
+// Run on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function(){ populateCategories(); });
+// And immediately
 populateCategories();
-setTimeout(populateCategories, 100);
-setTimeout(populateCategories, 1000);
+setTimeout(populateCategories, 200);
 
 })();
 // force rebuild 1782220204
