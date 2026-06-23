@@ -550,9 +550,24 @@ function getRecentTools(){
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const cat = btn.dataset.cat;
+    // Show/hide categories
     document.querySelectorAll('.tcat').forEach(t => {
       t.classList.toggle('hidden', cat !== 'all' && t.dataset.cat !== cat);
     });
+    // Ensure category is populated (in case populateCategories failed)
+    if(cat !== 'all'){
+      const grid = document.querySelector('.tcat[data-cat="' + cat + '"] .tool-grid-cards');
+      if(grid && !grid.children.length && typeof TOOLS !== 'undefined'){
+        const tools = TOOLS.filter(t => t.cat === cat && t.ready);
+        if(tools.length){
+          grid.innerHTML = tools.map(t =>
+            `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
+          ).join('');
+          const cnt = document.getElementById('cnt-' + cat);
+          if(cnt) cnt.textContent = tools.length;
+        }
+      }
+    }
   });
 })();
 
@@ -786,17 +801,36 @@ function getRecentTools(){
 
 // ── Populate all category grids from TOOLS array ──
 (function populateCategories(){
-  const catMap = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
-  Object.entries(catMap).forEach(([catKey, icon]) => {
-    const grid = document.querySelector('.tcat[data-cat="' + catKey + '"] .tool-grid-cards');
-    if(!grid) return;
-    const tools = TOOLS.filter(t => t.cat === catKey && t.ready);
-    grid.innerHTML = tools.map(t => 
-      `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
-    ).join('');
-    const cnt = document.getElementById('cnt-' + catKey);
-    if(cnt) cnt.textContent = tools.length;
-  });
+  try {
+    const catMap = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
+    Object.entries(catMap).forEach(([catKey, icon]) => {
+      const grid = document.querySelector('.tcat[data-cat="' + catKey + '"] .tool-grid-cards');
+      if(!grid) { return; }
+      const tools = TOOLS.filter(t => t.cat === catKey && t.ready);
+      if(tools.length === 0) return;
+      grid.innerHTML = tools.map(t =>
+        `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
+      ).join('');
+      const cnt = document.getElementById('cnt-' + catKey);
+      if(cnt) cnt.textContent = tools.length;
+    });
+  } catch(e) {
+    // Fallback: run after DOM ready
+    document.addEventListener('DOMContentLoaded', function(){
+      const catMap2 = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
+      Object.entries(catMap2).forEach(([catKey]) => {
+        const grid = document.querySelector('.tcat[data-cat="' + catKey + '"] .tool-grid-cards');
+        if(!grid) return;
+        const tools = TOOLS.filter(t => t.cat === catKey && t.ready);
+        if(tools.length === 0) return;
+        grid.innerHTML = tools.map(t =>
+          `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
+        ).join('');
+        const cnt = document.getElementById('cnt-' + catKey);
+        if(cnt) cnt.textContent = tools.length;
+      });
+    });
+  }
 })();
 
 })();
