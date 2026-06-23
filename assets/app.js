@@ -801,13 +801,16 @@ function getRecentTools(){
 
 // ── Populate all category grids from TOOLS array ──
 function populateCategories(){
+  if(typeof TOOLS === 'undefined') return;
   const catMap = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
   Object.entries(catMap).forEach(([catKey]) => {
-    const grid = document.querySelector('.tcat[data-cat="' + catKey + '"] .tool-grid-cards');
+    const grid = document.querySelector('.tcat[data-cat="' + catKey + '"]');
     if(!grid) return;
+    const cards = grid.querySelector('.tool-grid-cards');
+    if(!cards) return;
     const tools = TOOLS.filter(t => t.cat === catKey && t.ready);
     if(!tools.length) return;
-    grid.innerHTML = tools.map(t =>
+    cards.innerHTML = tools.map(t =>
       `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
     ).join('');
     const cnt = document.getElementById('cnt-' + catKey);
