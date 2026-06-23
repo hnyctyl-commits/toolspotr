@@ -802,30 +802,31 @@ function getRecentTools(){
 // ── Populate all category grids from TOOLS array ──
 function populateCategories(){
   if(typeof TOOLS === 'undefined') return;
-  const catMap = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
-  Object.entries(catMap).forEach(([catKey]) => {
-    const grid = document.querySelector('.tcat[data-cat="' + catKey + '"]');
-    if(!grid) return;
-    const cards = grid.querySelector('.tool-grid-cards');
-    if(!cards) return;
-    const tools = TOOLS.filter(t => t.cat === catKey && t.ready);
-    if(!tools.length) return;
-    cards.innerHTML = tools.map(t =>
-      `<a href="${t.url}" class="tcard"><div class="tcard-icon">${t.icon}</div><div class="tcard-title">${t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</div><div class="tcard-desc">${t.tags.split(',')[0]} tool</div><div class="tcard-tags"><span class="tag">${t.cat}</span></div></a>`
-    ).join('');
-    const cnt = document.getElementById('cnt-' + catKey);
-    if(cnt) cnt.textContent = tools.length;
-  });
+  var cm = {'dev':'💻','finance':'💰','security':'🔒','design':'🎨','writing':'✍️','utility':'📐','health':'🏥','math':'📊','fun':'🎮','network':'🌐'};
+  for(var k in cm){
+    var g = document.querySelector('[data-cat="' + k + '"] .tool-grid-cards');
+    if(!g) continue;
+    var t = TOOLS.filter(function(x){ return x.cat === k && x.ready; });
+    if(!t.length) continue;
+    var h = '';
+    for(var i = 0; i < t.length; i++){
+      var ti = t[i];
+      var nm = ti.id.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+      h += '<a href="' + ti.url + '" class="tcard"><div class="tcard-icon">' + ti.icon + '</div><div class="tcard-title">' + nm + '</div><div class="tcard-desc">' + ti.tags.split(',')[0] + ' tool</div><div class="tcard-tags"><span class="tag">' + ti.cat + '</span></div></a>';
+    }
+    g.innerHTML = h;
+    var c = document.getElementById('cnt-' + k);
+    if(c) c.textContent = t.length;
+  }
 }
 
-// Run immediately, on DOMContentLoaded, and as fallback
+// Immediate + fallback
 if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', populateCategories);
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(populateCategories, 10); });
 } 
-// Also try immediately (may work if DOM is ready)
-try { populateCategories(); } catch(e) {}
-// Final fallback: try after 500ms
-setTimeout(populateCategories, 500);
+populateCategories();
+setTimeout(populateCategories, 100);
+setTimeout(populateCategories, 1000);
 
 })();
 // force rebuild 1782220204
