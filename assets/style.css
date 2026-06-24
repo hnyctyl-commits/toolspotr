@@ -202,7 +202,8 @@ body {
 
 /* Results dropdown — glassmorphism */
 .hero-search-results {
-  display: none; position: absolute; top: calc(100% + 8px); left: 4px; right: 4px; z-index: 50;
+  display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 100;
+  margin-top: 4px;
   background: rgba(17,24,39,0.88); backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(42,58,85,0.5);

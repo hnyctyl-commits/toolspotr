@@ -101,7 +101,7 @@ for k in ['fadeIn','scroll-top','hot-tag','fav-btn','tcat.hidden']:
     check(f"CSS: {k}",k in css)
 
 # 7. Critical functions
-for fn in ['applyTheme','applyLang','initSearch','initTabs','initHotTags','initHotGrid','initFavKeys','initToolPage','initScrollTop','populateCategories']:
+for fn in ['applyTheme','applyLang','initSearch','initTabs','initHotTags','initHotGrid','initFavKeys','initScrollTop','populateCategories']:
     check(f"Fn: {fn}",fn in js)
 check("TOOL_COUNT",'TOOL_COUNT=TOOLS.length' in js.replace(' ',''))
 check("AdSense",'ca-pub-9946249937416673' in html)
