@@ -217,6 +217,9 @@ const TOOLS = [
   {id:'pdf-compressor', icon:'📄', key:'pdfCompress', cat:'utility', ready:true, url:'tools/pdf-compressor.html', tags:'pdf,compress,reduce'},
   {id:'resume-builder', icon:'📝', key:'resumeBuilder', cat:'writing', ready:true, url:'tools/resume-builder.html', tags:'resume,cv,builder,career'},
   {id:'passport-photo-maker', icon:'📸', key:'passportPhoto', cat:'design', ready:true, url:'tools/passport-photo-maker.html', tags:'passport,photo,id,visa'},
+  {id:'gst-calculator', icon:'🏷️', key:'gstCalc', cat:'finance', ready:true, url:'tools/gst-calculator.html', tags:'gst,tax,calculator,goods,services'},
+  {id:'image-to-text', icon:'🖼️', key:'imgToText', cat:'design', ready:true, url:'tools/image-to-text.html', tags:'ocr,image,text,extract,scan'},
+  {id:'period-tracker', icon:'📅', key:'periodTrack', cat:'health', ready:true, url:'tools/period-tracker.html', tags:'period,cycle,ovulation,tracker,menstrual'},
 ];
 
 // ── Tool Count (auto from array) ──
@@ -833,4 +836,4 @@ populateCategories();
 setTimeout(populateCategories, 200);
 
 })();
-// force rebuild 1782223811
+// force rebuild 1782270520
