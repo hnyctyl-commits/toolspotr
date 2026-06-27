@@ -310,9 +310,9 @@ body {
 .section-count { font-size: 10px; color: var(--text-muted); background: var(--bg-card); padding: 3px 8px; border-radius: 20px; }
 
 /* ── Category Tabs ── */
-.tab-bar{display:flex;gap:4px;margin-bottom:16px;padding:10px 16px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;justify-content:flex-start}
+.tab-bar{display:flex;gap:6px;margin-bottom:16px;padding:10px 16px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;justify-content:space-evenly}
 .tab-bar::-webkit-scrollbar{display:none}
-.tab-btn{padding:5px 11px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:var(--text-sec);font-size:11px;font-weight:500;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);font-family:var(--font);white-space:nowrap;letter-spacing:0.1px;flex-shrink:0}
+.tab-btn{padding:6px 14px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);color:var(--text-sec);font-size:12px;font-weight:500;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);font-family:var(--font);white-space:nowrap;letter-spacing:0.1px;flex:0 1 auto}
 .tab-btn:hover{border-color:rgba(0,212,170,0.3);color:var(--accent);background:rgba(0,212,170,0.06);transform:translateY(-1px)}
 .tab-btn.active{background:rgba(0,212,170,0.12);color:var(--accent);border-color:rgba(0,212,170,0.4);font-weight:600;box-shadow:0 0 16px rgba(0,212,170,0.06)}
 .tcat{transition:opacity .2s}
