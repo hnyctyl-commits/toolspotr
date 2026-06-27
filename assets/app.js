@@ -220,6 +220,10 @@ const TOOLS = [
   {id:'gst-calculator', icon:'🏷️', key:'gstCalc', cat:'finance', ready:true, url:'tools/gst-calculator.html', tags:'gst,tax,calculator,goods,services'},
   {id:'image-to-text', icon:'🖼️', key:'imgToText', cat:'design', ready:true, url:'tools/image-to-text.html', tags:'ocr,image,text,extract,scan'},
   {id:'period-tracker', icon:'📅', key:'periodTrack', cat:'health', ready:true, url:'tools/period-tracker.html', tags:'period,cycle,ovulation,tracker,menstrual'},
+  {id:'gradient-generator', icon:'🎨', key:'gradientGen', cat:'design', ready:true, url:'tools/gradient-generator.html', tags:'gradient,css,color,generator'},
+  {id:'image-compressor', icon:'🖼️', key:'imgCompress', cat:'design', ready:true, url:'tools/image-compressor.html', tags:'image,compressor,optimize,reduce'},
+  {id:'article-rewriter', icon:'✍️', key:'articleRewrite', cat:'writing', ready:true, url:'tools/article-rewriter.html', tags:'rewrite,paraphrase,article,seo'},
+
 ];
 
 // ── Tool Count (auto from array) ──
@@ -836,4 +840,4 @@ populateCategories();
 setTimeout(populateCategories, 200);
 
 })();
-// force rebuild 1782270520
+// force rebuild 1782529339
