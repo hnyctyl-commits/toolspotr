@@ -439,7 +439,16 @@ body {
 
 /* ── Tool Page (shared) ── */
 .tool-page { max-width: 900px; margin: 0 auto; padding: 32px 24px 50px; }
-.tool-page-header { margin-bottom: 24px; }
+.tool-page-header { position: relative; margin-bottom: 8px; }
+.share-btn {
+  position: absolute; top: 0; right: 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg-card);
+  font-size: 18px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.share-btn:hover { border-color: var(--accent); background: rgba(0,212,170,0.06); }
 .tool-breadcrumb { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
 .tool-breadcrumb a { color: var(--text-sec); text-decoration: none; }
 .tool-breadcrumb a:hover { color: var(--accent); }

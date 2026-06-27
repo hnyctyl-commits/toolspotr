@@ -806,6 +806,48 @@ function getRecentTools(){
 })();
 
 
+// ── Share + Related on tool pages ──
+(function initToolEnhance(){
+  const path = window.location.pathname;
+  if(!path.includes('/tools/')) return;
+  
+  // Share button
+  const header = document.querySelector('.tool-page-header');
+  if(header){
+    const shareBtn = document.createElement('button');
+    shareBtn.className = 'share-btn';
+    shareBtn.innerHTML = '📤';
+    shareBtn.title = 'Share this tool';
+    shareBtn.onclick = function(){
+      if(navigator.share){
+        navigator.share({title:document.title,url:window.location.href});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        shareBtn.innerHTML = '✅ Copied!';
+        setTimeout(() => shareBtn.innerHTML = '📤', 2000);
+      }
+    };
+    header.appendChild(shareBtn);
+  }
+  
+  // Related tools: find 3-4 tools in same category
+  const currentId = path.match(/\/tools\/(.+)\./);
+  if(currentId && typeof TOOLS !== 'undefined'){
+    const tool = TOOLS.find(t => t.id === currentId[1]);
+    if(tool){
+      const related = TOOLS.filter(t => t.cat === tool.cat && t.id !== tool.id && t.ready).slice(0, 4);
+      if(related.length){
+        const cross = document.querySelector('.tool-cross-grid');
+        if(cross){
+          cross.innerHTML = related.map(t =>
+            '<a href="' + t.url + '" class="tcard" style="margin:0"><div class="tcard-icon">' + t.icon + '</div><div class="tcard-body"><div class="tcard-title">' + t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()) + '</div></div></a>'
+          ).join('') + cross.innerHTML;
+        }
+      }
+    }
+  }
+})();
+
 // ── Populate all category grids from TOOLS array ──
 function populateCategories(){
   if(typeof TOOLS === 'undefined' || !TOOLS.length) return;

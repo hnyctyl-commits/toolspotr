@@ -1,0 +1,19 @@
+{
+  "name": "Toolspotr — All-in-One Toolbox",
+  "short_name": "Toolspotr",
+  "description": "125+ free online tools — all in your browser. Zero signups, instant results.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1120",
+  "theme_color": "#00d4aa",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "tools"],
+  "lang": "en"
+}
