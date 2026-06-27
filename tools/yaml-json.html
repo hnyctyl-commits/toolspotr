@@ -30,5 +30,33 @@ active: true</textarea></div></div><div style="display:flex;gap:6px"><button cla
     <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
+  <div class="aff-section" style="margin-top:20px">
+    <div class="aff-grid">
+      <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">☁️</div>
+        <div class="aff-body">
+          <div class="aff-name">DigitalOcean</div>
+          <div class="aff-desc">Get $200 free credit. Deploy in seconds.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://www.hostinger.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🚀</div>
+        <div class="aff-body">
+          <div class="aff-name">Hostinger</div>
+          <div class="aff-desc">Fast web hosting from $2.49/mo. Free domain.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🔒</div>
+        <div class="aff-body">
+          <div class="aff-name">NordVPN</div>
+          <div class="aff-desc">Protect your privacy. 74% off + 3 months free.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+    </div>
+  </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
 <script src="../assets/app.js?v=1782133111"></script><script>function simpleYamlToJson(y){const lines=y.split("\n");const result={};let currentKey="",currentObj=result,stack=[result];let indent=0;for(const line of lines){if(!line.trim()||line.trim().startsWith("#"))continue;const m=line.match(/^(\s*)([\w-]+):\s*(.*)/);if(!m)continue;const curIndent=Math.floor(m[1].length/2);const key=m[2];const val=m[3].trim();while(stack.length>curIndent+1)stack.pop();currentObj=stack[stack.length-1];if(val===""){currentObj[key]={};stack.push(currentObj[key]);}else if(val==="true"||val==="false")currentObj[key]=val==="true";else if(!isNaN(val))currentObj[key]=Number(val);else currentObj[key]=val.replace(/^["']|["']$/g,"");}return JSON.stringify(result,null,2);}function jsonToSimpleYaml(j){try{const obj=JSON.parse(j);function toYaml(o,indent){let y="";for(const[k,v]of Object.entries(o)){if(typeof v==="object"&&!Array.isArray(v)){y+="  ".repeat(indent)+k+":\n"+toYaml(v,indent+1);}else if(Array.isArray(v)){y+="  ".repeat(indent)+k+":\n";v.forEach(item=>{y+="  ".repeat(indent+1)+"- "+item+"\n";});}else{y+="  ".repeat(indent)+k+": "+v+"\n";}}return y;}return toYaml(obj,0).trim();}catch(e){return"Invalid JSON";}}document.getElementById("yjToJson").addEventListener("click",()=>{try{document.getElementById("yjOutput").value=simpleYamlToJson(document.getElementById("yjInput").value);}catch(e){document.getElementById("yjOutput").value="Error: "+e.message;}});document.getElementById("yjToYaml").addEventListener("click",()=>{document.getElementById("yjOutput").value=jsonToSimpleYaml(document.getElementById("yjInput").value);});</script></body></html>

@@ -28,6 +28,34 @@
   </div></div>
   <div class="ad-placeholder" style="margin-top:24px;height:60px;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px;display:flex;align-items:center"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
+  <div class="aff-section" style="margin-top:20px">
+    <div class="aff-grid">
+      <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">☁️</div>
+        <div class="aff-body">
+          <div class="aff-name">DigitalOcean</div>
+          <div class="aff-desc">Get $200 free credit. Deploy in seconds.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://www.hostinger.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🚀</div>
+        <div class="aff-body">
+          <div class="aff-name">Hostinger</div>
+          <div class="aff-desc">Fast web hosting from $2.49/mo. Free domain.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🔒</div>
+        <div class="aff-body">
+          <div class="aff-name">NordVPN</div>
+          <div class="aff-desc">Protect your privacy. 74% off + 3 months free.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+    </div>
+  </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
 <script src="../assets/app.js?v=1782133111"></script>
 <script>let htData=JSON.parse(localStorage.getItem("tf_habits")||'{"habits":["Exercise","Read","Meditate"],"done":{}}');function htSave(){localStorage.setItem("tf_habits",JSON.stringify(htData));htRender();}function htRender(){const g=document.getElementById("htGrid");const today=new Date().toDateString();g.innerHTML=htData.habits.map(h=>{const done=htData.done[today]?.includes(h);return`<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-card);border-radius:var(--radius-xs);margin-bottom:4px;border:1px solid var(--border);cursor:pointer" onclick="htToggle('${h}')"><div style="width:20px;height:20px;border-radius:4px;${done?"background:var(--accent)":"border:2px solid var(--border)"};display:flex;align-items:center;justify-content:center;color:#000;font-size:12px;font-weight:700">${done?"✓":""}</div><span style="${done?"color:var(--text-muted);text-decoration:line-through":""}">${h}</span></div>`;}).join("");}function htToggle(h){const t=new Date().toDateString();if(!htData.done[t])htData.done[t]=[];const i=htData.done[t].indexOf(h);if(i>-1)htData.done[t].splice(i,1);else htData.done[t].push(h);htSave();}htRender();document.getElementById("htAdd").addEventListener("click",()=>{const n=prompt("Habit name?");if(n){htData.habits.push(n);htSave();}});</script>

@@ -40,6 +40,34 @@
   </div></div>
   <div class="ad-placeholder" style="margin-top:24px;height:60px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--text-muted);background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);flex-wrap:wrap;padding:8px"><span>🚀</span><a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
+  <div class="aff-section" style="margin-top:20px">
+    <div class="aff-grid">
+      <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">☁️</div>
+        <div class="aff-body">
+          <div class="aff-name">DigitalOcean</div>
+          <div class="aff-desc">Get $200 free credit. Deploy in seconds.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://www.hostinger.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🚀</div>
+        <div class="aff-body">
+          <div class="aff-name">Hostinger</div>
+          <div class="aff-desc">Fast web hosting from $2.49/mo. Free domain.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🔒</div>
+        <div class="aff-body">
+          <div class="aff-name">NordVPN</div>
+          <div class="aff-desc">Protect your privacy. 74% off + 3 months free.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+    </div>
+  </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
 <script src="../assets/app.js?v=1782133111"></script>
 <script>const d=document.getElementById("acDob");d.valueAsDate=new Date("1995-06-15");let live=false;let iv=null;function calc(){const b=new Date(d.value),n=new Date();let y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth(),dy=n.getDate()-b.getDate();if(dy<0){m--;const p=new Date(n.getFullYear(),n.getMonth(),0);dy+=p.getDate();}if(m<0){y--;m+=12;}document.getElementById("acY").textContent=y;document.getElementById("acM").textContent=m;document.getElementById("acD").textContent=dy;const ms=n-b;document.getElementById("acH").textContent=Math.floor(ms/3600000%24);document.getElementById("acMi").textContent=Math.floor(ms/60000%60);document.getElementById("acS").textContent=Math.floor(ms/1000%60);}d.addEventListener("input",calc);document.getElementById("acLive").addEventListener("click",function(){live=!live;this.textContent=live?"⏸ Pause":"▶ Live count";if(live){iv=setInterval(calc,1000);calc();}else{clearInterval(iv);}});calc();</script>

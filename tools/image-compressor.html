@@ -18,6 +18,34 @@
 <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
 <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
+  <div class="aff-section" style="margin-top:20px">
+    <div class="aff-grid">
+      <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">☁️</div>
+        <div class="aff-body">
+          <div class="aff-name">DigitalOcean</div>
+          <div class="aff-desc">Get $200 free credit. Deploy in seconds.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://www.hostinger.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🚀</div>
+        <div class="aff-body">
+          <div class="aff-name">Hostinger</div>
+          <div class="aff-desc">Fast web hosting from $2.49/mo. Free domain.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🔒</div>
+        <div class="aff-body">
+          <div class="aff-name">NordVPN</div>
+          <div class="aff-desc">Protect your privacy. 74% off + 3 months free.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+    </div>
+  </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
 <script src="../assets/app.js?ver=1"></script>
 <script>var icFile=null;var icImg=null;document.getElementById("icDrop").addEventListener("click",function(){document.getElementById("icFile").click();});document.getElementById("icFile").addEventListener("change",function(){if(!this.files[0])return;icFile=this.files[0];var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){icImg=img;document.getElementById("icInfo").style.display="block";document.getElementById("icOrig").textContent=(icFile.size/1024).toFixed(1)+" KB";icCompress();};img.src=e.target.result;};r.readAsDataURL(this.files[0]);});function icCompress(){if(!icImg)return;var q=parseInt(document.getElementById("icQuality").value)/100;var c=document.getElementById("icCanvas");var m=Math.min(icImg.width,1200);c.width=m;c.height=m/icImg.width*icImg.height;c.getContext("2d").drawImage(icImg,0,0,c.width,c.height);c.toBlob(function(b){document.getElementById("icComp").textContent=(b.size/1024).toFixed(1)+" KB";document.getElementById("icDl").onclick=function(){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="compressed."+(icFile.name.split(".").pop()||"jpg");a.click();};},"image/jpeg",q);}document.getElementById("icQuality").addEventListener("input",icCompress);</script></body></html>

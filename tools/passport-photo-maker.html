@@ -19,6 +19,34 @@
 <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
 <div class="ad-placeholder" style="margin-top:24px;height:60px">🚀 <a href="https://www.digitalocean.com/?refcode=ce9295" style="color:var(--accent);text-decoration:none;font-weight:600">DigitalOcean</a></div>
 </main>
+  <div class="aff-section" style="margin-top:20px">
+    <div class="aff-grid">
+      <a href="https://www.digitalocean.com/?refcode=ce9295" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">☁️</div>
+        <div class="aff-body">
+          <div class="aff-name">DigitalOcean</div>
+          <div class="aff-desc">Get $200 free credit. Deploy in seconds.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://www.hostinger.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🚀</div>
+        <div class="aff-body">
+          <div class="aff-name">Hostinger</div>
+          <div class="aff-desc">Fast web hosting from $2.49/mo. Free domain.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+      <a href="https://nordvpn.com/" target="_blank" rel="noopener" class="aff-card">
+        <div class="aff-icon">🔒</div>
+        <div class="aff-body">
+          <div class="aff-name">NordVPN</div>
+          <div class="aff-desc">Protect your privacy. 74% off + 3 months free.</div>
+        </div>
+        <span class="aff-badge">AD</span>
+      </a>
+    </div>
+  </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
 <script src="../assets/app.js?ver=3"></script>
 <script>let ppImg=null;let pw=600,ph=750;const ppC=document.getElementById("ppCanvas"),ctx=ppC.getContext("2d");document.getElementById("ppDrop").addEventListener("click",()=>document.getElementById("ppFile").click());document.getElementById("ppFile").addEventListener("change",function(){if(!this.files[0])return;const r=new FileReader();r.onload=function(e){const img=new Image();img.onload=function(){ppImg=img;render();};img.src=e.target.result;};r.readAsDataURL(this.files[0]);});function render(){if(!ppImg)return;ppC.style.display="block";ppC.width=Math.min(ppImg.width,400);ppC.height=ppC.width/ppImg.width*ppImg.height;ctx.fillStyle="#fff";ctx.fillRect(0,0,ppC.width,ppC.height);ctx.drawImage(ppImg,0,0,ppC.width,ppC.height);document.getElementById("ppDl").style.display="inline-flex";}document.querySelectorAll(".pp-size").forEach(b=>b.addEventListener("click",function(){document.querySelectorAll(".pp-size").forEach(x=>x.classList.remove("active"));this.classList.add("active");pw=parseInt(this.dataset.w);ph=parseInt(this.dataset.h);if(ppImg)render();}));document.getElementById("ppDl").addEventListener("click",function(){const a=document.createElement("a");a.download="passport-photo.png";a.href=ppC.toDataURL("image/png");a.click();});</script></body></html>
