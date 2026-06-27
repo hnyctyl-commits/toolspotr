@@ -550,6 +550,10 @@ function getRecentTools(){
     {key:'network', icon:'🌐', name:'Network'},
   ];
   tabBar.innerHTML = cats.map(c => `<button class="tab-btn ${c.key==='all'?'active':''}" data-cat="${c.key}">${c.icon} ${c.name}</button>`).join('');
+  // Show cat-grid only on "All"
+  const cg = document.getElementById('catGrid');
+  if(cg) cg.style.display = 'grid';
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
   
   tabBar.addEventListener('click', function(e){
     const btn = e.target.closest('.tab-btn');
@@ -631,6 +635,16 @@ function getRecentTools(){
   suggest.addEventListener('click', function(e){
     const tag = e.target.closest('.hot-tag');
     if(tag && tag.dataset.url) window.location.href = tag.dataset.url;
+  });
+  
+  // Category grid click → trigger tab click
+  document.addEventListener('click', function(e){
+    const card = e.target.closest('.cat-card');
+    if(card && card.dataset.cat){
+      const tab = document.querySelector('.tab-btn[data-cat="' + card.dataset.cat + '"]');
+      if(tab){ tab.click(); }
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.toggle('active', c.dataset.cat === card.dataset.cat));
+    }
   });
   
   // Check if we need to refresh
@@ -835,6 +849,30 @@ function getRecentTools(){
   if(currentId && typeof TOOLS !== 'undefined'){
     const tool = TOOLS.find(t => t.id === currentId[1]);
     if(tool){
+      // Tool rating (👍/👎)
+      const ratings = JSON.parse(localStorage.getItem('tf_ratings') || '{}');
+      const box = document.querySelector('.tool-box');
+      if(box && !box.querySelector('.tool-rating')){
+        const rdiv = document.createElement('div');
+        rdiv.className = 'tool-rating';
+        rdiv.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)';
+        const id = currentId[1];
+        const r = ratings[id] || 0;
+        rdiv.innerHTML = '<span style="font-size:11px;color:var(--text-sec)">Was this helpful?</span>' +
+          '<button class="rate-btn" data-vote="1" style="padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px">👍 <span class="rc">' + (r > 0 ? r : '') + '</span></button>' +
+          '<button class="rate-btn" data-vote="-1" style="padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px">👎</button>';
+        box.appendChild(rdiv);
+        rdiv.querySelectorAll('.rate-btn').forEach(b => b.addEventListener('click', function(){
+          const v = parseInt(this.dataset.vote);
+          ratings[id] = v; localStorage.setItem('tf_ratings', JSON.stringify(ratings));
+          rdiv.querySelectorAll('.rate-btn').forEach(x => x.style.borderColor = 'var(--border)');
+          this.style.borderColor = 'var(--accent)';
+          const sc = this.querySelector('.rc');
+          if(sc) sc.textContent = '1';
+        }));
+      }
+      
+      // Related tools
       const related = TOOLS.filter(t => t.cat === tool.cat && t.id !== tool.id && t.ready).slice(0, 4);
       if(related.length){
         const cross = document.querySelector('.tool-cross-grid');
