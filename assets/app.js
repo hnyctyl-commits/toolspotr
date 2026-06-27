@@ -444,13 +444,18 @@ function initStats(){
         <div class="section-header">
           <span class="section-icon">🕐</span>
           <h2>Recently Used</h2>
+          <button class="recent-clear" title="Clear & hide">✕</button>
         </div>
         <div class="cross-grid">
-          ${recent.slice(0,6).map(t => 
+          ${recent.slice(0,6).map(t =>
             `<a href="tools/${t.id}.html" class="cross-card"><span class="cross-icon">📌</span><span class="cross-name">${t.name}</span></a>`
           ).join('')}
         </div>`;
       toolsSection.after(section);
+      section.querySelector('.recent-clear').onclick = function(){
+        try { localStorage.removeItem('tf_recent'); } catch(e){}
+        section.remove();
+      };
     }
   }
 }
