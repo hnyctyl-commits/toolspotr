@@ -235,14 +235,19 @@ let currentTheme = localStorage.getItem('tf_theme') || 'cosmic';
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded', function(){
-  applyTheme(currentTheme);
-  applyLang(currentLang);
-  initControls();
-  initSearch();
-  initStats();
-  initCategoryTabs();
-  initSearchHotTags();
-  initRecentTools();
+  try { applyTheme(currentTheme); } catch(e){}
+  try { applyLang(currentLang); } catch(e){}
+  try { initControls(); } catch(e){}
+  try { initSearch(); } catch(e){}
+  try { initStats(); } catch(e){}
+  try { initCategoryTabs(); } catch(e){}
+  try { initSearchHotTags(); } catch(e){}
+  try { initRecentTools(); } catch(e){}
+  // Retry tab-bar if empty (may be needed after populateCategories)
+  setTimeout(function(){
+    var tb = document.getElementById('tabBar');
+    if(tb && !tb.children.length) try { initCategoryTabs(); } catch(e){}
+  }, 300);
 });
 
 // ── Theme ──
