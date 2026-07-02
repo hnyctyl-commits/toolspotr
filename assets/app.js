@@ -557,7 +557,7 @@ function initCategoryTabs(){
 window.TOOLS = TOOLS; window.TOOL_COUNT = TOOL_COUNT; window.LANG = LANG;
 
 // ── Homepage Stats ──
-;(function initStats(){
+function initStats(){
   const usage = getUsageStats();
   const recent = getRecentTools();
   
@@ -591,7 +591,7 @@ window.TOOLS = TOOLS; window.TOOL_COUNT = TOOL_COUNT; window.LANG = LANG;
       renderHotTags();
     }
   });
-})();
+}
 
 // ── Hot Grid (12 tools, daily updated) ──
 (function initHotGrid(){
