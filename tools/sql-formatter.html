@@ -50,7 +50,7 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?v=1782996513"></script>
 <script>document.getElementById("sqlBtn").addEventListener("click",()=>{let s=document.getElementById("sqlInput").value;s=s.replace(/\b(SELECT|FROM|WHERE|AND|OR|ORDER BY|GROUP BY|HAVING|LIMIT|JOIN|LEFT JOIN|RIGHT JOIN|INNER JOIN|ON|INSERT INTO|VALUES|UPDATE|SET|DELETE|CREATE TABLE|ALTER TABLE|DROP TABLE|INDEX|UNION|AS|IN|NOT|NULL|IS|BETWEEN|LIKE|EXISTS|CASE|WHEN|THEN|ELSE|END|ASC|DESC|DISTINCT|COUNT|SUM|AVG|MIN|MAX)\b/gi,"\n  $1");s=s.replace(/,\s*/g,",\n    ");s=s.replace(/^\)/gm,"  )");s=s.replace(/\(/g,"(\n    ");s=s.replace(/\n\s{2,}\n/g,"\n\n").trim();document.getElementById("sqlOutput").value=s;});document.getElementById("sqlCopy").addEventListener("click",()=>navigator.clipboard.writeText(document.getElementById("sqlOutput").value));</script>
 </body>

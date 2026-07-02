@@ -40,6 +40,6 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?ver=3"></script>
 <script>let pcFile=null;document.getElementById("pcDrop").addEventListener("click",()=>document.getElementById("pcFile").click());document.getElementById("pcFile").addEventListener("change",async function(){if(!this.files[0])return;pcFile=this.files[0];document.getElementById("pcInfo").style.display="block";document.getElementById("pcBtn").style.display="inline-flex";const mb=(pcFile.size/1024/1024).toFixed(2);document.getElementById("pcSize").innerHTML="Original: <strong>"+mb+" MB</strong>";});document.getElementById("pcBtn").addEventListener("click",async function(){if(!pcFile)return;const buf=await pcFile.arrayBuffer();const{PDFDocument}=PDFLib;const pdf=await PDFDocument.load(buf);const compressed=await pdf.save({useObjectStreams:false});const blob=new Blob([compressed],{type:"application/pdf"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="compressed.pdf";a.click();});</script></body></html>

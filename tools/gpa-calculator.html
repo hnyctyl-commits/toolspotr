@@ -58,7 +58,7 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?v=1782996513"></script>
 <script>
 function calcGPA(){const rows=document.querySelectorAll('.gpa-row');let totalPts=0,totalCred=0;rows.forEach(r=>{const inputs=r.querySelectorAll('input,select');const grade=parseFloat(inputs[1].value)||0;const cred=parseFloat(inputs[2].value)||0;totalPts+=grade*cred;totalCred+=cred;});const gpa=totalCred>0?totalPts/totalCred:0;document.getElementById("gpaResult").textContent=gpa.toFixed(2);}

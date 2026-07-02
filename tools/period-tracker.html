@@ -39,6 +39,6 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?ver=1"></script>
 <script>document.getElementById("ptBtn").addEventListener("click",function(){var d=new Date(document.getElementById("ptLast").value);var c=parseInt(document.getElementById("ptCycle").value)||28;var p=parseInt(document.getElementById("ptPeriod").value)||5;if(isNaN(d.getTime()))return;var next=new Date(d);next.setDate(next.getDate()+c);document.getElementById("ptNext").textContent=next.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});var ovu=new Date(next);ovu.setDate(ovu.getDate()-14);document.getElementById("ptOvu").textContent=ovu.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});var fStart=new Date(ovu);fStart.setDate(fStart.getDate()-5);var fEnd=new Date(ovu);fEnd.setDate(fEnd.getDate()+1);document.getElementById("ptFertile").innerHTML="Fertile window: <strong>"+fStart.toLocaleDateString("en-US",{month:"short",day:"numeric"})+" — "+fEnd.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})+"</strong>";});document.getElementById("ptBtn").click();</script></body></html>

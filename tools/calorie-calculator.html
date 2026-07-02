@@ -69,7 +69,7 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?v=1782996513"></script>
 <script>
 function calcCal(){const age=parseInt(document.getElementById("calAge").value)||30,gender=document.getElementById("calGender").value,w=parseFloat(document.getElementById("calWeight").value)||70,h=parseFloat(document.getElementById("calHeight").value)||170,act=parseFloat(document.getElementById("calActivity").value)||1.375;let bmr=gender==='male'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;const tdee=bmr*act;document.getElementById("calBmr").textContent=Math.round(bmr).toLocaleString();document.getElementById("calTdee").textContent=Math.round(tdee).toLocaleString();document.getElementById("calLoss").textContent=Math.round(tdee-500).toLocaleString();document.getElementById("calGain").textContent=Math.round(tdee+500).toLocaleString();}
