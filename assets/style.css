@@ -301,6 +301,7 @@ body {
 /* ── Sections ── */
 .ad-unit ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 .tools-section, .cross-section { max-width: 1100px; margin: 0 auto; padding: 0 24px 40px; }
+.cross-section.hidden { display: none; }
 .section-header {
   display: flex; align-items: center; gap: 10px; padding: 16px 0 14px;
   border-bottom: 1px solid var(--border); margin-bottom: 16px;

@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initControls();
   initSearch();
   initStats();
+  initCategoryTabs();
 });
 
 // ── Theme ──
@@ -409,6 +410,83 @@ function initSearch(){
   document.addEventListener('click', function(e){
     if(!e.target.closest('.hero-search')) panel.classList.remove('show');
   });
+}
+
+// ── Category Tabs ──
+function initCategoryTabs(){
+  const bar = document.getElementById('tabBar');
+  if(!bar) return;
+  
+  // Read categories from the DOM
+  const cats = [];
+  document.querySelectorAll('.tcat').forEach(el => {
+    const cat = el.dataset.cat;
+    if(!cat) return;
+    const head = el.querySelector('.tcat-head');
+    if(!head) return;
+    const icon = head.querySelector('.tcat-icon')?.textContent || '🛠️';
+    const name = head.querySelector('.tcat-name')?.textContent || cat;
+    const cnt = head.querySelector('.tcat-cnt')?.textContent || '0';
+    cats.push({ cat, icon, name, cnt });
+  });
+  
+  if(!cats.length) return;
+  
+  // Build tab buttons: All + each category
+  let html = '<button class="tab-btn active" data-cat="all">🌟 All (' + TOOL_COUNT + ')</button>';
+  cats.forEach(c => {
+    html += '<button class="tab-btn" data-cat="' + c.cat + '">' + c.icon + ' ' + c.name + ' (' + c.cnt + ')</button>';
+  });
+  bar.innerHTML = html;
+  
+  // Tab click handler
+  bar.addEventListener('click', function(e){
+    const btn = e.target.closest('.tab-btn');
+    if(!btn) return;
+    
+    const cat = btn.dataset.cat;
+    
+    // Update active state
+    bar.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    if(cat === 'all'){
+      // Show all categories
+      document.querySelectorAll('.tcat').forEach(el => el.classList.remove('hidden'));
+      // Show Most Used + Favorites
+      document.querySelector('.cross-section')?.classList.remove('hidden');
+      // Re-evaluate favorites visibility (in case it was hidden by filter)
+      const favSec = document.getElementById('favSection');
+      if(favSec) {
+        const hasFavs = (JSON.parse(localStorage.getItem('tf_favs')||'[]')).length > 0;
+        favSec.classList.toggle('show', hasFavs);
+      }
+      // Scroll to tools section
+      document.querySelector('.cross-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // Hide all, show selected
+      document.querySelectorAll('.tcat').forEach(el => {
+        el.classList.toggle('hidden', el.dataset.cat !== cat);
+      });
+      // Hide Most Used + Favorites when filtering
+      document.querySelector('.cross-section')?.classList.add('hidden');
+      document.getElementById('favSection')?.classList.remove('show');
+      // Scroll to selected category
+      const target = document.querySelector('.tcat[data-cat="' + cat + '"]');
+      if(target){
+        // Small offset to account for sticky tab bar
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  });
+  
+  // Read URL hash for direct category link
+  const hash = window.location.hash.replace('#','');
+  if(hash){
+    const targetBtn = bar.querySelector('[data-cat="' + hash + '"]');
+    if(targetBtn) targetBtn.click();
+  }
 }
 
 // ── Homepage Stats ──
