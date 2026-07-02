@@ -6,7 +6,7 @@
 <title>CSS Minifier — Toolflow</title>
 <meta name="description" content="Free CSS minifier. Compress CSS code by removing whitespace, comments, and unnecessary characters for faster loading.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513">
 <style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
@@ -58,7 +58,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>document.getElementById("cssMinBtn").addEventListener("click",()=>{let c=document.getElementById("cssMinInput").value;const o=c.length;c=c.replace(/\/\*[\s\S]*?\*\//g,"");c=c.replace(/\s+/g," ");c=c.replace(/\s*([{}:;,])\s*/g,"$1");c=c.replace(/;}/g,"}");c=c.trim();document.getElementById("cssMinOutput").value=c;document.getElementById("cssOrig").textContent=o;document.getElementById("cssMin").textContent=c.length;document.getElementById("cssPct").textContent=Math.round((1-c.length/o)*100);});</script>
 </body>
 </html>

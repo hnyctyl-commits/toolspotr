@@ -6,7 +6,7 @@
 <title>Tip Calculator — Toolflow</title>
 <meta name="description" content="Free online tip calculator. Calculate tip amounts, split bills, and total per person. 10%, 15%, 18%, 20% and custom tip percentages.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tip-card{background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center}.tip-val{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)}</style>
 </head>
 <body>
@@ -68,7 +68,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>
 function calcTip(){const b=parseFloat(document.getElementById("tcBill").value)||0,p=parseFloat(document.getElementById("tcPct").value)||0,s=parseInt(document.getElementById("tcSplit").value)||1;const tip=b*p/100,total=b+tip;document.getElementById("tcTip").textContent='$'+tip.toFixed(2);document.getElementById("tcTotal").textContent='$'+total.toFixed(2);document.getElementById("tcEachTip").textContent='$'+(tip/s).toFixed(2);document.getElementById("tcEachTotal").textContent='$'+(total/s).toFixed(2);}
 document.querySelectorAll('#tcBill,#tcPct,#tcSplit').forEach(el=>el.addEventListener('input',calcTip));document.querySelectorAll('[data-tip]').forEach(b=>b.addEventListener('click',function(){document.getElementById("tcPct").value=this.dataset.tip;calcTip();}));calcTip();

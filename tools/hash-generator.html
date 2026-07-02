@@ -6,7 +6,7 @@
 <title>Hash Generator — Toolflow</title>
 <meta name="description" content="Free online hash generator. Compute SHA-1, SHA-256, and SHA-512 hashes of any text. Cryptographic hash tool for developers.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
 </head>
 <body>
@@ -66,7 +66,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>
 async function hash(algo,text){const enc=new TextEncoder().encode(text);const buf=await crypto.subtle.digest(algo,enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");}
 const inp=document.getElementById("hgInput"),s1=document.getElementById("hgSha1"),s256=document.getElementById("hgSha256"),s512=document.getElementById("hgSha512");

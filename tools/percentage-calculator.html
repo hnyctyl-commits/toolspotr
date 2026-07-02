@@ -6,7 +6,7 @@
 <title>Percentage Calculator — Toolflow</title>
 <meta name="description" content="Free online percentage calculator. Calculate percentages, percentage increase/decrease, percentage of a number. Instant results.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pc-card{background:var(--bg-main);padding:16px;border-radius:var(--radius-sm);border:1px solid var(--border)}.pc-card h3{font-size:13px;font-weight:600;margin-bottom:8px}.pc-result{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono);margin-top:6px}@media(max-width:600px){.pc-grid{grid-template-columns:1fr}}</style>
 </head>
 <body>
@@ -66,7 +66,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>
 function calc(){const p=parseFloat(document.getElementById('pc1Pct').value)||0,n=parseFloat(document.getElementById('pc1Num').value)||0;document.getElementById('pc1Result').textContent=(p*n/100).toFixed(2);const v=parseFloat(document.getElementById('pc2Val').value)||0,t=parseFloat(document.getElementById('pc2Total').value)||1;document.getElementById('pc2Result').textContent=(v/t*100).toFixed(2)+'%';const o=parseFloat(document.getElementById('pc3Old').value)||1,w=parseFloat(document.getElementById('pc3New').value)||0,c=(w-o)/o*100;document.getElementById('pc3Result').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';const m=parseFloat(document.getElementById('pc4Num').value)||0,p4=parseFloat(document.getElementById('pc4Pct').value)||0;document.getElementById('pc4Result').textContent=(m*(1+p4/100)).toFixed(2);}
 document.querySelectorAll('.tool-box input').forEach(el=>el.addEventListener('input',calc));calc();

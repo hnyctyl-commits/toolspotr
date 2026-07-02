@@ -6,7 +6,7 @@
 <title>Calorie Calculator — Free BMR & TDEE Calculator | Toolflow</title>
 <meta name="description" content="Free calorie calculator using the Mifflin-St Jeor equation. Calculate your BMR, TDEE, and daily calorie needs for weight loss, maintenance, or gain. BMR and TDEE calculator.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cal-card{background:var(--bg-main);padding:12px;border-radius:var(--radius-sm);text-align:center}</style>
 </head>
 <body>
@@ -77,7 +77,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>
 function calcCal(){const age=parseInt(document.getElementById("calAge").value)||30,gender=document.getElementById("calGender").value,w=parseFloat(document.getElementById("calWeight").value)||70,h=parseFloat(document.getElementById("calHeight").value)||170,act=parseFloat(document.getElementById("calActivity").value)||1.375;let bmr=gender==='male'?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;const tdee=bmr*act;document.getElementById("calBmr").textContent=Math.round(bmr).toLocaleString();document.getElementById("calTdee").textContent=Math.round(tdee).toLocaleString();document.getElementById("calLoss").textContent=Math.round(tdee-500).toLocaleString();document.getElementById("calGain").textContent=Math.round(tdee+500).toLocaleString();}
 document.querySelectorAll('#calAge,#calGender,#calWeight,#calHeight,#calActivity').forEach(el=>el.addEventListener('input',calcCal));calcCal();

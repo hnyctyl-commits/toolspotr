@@ -6,7 +6,7 @@
 <title>Crypto Converter — Toolflow</title>
 <meta name="description" content="Free crypto converter. Convert Bitcoin, Ethereum, and other cryptocurrencies to USD and back.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
@@ -58,7 +58,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>const R={"BTC":67432,"ETH":3450,"SOL":145,"ADA":0.45,"DOGE":0.12,"USD":1,"EUR":0.92};const rf=document.getElementById("ccFrom"),rt=document.getElementById("ccTo"),ra=document.getElementById("ccAmt"),rr=document.getElementById("ccResult");function cc(){const a=parseFloat(ra.value)||0,f=rf.value,t=rt.value;const usd=a*R[f];const r=t==="USD"?usd:t==="EUR"?usd*R.EUR:usd/R[t];rr.textContent=`${a.toFixed(4)} ${f} ≈ $${r.toLocaleString(undefined,{maximumFractionDigits:2})}`;}ra.addEventListener("input",cc);rf.addEventListener("change",cc);rt.addEventListener("change",cc);cc();</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Savings Goal Calculator — Toolflow</title>
 <meta name="description" content="Free savings goal calculator. Find out how long it will take to reach your savings target with monthly contributions.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><style>#themePanel,#langPanel{display:none!important}</style>
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><style>#themePanel,#langPanel{display:none!important}</style>
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
@@ -57,7 +57,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>document.getElementById("sgBtn").addEventListener("click",()=>{const t=parseFloat(document.getElementById("sgTarget").value)||0,c=parseFloat(document.getElementById("sgCurrent").value)||0,m=parseFloat(document.getElementById("sgMonthly").value)||1;const month=m>0?Math.ceil((t-c)/m):0;document.getElementById("sgM").textContent=Math.max(0,month);document.getElementById("sgTotal").textContent="$"+Math.min(t,c+month*m).toLocaleString();});document.getElementById("sgBtn").click();</script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Stopwatch — Toolflow</title>
 <meta name="description" content="Free online stopwatch and timer. Start, stop, and record lap times with millisecond precision. Perfect for workouts, cooking, and productivity.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782133111"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
 </head>
 <body>
@@ -68,7 +68,7 @@
     </div>
   </div>
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
-<script src="../assets/app.js?v=1782133111"></script>
+<script src="../assets/app.js?v=1782996513"></script>
 <script>let sw={t:0,run:false,iv:null,startT:0,laps:[]};const D=document.getElementById("swDisplay"),L=document.getElementById("swLaps");function fmt(ms){const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000),c=Math.floor(ms%1000/10);return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")+"."+String(c).padStart(2,"0");}function up(){if(!sw.run)return;sw.t=Date.now()-sw.startT;D.textContent=fmt(sw.t);requestAnimationFrame(up);}document.getElementById("swStart").addEventListener("click",function(){if(!sw.run){sw.run=true;sw.startT=Date.now()-sw.t;this.textContent="⏸ Pause";up();}else{sw.run=false;this.textContent="▶ Resume";}});document.getElementById("swReset").addEventListener("click",function(){sw.run=false;sw.t=0;sw.laps=[];D.textContent="00:00.00";document.getElementById("swStart").textContent="▶ Start";L.innerHTML="";});document.getElementById("swLap").addEventListener("click",function(){if(!sw.run)return;sw.laps.push(sw.t);L.innerHTML=sw.laps.map((l,i)=>`<div style="display:flex;justify-content:space-between;padding:4px 8px;font-family:var(--mono);font-size:13px;border-bottom:1px solid var(--border)"><span style="color:var(--text-muted)">Lap ${i+1}</span><span style="color:var(--accent)">${fmt(l)}</span></div>`).reverse().join("");});</script>
 </body>
 </html>
