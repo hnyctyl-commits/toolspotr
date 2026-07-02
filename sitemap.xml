@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://toolspotr.com/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://toolspotr.com/</loc></url><url><loc>https://toolspotr.com/terms.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url><priority>1.0</priority><changefreq>daily</changefreq></url>
   <url><loc>https://toolspotr.com/tools/ip.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/json-formatter.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/password-generator.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>

@@ -52,5 +52,5 @@
       </a>
     </div>
   </div>
-<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a></p></div></footer>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p></div></footer>
 <script src="../assets/app.js?v=1782996513"></script><script>document.getElementById("emiBtn").addEventListener("click",function(){const p=parseFloat(document.getElementById("emiAmt").value)||0,r=(parseFloat(document.getElementById("emiRate").value)||0)/12/100,n=parseInt(document.getElementById("emiTenure").value)||1;const emi=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);const total=emi*n;document.getElementById("emiMonthly").textContent="$"+Math.round(emi).toLocaleString();document.getElementById("emiTotal").textContent="$"+Math.round(total).toLocaleString();document.getElementById("emiInterest").textContent="$"+Math.round(total-p).toLocaleString();});document.getElementById("emiBtn").click();</script></body></html>

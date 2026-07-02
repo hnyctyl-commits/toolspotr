@@ -419,6 +419,26 @@ function initSearch(){
   });
 }
 
+// ── Cookie Consent Banner ──
+(function initCookieConsent(){
+  if(localStorage.getItem('tf_cookie_consent')) return;
+  var banner = document.createElement('div');
+  banner.className = 'cookie-bar';
+  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:12px 20px;background:rgba(7,11,21,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--border);font-size:13px;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap';
+  banner.innerHTML = '<span style="color:var(--text-primary);font-size:12px">🍪 We use cookies for analytics and ads. <a href="privacy.html" style="color:var(--accent);text-decoration:none">Learn more</a></span>' +
+    '<button class="cookie-accept" style="padding:6px 18px;border-radius:8px;background:var(--accent);color:#000;border:none;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">Accept</button>' +
+    '<button class="cookie-dismiss" style="padding:6px 12px;border-radius:8px;background:transparent;color:var(--text-muted);border:1px solid var(--border);font-size:12px;cursor:pointer;white-space:nowrap">Decline</button>';
+  document.body.appendChild(banner);
+  banner.querySelector('.cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('tf_cookie_consent', 'accepted');
+    banner.remove();
+  });
+  banner.querySelector('.cookie-dismiss').addEventListener('click', function(){
+    localStorage.setItem('tf_cookie_consent', 'declined');
+    banner.remove();
+  });
+})();
+
 // ── PWA Install Prompt ──
 (function initPwaInstall(){
   let deferredPrompt;
