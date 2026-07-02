@@ -489,8 +489,11 @@ function initCategoryTabs(){
   }
 }
 
+// ── Export configs needed by downstream code ──
+window.TOOLS = TOOLS; window.TOOL_COUNT = TOOL_COUNT; window.LANG = LANG;
+
 // ── Homepage Stats ──
-function initStats(){
+;(function initStats(){
   const usage = getUsageStats();
   const recent = getRecentTools();
   
