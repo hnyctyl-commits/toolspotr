@@ -543,73 +543,98 @@ body {
 
 /* ── Responsive ── */
 
-/* Tablet (768-1024px) */
+/* Tablet landscape (768-1024px) */
 @media (max-width: 1024px) {
   .hero-title { font-size: 32px; }
-  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); }
+  .tool-grid-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .tcat { margin-bottom: 20px; }
 }
 
-/* Small tablet / large phone (600-768px) */
+/* Tablet portrait / large phone (600-768px) */
 @media (max-width: 768px) {
+  /* ── Navigation ── */
   .nav-inner { padding: 0 10px; gap: 6px; }
   .logo-text { font-size: 14px; }
   .logo-icon { width: 26px; height: 26px; font-size: 12px; }
-  .nav-stat { font-size: 10px; padding: 3px 8px; display: none; } /* hide stat on mobile */
+  .nav-stat { display: none; }
   .ctrl-btn { width: 28px; height: 28px; font-size: 13px; }
   .lang-btn { width: auto; padding: 0 6px; font-size: 10px; }
+  .nav-controls { gap: 4px; }
+  .theme-panel { width: 180px; right: -10px; }
+  .lang-panel { width: 120px; right: -10px; }
 
-  /* Theme/Lang panels on mobile */
-  .theme-panel { width: 180px; }
-  .lang-panel { width: 120px; }
-
-  /* Hero */
-  .hero { padding: 32px 16px 28px; }
+  /* ── Hero ── */
+  .hero { padding: 24px 12px 20px; }
   .hero-title { font-size: 24px; letter-spacing: -0.5px; }
   .hero-desc { font-size: 13px; }
-  .hero-search { max-width: 100%; margin-top: 14px; }
+  .hero-search { max-width: 100%; margin-top: 12px; }
   .hero-search input { height: 44px; font-size: 14px; padding: 0 80px 0 44px; }
   .hero-search-icon { left: 14px; width: 18px; height: 18px; }
   .hero-search-kbd { right: 12px; }
   .hero-search-kbd kbd { min-width: 18px; height: 18px; font-size: 8px; padding: 0 4px; }
   .hero-search-clear { right: 56px; width: 20px; height: 20px; font-size: 10px; }
   .hero-search-results { max-height: 280px; }
-  .hero-stats { gap: 20px; margin-top: 18px; }
+  .hero-stats { gap: 16px; margin-top: 14px; }
   .hs-num { font-size: 22px; }
-  .hs-lbl { font-size: 9px; }
 
-  /* Sections */
-  .tools-section, .cross-section { padding: 0 12px 24px; }
-  .section-header { padding: 12px 0 10px; margin-bottom: 12px; }
+  /* ── Category Tab Bar ── */
+  .tab-bar { padding: 8px 10px; gap: 4px; top: 52px; justify-content: flex-start; }
+  .tab-btn { padding: 5px 10px; font-size: 11px; flex-shrink: 0; }
+
+  /* ── Sections ── */
+  .tools-section, .cross-section { padding: 0 10px 20px; }
+  .section-header { padding: 10px 0 8px; margin-bottom: 10px; }
   .section-header h2 { font-size: 15px; }
 
-  /* Tool cards */
-  .tcat { margin-bottom: 16px; }
-  .tcat-head { font-size: 13px; padding: 0 0 10px; margin-bottom: 12px; }
+  /* ── Tool Cards ── */
+  .tcat { margin-bottom: 14px; }
+  .tcat-head { font-size: 13px; padding: 0 0 8px; margin-bottom: 10px; }
   .tcat-icon { font-size: 17px; }
-  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .tcard { padding: 14px 12px 12px; }
-  .tcard-icon { width: 34px; height: 34px; font-size: 18px; margin-bottom: 8px; border-radius: 8px; }
-  .tcard-title { font-size: 13px; }
-  .tcard-desc { font-size: 11px; -webkit-line-clamp: 2; }
+  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .tcard { padding: 12px 10px 10px; }
+  .tcard-icon { width: 32px; height: 32px; font-size: 16px; margin-bottom: 6px; border-radius: 8px; }
+  .tcard-title { font-size: 12px; }
+  .tcard-desc { font-size: 10px; -webkit-line-clamp: 1; }
 
-  /* Cross-sell */
+  /* ── Favorites + Recent ── */
+  .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .recent-section .fav-grid { grid-template-columns: repeat(2, 1fr); }
+  .fav-card { padding: 6px 10px; font-size: 12px; }
+  .recent-section .fav-card { padding: 6px 10px; }
+
+  /* ── Cross-sell (Most Used) ── */
   .cross-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
   .cross-card { padding: 8px; }
   .cross-icon { font-size: 14px; }
   .cross-name { font-size: 10px; }
   .cross-count { font-size: 8px; }
 
-  /* Footer */
-  .footer { padding: 14px 12px; }
+  /* ── Hot Search Tags ── */
+  .hot-tag { font-size: 10px; padding: 3px 10px; }
+  .search-suggest { gap: 4px; padding: 8px 2px 0; }
+
+  /* ── PWA Install Banner ── */
+  .install-banner { padding: 8px 12px; font-size: 12px; flex-wrap: wrap; }
+  .install-btn { padding: 5px 12px; font-size: 11px; }
+
+  /* ── Affiliate Grid ── */
+  .aff-grid { grid-template-columns: 1fr; gap: 8px; }
+  .aff-section { padding: 0 12px 16px; }
+  .aff-card { padding: 10px 12px; }
+  .aff-icon { font-size: 20px; }
+  .aff-name { font-size: 12px; }
+
+  /* ── Footer ── */
+  .footer { padding: 12px 10px; }
   .footer p { font-size: 10px; }
   .f-small { font-size: 9px; }
 
-  /* Tool page */
-  .tool-page { padding: 16px 12px 32px; }
-  .tool-page-title { font-size: 22px; }
+  /* ── Tool Page ── */
+  .tool-page { padding: 12px 10px 24px; }
+  .tool-page-title { font-size: 20px; }
   .tool-page-desc { font-size: 12px; }
-  .tool-box { padding: 14px; }
+  .tool-breadcrumb { font-size: 10px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .tool-box { padding: 12px; }
   .tool-box .input-row { flex-direction: column; }
   .tool-box .input-row > * { min-width: 100%; }
   .tool-box input, .tool-box textarea, .tool-box select { font-size: 12px; padding: 7px 10px; }
@@ -617,53 +642,86 @@ body {
   .tool-output { font-size: 12px; padding: 10px; }
   .tool-article h3 { font-size: 14px; }
   .tool-article p { font-size: 11px; }
-  .tool-cross-grid { grid-template-columns: 1fr; }
+  .tool-cross-grid { grid-template-columns: 1fr; gap: 6px; }
   .ad-placeholder { height: 60px; font-size: 10px; }
 
-  /* Search results mobile */
+  /* ── Search Results ── */
   .hsr-item { padding: 7px 10px; }
   .hsr-item-name { font-size: 12px; }
   .hsr-item-desc { font-size: 10px; }
 
-  /* Nav controls on tool pages */
-  .nav-controls { gap: 4px; }
+  /* ── Share Bar ── */
+  .share-bar { gap: 4px !important; }
+  .share-btn { padding: 3px 8px; font-size: 11px; min-width: 26px; }
+
+  /* ── Rating ── */
+  .rate-btn { padding: 3px 10px !important; font-size: 12px !important; }
+  .tool-rating { gap: 4px !important; }
 }
 
-/* Small phone (<400px) */
-@media (max-width: 1024px) {
-  .tool-grid-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-}
-@media (max-width: 768px) {
-  .tool-grid-cards { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .tcard { padding: 10px 10px 8px; }
-  .tcard-icon { width: 28px; height: 28px; font-size: 16px; margin-bottom: 6px; border-radius: 6px; }
-  .tcard-title { font-size: 12px; }
-  .tcard-desc { font-size: 10px; -webkit-line-clamp: 1; }
-  .tcat-head { padding: 0 0 6px; margin-bottom: 8px; gap: 6px; }
-  .tcat-name { font-size: 13px; }
-  .tcat { margin-bottom: 16px; }
-  .tab-btn { padding: 5px 10px; font-size: 11px; }
-  .hot-tag { font-size: 10px; padding: 3px 8px; }
-}
+/* Small phone (400-480px) */
 @media (max-width: 480px) {
-  .tool-grid-cards { grid-template-columns: 1fr; }
+  .tool-grid-cards { grid-template-columns: 1fr 1fr; gap: 5px; }
+  .fav-grid { grid-template-columns: 1fr 1fr; }
+  .recent-section .fav-grid { grid-template-columns: 1fr 1fr; }
   .logo-text { display: none; }
+  .hero { padding: 16px 10px 16px; }
   .hero-title { font-size: 20px; }
   .hero-desc { font-size: 12px; }
-  .hero-stats { gap: 14px; }
+  .hero-stats { gap: 12px; margin-top: 10px; }
   .hs-num { font-size: 18px; }
-  .cross-grid { grid-template-columns: 1fr; }
-  .theme-panel { width: 160px; }
+  .hs-lbl { font-size: 8px; }
+  .cross-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+  .theme-panel { width: 160px; right: -5px; }
   .tool-quick { display: none !important; }
   .nav-links { display: none; }
   .hero-search-kbd { display: none; }
-  /* Tool page extreme compact */
-  .tool-page-title { font-size: 18px; }
-  .tool-box { padding: 10px; }
-}
-@media (max-width: 360px) {
+  .hero-search input { padding: 0 44px 0 40px; font-size: 13px; height: 40px; }
+  .hero-search-clear { right: 8px; }
   .tab-bar { padding: 6px 8px; gap: 3px; }
   .tab-btn { padding: 4px 8px; font-size: 10px; }
+  .install-banner { font-size: 11px; padding: 6px 10px; }
+  .install-btn { font-size: 10px; padding: 4px 10px; }
+  .tool-page-title { font-size: 18px; }
+  .tool-box { padding: 10px; }
+  .tool-cross-grid { gap: 4px; }
+  .tcard { padding: 10px 8px 8px; }
+  .tcard-icon { width: 28px; height: 28px; font-size: 14px; }
+  .tcard-title { font-size: 11px; }
+  .tcard-desc { display: none; }
+  .tcard-tags { display: none; }
+  .tcat-head { padding: 0 0 6px; margin-bottom: 6px; gap: 4px; }
+  .tcat-name { font-size: 12px; }
+  .tcat-cnt { font-size: 9px; }
+  .fav-card { font-size: 11px; padding: 5px 8px; }
+  .recent-section .fav-card { font-size: 11px; padding: 5px 8px; }
+}
+
+/* Very small phone (<400px) */
+@media (max-width: 400px) {
+  .tool-grid-cards { grid-template-columns: 1fr; }
+  .fav-grid { grid-template-columns: 1fr; }
+  .recent-section .fav-grid { grid-template-columns: 1fr; }
+  .cross-grid { grid-template-columns: 1fr; gap: 4px; }
+  .hero-title { font-size: 18px; }
+  .hero-stats { gap: 10px; }
+  .hs-num { font-size: 16px; }
+  .tab-bar { padding: 4px 6px; gap: 2px; }
+  .tab-btn { padding: 3px 6px; font-size: 9px; }
+  .tcard { padding: 8px 6px 6px; }
+  .tcard-icon { width: 24px; height: 24px; font-size: 12px; }
+  .tcard-title { font-size: 10px; }
+}
+
+/* Landscape phone */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero { padding: 16px 12px 12px; }
+  .hero-title { font-size: 18px; margin-bottom: 2px; }
+  .hero-desc { font-size: 11px; margin-bottom: 0; }
+  .hero-search { margin-top: 6px; }
+  .hero-search input { height: 32px; font-size: 12px; }
+  .hero-stats { margin-top: 6px; gap: 12px; display: none; }
+  .hs-num { font-size: 14px; }
 }
 
 /* ── Affiliate Cards ── */
@@ -681,21 +739,6 @@ body {
 .aff-name { font-size: 13px; font-weight: 600; }
 .aff-desc { font-size: 10px; color: var(--text-sec); line-height: 1.3; }
 .aff-badge { position: absolute; top: 4px; right: 6px; font-size: 8px; padding: 1px 5px; border-radius: 3px; background: var(--accent); color: #000; font-weight: 700; letter-spacing: 0.5px; }
-@media (max-width: 768px) {
-  .aff-grid { grid-template-columns: 1fr; }
-  .aff-section { padding: 0 12px 16px; }
-}
-
-/* Landscape phone */
-@media (max-height: 480px) and (orientation: landscape) {
-  .hero { padding: 20px 16px 16px; }
-  .hero-title { font-size: 20px; margin-bottom: 4px; }
-  .hero-desc { font-size: 11px; margin-bottom: 0; }
-  .hero-search { margin-top: 8px; }
-  .hero-search input { height: 34px; font-size: 12px; }
-  .hero-stats { margin-top: 8px; gap: 16px; }
-  .hs-num { font-size: 16px; }
-}
 
 /* ── Animations ── */
 @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
