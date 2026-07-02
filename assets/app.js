@@ -241,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function(){
   initSearch();
   initStats();
   initCategoryTabs();
+  initSearchHotTags();
+  initRecentTools();
 });
 
 // ── Theme ──
@@ -410,6 +412,68 @@ function initSearch(){
   document.addEventListener('click', function(e){
     if(!e.target.closest('.hero-search')) panel.classList.remove('show');
   });
+}
+
+// ── PWA Install Prompt ──
+(function initPwaInstall(){
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Show install banner
+    const banner = document.createElement('div');
+    banner.className = 'install-banner';
+    banner.innerHTML = '<span>📲 Install Toolflow for quick access</span><button class="install-btn">Install</button><button class="install-dismiss">✕</button>';
+    document.body.prepend(banner);
+    banner.querySelector('.install-btn').addEventListener('click', () => {
+      banner.remove();
+      if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(() => deferredPrompt = null); }
+    });
+    banner.querySelector('.install-dismiss').addEventListener('click', () => banner.remove());
+  });
+  window.addEventListener('appinstalled', () => { console.log('Toolspotr installed!'); });
+})();
+
+// ── Search Hot Tags ──
+function initSearchHotTags(){
+  const suggest = document.getElementById('searchSuggest');
+  if(!suggest) return;
+  // Show popular/searchable tag chips
+  const tags = [
+    {label:'JSON', icon:'📋', url:'tools/json-formatter.html'},
+    {label:'Password', icon:'🔑', url:'tools/password-generator.html'},
+    {label:'Base64', icon:'🔤', url:'tools/base64.html'},
+    {label:'IP', icon:'🌐', url:'tools/ip.html'},
+    {label:'QR', icon:'📱', url:'tools/qr-generator.html'},
+    {label:'Color', icon:'🎨', url:'tools/color-picker.html'},
+    {label:'UUID', icon:'🔀', url:'tools/uuid-generator.html'},
+    {label:'BMI', icon:'⚕️', url:'tools/bmi-calculator.html'},
+  ];
+  suggest.innerHTML = '<span style="font-size:10px;color:var(--text-muted);margin-right:6px">🔥 </span>' +
+    tags.map(t => '<a href="' + t.url + '" class="hot-tag">' + t.icon + ' ' + t.label + '</a>').join('');
+}
+
+// ── Homepage Recent Tools ──
+function initRecentTools(){
+  const favSection = document.getElementById('favSection');
+  if(!favSection) return;
+  // Insert recent tools block after favorites
+  let recent;
+  try { recent = JSON.parse(localStorage.getItem('tf_recent') || '[]'); } catch(e){ recent = []; }
+  if(!recent.length) return;
+  // Remove any existing recent section
+  document.querySelector('.recent-section')?.remove();
+  const sec = document.createElement('div');
+  sec.className = 'recent-section';
+  sec.innerHTML = '<div class="section-header"><span class="section-icon">🕐</span><h2>Recently Used</h2></div><div class="fav-grid">' +
+    recent.map(id => {
+      const card = document.querySelector('.tcard[href*="' + id + '"]');
+      if(!card) return '';
+      const icon = card.querySelector('.tcard-icon')?.textContent || '🛠️';
+      const title = card.querySelector('.tcard-title')?.textContent || id;
+      return '<a href="tools/' + id + '.html" class="fav-card"><span>' + icon + '</span><span style="font-size:13px;font-weight:500">' + title + '</span></a>';
+    }).filter(Boolean).join('') + '</div>';
+  favSection.after(sec);
 }
 
 // ── Category Tabs ──
@@ -688,70 +752,106 @@ window.TOOLS = TOOLS; window.TOOL_COUNT = TOOL_COUNT; window.LANG = LANG;
 })();
 
 
-// ── Share + Related on tool pages ──
+// ── Tool Page Enhancements: Share, Rating, FAQ Schema, Recent ──
 (function initToolEnhance(){
   const path = window.location.pathname;
   if(!path.includes('/tools/')) return;
   
-  // Share button
+  const currentId = path.match(/\/tools\/(.+)\./);
+  if(!currentId) return;
+  const toolId = currentId[1];
+  const tool = typeof TOOLS !== 'undefined' ? TOOLS.find(t => t.id === toolId) : null;
+  
+  // ── 1. Track Recent Tools ──
+  try {
+    let recent = JSON.parse(localStorage.getItem('tf_recent') || '[]');
+    recent = [toolId, ...recent.filter(id => id !== toolId)].slice(0, 10);
+    localStorage.setItem('tf_recent', JSON.stringify(recent));
+  } catch(e){}
+  
+  // ── 2. Social Share Bar ──
   const header = document.querySelector('.tool-page-header');
-  if(header){
-    const shareBtn = document.createElement('button');
-    shareBtn.className = 'share-btn';
-    shareBtn.innerHTML = '📤';
-    shareBtn.title = 'Share this tool';
-    shareBtn.onclick = function(){
-      if(navigator.share){
-        navigator.share({title:document.title,url:window.location.href});
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        shareBtn.innerHTML = '✅ Copied!';
-        setTimeout(() => shareBtn.innerHTML = '📤', 2000);
-      }
-    };
-    header.appendChild(shareBtn);
+  if(header && !header.querySelector('.share-bar')){
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.title);
+    const shareBar = document.createElement('div');
+    shareBar.className = 'share-bar';
+    shareBar.style.cssText = 'display:flex;gap:6px;margin-top:8px;flex-wrap:wrap';
+    shareBar.innerHTML =
+      '<button class="share-btn" data-share="twitter" title="Share on X">𝕏</button>' +
+      '<button class="share-btn" data-share="facebook" title="Share on Facebook">f</button>' +
+      '<button class="share-btn" data-share="copy" title="Copy link">🔗</button>' +
+      '<button class="share-btn" data-share="native" title="Share...">📤</button>';
+    shareBar.addEventListener('click', function(e){
+      const btn = e.target.closest('.share-btn');
+      if(!btn) return;
+      const type = btn.dataset.share;
+      if(type === 'twitter') window.open('https://twitter.com/intent/tweet?text=' + title + '&url=' + url, '_blank', 'width=600,height=400');
+      else if(type === 'facebook') window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'width=600,height=400');
+      else if(type === 'copy'){ navigator.clipboard.writeText(decodeURIComponent(url)); btn.textContent = '✅'; setTimeout(() => btn.textContent = '🔗', 1500); }
+      else if(type === 'native' && navigator.share) navigator.share({title:document.title,url:decodeURIComponent(url)});
+    });
+    header.appendChild(shareBar);
   }
   
-  // Related tools: find 3-4 tools in same category
-  const currentId = path.match(/\/tools\/(.+)\./);
-  if(currentId && typeof TOOLS !== 'undefined'){
-    const tool = TOOLS.find(t => t.id === currentId[1]);
-    if(tool){
-      // Tool rating (👍/👎)
-      const ratings = JSON.parse(localStorage.getItem('tf_ratings') || '{}');
-      const box = document.querySelector('.tool-box');
-      if(box && !box.querySelector('.tool-rating')){
-        const rdiv = document.createElement('div');
-        rdiv.className = 'tool-rating';
-        rdiv.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--border)';
-        const id = currentId[1];
-        const r = ratings[id] || 0;
-        rdiv.innerHTML = '<span style="font-size:11px;color:var(--text-sec)">Was this helpful?</span>' +
-          '<button class="rate-btn" data-vote="1" style="padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px">👍 <span class="rc">' + (r > 0 ? r : '') + '</span></button>' +
-          '<button class="rate-btn" data-vote="-1" style="padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px">👎</button>';
-        box.appendChild(rdiv);
-        rdiv.querySelectorAll('.rate-btn').forEach(b => b.addEventListener('click', function(){
-          const v = parseInt(this.dataset.vote);
-          ratings[id] = v; localStorage.setItem('tf_ratings', JSON.stringify(ratings));
-          rdiv.querySelectorAll('.rate-btn').forEach(x => x.style.borderColor = 'var(--border)');
-          this.style.borderColor = 'var(--accent)';
-          const sc = this.querySelector('.rc');
-          if(sc) sc.textContent = '1';
-        }));
-      }
-      
-      // Related tools
-      const related = TOOLS.filter(t => t.cat === tool.cat && t.id !== tool.id && t.ready).slice(0, 4);
-      if(related.length){
-        const cross = document.querySelector('.tool-cross-grid');
-        if(cross){
-          cross.innerHTML = related.map(t =>
-            '<a href="' + t.url + '" class="tcard" style="margin:0"><div class="tcard-icon">' + t.icon + '</div><div class="tcard-body"><div class="tcard-title">' + t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()) + '</div></div></a>'
-          ).join('') + cross.innerHTML;
-        }
-      }
+  if(!tool) return;
+  
+  // ── 3. Rating Widget ──
+  const ratings = JSON.parse(localStorage.getItem('tf_ratings') || '{}');
+  const box = document.querySelector('.tool-box');
+  if(box && !box.querySelector('.tool-rating')){
+    const rdiv = document.createElement('div');
+    rdiv.className = 'tool-rating';
+    rdiv.style.cssText = 'display:flex;gap:8px;align-items:center;margin-top:16px;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap';
+    const r = ratings[toolId] || 0;
+    rdiv.innerHTML = '<span style="font-size:11px;color:var(--text-sec);margin-right:4px">Was this helpful?</span>' +
+      '<button class="rate-btn" data-vote="1" style="padding:4px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px;transition:all.2s">👍 <span class="rc">' + (r > 0 ? r : '') + '</span></button>' +
+      '<button class="rate-btn" data-vote="-1" style="padding:4px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:13px;transition:all.2s">👎</button>';
+    box.appendChild(rdiv);
+    rdiv.querySelectorAll('.rate-btn').forEach(b => b.addEventListener('click', function(){
+      const v = parseInt(this.dataset.vote);
+      ratings[toolId] = v; localStorage.setItem('tf_ratings', JSON.stringify(ratings));
+      rdiv.querySelectorAll('.rate-btn').forEach(x => { x.style.borderColor = 'var(--border)'; x.style.background = 'var(--bg-card)'; });
+      this.style.borderColor = 'var(--accent)'; this.style.background = 'rgba(0,212,170,0.08)';
+      const sc = this.querySelector('.rc');
+      if(sc) sc.textContent = '1';
+    }));
+  }
+  
+  // ── 4. Related tools ──
+  const related = TOOLS.filter(t => t.cat === tool.cat && t.id !== tool.id && t.ready).slice(0, 4);
+  if(related.length){
+    const cross = document.querySelector('.tool-cross-grid');
+    if(cross){
+      cross.innerHTML = related.map(t =>
+        '<a href="' + t.url + '" class="tcard" style="margin:0"><div class="tcard-icon">' + t.icon + '</div><div class="tcard-body"><div class="tcard-title">' + t.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()) + '</div></div></a>'
+      ).join('') + cross.innerHTML;
     }
   }
+  
+  // ── 5. FAQ Schema JSON-LD (SEO) ──
+  const name = tool.id.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [{
+      '@type': 'Question',
+      'name': 'What is ' + name + '?',
+      'acceptedAnswer': { '@type': 'Answer', 'text': name + ' is a free online tool on Toolspotr. It runs entirely in your browser with no data uploaded to any server. Just open and use it instantly — no signup required.' }
+    },{
+      '@type': 'Question',
+      'name': 'Is ' + name + ' free?',
+      'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, ' + name + ' is completely free to use with no limits or hidden charges.' }
+    },{
+      '@type': 'Question',
+      'name': 'Is my data private when using ' + name + '?',
+      'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes. ' + name + ' runs entirely in your browser. No data is sent to any server — your privacy is guaranteed.' }
+    }]
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
 })();
 
 // ── Populate all category grids from TOOLS array ──

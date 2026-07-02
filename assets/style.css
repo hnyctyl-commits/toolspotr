@@ -437,6 +437,29 @@ body {
 /* ── Scroll to Top ── */
 .scroll-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#000;border:none;font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;z-index:999;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,212,170,0.3)}
 .scroll-top.show{opacity:1;visibility:visible}.scroll-top:hover{transform:scale(1.1)}
+
+/* ── Search Hot Tags ── */
+.search-suggest{margin-top:10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center}
+.hot-tag{padding:3px 10px;border-radius:12px;border:1px solid var(--border-light);background:var(--bg-card);color:var(--text-sec);font-size:11px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.hot-tag:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,170,0.06);transform:translateY(-1px)}
+
+/* ── Share Buttons ── */
+.share-btn{padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:12px;color:var(--text-sec);transition:all .2s;font-weight:600;min-width:30px;text-align:center}
+.share-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,170,0.06);transform:translateY(-1px)}
+
+/* ── Recent Tools ── */
+.recent-section{margin-bottom:20px}
+.recent-section .fav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.recent-section .fav-card{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-sm);text-decoration:none;color:var(--text-primary);transition:all .2s}
+.recent-section .fav-card:hover{border-color:var(--accent);background:rgba(0,212,170,0.04);transform:translateY(-1px)}
+
+/* ── PWA Install Banner ── */
+.install-banner{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;background:rgba(7,11,21,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);font-size:13px;animation:slideDown .3s ease}
+.install-banner span{color:var(--text-primary)}
+.install-btn{padding:6px 16px;border-radius:8px;background:var(--accent);color:#000;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.install-btn:hover{transform:scale(1.05)}
+.install-dismiss{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;padding:2px 6px}
+@keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
 /* ── Tool Quick Nav ── */
 .tool-quick{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;background:rgba(7,11,21,0.95);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:12px;padding:6px 10px;display:none;gap:4px;align-items:center;white-space:nowrap;overflow-x:auto;max-width:90vw;scrollbar-width:none;font-size:12px}
 .tool-quick.show{display:flex}.tool-quick::-webkit-scrollbar{display:none}
