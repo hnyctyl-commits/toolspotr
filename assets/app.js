@@ -233,6 +233,45 @@ const TOOL_COUNT = TOOLS.length;
 let currentLang = localStorage.getItem('tf_lang') || 'en';
 let currentTheme = localStorage.getItem('tf_theme') || 'cosmic';
 
+// ── Usage Stats (missing helpers) ──
+function getDaySeed(){
+  var d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+}
+function getUsageStats(){
+  try {
+    var raw = localStorage.getItem('tf_usage');
+    return raw ? JSON.parse(raw) : {};
+  } catch(e){ return {}; }
+}
+function getRecentTools(){
+  try {
+    var raw = localStorage.getItem('tf_recent');
+    return raw ? JSON.parse(raw) : [];
+  } catch(e){ return []; }
+}
+function renderHotTags(){
+  // Daily-rotating hot tags based on usage
+  var usage = getUsageStats();
+  var suggest = document.getElementById('searchSuggest');
+  if(!suggest) return;
+  var day = getDaySeed();
+  // Pick 8 tools: top 4 by usage + 4 by daily rotation
+  var scored = TOOLS.filter(function(t){ return t.ready; }).map(function(t, i){
+    var used = usage[t.id] ? usage[t.id].count : 0;
+    var daily = ((i * 7 + day) % 109) < 4 ? 3 : 0;
+    return { tool: t, score: used * 2 + daily };
+  });
+  scored.sort(function(a,b){ return b.score - a.score; });
+  var top = scored.slice(0, 8);
+  suggest.innerHTML = '<span style="font-size:10px;color:var(--text-muted);margin-right:6px">🔥 </span>' +
+    top.map(function(s){
+      var t = s.tool;
+      var lbl = t.key && LANG.en[t.key] ? LANG.en[t.key].split(' ')[0] : t.id.split('-')[0];
+      return '<a href="' + t.url + '" class="hot-tag">' + t.icon + ' ' + lbl + '</a>';
+    }).join('');
+}
+
 // ── Init ──
 document.addEventListener('DOMContentLoaded', function(){
   try { applyTheme(currentTheme); } catch(e){}
@@ -576,7 +615,8 @@ function initStats(){
   
   // Check if we need to refresh
   const lastUpdate = parseInt(localStorage.getItem('tf_hot_date') || '0');
-  if(lastUpdate !== getDaySeed() || !suggest.children.length){
+  const suggestEl = document.getElementById('searchSuggest');
+  if(lastUpdate !== getDaySeed() || (suggestEl && !suggestEl.children.length)){
     renderHotTags();
   }
   
@@ -757,11 +797,19 @@ function initStats(){
   const toolId = currentId[1];
   const tool = typeof TOOLS !== 'undefined' ? TOOLS.find(t => t.id === toolId) : null;
   
-  // ── 1. Track Recent Tools ──
+  // ── 1. Track Recent Tools + Usage Count ──
   try {
     let recent = JSON.parse(localStorage.getItem('tf_recent') || '[]');
     recent = [toolId, ...recent.filter(id => id !== toolId)].slice(0, 10);
     localStorage.setItem('tf_recent', JSON.stringify(recent));
+    
+    // Track usage count for Most Used Today
+    let usage = JSON.parse(localStorage.getItem('tf_usage') || '{}');
+    if(!usage[toolId]) usage[toolId] = { count: 0 };
+    usage[toolId].count++;
+    localStorage.setItem('tf_usage', JSON.stringify(usage));
+    // Update hot date so the grid refreshes
+    localStorage.setItem('tf_hot_date', String(getDaySeed()));
   } catch(e){}
   
   // ── 2. Social Share Bar ──
