@@ -320,9 +320,17 @@ body {
 [data-theme="light"] .tab-bar{background:rgba(255,255,255,0.95);border-bottom:1px solid rgba(0,0,0,0.06)}
 [data-theme="light"] .tab-btn{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08);color:rgba(0,0,0,0.55)}
 [data-theme="light"] .tab-btn:hover{background:rgba(0,0,0,0.08);border-color:rgba(0,0,0,0.15);color:#000}
-[data-theme="light"] .tab-btn.active{background:rgba(0,212,170,0.12);border-color:rgba(0,212,170,0.4);color:#0891b2}
+[data-theme="light"] .tab-btn.active{background:rgba(0,212,170,0.1);border-color:rgba(0,212,170,0.3);color:#0891b2}
 .tcat{transition:opacity .2s}
 .tcat.hidden{display:none}
+
+/* ── CLS Prevention ── */
+.hero-title{min-height:1.2em}.hero-desc{min-height:1.4em}.cross-grid{min-height:80px}.tcat{min-height:60px}.tool-grid-cards{min-height:50px}
+.hero-floating span{will-change:transform;transform:translateZ(0)}
+
+/* ── Keyboard Focus (accessibility) ── */
+a:focus-visible,button:focus-visible,.tab-btn:focus-visible,.ctrl-btn:focus-visible{outline:2px solid #00d4aa;outline-offset:2px;border-radius:4px}
+[data-theme="light"] a:focus-visible,[data-theme="light"] button:focus-visible{outline-color:#0891b2}
 
  }
 

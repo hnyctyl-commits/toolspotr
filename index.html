@@ -65,28 +65,28 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="logo"><span class="logo-icon">◇</span><span class="logo-text" data-i18n="siteName">Toolflow</span></a>
+    <a href="/" class="logo" aria-label="Toolflow Home"><span class="logo-icon">◇</span><span class="logo-text" data-i18n="siteName">Toolflow</span></a>
 
     <div class="nav-controls">
       <div class="ctrl-group">
-        <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
-        <div class="lang-panel" id="langPanel">
-          <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
-          <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+        <button class="ctrl-btn lang-btn" id="langBtn" title="Language" aria-label="Switch language">EN</button>
+        <div class="lang-panel" id="langPanel" role="listbox" aria-label="Language options">
+          <div class="lang-opt active" data-lang="en" role="option" aria-selected="true">🇬🇧 English</div>
+          <div class="lang-opt" data-lang="zh" role="option" aria-selected="false">🇨🇳 中文</div>
         </div>
       </div>
       <div class="ctrl-group">
-        <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
-        <div class="theme-panel" id="themePanel">
+        <button class="ctrl-btn" id="themeBtn" title="Theme" aria-label="Switch theme">🎨</button>
+        <div class="theme-panel" id="themePanel" role="listbox" aria-label="Theme options">
           <div class="theme-panel-title" data-i18n="themeLabel">Theme</div>
           <div class="theme-options">
-            <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
-            <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
-            <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
-            <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
-            <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+            <div class="theme-opt active" data-theme="cosmic" role="option" aria-selected="true"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+            <div class="theme-opt" data-theme="light" role="option" aria-selected="false"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+            <div class="theme-opt" data-theme="ocean" role="option" aria-selected="false"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+            <div class="theme-opt" data-theme="sunset" role="option" aria-selected="false"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+            <div class="theme-opt" data-theme="forest" role="option" aria-selected="false"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-floating"><span>🔧</span><span>📊</span><span>🎨</span><span>💻</span><span>💰</span><span>🔒</span></div>
+    <div class="hero-floating" aria-hidden="true"><span>🔧</span><span>📊</span><span>🎨</span><span>💻</span><span>💰</span><span>🔒</span></div>
     <div class="hero-inner">
       <h1 class="hero-title" data-i18n="heroTitle">Your <span class="gradient">All-in-One Toolbox</span></h1>
       <p class="hero-desc" data-i18n="heroDesc">125+ free online tools — all in your browser. Zero signups, instant results. <span class="speed-text">Constantly updated</span><span class="speed-cursor">|</span></p>
