@@ -1,5 +1,5 @@
-const CACHE = 'toolspotr-v1';
-const URLS = ['/','/manifest.json','/assets/app.js?v=1','/assets/style.css?v=1'];
+const CACHE = 'toolspotr-v2';
+const URLS = ['/','/manifest.json','/assets/app.js','/assets/style.css'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(URLS)));
@@ -14,7 +14,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(r => r || fetch(e.request).then(res => {
-      if(e.request.url.startsWith(self.location.origin) && e.request.method === 'GET'){
+      if(e.request.url.startsWith(self.location.origin) && e.request.method === 'GET' && !e.request.url.includes('?')){
         const clone = res.clone();
         caches.open(CACHE).then(c => c.put(e.request, clone));
       }
