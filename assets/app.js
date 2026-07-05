@@ -926,9 +926,8 @@ function populateCategories(){
 
 // Run on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function(){ populateCategories(); });
-// And immediately
-populateCategories();
-setTimeout(populateCategories, 200);
+// Fallback re-run
+setTimeout(populateCategories, 800);
 
 })();
 // force rebuild 1782529339
