@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Code Formatter — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/code-formatter">
+<meta name="description" content="在线代码格式化工具。美化 JSON、HTML、CSS、JavaScript 代码。即开即用，代码不上传。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.fmt-wrap{display:flex;flex-direction:column;gap:12px;margin-top:12px}@media(min-width:768px){.fmt-wrap{flex-direction:row}.fmt-in,.fmt-out{flex:1}}.fmt-in textarea,.fmt-out textarea{width:100%;min-height:280px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;box-sizing:border-box;line-height:1.5}.fmt-in textarea:focus{outline:none;border-color:var(--accent)}.fmt-out textarea{background:rgba(0,212,170,0.03);border-color:rgba(0,212,170,0.15)}.fmt-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.fmt-controls button{padding:6px 14px;border-radius:6px;border:1px solid var(--border-light);background:var(--bg-card);color:var(--text);font-size:12px;cursor:pointer;transition:all .2s}.fmt-controls button:hover{border-color:var(--accent);color:var(--accent)}.fmt-controls button.active{background:rgba(0,212,170,0.12);border-color:rgba(0,212,170,0.3);color:var(--accent)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>Code Formatter</strong></div>
+    <h1 class="tool-page-title">🧹 Code Formatter</h1>
+    <p class="tool-page-desc">Beautify and format JSON, HTML, CSS, or JavaScript instantly. Fully offline.</p>
+  </div>
+  <div class="tool-box">
+    <div class="fmt-controls" id="fmtControls">
+      <button class="active" data-mode="json">JSON</button>
+      <button data-mode="html">HTML</button>
+      <button data-mode="css">CSS</button>
+      <button data-mode="javascript">JavaScript</button>
+      <button data-mode="minify" style="margin-left:auto;border-color:rgba(239,68,68,0.3);color:#ef4444">Minify</button>
+    </div>
+    <div class="fmt-wrap">
+      <div class="fmt-in">
+        <textarea id="fmtInput" placeholder="Paste your code here..." spellcheck="false">{"name":"Toolflow","version":"1.0","features":["tools","fast","free"]}</textarea>
+      </div>
+      <div class="fmt-out">
+        <textarea id="fmtOutput" readonly placeholder="Formatted output..."></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>Code Formatter & Beautifier</h3>
+    <p>Properly formatted code is easier to read, debug, and share. This tool beautifies JSON, HTML, CSS, and JavaScript with smart indentation. All processing is done in your browser.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+var fmtMode = 'json';
+document.getElementById('fmtControls').addEventListener('click', function(e){
+  var btn = e.target.closest('button');
+  if(!btn) return;
+  if(btn.dataset.mode === 'minify'){
+    var v = document.getElementById('fmtInput').value;
+    try {
+      if(fmtMode === 'json') document.getElementById('fmtOutput').value = JSON.stringify(JSON.parse(v));
+      else if(fmtMode === 'html') document.getElementById('fmtOutput').value = v.replace(/\s{2,}/g,' ').replace(/>\s+</g,'><');
+      else document.getElementById('fmtOutput').value = v.replace(/\s{2,}/g,' ').replace(/\s*{\s*/g,'{').replace(/;\s*/g,';');
+    } catch(e){ document.getElementById('fmtOutput').value = 'Error: '+e.message; }
+    return;
+  }
+  this.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  fmtMode = btn.dataset.mode;
+  formatCode();
+});
+function formatCode(){
+  var input = document.getElementById('fmtInput');
+  var output = document.getElementById('fmtOutput');
+  var v = input.value;
+  try {
+    if(fmtMode === 'json') output.value = JSON.stringify(JSON.parse(v), null, 2);
+    else if(fmtMode === 'html') output.value = v.replace(/>\s*</g,'>\n<').replace(/\s{2,}/g,' ').split('\n').map(function(l,i,a){return l.trim();}).join('\n');
+    else if(fmtMode === 'css') output.value = v.replace(/{/g,'{\n  ').replace(/}/g,'\n}\n').replace(/;/g,';\n  ').replace(/\s{2,}/g,' ').split('\n').map(function(l){return l.trim();}).join('\n');
+    else if(fmtMode === 'javascript') output.value = v.replace(/{/g,'{\n  ').replace(/}/g,'\n}\n').replace(/;/g,';\n').replace(/,\s*/g,', ');
+  } catch(e){ output.value = 'Format error: '+e.message+'\n\nCheck your code syntax.'; }
+}
+document.getElementById('fmtInput').addEventListener('input', formatCode);
+formatCode();
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

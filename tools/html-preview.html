@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTML Preview — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/html-preview">
+<meta name="description" content="在线 HTML/CSS/JS 实时预览编辑器。输入 HTML 代码即时看到渲染效果，支持 CSS 和 JavaScript。即开即用，代码不上传服务器。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.preview-wrap{display:flex;flex-direction:column;gap:12px;margin-top:12px}@media(min-width:768px){.preview-wrap{flex-direction:row}.preview-editor{flex:1}.preview-frame{flex:1}}.preview-editor textarea{width:100%;min-height:300px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;box-sizing:border-box;line-height:1.5}.preview-editor textarea:focus{outline:none;border-color:var(--accent)}.preview-frame iframe{width:100%;height:300px;border:1px solid var(--border-light);border-radius:8px;background:#fff}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>HTML Preview</strong></div>
+    <h1 class="tool-page-title">📄 HTML Preview</h1>
+    <p class="tool-page-desc">Write HTML/CSS/JS and see the result instantly. Fully client-side, nothing uploaded.</p>
+  </div>
+  <div class="tool-box">
+    <div class="preview-wrap">
+      <div class="preview-editor">
+        <textarea id="htmlInput" placeholder="<h1>Hello World</h1>&#10;<p>Start typing HTML here...</p>">&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;p style="color:#00d4aa;font-size:18px"&gt;Edit the HTML to see changes live!&lt;/p&gt;</textarea>
+      </div>
+      <div class="preview-frame">
+        <iframe id="previewFrame" sandbox="allow-scripts" title="Live Preview"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>Live HTML Preview</h3>
+    <p>Type or paste any HTML, CSS, and JavaScript into the editor. The preview updates automatically in a sandboxed iframe. All processing happens in your browser — your code never leaves your device.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+document.getElementById('htmlInput').addEventListener('input', function(){
+  var iframe = document.getElementById('previewFrame');
+  var doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(this.value);
+  doc.close();
+});
+document.getElementById('htmlInput').dispatchEvent(new Event('input'));
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

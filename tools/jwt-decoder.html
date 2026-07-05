@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JWT Decoder — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/jwt-decoder">
+<meta name="description" content="在线 JWT Token 解码器。解析 JWT 的 Header、Payload、Signature 内容，支持 HS256、RS256 等算法。即开即用，Token 不会上传服务器。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.jwt-input{width:100%;min-height:100px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;resize:vertical;box-sizing:border-box}.jwt-input:focus{outline:none;border-color:var(--accent)}.jwt-parts{display:flex;flex-direction:column;gap:16px;margin-top:16px}.jwt-part{border:1px solid var(--border-light);border-radius:8px;overflow:hidden}.jwt-part-header{padding:8px 12px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border-light);color:var(--text-sec)}.jwt-part-body{padding:12px;font-family:'JetBrains Mono',monospace;font-size:12px;white-space:pre-wrap;word-break:break-all;color:var(--text);max-height:300px;overflow:auto}.part-header{color:var(--accent)}.part-payload{color:#facc15}.part-sig{color:var(--text-muted)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>JWT Decoder</strong></div>
+    <h1 class="tool-page-title">🔐 JWT Decoder</h1>
+    <p class="tool-page-desc">Decode JWT tokens — view header, payload, expiration, and issuer. No server upload, fully private.</p>
+  </div>
+  <div class="tool-box">
+    <textarea class="jwt-input" id="jwtInput" placeholder="Paste your JWT token here...&#10;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0."></textarea>
+    <div class="jwt-parts" id="jwtParts"></div>
+  </div>
+  <div class="tool-article">
+    <h3>What is a JWT Token?</h3>
+    <p>JSON Web Token (JWT) is a compact, URL-safe token format used for authentication and information exchange. It consists of three Base64-encoded parts separated by dots: Header (algorithm & type), Payload (claims), and Signature (verification). Use this tool to inspect any JWT's contents locally.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+document.getElementById('jwtInput').addEventListener('input', function(){
+  var val = this.value.trim();
+  var parts = document.getElementById('jwtParts');
+  if(!val || val.split('.').length < 2){ parts.innerHTML = ''; return; }
+  var segs = val.split('.');
+  try {
+    var html = '';
+    var labels = ['Header (Algorithm & Type)','Payload (Claims)','Signature (Verification)'];
+    var classes = ['part-header','part-payload','part-sig'];
+    for(var i=0;i<Math.min(3,segs.length);i++){
+      var decoded = '';
+      try {
+        var base64 = segs[i].replace(/-/g,'+').replace(/_/g,'/');
+        decoded = JSON.stringify(JSON.parse(atob(base64)), null, 2);
+      } catch(e2){ decoded = atob(segs[i].replace(/-/g,'+').replace(/_/g,'/')); }
+      html += '<div class="jwt-part"><div class="jwt-part-header" style="color:'+(i===0?'var(--accent)':'#facc15')+'">'+labels[i]+'</div><div class="jwt-part-body '+classes[i]+'">'+decoded+'</div></div>';
+    }
+    if(segs.length === 3){
+      var expMatch = decoded.match(/"exp"\s*[:=]\s*(\d+)/);
+      if(expMatch){
+        var expDate = new Date(parseInt(expMatch[1])*1000);
+        html += '<div class="jwt-part"><div class="jwt-part-header">Expiration: '+(expDate < new Date() ? '⛔ Expired' : '✅ Valid until')+'</div><div class="jwt-part-body" style="color:'+(expDate < new Date() ? '#ef4444' : '#4ade80')+'">'+expDate.toLocaleString()+'</div></div>';
+      }
+    }
+    parts.innerHTML = html;
+  } catch(e){ parts.innerHTML = '<div class="jwt-part"><div class="jwt-part-header">Error</div><div class="jwt-part-body">Invalid JWT format</div></div>'; }
+});
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

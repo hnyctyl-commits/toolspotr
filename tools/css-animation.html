@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CSS Animation Generator — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/css-animation">
+<meta name="description" content="在线 CSS 动画生成器。可视化创建动画效果，调整时长、延迟、缓动函数，一键复制动画代码。即开即用。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.anim-wrap{display:flex;flex-direction:column;gap:16px;margin-top:12px}@media(min-width:768px){.anim-wrap{flex-direction:row}.anim-controls{flex:1}.anim-preview{flex:1}}.anim-controls label{display:block;font-size:12px;color:var(--text-sec);margin-bottom:4px}.anim-controls select,.anim-controls input[type=range]{width:100%;padding:6px 10px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:6px;color:var(--text);font-size:13px}.anim-controls input[type=range]{padding:0;height:4px;appearance:none;background:var(--border-light);border-radius:2px;outline:none}.anim-controls input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer}.anim-controls .ctrl-row{margin-bottom:12px}.anim-preview-box{display:flex;align-items:center;justify-content:center;min-height:200px;border:1px solid var(--border-light);border-radius:12px;background:var(--bg-card)}.anim-demo{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#0891b2)}.anim-code{width:100%;min-height:120px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;resize:vertical;box-sizing:border-box;margin-top:12px}.anim-btn{padding:6px 14px;border-radius:6px;border:1px solid var(--accent);background:rgba(0,212,170,0.1);color:var(--accent);font-size:12px;cursor:pointer;transition:all .2s;margin-top:8px}.anim-btn:hover{background:rgba(0,212,170,0.2)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design Tools / <strong>CSS Animation</strong></div>
+    <h1 class="tool-page-title">🔄 CSS Animation Generator</h1>
+    <p class="tool-page-desc">Create CSS animations visually. Choose from effects, adjust timing, and copy the code.</p>
+  </div>
+  <div class="tool-box">
+    <div class="anim-wrap">
+      <div class="anim-controls">
+        <div class="ctrl-row"><label>Animation</label><select id="animType"><option value="bounce">Bounce</option><option value="shake">Shake</option><option value="fadeIn">Fade In</option><option value="fadeOut">Fade Out</option><option value="slideUp">Slide Up</option><option value="slideDown">Slide Down</option><option value="rotate">Rotate</option><option value="pulse">Pulse</option><option value="wobble">Wobble</option><option value="flip">Flip</option></select></div>
+        <div class="ctrl-row"><label>Duration: <span id="durVal">1</span>s</label><input type="range" id="animDur" min="0.1" max="5" step="0.1" value="1"></div>
+        <div class="ctrl-row"><label>Delay: <span id="delVal">0</span>s</label><input type="range" id="animDelay" min="0" max="3" step="0.1" value="0"></div>
+        <div class="ctrl-row"><label>Easing</label><select id="animEase"><option value="ease">Ease</option><option value="ease-in">Ease In</option><option value="ease-out">Ease Out</option><option value="ease-in-out">Ease In Out</option><option value="linear">Linear</option><option value="cubic-bezier(0.68,-0.55,0.27,1.55)">Bounce Back</option></select></div>
+        <div class="ctrl-row"><label>Iterations</label><select id="animIter"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="infinite" selected>∞ Infinite</option></select></div>
+        <button class="anim-btn" id="copyAnimBtn">📋 Copy CSS</button>
+      </div>
+      <div class="anim-preview">
+        <div class="anim-preview-box"><div class="anim-demo" id="animDemo"></div></div>
+        <textarea class="anim-code" id="animCodeOut" readonly></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>CSS Animation Generator</h3>
+    <p>Create beautiful CSS animations without writing code. Select an effect, adjust the timing, and copy the generated CSS directly into your project. Supports bounce, shake, fade, slide, rotate, pulse, wobble, and flip animations.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+var animations = {
+  bounce:'@keyframes animX{0%,100%{transform:translateY(0)}25%{transform:translateY(-30px)}50%{transform:translateY(0)}75%{transform:translateY(-15px)}}',
+  shake:'@keyframes animX{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-8px)}20%,40%,60%,80%{transform:translateX(8px)}}',
+  fadeIn:'@keyframes animX{from{opacity:0}to{opacity:1}}',
+  fadeOut:'@keyframes animX{from{opacity:1}to{opacity:0}}',
+  slideUp:'@keyframes animX{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}',
+  slideDown:'@keyframes animX{from{transform:translateY(-40px);opacity:0}to{transform:translateY(0);opacity:1}}',
+  rotate:'@keyframes animX{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
+  pulse:'@keyframes animX{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}',
+  wobble:'@keyframes animX{0%,100%{transform:translateX(0) rotate(0deg)}15%{transform:translateX(-6px) rotate(-3deg)}30%{transform:translateX(3px) rotate(2deg)}45%{transform:translateX(-3px) rotate(-1deg)}60%{transform:translateX(2px) rotate(1deg)}}',
+  flip:'@keyframes animX{0%{transform:perspective(400px) rotateY(0)}100%{transform:perspective(400px) rotateY(360deg)}}'
+};
+function updateAnim(){
+  var type = document.getElementById('animType').value;
+  var dur = document.getElementById('animDur').value;
+  var delay = document.getElementById('animDelay').value;
+  var ease = document.getElementById('animEase').value;
+  var iter = document.getElementById('animIter').value;
+  document.getElementById('durVal').textContent = dur;
+  document.getElementById('delVal').textContent = delay;
+  var demo = document.getElementById('animDemo');
+  var style = document.createElement('style');
+  style.id = 'animStyle';
+  var old = document.getElementById('animStyle');
+  if(old) old.remove();
+  style.id = 'animStyle';
+  style.textContent = animations[type] + '.anim-demo{animation:animX '+dur+'s '+ease+' '+delay+'s '+iter+';}';
+  document.head.appendChild(style);
+  demo.style.animation = 'none';
+  void demo.offsetWidth;
+  demo.style.animation = '';
+  document.getElementById('animCodeOut').value = animations[type].replace('@keyframes animX','@keyframes '+type).replace(/animX/g,type)+'\n.anim-element {\n  animation: '+type+' '+dur+'s '+ease+' '+delay+'s '+iter+';\n}';
+}
+document.getElementById('animType').addEventListener('change', updateAnim);
+document.getElementById('animDur').addEventListener('input', updateAnim);
+document.getElementById('animDelay').addEventListener('input', updateAnim);
+document.getElementById('animEase').addEventListener('change', updateAnim);
+document.getElementById('animIter').addEventListener('change', updateAnim);
+document.getElementById('copyAnimBtn').addEventListener('click', function(){
+  navigator.clipboard.writeText(document.getElementById('animCodeOut').value);
+  this.textContent = '✅ Copied!';
+  setTimeout(function(){document.getElementById('copyAnimBtn').textContent = '📋 Copy CSS';},1500);
+});
+updateAnim();
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>
