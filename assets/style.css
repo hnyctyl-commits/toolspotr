@@ -312,7 +312,7 @@ body {
 
 /* ── Category Tabs ── */
 /* ── Category Tab Bar ── */
-.tab-bar{display:flex;gap:8px;margin-bottom:20px;padding:12px 20px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+.tab-bar{display:flex;gap:8px;margin-bottom:20px;padding:12px 20px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:wrap;-webkit-overflow-scrolling:touch}
 .tab-bar::-webkit-scrollbar{display:none}
 .tab-btn{padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s ease;font-family:var(--font);white-space:nowrap;flex-shrink:0;letter-spacing:0.3px}
 .tab-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:#fff}

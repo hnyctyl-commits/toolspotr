@@ -44,7 +44,7 @@
 #themePanel, #langPanel { display: none !important; }
 #themePanel.show, #langPanel.show { display: block !important; }
 /* Tab-bar inline override - bypass Cloudflare cache issue */
-.tab-bar{display:flex;gap:4px;margin-bottom:16px;padding:8px 12px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+.tab-bar{display:flex;gap:4px;margin-bottom:16px;padding:8px 12px;position:sticky;top:56px;z-index:50;background:rgba(11,17,32,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.04);overflow-x:auto;scrollbar-width:none;flex-wrap:wrap;-webkit-overflow-scrolling:touch;justify-content:center}
 .tab-bar::-webkit-scrollbar{display:none}
 .tab-btn{padding:5px 12px;border-radius:8px;border:1px solid transparent;background:transparent;color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;cursor:pointer;transition:all .2s ease;font-family:var(--font);white-space:nowrap;flex-shrink:0}
 .tab-btn:hover{border-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.75)}
