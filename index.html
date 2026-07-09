@@ -123,6 +123,16 @@
           <div class="search-suggest" id="searchSuggest"></div>
       </div>
 
+      <!-- Hot Tools Quick Entry -->
+      <div class="hot-quick">
+        <a href="tools/json-formatter.html" class="hq-btn"><span class="hq-icon">📋</span><span class="hq-label">JSON</span></a>
+        <a href="tools/password-generator.html" class="hq-btn"><span class="hq-icon">🔑</span><span class="hq-label">Password</span></a>
+        <a href="tools/ip.html" class="hq-btn"><span class="hq-icon">🌐</span><span class="hq-label">IP Lookup</span></a>
+        <a href="tools/color-picker.html" class="hq-btn"><span class="hq-icon">🎨</span><span class="hq-label">Color</span></a>
+        <a href="tools/bmi-calculator.html" class="hq-btn"><span class="hq-icon">⚕️</span><span class="hq-label">BMI</span></a>
+        <a href="tools/currency-converter.html" class="hq-btn"><span class="hq-icon">💱</span><span class="hq-label">Currency</span></a>
+      </div>
+
       <div class="hero-stats">
         <div class="hs"><span class="hs-num">135</span><span class="hs-lbl" data-i18n="heroTools">Tools</span></div>
         <div class="hs"><span class="hs-num">10</span><span class="hs-lbl" data-i18n="heroCategories">Categories</span></div>
@@ -139,13 +149,17 @@
     </div>
     <div class="cross-grid" id="hotGrid"></div>
   </section>
-<!-- Tool Grid -->
-  <section class="tools-section">
-    <div class="section-header">
-      <span class="section-icon">🛠️</span>
-      <h2 data-i18n="sectionAll">All Tools</h2>
-      <span class="section-count">135</span>
-    </div>
+<!-- All Tools -->
+<section class="cross-section" id="toolSection">
+  <div class="cross-header">
+    <span class="cross-icon">🛠️</span>
+    <h2 class="cross-title" data-i18n="allTools">All Tools</h2>
+    <span class="section-count" id="toolCount">135</span>
+  </div>
+  <div class="skeleton-grid" id="skeletonGrid">
+    <div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div>
+    <div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div>
+  </div>
     
     <!-- Favorites Section -->
     <div class="fav-section" id="favSection">

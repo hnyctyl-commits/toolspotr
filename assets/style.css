@@ -342,3 +342,28 @@ a:focus-visible,button:focus-visible,.tab-btn:focus-visible,.ctrl-btn:focus-visi
 .search-suggest{gap:4px;padding:8px 2px 0;}
 .install-banner{padding:8px 12px;font-size:12px;flex-wrap:wrap;}
 .install-btn{padding:5px 12px;font-size:11px;}
+
+/* ── Hot Tools Quick Entry ── */
+.hot-quick{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.hq-btn{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);text-decoration:none;color:var(--text-sec);font-size:12px;font-weight:500;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1)}
+.hq-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,170,0.08);transform:translateY(-3px) scale(1.04);box-shadow:0 6px 20px rgba(0,212,170,0.12)}
+.hq-icon{font-size:16px}
+.hq-label{font-size:11px}
+[data-theme="light"] .hq-btn{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.08)}
+[data-theme="light"] .hq-btn:hover{background:rgba(0,212,170,0.08);border-color:var(--accent)}
+@media(max-width:480px){.hq-btn{padding:5px 10px;font-size:11px}.hq-icon{font-size:14px}}
+
+/* ── Enhanced Card Hover ── */
+.tcard{transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);position:relative;z-index:1}
+.tcard:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 8px 28px rgba(0,0,0,0.3),0 0 0 1px rgba(0,212,170,0.15);z-index:2}
+.tcard:active{transform:translateY(-1px) scale(0.99)}
+[data-theme="light"] .tcard:hover{box-shadow:0 8px 28px rgba(0,0,0,0.08),0 0 0 1px rgba(0,212,170,0.2)}
+
+/* ── Skeleton Loading ── */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
+.skeleton-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-top:8px}
+.sk-card{height:80px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0.03) 25%,rgba(255,255,255,0.06) 50%,rgba(255,255,255,0.03) 75%);background-size:200px 100%;animation:shimmer 1.5s infinite linear}
+[data-theme="light"] .sk-card{background:linear-gradient(90deg,rgba(0,0,0,0.03) 25%,rgba(0,0,0,0.06) 50%,rgba(0,0,0,0.03) 75%);background-size:200px 100%}
+@media(max-width:480px){.skeleton-grid{grid-template-columns:repeat(2,1fr)}}
+
+

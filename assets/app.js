@@ -931,6 +931,9 @@ function initStats(){
 // ── Populate all category grids from TOOLS array ──
 function populateCategories(){
   if(typeof TOOLS === 'undefined' || !TOOLS.length) return;
+  // Hide skeleton when tools render
+  var sk = document.getElementById('skeletonGrid');
+  if(sk) sk.style.display = 'none';
   var cats = ['dev','finance','security','design','writing','utility','health','math','fun','network'];
   for(var i = 0; i < cats.length; i++){
     var k = cats[i];
