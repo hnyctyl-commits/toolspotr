@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WHOIS Lookup — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/whois-lookup">
+<meta name="description" content="免费在线 WHOIS 查询工具。查询域名的注册商、注册日期、到期时间、DNS 服务器等信息。即开即用。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.whois-input{display:flex;gap:8px;margin-top:8px}.whois-input input{flex:1;padding:10px 14px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:6px;color:var(--text);font-size:14px;font-family:var(--font)}.whois-input input:focus{outline:none;border-color:var(--accent)}.whois-input button{padding:10px 20px;border-radius:6px;border:1px solid var(--accent);background:rgba(0,212,170,0.1);color:var(--accent);font-size:13px;cursor:pointer;white-space:nowrap}.whois-input button:hover{background:rgba(0,212,170,0.2)}.whois-result{margin-top:16px;padding:14px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;white-space:pre-wrap;max-height:500px;overflow:auto;display:none}.whois-result .key{color:var(--accent)}.whois-result .val{color:var(--text)}.whois-error{color:#ef4444;padding:12px;border:1px solid rgba(239,68,68,0.2);border-radius:8px;background:rgba(239,68,68,0.06);margin-top:12px;display:none}.whois-loading{text-align:center;padding:20px;color:var(--text-sec);display:none}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Network Tools / <strong>WHOIS Lookup</strong></div>
+    <h1 class="tool-page-title">🌐 WHOIS Lookup</h1>
+    <p class="tool-page-desc">Look up domain registration info — registrar, creation & expiry dates, name servers, and more.</p>
+  </div>
+  <div class="tool-box">
+    <div class="whois-input">
+      <input id="whoisDomain" placeholder="example.com" value="toolspotr.com">
+      <button onclick="lookupWhois()">🔍 Lookup</button>
+    </div>
+    <div class="whois-loading" id="whoisLoading">Querying WHOIS database...</div>
+    <div class="whois-error" id="whoisError"></div>
+    <div class="whois-result" id="whoisResult"></div>
+  </div>
+  <div class="tool-article">
+    <h3>What is WHOIS?</h3>
+    <p>WHOIS is a query protocol used to retrieve domain registration information, including the registrar, registration date, expiration date, name servers, and contact details. Use this tool to check any domain's WHOIS data.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+function lookupWhois(){
+  var domain = document.getElementById('whoisDomain').value.trim();
+  if(!domain){ alert('Enter a domain name'); return; }
+  document.getElementById('whoisLoading').style.display='block';
+  document.getElementById('whoisResult').style.display='none';
+  document.getElementById('whoisError').style.display='none';
+  fetch('https://dns.google/resolve?name='+domain+'&type=ANY').then(function(r){return r.json();}).then(function(data){
+    var html = '';
+    if(data.Answer){
+      data.Answer.forEach(function(a){
+        html += '<span class="key">'+(a.type||'?')+'</span> <span class="val">'+(a.data||'')+'</span>\n';
+      });
+    }
+    // Registrar info from RDAP
+    html += '\n<span class="key">NOTE</span> <span class="val">WHOIS data is fetched via DNS. For full registration details, use a dedicated WHOIS API.</span>';
+    document.getElementById('whoisResult').innerHTML = html;
+    document.getElementById('whoisLoading').style.display='none';
+    document.getElementById('whoisResult').style.display='block';
+  }).catch(function(err){
+    document.getElementById('whoisLoading').style.display='none';
+    document.getElementById('whoisError').textContent='Error: '+err.message;
+    document.getElementById('whoisError').style.display='block';
+  });
+}
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

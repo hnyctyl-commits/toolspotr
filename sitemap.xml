@@ -40,6 +40,7 @@
   <url><loc>https://toolspotr.com/tools/css-animation.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/css-gradient.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/css-minifier.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/csv-editor.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/currency-converter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/date-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/days-until.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -74,6 +75,7 @@
   <url><loc>https://toolspotr.com/tools/image-cropper.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/image-optimizer.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/image-resizer.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/image-to-base64.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/image-to-text.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/invoice-generator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/ip.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -118,8 +120,10 @@
   <url><loc>https://toolspotr.com/tools/signature-maker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/sleep-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/sql-formatter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/ssl-checker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/std-dev-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/stopwatch.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/subnet-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/svg-optimizer.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/text-repeater.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/text-to-speech.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -133,6 +137,7 @@
   <url><loc>https://toolspotr.com/tools/vat-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/water-intake.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/website-checker.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/tools/whois-lookup.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/word-cloud.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/word-counter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/word-suggester.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Image to Base64 — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/image-to-base64">
+<meta name="description" content="免费在线图片转 Base64 工具。上传 PNG、JPG、WebP、SVG 图片，一键生成 Base64 代码。即开即用，图片不上传服务器。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.b64-drop{margin-top:12px;padding:40px 20px;border:2px dashed var(--border-light);border-radius:12px;text-align:center;cursor:pointer;transition:all .2s;color:var(--text-sec);font-size:14px}.b64-drop:hover,.b64-drop.dragover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,170,0.03)}.b64-preview{display:none;margin-top:12px}.b64-preview img{max-width:200px;max-height:200px;border-radius:8px;border:1px solid var(--border-light)}.b64-output{width:100%;min-height:120px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;resize:vertical;box-sizing:border-box;margin-top:8px;line-height:1.5}.b64-info{font-size:12px;color:var(--text-sec);margin-top:6px}.b64-copy{padding:8px 16px;border-radius:6px;border:1px solid var(--accent);background:rgba(0,212,170,0.1);color:var(--accent);font-size:12px;cursor:pointer;margin-top:8px}.b64-copy:hover{background:rgba(0,212,170,0.2)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>Image to Base64</strong></div>
+    <h1 class="tool-page-title">🖼️ Image to Base64</h1>
+    <p class="tool-page-desc">Convert images to Base64 data URIs instantly. Supports PNG, JPG, WebP & SVG.</p>
+  </div>
+  <div class="tool-box">
+    <div class="b64-drop" id="b64Drop">📁 Click to upload or drag & drop an image</div>
+    <input type="file" id="b64File" accept="image/*" style="display:none">
+    <div class="b64-preview" id="b64Preview">
+      <img id="b64Img" alt="Preview">
+      <div class="b64-info" id="b64Info"></div>
+      <textarea class="b64-output" id="b64Output" readonly></textarea>
+      <button class="b64-copy" onclick="copyB64()">📋 Copy Base64</button>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>Image to Base64 Converter</h3>
+    <p>Convert any image to a Base64 data URI for embedding directly in HTML, CSS, or JavaScript. This is useful for reducing HTTP requests by inlining small images. All processing happens in your browser — nothing is uploaded.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+document.getElementById('b64Drop').addEventListener('click', function(){ document.getElementById('b64File').click(); });
+document.getElementById('b64File').addEventListener('change', function(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    document.getElementById('b64Img').src = ev.target.result;
+    document.getElementById('b64Output').value = ev.target.result;
+    var size = (file.size / 1024).toFixed(1);
+    var b64size = (ev.target.result.length / 1024).toFixed(1);
+    document.getElementById('b64Info').textContent = file.name + ' | ' + size + 'KB → Base64 ' + b64size + 'KB';
+    document.getElementById('b64Preview').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+});
+document.getElementById('b64Drop').addEventListener('dragover', function(e){ e.preventDefault(); this.classList.add('dragover'); });
+document.getElementById('b64Drop').addEventListener('dragleave', function(e){ this.classList.remove('dragover'); });
+document.getElementById('b64Drop').addEventListener('drop', function(e){
+  e.preventDefault(); this.classList.remove('dragover');
+  var file = e.dataTransfer.files[0];
+  if(file){ document.getElementById('b64File').files = e.dataTransfer.files; document.getElementById('b64File').dispatchEvent(new Event('change')); }
+});
+function copyB64(){
+  var val = document.getElementById('b64Output').value;
+  navigator.clipboard.writeText(val);
+  var btn = document.querySelector('.b64-copy');
+  btn.textContent = '✅ Copied!';
+  setTimeout(function(){ btn.textContent = '📋 Copy Base64'; }, 1500);
+}
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

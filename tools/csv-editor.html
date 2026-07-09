@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cosmic">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-25RBC3MM6C"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-25RBC3MM6C');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CSV Editor — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/csv-editor">
+<meta name="description" content="免费在线 CSV 编辑器和查看器。粘贴或上传 CSV 数据，以表格形式查看、排序和导出。即开即用。">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.csv-wrap{display:flex;flex-direction:column;gap:12px;margin-top:12px}.csv-input textarea{width:100%;min-height:180px;padding:12px;background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;resize:vertical;box-sizing:border-box;line-height:1.5}.csv-input textarea:focus{outline:none;border-color:var(--accent)}.csv-table-wrap{overflow-x:auto;border:1px solid var(--border-light);border-radius:8px;background:var(--bg-card)}.csv-table-wrap table{width:100%;border-collapse:collapse;font-size:12px}.csv-table-wrap th,.csv-table-wrap td{padding:6px 10px;border:1px solid rgba(255,255,255,0.06);text-align:left;white-space:nowrap}.csv-table-wrap th{background:rgba(0,212,170,0.08);color:var(--accent);font-weight:600;position:sticky;top:0;cursor:pointer;user-select:none}.csv-table-wrap th:hover{background:rgba(0,212,170,0.15)}.csv-table-wrap td{color:var(--text)}.csv-controls{display:flex;gap:8px;flex-wrap:wrap}.csv-controls button{padding:6px 14px;border-radius:6px;border:1px solid var(--border-light);background:var(--bg-card);color:var(--text);font-size:12px;cursor:pointer;transition:all .2s}.csv-controls button:hover{border-color:var(--accent);color:var(--accent)}.csv-controls button.primary{background:rgba(0,212,170,0.1);border-color:var(--accent);color:var(--accent)}.csv-info{font-size:12px;color:var(--text-sec);margin-top:4px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn lang-btn" id="langBtn" title="Language">EN</button>
+      <div class="lang-panel" id="langPanel">
+        <div class="lang-opt active" data-lang="en">🇬🇧 English</div>
+        <div class="lang-opt" data-lang="zh">🇨🇳 中文</div>
+      </div>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="themeBtn" title="Theme">🎨</button>
+      <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">Theme</div>
+        <div class="theme-options">
+          <div class="theme-opt active" data-theme="cosmic"><div class="theme-opt-dot" style="background:#00d4aa"></div><span>Cosmic</span></div>
+          <div class="theme-opt" data-theme="light"><div class="theme-opt-dot" style="background:#0891b2"></div><span>Light</span></div>
+          <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+          <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#f97316"></div><span>Sunset</span></div>
+          <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" style="position:relative">
+    <a href="../index.html" style="color:var(--text-sec);text-decoration:none;font-size:13px">← All Tools</a>
+  </div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>CSV Editor</strong></div>
+    <h1 class="tool-page-title">📊 CSV Editor</h1>
+    <p class="tool-page-desc">View, edit, and export CSV data in a table. Sort columns, add rows, all in-browser.</p>
+  </div>
+  <div class="tool-box">
+    <div class="csv-wrap">
+      <div class="csv-input">
+        <textarea id="csvInput" spellcheck="false">name,email,role&#10;Alice Smith,alice@example.com,Admin&#10;Bob Jones,bob@example.com,Editor&#10;Carol Lee,carol@example.com,Viewer</textarea>
+      </div>
+      <div class="csv-controls">
+        <button class="primary" onclick="parseCSV()">🔄 Render Table</button>
+        <button onclick="exportCSV()">📥 Download CSV</button>
+        <button onclick="copyTable()">📋 Copy as TSV</button>
+      </div>
+      <div class="csv-info" id="csvInfo"></div>
+      <div class="csv-table-wrap" id="csvTableWrap"></div>
+    </div>
+  </div>
+  <div class="tool-article">
+    <h3>CSV Editor</h3>
+    <p>Comma-Separated Values (CSV) is a common format for spreadsheets and data exchange. Use this tool to quickly view, sort, and export CSV data without installing any software. All processing happens in your browser.</p>
+  </div>
+</main>
+<footer class="footer"><div class="footer-inner">
+<p>Toolflow — Free Online Tools · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p>
+<p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+<script>
+var csvData = [];
+function parseCSV(){
+  var text = document.getElementById('csvInput').value.trim();
+  var lines = text.split('\n').filter(function(l){return l.trim();});
+  if(lines.length < 1){ document.getElementById('csvTableWrap').innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-sec)">No data</div>'; return; }
+  csvData = lines.map(function(l){return l.split(',').map(function(c){return c.trim();});});
+  var headers = csvData[0];
+  var rows = csvData.slice(1);
+  var html = '<table><thead><tr>';
+  headers.forEach(function(h,i){html += '<th onclick="sortCSV('+i+')">'+h+' ▲▼</th>';});
+  html += '</tr></thead><tbody>';
+  rows.forEach(function(r){html += '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';});
+  html += '</tbody></table>';
+  document.getElementById('csvTableWrap').innerHTML = html;
+  document.getElementById('csvInfo').textContent = rows.length+' rows, '+headers.length+' columns';
+}
+function sortCSV(col){
+  var headers = csvData[0];
+  var rows = csvData.slice(1);
+  rows.sort(function(a,b){ var va=(a[col]||'').toLowerCase(), vb=(b[col]||'').toLowerCase(); return va<vb?-1:va>vb?1:0; });
+  var html = '<table><thead><tr>';
+  headers.forEach(function(h,i){html += '<th onclick="sortCSV('+i+')">'+h+' ▲▼</th>';});
+  html += '</tr></thead><tbody>';
+  rows.forEach(function(r){html += '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';});
+  html += '</tbody></table>';
+  document.getElementById('csvTableWrap').innerHTML = html;
+}
+function exportCSV(){
+  var text = document.getElementById('csvInput').value;
+  var blob = new Blob([text], {type:'text/csv'});
+  var a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='data.csv'; a.click();
+}
+function copyTable(){
+  if(csvData.length<1) return;
+  var text = csvData.map(function(r){return r.join('\t');}).join('\n');
+  navigator.clipboard.writeText(text);
+  document.querySelector('.csv-controls .primary').textContent='✅ Copied!';
+  setTimeout(function(){document.querySelector('.csv-controls .primary').textContent='🔄 Render Table';},1500);
+}
+parseCSV();
+</script>
+<script src="../assets/app.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>
