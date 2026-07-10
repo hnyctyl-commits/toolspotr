@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艾检卫士 · AI恐艾风险评估 | HIV预防与心理疏导</title>
+    <meta name="description" content="完全匿名的AI恐艾风险评估工具。专业HIV暴露后预防(PEP)指南、窗口期解读、心理疏导。由资深疾控专家支持，守护你的健康。">
+    <meta name="keywords" content="恐艾, HIV风险评估, 艾滋病试纸, 暴露后预防, PEP, 艾滋心理咨询, 艾滋病自检">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-9946249937416673">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: #f0f4f8;
+            color: #1a1a2e;
+            min-height: 100vh;
+        }
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e8edf2;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        .logo { font-size: 20px; font-weight: 800; color: #1a3c2a; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: #cc1838; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            text-decoration: none; color: #555; font-size: 14px; font-weight: 500;
+            transition: color 0.2s; cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #cc1838; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        .hero {
+            background: linear-gradient(135deg, #1b3d3d 0%, #2d6a4f 50%, #1a3c2a 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '❤️';
+            position: absolute; right: 30px; bottom: -10px;
+            font-size: 120px; opacity: 0.08;
+        }
+        .hero h1 { font-size: 32px; margin-bottom: 12px; }
+        .hero p { font-size: 16px; opacity: 0.9; line-height: 1.6; max-width: 600px; }
+        .hero .stats {
+            display: flex; gap: 32px; margin-top: 20px;
+        }
+        .hero .stat { text-align: center; }
+        .hero .stat-num { font-size: 28px; font-weight: 800; }
+        .hero .stat-label { font-size: 12px; opacity: 0.7; }
+        .hero .ribbon {
+            display: inline-block;
+            background: #cc1838; padding: 4px 14px; border-radius: 4px;
+            font-size: 12px; font-weight: 700; margin-left: 8px;
+        }
+
+        .main-grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
+        @media (max-width: 800px) { .main-grid { grid-template-columns: 1fr; } }
+
+        /* Chat */
+        .chat-card {
+            background: white; border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .chat-header {
+            background: #1b3d3d; color: white;
+            padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+        }
+        .chat-header .avatar {
+            width: 36px; height: 36px; background: #40916c;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;
+        }
+        .chat-header .title { font-weight: 600; font-size: 15px; }
+        .chat-header .subtitle { font-size: 12px; opacity: 0.7; }
+
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 20px;
+            display: flex; flex-direction: column; gap: 12px;
+            min-height: 350px; max-height: 500px;
+        }
+        .msg {
+            max-width: 85%; padding: 12px 16px; border-radius: 16px;
+            font-size: 14px; line-height: 1.7;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .msg.bot { background: #f0f4f8; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .msg.user { background: #40916c; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .msg .timestamp { font-size: 10px; opacity: 0.5; margin-top: 4px; text-align: right; }
+
+        .typing { display: none; align-self: flex-start; background: #f0f4f8; padding: 12px 18px; border-radius: 16px; border-bottom-left-radius: 4px; }
+        .typing.show { display: flex; gap: 4px; }
+        .typing span { width: 8px; height: 8px; background: #aaa; border-radius: 50%; animation: typing 1.4s infinite; }
+        .typing span:nth-child(2) { animation-delay: 0.2s; }
+        .typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%,60%,100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+
+        .chat-input { display: flex; padding: 12px 16px; border-top: 1px solid #e8edf2; gap: 8px; background: white; }
+        .chat-input textarea {
+            flex: 1; border: 2px solid #e8edf2; border-radius: 12px;
+            padding: 10px 14px; font-size: 14px; font-family: inherit;
+            resize: none; min-height: 44px; max-height: 100px; transition: border-color 0.2s;
+        }
+        .chat-input textarea:focus { outline: none; border-color: #40916c; }
+        .chat-input .send-btn {
+            width: 44px; height: 44px; background: #40916c; color: white;
+            border: none; border-radius: 12px; font-size: 18px; cursor: pointer;
+            transition: background 0.2s; flex-shrink: 0;
+        }
+        .chat-input .send-btn:hover { background: #2d6a4f; }
+        .chat-input .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .chat-footer { padding: 8px 16px; font-size: 11px; color: #aaa; text-align: center; border-top: 1px solid #f0f0f0; background: #fafafa; }
+
+        /* Sidebar */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .panel { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+        .panel h3 { font-size: 15px; color: #1b3d3d; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+        .quick-btn {
+            display: block; width: 100%; padding: 10px 14px; margin-bottom: 8px;
+            background: #f5f9ff; border: 1px solid #e0e8f0; border-radius: 10px;
+            font-size: 13px; color: #333; cursor: pointer; transition: all 0.2s; text-align: left;
+        }
+        .quick-btn:hover { background: #e8f5e9; border-color: #40916c; transform: translateX(2px); }
+
+        .product-list { display: flex; flex-direction: column; gap: 10px; }
+        .product-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px;
+            background: #f9fafb; border-radius: 12px; cursor: pointer;
+            transition: all 0.2s; text-decoration: none; color: inherit;
+        }
+        .product-item:hover { background: #e8f5e9; transform: translateY(-1px); }
+        .product-item .icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .product-item .info { flex: 1; }
+        .product-item .name { font-size: 14px; font-weight: 600; }
+        .product-item .price { font-size: 13px; color: #cc1838; font-weight: 700; margin-top: 2px; }
+        .product-item .tag { font-size: 11px; background: #cc1838; color: white; padding: 2px 8px; border-radius: 4px; }
+        .btn-buy {
+            display: block; text-align: center; background: #cc1838; color: white;
+            padding: 8px; border-radius: 8px; font-size: 13px; font-weight: 600;
+            text-decoration: none; margin-top: 8px; transition: background 0.2s;
+        }
+        .btn-buy:hover { background: #a0122d; }
+
+        .disclaimer-box {
+            background: #fff8e1; border-left: 4px solid #f0ad4e;
+            padding: 12px 16px; border-radius: 8px; font-size: 12px;
+            color: #856404; line-height: 1.6;
+        }
+
+        /* Ad */
+        .ad-unit {
+            text-align: center; padding: 8px 0;
+        }
+
+        /* Page sections (hidden by default) */
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+
+        /* Knowledge base */
+        .kb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 600px) { .kb-grid { grid-template-columns: 1fr; } }
+        .kb-card {
+            background: white; border-radius: 12px; padding: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border-left: 4px solid #40916c;
+        }
+        .kb-card h4 { color: #1b3d3d; margin-bottom: 8px; font-size: 15px; }
+        .kb-card p { color: #555; font-size: 13px; line-height: 1.6; }
+
+        /* Shop */
+        .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 600px) { .shop-grid { grid-template-columns: 1fr; } }
+        .shop-card {
+            background: white; border-radius: 16px; padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06); text-align: center;
+        }
+        .shop-card .emoji { font-size: 48px; margin-bottom: 12px; }
+        .shop-card h4 { font-size: 16px; color: #1b3d3d; }
+        .shop-card .desc { font-size: 13px; color: #666; margin: 8px 0; line-height: 1.5; }
+        .shop-card .price-tag { font-size: 24px; font-weight: 800; color: #cc1838; margin: 12px 0; }
+        .shop-card .shop-btn {
+            display: inline-block; background: #40916c; color: white;
+            padding: 10px 28px; border-radius: 10px; text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: background 0.2s;
+        }
+        .shop-card .shop-btn:hover { background: #2d6a4f; }
+        .shop-card .shop-note { font-size: 11px; color: #aaa; margin-top: 8px; }
+
+        footer { text-align: center; padding: 30px; color: #aaa; font-size: 13px; }
+
+        /* Expert section */
+        .expert-card {
+            background: white; border-radius: 16px; padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: flex; gap: 24px; align-items: center;
+        }
+        @media (max-width: 600px) { .expert-card { flex-direction: column; text-align: center; } }
+        .expert-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: linear-gradient(135deg, #1b3d3d, #40916c);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 40px; flex-shrink: 0;
+        }
+        .expert-info h3 { font-size: 20px; color: #1b3d3d; }
+        .expert-info .title { color: #666; font-size: 14px; margin: 4px 0 12px; }
+        .expert-info .desc { font-size: 14px; line-height: 1.7; color: #444; }
+        .expert-btn {
+            display: inline-block; background: #cc1838; color: white;
+            padding: 10px 24px; border-radius: 10px; text-decoration: none;
+            font-size: 14px; font-weight: 600; margin-top: 12px;
+        }
+        .expert-btn:hover { background: #a0122d; }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="logo">🩺 艾检卫士 <span>❤️</span></div>
+            <div class="nav-links">
+                <a class="active" onclick="switchPage('home')">风险评估</a>
+                <a onclick="switchPage('knowledge')">知识库</a>
+                <a onclick="switchPage('shop')">检测试剂</a>
+                <a onclick="switchPage('expert')">专家咨询</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ====== HOME (default) ====== -->
+        <div id="page-home" class="page-section active">
+            <div class="hero">
+                <h1>🤖 AI 恐艾风险评估 · 匿名心理疏导</h1>
+                <p>完全匿名，无需注册。基于最新中国艾滋病诊疗指南，提供专业的 HIV 风险评估、PEP 指导、窗口期解读和心理支持。</p>
+                <div class="stats">
+                    <div class="stat"><div class="stat-num">🔒</div><div class="stat-label">全程匿名</div></div>
+                    <div class="stat"><div class="stat-num">📋</div><div class="stat-label">基于指南</div></div>
+                    <div class="stat"><div class="stat-num">❤️</div><div class="stat-label">温暖陪伴</div></div>
+                    <div class="stat"><span class="ribbon">CDC 专家支持</span></div>
+                </div>
+            </div>
+
+            <div class="main-grid">
+                <div class="chat-card">
+                    <div class="chat-header">
+                        <div class="avatar">🤝</div>
+                        <div>
+                            <div class="title">AI 心理疏导助手</div>
+                            <div class="subtitle">基于《中国艾滋病诊疗指南》| 匿名对话</div>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="msg bot">
+                            你好，我是艾检卫士的 AI 心理疏导助手。👋<br><br>
+                            无论你是担心暴露风险、需要 PEP 指导，还是因为恐艾而焦虑失眠——这里安全、匿名、专业。<br><br>
+                            <strong>你可以这样问我：</strong><br>
+                            · "昨天发生了无套行为，风险大吗？"<br>
+                            · "高危行为后多久可以检测？窗口期是多久？"<br>
+                            · "我总是反复怀疑自己感染了，测了多次还是阴性，怎么办？"<br>
+                            · "PEP 阻断药去哪里买？要在几小时内吃？"<br><br>
+                            请放心描述你的情况，我会为你提供专业、温暖的回答。
+                            <div class="timestamp">现在</div>
+                        </div>
+                    </div>
+                    <div class="typing" id="typing"><span></span><span></span><span></span></div>
+                    <div class="chat-input">
+                        <textarea id="userInput" rows="1" placeholder="描述你的情况，完全匿名…" oninput="this.style.height='';this.style.height=Math.min(this.scrollHeight,100)+'px'"></textarea>
+                        <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+                    </div>
+                    <div class="chat-footer">💬 所有对话匿名，不留记录</div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="panel">
+                        <h3>⚡ 快捷提问</h3>
+                        <button class="quick-btn" onclick="quickAsk('无套性行为后第3天，现在还能吃PEP阻断药吗？去哪里买？')">🆘 无套后能吃PEP吗？</button>
+                        <button class="quick-btn" onclick="quickAsk('我高危行为后2周用试纸测了阴性，可以排除了吗？窗口期是多久？')">⏱ 高危后2周阴性，能排除吗？</button>
+                        <button class="quick-btn" onclick="quickAsk('我测了6次都是阴性，但还是害怕，每天睡不着，怎么办？')">😰 测了6次阴性，还是害怕</button>
+                        <button class="quick-btn" onclick="quickAsk('发生了口交，会感染HIV吗？需要检测吗？')">🤔 口交会感染吗？</button>
+                        <button class="quick-btn" onclick="quickAsk('HIV急性期症状有哪些？和感冒怎么区分？')">🤒 HIV症状 vs 感冒？</button>
+                    </div>
+
+                    <div class="panel">
+                        <h3>🛒 推荐检测试剂</h3>
+                        <div class="product-list">
+                            <a class="product-item" href="https://search.jd.com/Search?keyword=HIV自检试纸" target="_blank" rel="nofollow sponsored">
+                                <div class="icon" style="background:#fff3f3;">🩸</div>
+                                <div class="info">
+                                    <div class="name">HIV 1/2 抗体自检试纸</div>
+                                    <div class="price">京东约 ¥29.9 <span class="tag">推荐</span></div>
+                                </div>
+                            </a>
+                            <a class="product-item" href="https://search.jd.com/Search?keyword=HIV梅毒丙肝乙肝四联检测试纸" target="_blank" rel="nofollow sponsored">
+                                <div class="icon" style="background:#fff3e6;">🩸</div>
+                                <div class="info">
+                                    <div class="name">HIV+梅毒+丙肝+乙肝 四联检测</div>
+                                    <div class="price">京东约 ¥79.9 <span class="tag">超值</span></div>
+                                </div>
+                            </a>
+                        </div>
+                        <a class="btn-buy" href="https://search.jd.com/Search?keyword=艾滋病检测试纸" target="_blank" rel="nofollow sponsored">🛍️ 去京东查看全部检测试剂 →</a>
+                    </div>
+
+                    <!-- Ad unit -->
+                    <div class="ad-unit">
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9946249937416673" data-ad-slot="YOUR_AD_SLOT" data-ad-format="auto"></ins>
+                        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+                    </div>
+
+                    <div class="disclaimer-box">
+                        ⚠️ <strong>免责声明：</strong>本工具提供的信息仅供参考，不构成医疗诊断。AI 回答基于公开医学指南，不能替代专业医生面诊。如有高危暴露，请尽快前往当地疾控中心或定点医院。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== KNOWLEDGE ====== -->
+        <div id="page-knowledge" class="page-section">
+            <div class="hero" style="background: linear-gradient(135deg, #1b3d3d, #2d6a4f);">
+                <h1>📚 艾滋病知识库</h1>
+                <p>基于最新医学指南的权威科普，由资深疾控专家审核</p>
+            </div>
+            <div class="kb-grid">
+                <div class="kb-card">
+                    <h4>🕐 HIV 窗口期</h4>
+                    <p>第四代检测（医院/疾控）：2-4周可检出，6周基本排除。<br>快速试纸（自检）：4-6周可检出，12周完全排除。<br><br>如果高危行为后 3 个月检测阴性，可以完全排除感染。</p>
+                </div>
+                <div class="kb-card">
+                    <h4>💊 PEP 暴露后预防</h4>
+                    <p>黄金 72 小时，越早越好！<br>• 最佳时间：2小时内<br>• 疗程：28天，不可中断<br>• 获取：当地疾控中心或传染病医院<br>• 成功率：按时完成 >99%</p>
+                </div>
+                <div class="kb-card">
+                    <h4>😰 恐艾症（AIDS Phobia）</h4>
+                    <p>一种真实的焦虑障碍。典型表现：<br>• 反复检测，即使阴性也不放心<br>• 不停搜索症状，越搜越怕<br>• 身体任何不适都联想到HIV<br><br>这不是"矫情"，是需要专业心理疏导的真实问题。</p>
+                </div>
+                <div class="kb-card">
+                    <h4>🩸 检测方式对比</h4>
+                    <p>• 自检试纸：方便快捷，15分钟出结果，准确性99%+<br>• 疾控中心：免费、权威、完全保密<br>• 医院：可选实名或匿名，可做确诊实验<br><br>建议：自检阳性后一定要去疾控做确证实验。</p>
+                </div>
+                <div class="kb-card">
+                    <h4>🤝 传播途径</h4>
+                    <p>HIV 传播需要同时满足三个条件：<br>• 有足够量的病毒（血液/精液/阴道分泌物）<br>• 有进入体内的途径（破损黏膜/伤口）<br>• 没有有效防护<br><br>日常接触、共餐、蚊虫叮咬、拥抱 <strong>不传播</strong>。</p>
+                </div>
+                <div class="kb-card">
+                    <h4>📞 求助渠道</h4>
+                    <p>• 全国心理援助热线：<strong>400-161-9995</strong><br>• 当地疾控中心：可查本地HIV咨询检测点<br>• 全国HIV咨询检测：12320（卫生热线）<br>• 红丝带热线：010-63296171</p>
+                </div>
+                <div class="kb-card">
+                    <h4>🦠 梅毒</h4>
+                    <p>梅毒与HIV常合并感染，建议同时检测。<br>• 一期：硬下疳（无痛溃疡）<br>• 二期：全身皮疹、淋巴结肿大<br>• 潜伏期：9-90天<br>• 治疗：青霉素可治愈，越早越好</p>
+                </div>
+                <div class="kb-card">
+                    <h4>🦠 丙肝/乙肝</h4>
+                    <p>• 丙肝（HCV）：血液传播为主，现可治愈（DAAs药物）<br>• 乙肝（HBV）：有疫苗可预防，血液/性接触传播<br>• 建议有高危行为者做四联检测（HIV+梅毒+丙肝+乙肝）</p>
+                </div>
+            </div>
+
+            <div class="ad-unit" style="margin-top:24px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9946249937416673" data-ad-slot="YOUR_AD_SLOT2" data-ad-format="auto"></ins>
+                <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+            </div>
+        </div>
+
+        <!-- ====== SHOP ====== -->
+        <div id="page-shop" class="page-section">
+            <div class="hero" style="background: linear-gradient(135deg, #8b1a2b, #cc1838);">
+                <h1>🛒 检测试剂推荐</h1>
+                <p>点击下方商品跳转京东/天猫购买，正规渠道，正品保障</p>
+            </div>
+
+            <p style="text-align:center;color:#666;margin-bottom:20px;font-size:14px;">
+                ⚠️ 以下商品链接为京东/天猫官方搜索结果，本站仅做推荐，不直接销售。
+            </p>
+
+            <div class="shop-grid">
+                <div class="shop-card">
+                    <div class="emoji">🩸</div>
+                    <h4>HIV 1/2 抗体检测试纸</h4>
+                    <div class="desc">国家药监局批准，准确率99.9%以上<br>15分钟出结果，操作简单，隐私保护</div>
+                    <div class="price-tag">¥29.9</div>
+                    <a class="shop-btn" href="https://search.jd.com/Search?keyword=HIV自检试纸官方旗舰店" target="_blank" rel="nofollow sponsored">去京东购买 →</a>
+                    <div class="shop-note">京东自营 · 正品保障</div>
+                </div>
+                <div class="shop-card">
+                    <div class="emoji">🩸</div>
+                    <h4>HIV+梅毒+丙肝+乙肝 四联检测</h4>
+                    <div class="desc">一次检测四项，性价比之选<br>适合高风险人群定期筛查</div>
+                    <div class="price-tag">¥79.9</div>
+                    <a class="shop-btn" href="https://search.jd.com/Search?keyword=四联检测试纸HIV梅毒丙肝乙肝" target="_blank" rel="nofollow sponsored">去京东购买 →</a>
+                    <div class="shop-note">京东自营 · 四联更划算</div>
+                </div>
+                <div class="shop-card">
+                    <div class="emoji">🩸</div>
+                    <h4>梅毒螺旋体抗体检测</h4>
+                    <div class="desc">单独梅毒检测，适合针对性筛查<br>操作简便，准确率高</div>
+                    <div class="price-tag">¥19.9</div>
+                    <a class="shop-btn" href="https://search.jd.com/Search?keyword=梅毒自检试纸" target="_blank" rel="nofollow sponsored">去京东购买 →</a>
+                    <div class="shop-note">京东自营 · 正品保障</div>
+                </div>
+                <div class="shop-card">
+                    <div class="emoji">🩸</div>
+                    <h4>丙肝/乙肝检测试纸</h4>
+                    <div class="desc">丙肝和乙肝单项检测<br>高危行为后建议一并筛查</div>
+                    <div class="price-tag">¥19.9起</div>
+                    <a class="shop-btn" href="https://search.jd.com/Search?keyword=丙肝检测试纸" target="_blank" rel="nofollow sponsored">去京东购买 →</a>
+                    <div class="shop-note">京东自营 · 正品保障</div>
+                </div>
+            </div>
+
+            <div class="disclaimer-box" style="margin-top:20px;">
+                ⚠️ <strong>友情提示：</strong>自检试纸为筛查工具，检测结果阳性（两条线）不代表确诊，请务必前往当地疾控中心做确证实验。阴性（一条线）如果在窗口期后，可以排除感染。
+            </div>
+
+            <div style="background:white;border-radius:16px;padding:24px;margin-top:20px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                <h3 style="color:#1b3d3d;margin-bottom:12px;">💡 检测建议</h3>
+                <p style="color:#555;line-height:1.8;font-size:14px;">
+                    <strong>什么情况下需要检测？</strong><br>
+                    • 有过无套性行为（肛交/阴道交）<br>
+                    • 性伴侣感染HIV或感染状态不明<br>
+                    • 共用针具注射毒品<br>
+                    • 遭受性侵犯<br>
+                    • 有多个性伴侣或男男性行为者建议每3-6个月定期检测<br><br>
+                    <strong>检测前注意事项：</strong><br>
+                    • 请确认在窗口期后检测<br>
+                    • 检测前无需空腹<br>
+                    • 请仔细阅读说明书操作<br>
+                    • 血液样本量要足够
+                </p>
+            </div>
+        </div>
+
+        <!-- ====== EXPERT ====== -->
+        <div id="page-expert" class="page-section">
+            <div class="hero" style="background: linear-gradient(135deg, #1b3d3d, #40916c);">
+                <h1>👨‍⚕️ CDC 专家咨询</h1>
+                <p>资深疾控专家提供一对一专业咨询</p>
+            </div>
+            <div class="expert-card">
+                <div class="expert-avatar">👨‍⚕️</div>
+                <div class="expert-info">
+                    <h3>资深疾控专家</h3>
+                    <div class="title">艾滋病/丙肝预防控制 · 永城市疾控中心</div>
+                    <div class="desc">
+                        <strong>专业领域：</strong><br>
+                        • 艾滋病与性病预防控制（HIV/AIDS/梅毒/丙肝/乙肝）<br>
+                        • 艾滋心理咨询与恐艾疏导<br>
+                        • 暴露后预防（PEP）全程指导<br>
+                        • 检测结果解读与后续指导<br>
+                        • HIV 感染者关怀与随访<br><br>
+                        <strong>咨询方式：</strong>微信/腾讯会议一对一咨询<br>
+                        <strong>咨询时长：</strong>30分钟 / 次<br>
+                        <strong>费用：</strong>¥99 / 次（公益价）
+                    </div>
+                    <a class="expert-btn" href="#" onclick="alert('请通过微信联系：微信号 yongcheng-cdc-hiv\n（添加时备注"艾检卫士"）')">📱 预约咨询</a>
+                </div>
+            </div>
+            <div style="background:white;border-radius:16px;padding:24px;margin-top:20px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+                <h3 style="color:#1b3d3d;margin-bottom:12px;">❓ 适合哪些人咨询</h3>
+                <ul style="color:#555;line-height:2;font-size:14px;padding-left:20px;">
+                    <li><strong>🆘 高危行为后</strong> — 需要PEP指导，不确定该怎么做</li>
+                    <li><strong>😰 恐艾严重</strong> — 多次检测阴性仍无法摆脱恐惧</li>
+                    <li><strong>🩸 检测结果解读</strong> — 拿到检测报告不知道是什么意思</li>
+                    <li><strong>📋 定期筛查规划</strong> — 需要专业建议制定检测计划</li>
+                    <li><strong>💊 感染者关怀</strong> — 确诊后需要心理支持和随访指导</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 艾检卫士 · 由资深疾控专家团队支持 · 让每个人都能获得专业的艾滋病预防知识</p>
+        <p style="margin-top:4px;font-size:12px;color:#ccc;">
+            <a href="https://toolspotr.com" style="color:#aaa;text-decoration:none;">toolspotr.com</a>
+        </p>
+    </footer>
+
+    <script>
+        // ====== Page Switching ======
+        function switchPage(page) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            document.querySelector(`.nav-links a[onclick*="'${page}'"]`).classList.add('active');
+        }
+
+        // ====== Chat ======
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typing = document.getElementById('typing');
+
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+        });
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = `msg ${isUser ? 'user' : 'bot'}`;
+            div.innerHTML = text + `<div class="timestamp">${new Date().toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'})}</div>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            addMessage(text, true);
+            userInput.value = ''; userInput.style.height = '44px';
+            sendBtn.disabled = true;
+            typing.classList.add('show');
+
+            // 模拟延迟，更像真人对话
+            setTimeout(() => {
+                typing.classList.remove('show');
+                sendBtn.disabled = false;
+                addMessage(getReply(text), false);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600 + Math.random() * 800);
+        }
+
+        function quickAsk(text) {
+            userInput.value = text;
+            userInput.style.height = '44px';
+            sendMessage();
+        }
+
+        // ====== 专业回复引擎 ======
+        function getReply(text) {
+            const t = text.toLowerCase();
+
+            if (t.includes('pep') || t.includes('阻断') || t.includes('暴露后') || (t.includes('无套') && t.includes('几天'))) {
+                return '📌 <strong>PEP（暴露后预防）关键信息：</strong><br><br>' +
+                       '• ⏰ <strong>黄金时间：</strong>高危行为后 <strong>72小时内</strong>，越早越好，最好在2小时内！<br>' +
+                       '• 💊 疗程：连续服用28天，不可中断<br>' +
+                       '• 🏥 <strong>获取途径：</strong>当地疾控中心、传染病医院感染科<br>' +
+                       '• ✅ 按时完成PEP，阻断成功率可达 <strong>99%以上</strong><br><br>' +
+                       '📞 <strong>建议：</strong>请立即前往最近的疾控中心或传染病医院，不要等到明天！<br><br>' +
+                       '💬 如果你因为担心而焦虑，可以继续和我聊聊，我在这里陪着你。';
+            }
+
+            if (t.includes('窗口期') || (t.includes('检测') && (t.includes('几周') || t.includes('多久') || t.includes('阴') || t.includes('排除')))) {
+                return '📌 <strong>HIV 检测窗口期详解：</strong><br><br>' +
+                       '<strong>当前主流检测方法：</strong><br>' +
+                       '• 🏥 <strong>第四代抗原抗体联合检测</strong>（医院/疾控用）：<br>　→ 2周可检出，<strong>6周（42天）基本排除</strong><br>' +
+                       '• 🩸 <strong>快速检测试纸</strong>（自检用）：<br>　→ 4周可检出，<strong>12周（3个月）完全排除</strong><br><br>' +
+                       '<strong>⚠️ 关于"测了多次还是阴性"：</strong><br>' +
+                       '如果高危行为后 <strong>3个月</strong> 用合格试纸检测为阴性，可以 <strong>完全排除感染</strong>。不需要反复检测！<br><br>' +
+                       '持续的焦虑可能是 <strong>恐艾心理障碍</strong> 的表现——这很常见，不是你"软弱"。<br><br>' +
+                       '💬 需要我陪你聊聊你现在的心情吗？';
+            }
+
+            if (t.includes('口') && (t.includes('交') || t.includes('oral'))) {
+                return '📌 <strong>口交的 HIV 传播风险：</strong><br><br>' +
+                       '• 口交传播 HIV 的 <strong>风险极低</strong>，远低于无套肛交/阴道交<br>' +
+                       '• 理论上：只有在口腔有明显破损/溃疡，且对方精液/阴道分泌物进入伤口的情况下才有风险<br>' +
+                       '• 现实中没有充分证据表明单纯口交会导致 HIV 传播<br><br>' +
+                       '💡 如果实在不放心，可以在4周后用试纸检测一次，大概率是阴性。<br><br>' +
+                       '💬 你还有其他担心吗？';
+            }
+
+            if (t.includes('症') || (t.includes('症状') && (t.includes('感冒') || t.includes('发烧') || t.includes('皮疹')))) {
+                return '📌 <strong>HIV 急性期症状 vs 普通感冒：</strong><br><br>' +
+                       'HIV 急性期症状（感染后2-4周可能出现）：<br>' +
+                       '• 发热 🌡️（最常见）<br>' +
+                       '• 咽痛<br>' +
+                       '• 淋巴结肿大<br>' +
+                       '• 皮疹（通常不痒）<br>' +
+                       '• 肌肉关节酸痛<br>' +
+                       '• 头痛、恶心<br><br>' +
+                       '<strong>关键问题：这些症状没有特异性！</strong><br>' +
+                       '80%的HIV急性期症状和感冒、流感几乎一样，无法凭症状判断。<br>' +
+                       '<strong>唯一可靠的方法：检测。</strong><br><br>' +
+                       '💡 不要对症状——恐惧会让你觉得每个症状都对得上。<br>' +
+                       '在适当窗口期做一次检测，拿结果说话。';
+            }
+
+            if (t.includes('恐艾') || t.includes('焦虑') || t.includes('担心') || t.includes('害怕') || t.includes('失眠') || t.includes('睡不着') || (t.includes('测') && (t.includes('次') || t.includes('多次')) && t.includes('阴'))) {
+                return '💙 <strong>我能感受到你现在的焦虑。</strong><br><br>' +
+                       '恐艾是一种非常真实的心理状态。很多人在高危行为后都会经历类似的恐惧——你不是一个人。<br><br>' +
+                       '<strong>给你几个实用建议：</strong><br>' +
+                       '① 🛑 <strong>停止反复搜索：</strong>每次搜索都会加剧焦虑，形成"搜索→恐惧→再搜索"的恶性循环<br>' +
+                       '② ✅ <strong>一次权威检测就够：</strong>去疾控中心做一次正规检测，拿结果翻篇。如果过了窗口期结果是阴性，请相信科学<br>' +
+                       '③ 💬 <strong>找人聊聊：</strong>和我聊可以，也可以找信任的朋友或心理热线（400-161-9995）<br>' +
+                       '④ 📖 <strong>认知调整：</strong>恐艾不是"你怕死"，而是大脑对不确定性的过度反应。认识到这一点就是好转的开始<br><br>' +
+                       '<strong>记住这个公式：</strong><br>' +
+                       '科学检测(1次) + 专业疏导 + 停止搜索 = 走出恐艾<br><br>' +
+                       '💚 无论结果如何，你都值得被关心和支持。现在，深呼吸，和我说说发生了什么？';
+            }
+
+            if (t.includes('四联') || t.includes('梅毒') || t.includes('丙肝') || t.includes('乙肝')) {
+                return '📌 <strong>关于梅毒/丙肝/乙肝共感染：</strong><br><br>' +
+                       '这些疾病与 HIV 有相似的传播途径，建议高危行为后一并筛查：<br><br>' +
+                       '🦠 <strong>梅毒：</strong><br>' +
+                       '• 窗口期：9-90天<br>' +
+                       '• 症状：一期无痛溃疡（硬下疳），二期全身皮疹<br>' +
+                       '• 治疗：青霉素可完全治愈<br>' +
+                       '• ⚠️ 梅毒溃疡会增加HIV感染风险<br><br>' +
+                       '🦠 <strong>丙肝（HCV）：</strong><br>' +
+                       '• 血液传播为主，现已有根治性药物（DAAs）<br>' +
+                       '• 建议所有HIV感染者筛查丙肝<br><br>' +
+                       '🦠 <strong>乙肝（HBV）：</strong><br>' +
+                       '• 有疫苗可预防<br>' +
+                       '• 慢性乙肝需要定期随访<br><br>' +
+                       '💡 推荐购买 <strong>四联检测试纸</strong>，一次筛查四项，更放心。';
+            }
+
+            // 默认综合回复
+            return '感谢你的信任和勇气，愿意说出你的担忧。🙏<br><br>' +
+                   '我理解你现在可能有各种担忧和不安。为了更好地帮助你，你可以告诉我：<br><br>' +
+                   '• <strong>发生了什么？</strong>（比如无套性行为、针具共用等）<br>' +
+                   '• <strong>多久前发生的？</strong>（这决定是否还能使用PEP阻断）<br>' +
+                   '• <strong>你现在最担心什么？</strong><br><br>' +
+                   '我会根据最新医学指南，给你专业、客观的评估和建议。<br><br>' +
+                   '🔒 请放心，所有对话都是匿名的。';
+        }
+
+        // ====== 初始化 AdSense ======
+        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    </script>
+</body>
+</html>
