@@ -74,10 +74,13 @@
     <div class="tool-output" id="jsonOutput" style="margin-top:12px;white-space:pre-wrap;font-size:13px;line-height:1.5">等待输入...</div>
   </div>
 
-  <div class="tool-article">
-    <h3>什么是 JSON？</h3>
-    <p>JSON (JavaScript Object Notation) 是一种轻量级的数据交换格式，广泛用于 API 通信、配置文件和数据存储中。格式化的 JSON 更易于人类阅读和调试，而压缩后的 JSON 更适合传输。本工具还提供实时验证功能，帮助你快速发现 JSON 语法错误。</p>
-  </div>
+  <div class="tool-article"><h3>What is JSON?</h3>
+        <p>JSON (JavaScript Object Notation) is a lightweight data interchange format that's easy for humans to read and machines to parse. It's the most common format for API responses, configuration files, and data storage in modern web applications.</p>
+        <p>However, minified JSON (without spaces or line breaks) is difficult to debug. Our JSON formatter beautifies your data with proper indentation, making it easy to spot missing commas, brackets, or syntax errors. It also includes a compression feature to minify JSON for production use.</p>
+        <h3>How to Use</h3>
+        <p>Paste any JSON string into the editor and click Format. The tool will validate the syntax and display it with clean indentation. Use the Minify button to compress JSON by removing whitespace — ideal for reducing API payload sizes.</p>
+        <h3>Common JSON Errors</h3>
+        <ul><li>Trailing commas after the last element</li><li>Missing quotes around object keys</li><li>Unmatched brackets or braces</li><li>Using single quotes instead of double quotes</li><li>Invalid number formats (e.g., leading zeros)</li></ul></div>
 
   <div class="tool-cross">
     <h3>你可能还感兴趣</h3>

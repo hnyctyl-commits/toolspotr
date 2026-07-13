@@ -77,10 +77,11 @@
     <div id="dnsVerdict" style="margin-top:16px;padding:12px;border-radius:var(--radius-sm);font-size:14px;font-weight:600"></div>
   </div>
 
-  <div class="tool-article">
-    <h3>什么是 DNS 泄露？</h3>
-    <p>当你使用 VPN 时，所有网络流量应该通过 VPN 加密隧道传输，包括 DNS 查询。但如果配置不当，你的 DNS 请求可能会绕过 VPN，直接发送给你的 ISP（互联网服务提供商）。这就是 DNS 泄露。这意味着你的 ISP（以及潜在的监控者）可以看到你访问了哪些网站，即使你正在使用 VPN。</p>
-  </div>
+  <div class="tool-article"><h3>What is a DNS Leak?</h3>
+        <p>A DNS (Domain Name System) leak occurs when your DNS queries are sent through your ISP's servers instead of your VPN's encrypted tunnel, even though you're connected to a VPN. This can reveal your browsing activity to your ISP and defeat the purpose of using a VPN.</p>
+        <p>Our DNS leak test checks multiple DNS servers simultaneously to detect if your DNS queries are leaking. It's an essential tool for privacy-conscious users who want to verify their VPN is working correctly.</p>
+        <h3>How to Test</h3>
+        <p>Connect to your VPN first, then click the "Test DNS" button. The tool will query several DNS servers and compare the responses. If all responses show your VPN's DNS servers, you're protected. If you see your ISP's DNS servers, you have a leak.</p></div>
 
   <div class="tool-cross">
     <h3>你可能还感兴趣</h3>
