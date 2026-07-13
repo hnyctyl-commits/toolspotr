@@ -6,9 +6,13 @@
   <url><loc>https://toolspotr.com/privacy.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://toolspotr.com/terms.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://toolspotr.com/blog/index.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/robots.txt</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://toolspotr.com/blog/best-free-financial-calculators-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/blog/best-free-online-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/blog/json-formatter-guide.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/robots.txt</loc><priority>0.3</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://toolspotr.com/blog/top-10-free-developer-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/blog/top-10-image-design-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://toolspotr.com/blog/top-10-security-privacy-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/age-calculator.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/anagram-solver.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/article-rewriter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -144,9 +148,4 @@
   <url><loc>https://toolspotr.com/tools/word-counter.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/word-suggester.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://toolspotr.com/tools/yaml-json.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/blog/top-10-image-design-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/blog/top-10-free-developer-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/blog/top-10-security-privacy-tools-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/blog/best-free-financial-calculators-2026.html</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://toolspotr.com/hiv/</loc><priority>0.9</priority><changefreq>daily</changefreq></url>
 </urlset>
