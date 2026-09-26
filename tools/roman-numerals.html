@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cosmic">
+<html lang="en" data-theme="light">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://toolspotr.com/tools/roman-numerals">
 <meta name="description" content="Free Roman numeral converter. Convert numbers to Roman numerals (I, V, X, L, C, D, M) and vice versa. Supports 1-3999.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
 </head>
 <body>
@@ -44,20 +44,9 @@
   </div></div>
   
 </main>
-  
-        <span class="aff-badge">AD</span>
-      </a>
-      
-        <div class="aff-icon">🔒</div>
-        <div class="aff-body">
-          
-        </div>
-        <span class="aff-badge">AD</span>
-      </a>
-    </div>
-  </div>
+
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
-<script src="../assets/app.js?v=1782996513"></script>
+<script src="../assets/app.js?v=1790417446"></script>
 <script>
 function toRoman(n){if(n<1||n>3999)return"Out of range";const v=[1000,900,500,400,100,90,50,40,10,9,5,4,1];const r=["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];let s="",i=0;while(i<v.length){if(n>=v[i]){s+=r[i];n-=v[i];}else i++;}return s;}
 function fromRoman(r){const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};let t=0;for(let i=0;i<r.length;i++){const c=m[r[i]];const n=m[r[i+1]];if(n&&c<n){t-=c;}else{t+=c;}}return t;}

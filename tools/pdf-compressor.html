@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cosmic">
+<html lang="en" data-theme="light">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PDF Compressor — Toolflow</title>
 <link rel="canonical" href="https://toolspotr.com/tools/pdf-compressor"><meta name="description" content="Free online PDF compressor. Reduce PDF file size without losing quality. Fast and secure.">
@@ -21,18 +21,7 @@
 <a href="../index.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">All Tools</div></div></a></div></div>
 
 </main>
-  
-        <span class="aff-badge">AD</span>
-      </a>
-      
-        <div class="aff-icon">🔒</div>
-        <div class="aff-body">
-          
-        </div>
-        <span class="aff-badge">AD</span>
-      </a>
-    </div>
-  </div>
+
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
 <script src="../assets/app.js?ver=3"></script>
 <script>let pcFile=null;document.getElementById("pcDrop").addEventListener("click",()=>document.getElementById("pcFile").click());document.getElementById("pcFile").addEventListener("change",async function(){if(!this.files[0])return;pcFile=this.files[0];document.getElementById("pcInfo").style.display="block";document.getElementById("pcBtn").style.display="inline-flex";const mb=(pcFile.size/1024/1024).toFixed(2);document.getElementById("pcSize").innerHTML="Original: <strong>"+mb+" MB</strong>";});document.getElementById("pcBtn").addEventListener("click",async function(){if(!pcFile)return;const buf=await pcFile.arrayBuffer();const{PDFDocument}=PDFLib;const pdf=await PDFDocument.load(buf);const compressed=await pdf.save({useObjectStreams:false});const blob=new Blob([compressed],{type:"application/pdf"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="compressed.pdf";a.click();});</script></body></html>

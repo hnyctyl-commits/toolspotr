@@ -262,7 +262,7 @@ const TOOL_COUNT = TOOLS.length;
 
 // ── State ──
 let currentLang = localStorage.getItem('tf_lang') || 'en';
-let currentTheme = localStorage.getItem('tf_theme') || 'cosmic';
+let currentTheme = localStorage.getItem('tf_theme') || 'light';
 
 // ── Usage Stats (missing helpers) ──
 function getDaySeed(){
@@ -775,8 +775,9 @@ function initStats(){
     }
   });
 
-  // Find current tool info
-  const tool = TOOLS.find(t => t.id === currentId);
+  // Current tool id from URL (only relevant on tool pages)
+  const currentId = (window.location.pathname.match(/tools\/([^\/]+)\.html$/) || [])[1] || null;
+  const tool = currentId ? TOOLS.find(t => t.id === currentId) : null;
   if(!tool) return;
   
   // 1. Copy Link Button

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cosmic">
+<html lang="en" data-theme="light">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://toolspotr.com/tools/tip-calculator">
 <meta name="description" content="Free online tip calculator. Calculate tip amounts, split bills, and total per person. 10%, 15%, 18%, 20% and custom tip percentages.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tip-card{background:var(--bg-main);padding:14px;border-radius:var(--radius-sm);text-align:center}.tip-val{font-size:22px;font-weight:700;color:var(--accent);font-family:var(--mono)}</style>
 </head>
 <body>
@@ -41,20 +41,9 @@
   </div></div>
   
 </main>
-  
-        <span class="aff-badge">AD</span>
-      </a>
-      
-        <div class="aff-icon">🔒</div>
-        <div class="aff-body">
-          
-        </div>
-        <span class="aff-badge">AD</span>
-      </a>
-    </div>
-  </div>
+
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
-<script src="../assets/app.js?v=1782996513"></script>
+<script src="../assets/app.js?v=1790417446"></script>
 <script>
 function calcTip(){const b=parseFloat(document.getElementById("tcBill").value)||0,p=parseFloat(document.getElementById("tcPct").value)||0,s=parseInt(document.getElementById("tcSplit").value)||1;const tip=b*p/100,total=b+tip;document.getElementById("tcTip").textContent='$'+tip.toFixed(2);document.getElementById("tcTotal").textContent='$'+total.toFixed(2);document.getElementById("tcEachTip").textContent='$'+(tip/s).toFixed(2);document.getElementById("tcEachTotal").textContent='$'+(total/s).toFixed(2);}
 document.querySelectorAll('#tcBill,#tcPct,#tcSplit').forEach(el=>el.addEventListener('input',calcTip));document.querySelectorAll('[data-tip]').forEach(b=>b.addEventListener('click',function(){document.getElementById("tcPct").value=this.dataset.tip;calcTip();}));calcTip();

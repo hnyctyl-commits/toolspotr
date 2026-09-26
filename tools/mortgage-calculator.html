@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cosmic">
+<html lang="en" data-theme="light">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://toolspotr.com/tools/mortgage-calculator">
 <meta name="description" content="Free mortgage calculator for 2026. Estimate monthly payments, total interest, and compare loan terms instantly. Calculate 15, 20, or 30-year mortgages with current rates. Compare loan terms and interest rates.">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../assets/style.css?v=1782996513"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
 
 <script type="application/ld+json">
@@ -52,20 +52,9 @@
   </div></div>
   
 </main>
-  
-        <span class="aff-badge">AD</span>
-      </a>
-      
-        <div class="aff-icon">🔒</div>
-        <div class="aff-body">
-          
-        </div>
-        <span class="aff-badge">AD</span>
-      </a>
-    </div>
-  </div>
+
 <footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../terms.html">Terms</a></p><p style="font-size:10px;color:var(--text-muted);margin-top:4px">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
-<script src="../assets/app.js?v=1782996513"></script>
+<script src="../assets/app.js?v=1790417446"></script>
 <script>
 document.getElementById("mcCalc").addEventListener("click",calc);calc();
 function calc(){const amount=parseFloat(document.getElementById("mcAmount").value)||0,rate=(parseFloat(document.getElementById("mcRate").value)||0)/100/12,months=(parseInt(document.getElementById("mcTerm").value)||30)*12;let monthly=0;if(rate>0){monthly=amount*rate*Math.pow(1+rate,months)/(Math.pow(1+rate,months)-1);}else{monthly=amount/months;}const total=monthly*months;const interest=total-amount;document.getElementById("mcMonthly").textContent='$'+Math.round(monthly).toLocaleString();document.getElementById("mcInterest").textContent='$'+Math.round(interest).toLocaleString();document.getElementById("mcTotal").textContent='$'+Math.round(total).toLocaleString();}
