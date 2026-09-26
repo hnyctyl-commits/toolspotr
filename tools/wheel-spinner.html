@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Wheel Spinner — Random Picker — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/wheel-spinner.html">
+<meta name="description" content="Spin a colorful wheel to pick a random winner from your list. Add names or options, spin, and see the result instantly. Free and fair.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}#whCanvas{max-width:100%;display:block;margin:14px auto;cursor:pointer;border-radius:50%;box-shadow:var(--shadow-lg)}.wh-res{text-align:center;font-size:22px;font-weight:800;min-height:34px;color:var(--accent)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Fun &amp; Games / <strong>Wheel Spinner</strong></div>
+    <h1 class="tool-page-title">🎡 Wheel Spinner</h1>
+    <p class="tool-page-desc">Spin a colorful wheel to pick a random winner from your list. Add names or options, spin, and see the result instantly. Free and fair.</p>
+  </div>
+  <div class="tool-box">
+    <label>Entries (one per line)</label>
+    <textarea id="whItems">Pizza
+Sushi
+Burgers
+Tacos
+Salad
+Pasta</textarea>
+    <div class="input-row"><div><label>Spin duration (sec)</label><input type="number" id="whDur" value="4" min="1" max="10"></div></div>
+    <div style="text-align:center"><button class="tool-btn" id="whSpin">🎡 Spin the Wheel</button></div>
+    <div class="wh-res" id="whRes"></div>
+    <canvas id="whCanvas" width="420" height="420"></canvas>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>A fair way to make random choices</h3><p>A spinning wheel is a transparent, engaging way to pick a winner, choose a restaurant, assign tasks or run classroom activities. Results are generated with the browser’s cryptographic random number generator, so each entry has an equal chance. Everything stays on your device — the tool works offline once the page has loaded, making it ideal for live events, streams and classrooms.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="random-number-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🎲</div><div class="tcard-body"><div class="tcard-title">Random Number</div></div></a>
+    <a href="list-randomizer.html" class="tcard" style="margin:0"><div class="tcard-icon">🔀</div><div class="tcard-body"><div class="tcard-title">List Randomizer</div></div></a>
+    <a href="random-group-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">👥</div><div class="tcard-body"><div class="tcard-title">Group Generator</div></div></a>
+    <a href="dice-roller.html" class="tcard" style="margin:0"><div class="tcard-icon">🎲</div><div class="tcard-body"><div class="tcard-title">Dice Roller</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+const whC=document.getElementById('whCanvas'),whX=whC.getContext('2d');let whAng=0,whSpin_=false;
+const COLORS=['#6366f1','#8b5cf6','#ec4899','#f59e0b','#10b981','#06b6d4','#ef4444','#84cc16','#f97316','#14b8a6'];
+function items(){return document.getElementById('whItems').value.split('\n').map(s=>s.trim()).filter(Boolean)}
+function draw(){const it=items();const n=it.length||1;const R=200,cx=210,cy=210;whX.clearRect(0,0,420,420);
+  for(let i=0;i<n;i++){const a0=whAng+i*2*Math.PI/n,a1=whAng+(i+1)*2*Math.PI/n;whX.beginPath();whX.moveTo(cx,cy);whX.arc(cx,cy,R,a0,a1);whX.closePath();
+    whX.fillStyle=it.length?COLORS[i%COLORS.length]:'var(--bg-card)';whX.fill();whX.strokeStyle='#fff';whX.lineWidth=2;whX.stroke();
+    if(it.length){const m=(a0+a1)/2;whX.save();whX.translate(cx,cy);whX.rotate(m);whX.textAlign='right';whX.fillStyle='#fff';whX.font='bold 14px Inter,sans-serif';
+      const label=it[i].length>18?it[i].slice(0,17)+'…':it[i];whX.fillText(label,R-14,5);whX.restore()}}
+  whX.beginPath();whX.arc(cx,cy,26,0,7);whX.fillStyle='#fff';whX.fill();whX.strokeStyle='var(--border)';whX.stroke()}
+document.getElementById('whItems').addEventListener('input',draw);
+document.getElementById('whSpin').onclick=()=>{const it=items();if(it.length<2){alert('Add at least two entries.');return}
+  if(whSpin_)return;whSpin_=true;document.getElementById('whRes').textContent='';
+  const dur=(+document.getElementById('whDur').value||4)*1000;const start=whAng;const n=it.length;
+  const target=start+Math.PI*2*(4+Math.random()*2)+Math.random()*0.5;
+  const t0=performance.now();
+  (function anim(t){const p=Math.min(1,(t-t0)/dur);const e=1-Math.pow(1-p,3);whAng=start+(target-start)*e;draw();
+    if(p<1)requestAnimationFrame(anim);else{whSpin_=false;
+      let a=((-Math.PI/2-whAng)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);const idx=Math.floor(a/(2*Math.PI/n))%n;
+      document.getElementById('whRes').textContent='🎉 '+it[idx]}})(t0)};
+draw();
+</script>
+</body>
+</html>

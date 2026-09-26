@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Markdown Table Generator — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/markdown-table-generator.html">
+<meta name="description" content="Convert CSV, TSV or pasted spreadsheet data into a clean Markdown table. Choose alignment and copy the output instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Text &amp; Writing / <strong>Markdown Table Generator</strong></div>
+    <h1 class="tool-page-title">📊 Markdown Table Generator</h1>
+    <p class="tool-page-desc">Convert CSV, TSV or pasted spreadsheet data into a clean Markdown table. Choose alignment and copy the output instantly.</p>
+  </div>
+  <div class="tool-box">
+    <label>Paste CSV, TSV or spreadsheet data</label>
+    <textarea id="mtIn" placeholder="Name,Role,Score&#10;Alice,Engineer,92&#10;Bob,Designer,88" style="min-height:150px"></textarea>
+    <div class="input-row"><div><label>Separator</label><select id="mtSep"><option value="auto">Auto-detect</option><option value=",">Comma</option><option value="\t">Tab</option><option value=";">Semicolon</option><option value="|">Pipe</option></select></div>
+    <div><label>Alignment</label><select id="mtAlign"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></div>
+    <div style="flex:0 0 auto"><label>First row is header</label><input type="checkbox" id="mtHead" checked style="width:auto;margin:0"></div></div>
+    <button class="tool-btn" id="mtGo">📊 Generate Table</button> <button class="tool-btn-sec" id="mtCopy">📋 Copy</button>
+    <div class="tool-output" id="mtOut" style="margin-top:12px;white-space:pre;overflow-x:auto;font-size:12.5px"></div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>Why generate Markdown tables?</h3><p>Markdown tables are the standard way to present structured data in README files, documentation, GitHub issues, Notion pages and static site generators. Hand-writing the pipe characters and separator rows is tedious and error-prone, especially for wide tables — pasting your spreadsheet export and converting automatically guarantees consistent alignment. The generator escapes pipe characters inside cells so your table never breaks, and works entirely offline in your browser.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="json-to-csv.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON to CSV</div></div></a>
+    <a href="csv-editor.html" class="tcard" style="margin:0"><div class="tcard-icon">📊</div><div class="tcard-body"><div class="tcard-title">CSV Editor</div></div></a>
+    <a href="markdown-editor.html" class="tcard" style="margin:0"><div class="tcard-icon">📝</div><div class="tcard-body"><div class="tcard-title">Markdown Editor</div></div></a>
+    <a href="html-to-markdown.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">HTML to Markdown</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+document.getElementById('mtGo').onclick=gen;
+document.getElementById('mtCopy').onclick=()=>{navigator.clipboard.writeText(document.getElementById('mtOut').textContent);
+  const b=document.getElementById('mtCopy');b.textContent='✅ Copied';setTimeout(()=>b.textContent='📋 Copy',1400)};
+function detect(text){const lines=text.split('\n').filter(l=>l.trim());const cands=[',','\t',';','|'];
+  let best=',',bs=0;for(const c of cands){const avg=lines.slice(0,5).reduce((a,l)=>a+l.split(c).length,0)/Math.max(1,Math.min(5,lines.length));if(avg>bs){bs=avg;best=c}}return best}
+function gen(){const raw=document.getElementById('mtIn').value.trim();
+  if(!raw){document.getElementById('mtOut').textContent='Paste some data first.';return}
+  let sep=document.getElementById('mtSep').value;if(sep==='auto')sep=detect(raw);if(sep==='\\t')sep='\t';
+  const rows=raw.split('\n').filter(l=>l.trim()).map(l=>l.split(sep).map(c=>c.trim().replace(/^"|"$/g,'').replace(/\|/g,'\\|')));
+  const header=document.getElementById('mtHead').checked;const align=document.getElementById('mtAlign').value;
+  const cols=Math.max(...rows.map(r=>r.length));const pad=r=>{const c=[...r];while(c.length<cols)c.push('');return c};
+  const body=rows.map(pad);
+  const d=align==='center'?':---:':align==='right'?'---:':':---';
+  let out='';
+  if(header){out+='| '+body[0].join(' | ')+' |\n';out+='| '+Array(cols).fill(d).join(' | ')+' |\n';for(let i=1;i<body.length;i++)out+='| '+body[i].join(' | ')+' |\n'}
+  else{out+='| '+Array(cols).fill(' ').join(' | ')+' |\n';out+='| '+Array(cols).fill(d).join(' | ')+' |\n';for(const r of body)out+='| '+r.join(' | ')+' |\n'}
+  document.getElementById('mtOut').textContent=out.trim()}
+gen();
+</script>
+</body>
+</html>

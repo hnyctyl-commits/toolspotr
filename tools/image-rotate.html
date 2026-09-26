@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rotate & Flip Image — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/image-rotate.html">
+<meta name="description" content="Rotate images 90°, 180° or 270° and flip them horizontally or vertically. Preview the result and download as PNG or JPG.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}#rtCanvas{max-width:100%;border:1px solid var(--border);border-radius:12px;display:block;margin:12px auto;background:var(--bg-deep)}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design &amp; Image / <strong>Image Rotate &amp; Flip</strong></div>
+    <h1 class="tool-page-title">🔄 Image Rotate &amp; Flip</h1>
+    <p class="tool-page-desc">Rotate images 90°, 180° or 270° and flip them horizontally or vertically. Preview the result and download as PNG or JPG.</p>
+  </div>
+  <div class="tool-box">
+    <label>Choose an image</label><input type="file" id="rtFile" accept="image/*">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+      <button class="tool-btn-sec" data-r="90">↻ 90°</button>
+      <button class="tool-btn-sec" data-r="180">↻ 180°</button>
+      <button class="tool-btn-sec" data-r="270">↻ 270°</button>
+      <button class="tool-btn-sec" data-r="h">⇋ Flip H</button>
+      <button class="tool-btn-sec" data-r="v">⇅ Flip V</button>
+      <button class="tool-btn-sec" data-r="reset">⟲ Reset</button>
+    </div>
+    <canvas id="rtCanvas"></canvas>
+    <div style="text-align:center"><button class="tool-btn" id="rtDl">⬇️ Download</button></div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>Rotating and flipping images correctly</h3><p>Rotation turns the whole image clockwise, while flipping mirrors it along an axis — useful for correcting selfies taken in a mirror, scanned pages that came out sideways, or photos with the wrong EXIF orientation. Rotate by 90° steps for landscape/portrait fixes, and use the flip buttons for mirrored text or reversed logos. The result is re-encoded as a clean PNG with no metadata, so it works everywhere.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-resizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📐</div><div class="tcard-body"><div class="tcard-title">Image Resizer</div></div></a>
+    <a href="image-cropper.html" class="tcard" style="margin:0"><div class="tcard-icon">✂️</div><div class="tcard-body"><div class="tcard-title">Image Cropper</div></div></a>
+    <a href="aspect-ratio-calculator.html" class="tcard" style="margin:0"><div class="tcard-icon">📐</div><div class="tcard-body"><div class="tcard-title">Aspect Ratio</div></div></a>
+    <a href="image-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">🔄</div><div class="tcard-body"><div class="tcard-title">Image Converter</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+const rtC=document.getElementById('rtCanvas'),rtX=rtC.getContext('2d');let rtImg=null,rtRot=0,rtFH=1,rtFV=1;
+document.getElementById('rtFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{rtImg=i;rtRot=0;rtFH=1;rtFV=1;draw()};i.src=r.result};r.readAsDataURL(f)};
+function draw(){if(!rtImg)return;const rad=rtRot*Math.PI/180;const sw=rtImg.naturalWidth,sh=rtImg.naturalHeight;
+  const rot90=rtRot===90||rtRot===270;rtC.width=rot90?sh:sw;rtC.height=rot90?sw:sh;
+  rtX.setTransform(1,0,0,1,0,0);rtX.clearRect(0,0,rtC.width,rtC.height);rtX.save();
+  rtX.translate(rtC.width/2,rtC.height/2);rtX.rotate(rad);rtX.scale(rtFH,rtFV);rtX.drawImage(rtImg,-sw/2,-sh/2);rtX.restore()}
+document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{const r=b.dataset.r;
+  if(r==='reset'){rtRot=0;rtFH=1;rtFV=1}else if(r==='h')rtFH*=-1;else if(r==='v')rtFV*=-1;else rtRot=(rtRot+ +r)%360;draw()});
+document.getElementById('rtDl').onclick=()=>{if(!rtImg)return alert('Choose an image first.');
+  const a=document.createElement('a');a.href=rtC.toDataURL('image/png');a.download='rotated.png';a.click()};
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SVG to PNG Converter — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/svg-to-png.html">
+<meta name="description" content="Convert SVG vector graphics to PNG images at any resolution. Upload or paste SVG code, choose size and background, download instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}#svOut{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--bg-deep);text-align:center;margin-top:12px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Design &amp; Image / <strong>SVG to PNG</strong></div>
+    <h1 class="tool-page-title">🖼️ SVG to PNG</h1>
+    <p class="tool-page-desc">Convert SVG vector graphics to PNG images at any resolution. Upload or paste SVG code, choose size and background, download instantly.</p>
+  </div>
+  <div class="tool-box">
+    <label>SVG code</label>
+    <textarea id="svCode" placeholder="&lt;svg viewBox=&quot;0 0 100 100&quot;&gt;...&lt;/svg&gt;" style="min-height:140px"></textarea>
+    <div class="input-row"><div><label>Width (px)</label><input type="number" id="svW" value="512" min="8" max="4096"></div>
+    <div><label>Background</label><input type="color" id="svBg" value="#ffffff"></div>
+    <div style="flex:0 0 auto"><label>Transparent</label><input type="checkbox" id="svAlpha" style="width:auto;margin:0"></div></div>
+    <label>Or upload an .svg file</label><input type="file" id="svFile" accept=".svg,image/svg+xml">
+    <button class="tool-btn" id="svGo">🖼️ Convert to PNG</button>
+    <div id="svOut" style="display:none"></div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>When should you convert SVG to PNG?</h3><p>SVG is a vector format: it stays sharp at any size and is perfect for logos, icons and illustrations. PNG is a raster format required by many platforms that do not accept SVG — email signatures, social media uploads, Word/PowerPoint documents, and most app stores. Converting at a large resolution (1024px or more) keeps the result crisp. Use the transparent option for logos you plan to place on coloured backgrounds.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="image-converter.html" class="tcard" style="margin:0"><div class="tcard-icon">🔄</div><div class="tcard-body"><div class="tcard-title">Image Converter</div></div></a>
+    <a href="favicon-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">⭐</div><div class="tcard-body"><div class="tcard-title">Favicon Generator</div></div></a>
+    <a href="svg-optimizer.html" class="tcard" style="margin:0"><div class="tcard-icon">✂️</div><div class="tcard-body"><div class="tcard-title">SVG Optimizer</div></div></a>
+    <a href="image-resizer.html" class="tcard" style="margin:0"><div class="tcard-icon">📐</div><div class="tcard-body"><div class="tcard-title">Image Resizer</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+const svCode=document.getElementById('svCode');
+document.getElementById('svFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>svCode.value=r.result;r.readAsText(f)};
+document.getElementById('svGo').onclick=()=>{const svg=svCode.value.trim();if(!svg){alert('Paste or upload an SVG first.');return}
+  const w=Math.min(4096,Math.max(8,+document.getElementById('svW').value||512));
+  const blob=new Blob([svg],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const img=new Image();
+  img.onload=()=>{const ratio=img.naturalHeight&&img.naturalWidth?img.naturalHeight/img.naturalWidth:1;const h=Math.round(w*ratio);
+    const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');
+    if(!document.getElementById('svAlpha').checked){x.fillStyle=document.getElementById('svBg').value;x.fillRect(0,0,w,h)}
+    x.drawImage(img,0,0,w,h);const png=c.toDataURL('image/png');const o=document.getElementById('svOut');o.style.display='block';
+    o.innerHTML=`<img src="${png}" style="max-width:100%;border:1px solid var(--border);border-radius:8px"><br><br><a class="tool-btn" href="${png}" download="converted.png">⬇️ Download PNG (${w}×${h})</a>`;
+    URL.revokeObjectURL(url)};
+  img.onerror=()=>{alert('Could not parse that SVG. Check the markup.');URL.revokeObjectURL(url)};
+  img.src=url};
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chmod Calculator — Unix Permissions — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/chmod-calculator.html">
+<meta name="description" content="Convert Unix file permissions between rwx notation and octal numbers. Tick the boxes or type an octal value to get the chmod command instantly.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}.cm-grid{display:grid;grid-template-columns:auto repeat(3,1fr);gap:8px;align-items:center;max-width:460px;margin:12px auto}.cm-grid .hd{font-size:11px;color:var(--text-muted);text-transform:uppercase;text-align:center;font-weight:700}.cm-grid label{font-size:13px;font-weight:600}.cm-grid input[type=checkbox]{width:auto;margin:0;transform:scale(1.3)}.cm-out{font-family:var(--mono);font-size:22px;text-align:center;font-weight:800;color:var(--accent);padding:14px;background:var(--bg-deep);border:1px solid var(--border);border-radius:12px}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>Chmod Calculator</strong></div>
+    <h1 class="tool-page-title">🔐 Chmod Calculator</h1>
+    <p class="tool-page-desc">Convert Unix file permissions between rwx notation and octal numbers. Tick the boxes or type an octal value to get the chmod command instantly.</p>
+  </div>
+  <div class="tool-box">
+    <div class="cm-grid">
+      <span></span><span class="hd">Read (4)</span><span class="hd">Write (2)</span><span class="hd">Execute (1)</span>
+      <label>Owner</label><input type="checkbox" data-g="u" data-p="4" checked><input type="checkbox" data-g="u" data-p="2" checked><input type="checkbox" data-g="u" data-p="1">
+      <label>Group</label><input type="checkbox" data-g="g" data-p="4" checked><input type="checkbox" data-g="g" data-p="2"><input type="checkbox" data-g="g" data-p="1">
+      <label>Other</label><input type="checkbox" data-g="o" data-p="4" checked><input type="checkbox" data-g="o" data-p="2"><input type="checkbox" data-g="o" data-p="1">
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+      <label style="font-size:12.5px"><input type="checkbox" class="cm-s" data-b="4" style="width:auto;margin-right:5px">setuid</label>
+      <label style="font-size:12.5px"><input type="checkbox" class="cm-s" data-b="2" style="width:auto;margin-right:5px">setgid</label>
+      <label style="font-size:12.5px"><input type="checkbox" class="cm-s" data-b="1" style="width:auto;margin-right:5px">sticky</label>
+    </div>
+    <div class="cm-out" id="cmOct">755</div>
+    <div style="text-align:center;margin:12px 0"><code id="cmSym" style="font-family:var(--mono);font-size:16px">-rwxr-xr-x</code></div>
+    <div class="tool-output" id="cmCmd">chmod 755 filename</div>
+    <div style="margin-top:12px"><label>Or type an octal value</label><input type="text" id="cmIn" placeholder="e.g. 644" maxlength="4"></div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>Understanding Unix file permissions</h3><p>Every file on Linux and macOS has three permission sets — for the owner, the group and everyone else — each combining read (4), write (2) and execute (1). Octal notation sums these: 7 means full access, 5 means read and execute, and 644 gives the owner write access while everyone else can only read. Directories also need the execute bit to be entered. The special setuid, setgid and sticky bits add a fourth leading digit and control advanced behaviour such as shared folders.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="hash-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔐</div><div class="tcard-body"><div class="tcard-title">Hash Generator</div></div></a>
+    <a href="regex-tester.html" class="tcard" style="margin:0"><div class="tcard-icon">🔍</div><div class="tcard-body"><div class="tcard-title">Regex Tester</div></div></a>
+    <a href="cron-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">⏰</div><div class="tcard-body"><div class="tcard-title">Cron Generator</div></div></a>
+    <a href="code-formatter.html" class="tcard" style="margin:0"><div class="tcard-icon">🧹</div><div class="tcard-body"><div class="tcard-title">Code Formatter</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+const boxes=[...document.querySelectorAll('.cm-grid input')],sp=[...document.querySelectorAll('.cm-s')];
+function calc(){const v={u:0,g:0,o:0};boxes.forEach(b=>{if(b.checked)v[b.dataset.g]+=+b.dataset.p});
+  let special=0;sp.forEach(b=>{if(b.checked)special+=+b.dataset.b});
+  const oct=String(special||'')+v.u+v.g+v.o;
+  const sym=(x)=>((x&4)?'r':'-')+((x&2)?'w':'-')+((x&1)?'x':'-');
+  const d=(x)=>((x&4)?'r':'-')+((x&2)?'w':'-')+((x&1)?((special&1&&x===v.o)?'t':'x'):((special&1&&x===v.o)?'T':'-'));
+  document.getElementById('cmOct').textContent=oct;
+  document.getElementById('cmSym').textContent=(special&4?(v.u&1?'s':'S'):d(v.u)).slice(0,0)+((v.u&4)?'r':'-')+((v.u&2)?'w':'-')+((v.u&1)?((special&4)?'s':'x'):((special&4)?'S':'-'))
+    +((v.g&4)?'r':'-')+((v.g&2)?'w':'-')+((v.g&1)?((special&2)?'s':'x'):((special&2)?'S':'-'))
+    +((v.o&4)?'r':'-')+((v.o&2)?'w':'-')+((v.o&1)?((special&1)?'t':'x'):((special&1)?'T':'-'));
+  document.getElementById('cmCmd').textContent='chmod '+oct+' filename'}
+boxes.concat(sp).forEach(b=>b.onchange=calc);
+document.getElementById('cmIn').addEventListener('input',e=>{const s=e.target.value.trim();if(!/^[0-7]{3,4}$/.test(s))return;
+  let sp_=0,v=s.split('').map(Number);if(v.length===4){sp_=v[0];v=v.slice(1)}
+  ['u','g','o'].forEach((g,i)=>boxes.filter(b=>b.dataset.g===g).forEach(b=>b.checked=!!(v[i]&+b.dataset.p)));
+  sp.forEach(b=>b.checked=!!(sp_&+b.dataset.b));calc()});
+calc();
+</script>
+</body>
+</html>

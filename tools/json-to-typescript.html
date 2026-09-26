@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JSON to TypeScript Interface — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/json-to-typescript.html">
+<meta name="description" content="Generate TypeScript interfaces from any JSON sample. Paste JSON and get typed, nested interfaces ready to copy into your project.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Developer Tools / <strong>JSON to TypeScript</strong></div>
+    <h1 class="tool-page-title">🧩 JSON to TypeScript</h1>
+    <p class="tool-page-desc">Generate TypeScript interfaces from any JSON sample. Paste JSON and get typed, nested interfaces ready to copy into your project.</p>
+  </div>
+  <div class="tool-box">
+    <label>Paste JSON</label>
+    <textarea id="jtIn" placeholder='{"id":1,"name":"Alice","tags":["a","b"],"address":{"city":"Paris"}}' style="min-height:170px"></textarea>
+    <div class="input-row"><div><label>Root interface name</label><input type="text" id="jtName" value="Root"></div>
+    <div><label>Style</label><select id="jtStyle"><option value="interface">interface</option><option value="type">type alias</option></select></div></div>
+    <button class="tool-btn" id="jtGo">🧩 Generate Types</button> <button class="tool-btn-sec" id="jtCopy">📋 Copy</button>
+    <div class="tool-output" id="jtOut" style="margin-top:12px;white-space:pre;overflow-x:auto;font-size:12.5px"></div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>Typing JSON responses in TypeScript</h3><p>Manually writing interfaces for a large API response is slow and easy to get wrong — a missing optional field or a nested object you forgot shows up later as a runtime bug. Pasting a real sample into this generator produces accurate interfaces, including nested objects and arrays of objects, which you can paste straight into your project. For best results use a representative sample that includes every field the API can return; add a question mark to fields that are sometimes absent.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="json-formatter.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON Formatter</div></div></a>
+    <a href="code-formatter.html" class="tcard" style="margin:0"><div class="tcard-icon">🧹</div><div class="tcard-body"><div class="tcard-title">Code Formatter</div></div></a>
+    <a href="json-to-csv.html" class="tcard" style="margin:0"><div class="tcard-icon">📋</div><div class="tcard-body"><div class="tcard-title">JSON to CSV</div></div></a>
+    <a href="yaml-json.html" class="tcard" style="margin:0"><div class="tcard-icon">🛠️</div><div class="tcard-body"><div class="tcard-title">YAML ↔ JSON</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+document.getElementById('jtGo').onclick=gen;
+document.getElementById('jtCopy').onclick=()=>{navigator.clipboard.writeText(document.getElementById('jtOut').textContent);
+  const b=document.getElementById('jtCopy');b.textContent='✅ Copied';setTimeout(()=>b.textContent='📋 Copy',1400)};
+const cap=s=>s.replace(/[^a-zA-Z0-9]/g,' ').split(/\s+/).filter(Boolean).map(w=>w[0].toUpperCase()+w.slice(1)).join('');
+function typeOf(v,path,name,coll){if(v===null)return'null';if(Array.isArray(v)){if(!v.length)return'any[]';const ts=[...new Set(v.map(x=>typeOf(x,path,name,coll)))];return(ts.length===1?ts[0]:'('+ts.join(' | ')+')')+'[]'}
+  if(typeof v==='object'){const n=name+cap(path);coll[n]=v;return n}
+  if(typeof v==='string')return'string';if(typeof v==='number')return'number';if(typeof v==='boolean')return'boolean';return'any'}
+function gen(){let data;try{data=JSON.parse(document.getElementById('jtIn').value)}catch(e){document.getElementById('jtOut').textContent='❌ Invalid JSON: '+e.message;return}
+  const root=document.getElementById('jtName').value.trim()||'Root';const style=document.getElementById('jtStyle').value;
+  const coll={};const rootType=typeOf(data,'',root,coll);const parts=[];
+  const names=Object.keys(coll);
+  if(names.length===0){parts.push(`export type ${root} = ${rootType};`)}
+  else{const rootName=rootType.replace(/\[\]$/,'');
+    parts.push(`export ${style==='type'?'type':'interface'} ${rootName} {`);
+    for(const k of Object.keys(coll[rootName]||{})){const v=coll[rootName][k];const opt=v===undefined?'':'';parts.push('  '+JSON.stringify(k).replace(/"/g,'')+': '+typeOf(v,k,rootName,coll)+';')}
+    parts.push('}');
+    for(const n of names){if(n===rootName)continue;parts.push('');parts.push(`export ${style==='type'?'type':'interface'} ${n} {`);
+      for(const k of Object.keys(coll[n]))parts.push('  '+k+': '+typeOf(coll[n][k],k,n,coll)+';');
+      parts.push('}')}
+    coll[rootName]&&null}
+  document.getElementById('jtOut').textContent=parts.join('\n')}
+document.getElementById('jtIn').addEventListener('input',()=>{});
+</script>
+</body>
+</html>

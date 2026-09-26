@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9946249937416673" crossorigin="anonymous"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Encrypt & Decrypt Text (AES-256) — Toolflow</title>
+<link rel="canonical" href="https://toolspotr.com/tools/aes-encrypt.html">
+<meta name="description" content="Encrypt or decrypt text with AES-256-GCM and a password, entirely in your browser. Nothing is sent to any server.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css?v=1790417446">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>#themePanel,#langPanel{display:none!important}#themePanel.show,#langPanel.show{display:block!important}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="logo"><span class="logo-icon">◇</span><span class="logo-text">Toolflow</span></a>
+  <div class="nav-controls">
+    <div class="ctrl-group"><button class="ctrl-btn lang-btn" id="langBtn">EN</button><div class="lang-panel" id="langPanel"><div class="lang-opt active" data-lang="en">🇬🇧 English</div><div class="lang-opt" data-lang="zh">🇨🇳 中文</div></div></div>
+    <div class="ctrl-group"><button class="ctrl-btn" id="themeBtn">🎨</button><div class="theme-panel" id="themePanel"><div class="theme-panel-title">Theme</div><div class="theme-options">
+      <div class="theme-opt active" data-theme="light"><div class="theme-opt-dot" style="background:#6366f1"></div><span>Light</span></div>
+      <div class="theme-opt" data-theme="cosmic"><div class="theme-opt-dot" style="background:#818cf8"></div><span>Cosmic</span></div>
+      <div class="theme-opt" data-theme="ocean"><div class="theme-opt-dot" style="background:#38bdf8"></div><span>Ocean</span></div>
+      <div class="theme-opt" data-theme="sunset"><div class="theme-opt-dot" style="background:#fb923c"></div><span>Sunset</span></div>
+      <div class="theme-opt" data-theme="forest"><div class="theme-opt-dot" style="background:#4ade80"></div><span>Forest</span></div>
+    </div></div></div>
+  </div>
+  <div class="nav-links"><a href="../index.html">← All Tools</a></div>
+</div></nav>
+<main class="tool-page">
+  <div class="tool-page-header">
+    <div class="tool-breadcrumb"><a href="../index.html">Home</a> / Security &amp; Privacy / <strong>Text Encrypt &amp; Decrypt</strong></div>
+    <h1 class="tool-page-title">🔒 Text Encrypt &amp; Decrypt</h1>
+    <p class="tool-page-desc">Encrypt or decrypt text with AES-256-GCM and a password, entirely in your browser. Nothing is sent to any server.</p>
+  </div>
+  <div class="tool-box">
+    <label>Text</label>
+    <textarea id="aeIn" placeholder="Type the text you want to encrypt, or paste ciphertext to decrypt" style="min-height:130px"></textarea>
+    <div class="input-row"><div><label>Password</label><input type="text" id="aePw" placeholder="your secret passphrase"></div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="tool-btn" id="aeEnc">🔒 Encrypt</button>
+      <button class="tool-btn-sec" id="aeDec">🔓 Decrypt</button>
+      <button class="tool-btn-sec" id="aeCopy">📋 Copy result</button>
+    </div>
+    <label style="margin-top:14px">Result</label>
+    <div class="tool-output" id="aeOut" style="word-break:break-all"></div>
+    <div style="font-size:11.5px;color:var(--text-muted);margin-top:10px">🔐 AES-256-GCM with PBKDF2-SHA256 (250,000 iterations). The password is never stored or transmitted.</div>
+  </div>
+  <div class="ad-unit" style="margin:12px 0;min-height:90px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px dashed var(--border-light);border-radius:var(--radius-sm);overflow:hidden">
+    <ins class="adsbygoogle" style="display:block;min-height:90px" data-ad-client="ca-pub-9946249937416673" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="tool-article"><h3>How this encryption works</h3><p>This tool uses AES-256-GCM, the same authenticated encryption algorithm found in modern secure messaging apps, combined with PBKDF2-SHA256 key stretching at 250,000 iterations so that weak passwords are harder to brute-force. A fresh random salt and initialisation vector are generated for every message, and the ciphertext is tagged with a version prefix so it can be decrypted later. Because everything runs in your browser using the Web Crypto API, your plaintext and password never leave your device.</p></div>
+  <div class="tool-cross"><h3>You might also like</h3><div class="tool-cross-grid">
+    <a href="password-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔑</div><div class="tcard-body"><div class="tcard-title">Password Generator</div></div></a>
+    <a href="password-strength.html" class="tcard" style="margin:0"><div class="tcard-icon">🔐</div><div class="tcard-body"><div class="tcard-title">Password Strength</div></div></a>
+    <a href="hash-generator.html" class="tcard" style="margin:0"><div class="tcard-icon">🔐</div><div class="tcard-body"><div class="tcard-title">Hash Generator</div></div></a>
+    <a href="ssl-checker.html" class="tcard" style="margin:0"><div class="tcard-icon">🔒</div><div class="tcard-body"><div class="tcard-title">SSL Checker</div></div></a>
+  </div></div>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Toolflow · <a href="../index.html">toolspotr.com</a> · <a href="../about.html">About</a> · <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p><p class="f-small">© 2026 Toolflow (toolspotr.com). All rights reserved.</p></div></footer>
+
+<script src="../assets/app.js?v=1790417446"></script>
+<script>
+const$=id=>document.getElementById(id);
+async function key(pw,salt){const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:250000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b)));
+const ub=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+$('aeEnc').onclick=async()=>{const t=$('aeIn').value,pw=$('aePw').value;
+  if(!t||!pw){$('aeOut').textContent='⚠️ Enter both text and a password.';return}
+  try{const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));
+    const k=await key(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},k,new TextEncoder().encode(t));
+    $('aeOut').textContent='v1:'+b64(salt)+':'+b64(iv)+':'+b64(ct)}
+  catch(e){$('aeOut').textContent='❌ Encryption failed: '+e.message}};
+$('aeDec').onclick=async()=>{const raw=$('aeIn').value.trim(),pw=$('aePw').value;
+  if(!raw||!pw){$('aeOut').textContent='⚠️ Paste ciphertext and the password.';return}
+  const p=raw.replace(/^v1:/,'').split(':');
+  if(p.length!==3){$('aeOut').textContent='❌ Unrecognised format. Expected v1:salt:iv:data';return}
+  try{const k=await key(pw,ub(p[0]));const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:ub(p[1])},k,ub(p[2]));
+    $('aeOut').textContent=new TextDecoder().decode(pt)}
+  catch(e){$('aeOut').textContent='❌ Wrong password or corrupted data.'}};
+$('aeCopy').onclick=()=>{const b=$('aeCopy');navigator.clipboard.writeText($('aeOut').textContent);b.textContent='✅ Copied';setTimeout(()=>b.textContent='📋 Copy result',1400)};
+</script>
+</body>
+</html>
